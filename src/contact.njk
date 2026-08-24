@@ -1,0 +1,59 @@
+---
+title: Contact
+layout: layouts/base.njk
+seoTitle: Start a Conversation — Parul Soni Manvati
+seoDescription: I'm always interested in thoughtful conversations around organisations, transformation, technology, emerging businesses and what comes next.
+---
+<section class="page-header">
+  <div class="wrap">
+    <h1>Start a conversation.</h1>
+    <p>I'm always interested in thoughtful conversations around organisations, transformation, technology, emerging businesses and what comes next.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thank-you/">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none">
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="organisation">Organisation</label>
+        <input type="text" id="organisation" name="organisation">
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-row">
+        <label for="topic">What would you like to discuss?</label>
+        <select id="topic" name="topic">
+          <option value="Advisory">Advisory</option>
+          <option value="Speaking">Speaking</option>
+          <option value="Board / Strategic Opportunity">Board / Strategic Opportunity</option>
+          <option value="Professional Opportunity">Professional Opportunity</option>
+          <option value="Government / Policy">Government / Policy</option>
+          <option value="Collaboration">Collaboration</option>
+          <option value="Something else">Something else</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--primary">Send message</button>
+      <p class="form-note">This form is handled by Netlify Forms — submissions arrive in your Netlify dashboard and can be forwarded to your email.</p>
+    </form>
+  </div>
+</section>

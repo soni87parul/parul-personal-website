@@ -1,0 +1,60 @@
+---
+title: Speaking
+layout: layouts/base.njk
+seoTitle: Speaking — Parul Soni Manvati
+seoDescription: Parul speaks on strategy, transformation, technology, scaling, emerging businesses, leadership and building organisations for what comes next.
+---
+<section class="page-header">
+  <div class="wrap">
+    <h1>Conversations worth having.</h1>
+    <p>Parul speaks on strategy, transformation, technology, scaling, emerging businesses, leadership and building organisations for what comes next.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Topics</span>
+      <h2>Speaking topics</h2>
+    </div>
+    {% if speakingTopics.items.length %}
+    <div class="card-grid">
+      {% for topic in speakingTopics.items %}
+      <article class="story-card">
+        <h3>{{ topic.title }}</h3>
+        <p class="card-body">{{ topic.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No speaking topics published yet.</div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="teaser">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Past events</span>
+      <h2>Where Parul has spoken</h2>
+    </div>
+    {% set publishedEvents = speakingEvents.items | selectattr("published") %}
+    {% if publishedEvents.length %}
+    <div class="card-grid">
+      {% for event in publishedEvents %}
+      <article class="story-card">
+        <h3>{{ event.title }}</h3>
+        <p class="card-meta">{{ event.location }}{% if event.date %} · {{ event.date }}{% endif %}</p>
+        {% if event.videoUrl %}<a class="btn btn--text" href="{{ event.videoUrl }}" target="_blank" rel="noopener noreferrer">Watch →</a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No past events published yet. Add one via Admin → Speaking.</div>
+    {% endif %}
+
+    <div class="teaser__ctas" style="margin-top: 3rem;">
+      <a class="btn btn--primary" href="/contact/">Invite Parul to speak →</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,233 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    editor:
+      preview: false
+    files:
+      - name: "homepage"
+        label: "Homepage Content"
+        file: "src/_data/homepage.json"
+        fields:
+          - { label: "Hero — Positioning Label", name: "heroPositioningLabel", widget: "string" }
+          - { label: "Hero — Headline", name: "heroHeadline", widget: "string" }
+          - { label: "Hero — Supporting Text", name: "heroSubtext", widget: "text" }
+          - { label: "Hero — Image", name: "heroImage", widget: "image", required: false }
+          - { label: "Hero — Image Alt Text", name: "heroImageAlt", widget: "string", required: false }
+          - { label: "Hero — Primary CTA Label", name: "heroPrimaryCtaLabel", widget: "string" }
+          - { label: "Hero — Primary CTA Link", name: "heroPrimaryCtaLink", widget: "string" }
+          - { label: "Hero — Secondary CTA Label", name: "heroSecondaryCtaLabel", widget: "string" }
+          - { label: "Hero — Secondary CTA Link", name: "heroSecondaryCtaLink", widget: "string" }
+
+          - { label: "Credibility — Heading", name: "credibilityHeading", widget: "string" }
+          - label: "Credibility — Organisation Names"
+            name: "credibilityLogos"
+            widget: "list"
+
+          - { label: "Method — Heading", name: "methodHeading", widget: "string" }
+          - { label: "Method — Subheading", name: "methodSubheading", widget: "text" }
+          - label: "Method — Five Stages"
+            name: "methodStages"
+            widget: "list"
+            fields:
+              - { label: "Number (e.g. 01)", name: "number", widget: "string" }
+              - { label: "Stage Title", name: "title", widget: "string" }
+              - { label: "Short Line (card)", name: "short", widget: "string" }
+              - { label: "Expanded Detail", name: "detail", widget: "text" }
+
+          - { label: "Experience — Heading", name: "experienceHeading", widget: "string" }
+          - { label: "Experience — Subheading", name: "experienceSubheading", widget: "text" }
+          - { label: "Experience — Card CTA Label", name: "experienceCtaLabel", widget: "string" }
+          - { label: "Experience — View All CTA Label", name: "experienceViewAllLabel", widget: "string" }
+
+          - { label: "About — Heading", name: "aboutHeading", widget: "string" }
+          - { label: "About — Text", name: "aboutText", widget: "text" }
+          - { label: "About — CTA Label", name: "aboutCtaLabel", widget: "string" }
+          - { label: "About — CTA Link", name: "aboutCtaLink", widget: "string" }
+
+          - { label: "Thinking — Heading", name: "thinkingHeading", widget: "string" }
+          - { label: "Thinking — Subheading", name: "thinkingSubheading", widget: "text" }
+          - { label: "Thinking — CTA Label", name: "thinkingCtaLabel", widget: "string" }
+
+          - { label: "Advisory — Heading", name: "advisoryHeading", widget: "string" }
+          - { label: "Advisory — Text", name: "advisoryText", widget: "text" }
+          - { label: "Advisory — CTA Label", name: "advisoryCtaLabel", widget: "string" }
+          - { label: "Advisory — Secondary CTA Label", name: "advisorySecondaryCtaLabel", widget: "string" }
+
+          - { label: "Speaking — Heading", name: "speakingHeading", widget: "string" }
+          - { label: "Speaking — Text", name: "speakingText", widget: "text" }
+          - { label: "Speaking — CTA Label", name: "speakingCtaLabel", widget: "string" }
+          - { label: "Speaking — Secondary CTA Label", name: "speakingSecondaryCtaLabel", widget: "string" }
+
+          - { label: "Impact — Heading", name: "impactHeading", widget: "string" }
+          - { label: "Impact — Text", name: "impactText", widget: "text" }
+          - { label: "Impact — CTA Label", name: "impactCtaLabel", widget: "string" }
+
+          - { label: "Final CTA — Heading", name: "finalCtaHeading", widget: "string" }
+          - { label: "Final CTA — Text", name: "finalCtaText", widget: "text" }
+          - { label: "Final CTA — Primary Label", name: "finalCtaPrimaryLabel", widget: "string" }
+          - { label: "Final CTA — Secondary Label", name: "finalCtaSecondaryLabel", widget: "string" }
+
+  - name: "experience"
+    label: "Experience"
+    folder: "src/experience"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/story.njk" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Organisation", name: "organisation", widget: "string" }
+      - { label: "Year", name: "year", widget: "string", required: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Strategy", "Transformation", "0→1", "Scale", "AI / Technology", "Operations", "Public Policy", "Leadership"]
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Order (lower shows first)", name: "order", widget: "number", default: 99 }
+      - { label: "Situation (short summary — shown on cards)", name: "situation", widget: "text" }
+      - { label: "The Challenge", name: "challenge", widget: "text" }
+      - { label: "The Thinking", name: "thinking", widget: "text" }
+      - { label: "What We Did", name: "action", widget: "text" }
+      - { label: "The Result", name: "result", widget: "text" }
+      - { label: "Scale", name: "scale", widget: "string", required: false }
+      - { label: "The Lesson", name: "lesson", widget: "text", required: false }
+      - { label: "Relevant Framework", name: "framework", widget: "string", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+      - { label: "Additional Body Content (optional, Markdown)", name: "body", widget: "markdown", required: false }
+
+  - name: "thinking"
+    label: "Thinking"
+    folder: "src/thinking"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/article.njk" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+      - { label: "Excerpt (shown on cards)", name: "excerpt", widget: "text" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Essay", "Operator's Notebook", "Framework", "Case Study", "Research", "Book Notes"]
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Author", name: "author", widget: "string", default: "Parul Soni Manvati" }
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Draft (hide from live site)", name: "draft", widget: "boolean", default: true }
+      - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "advisory"
+    label: "Advisory"
+    files:
+      - name: "advisory"
+        label: "Advisory Services"
+        file: "src/_data/advisory.json"
+        fields:
+          - label: "Services"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Enabled (show on site)", name: "enabled", widget: "boolean", default: true }
+              - { label: "Order", name: "order", widget: "number" }
+
+  - name: "speaking"
+    label: "Speaking"
+    files:
+      - name: "speakingTopics"
+        label: "Speaking Topics"
+        file: "src/_data/speakingTopics.json"
+        fields:
+          - label: "Topics"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+      - name: "speakingEvents"
+        label: "Speaking Events"
+        file: "src/_data/speakingEvents.json"
+        fields:
+          - label: "Events"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "string", required: false }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Video URL", name: "videoUrl", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Featured", name: "featured", widget: "boolean", default: false }
+              - { label: "Published (show on site)", name: "published", widget: "boolean", default: false }
+
+  - name: "impact"
+    label: "Impact"
+    files:
+      - name: "impactProjects"
+        label: "Impact Projects"
+        file: "src/_data/impactProjects.json"
+        fields:
+          - label: "Projects"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Link", name: "link", widget: "string", required: false }
+              - { label: "Published (show on site)", name: "published", widget: "boolean", default: true }
+
+  - name: "navigation"
+    label: "Navigation"
+    files:
+      - name: "navigation"
+        label: "Main Navigation"
+        file: "src/_data/navigation.json"
+        fields:
+          - label: "Navigation Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - name: "settings"
+        label: "Site Settings"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Positioning Statement", name: "positioning", widget: "string" }
+          - { label: "Public Contact Email", name: "email", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Default SEO Title", name: "siteTitle", widget: "string" }
+          - { label: "Default Meta Description", name: "metaDescription", widget: "text" }
+          - { label: "Default Social Share Image", name: "ogImage", widget: "image", required: false }
+          - { label: "Favicon", name: "favicon", widget: "image", required: false }
+          - { label: "Footer Text", name: "footerText", widget: "string" }
+          - { label: "Copyright Year", name: "copyrightYear", widget: "string" }

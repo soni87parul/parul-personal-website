@@ -1,0 +1,17 @@
+{
+  "name": "parul-soni-manvati-website",
+  "version": "1.0.0",
+  "description": "Personal brand website for Parul Soni Manvati",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "luxon": "^3.7.2"
+  }
+}

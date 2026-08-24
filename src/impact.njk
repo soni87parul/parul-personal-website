@@ -1,0 +1,31 @@
+---
+title: Impact
+layout: layouts/base.njk
+seoTitle: Impact — Parul Soni Manvati
+seoDescription: Building institutions and communities, not only businesses — including work with ABWCI / Women in Supply Chain.
+---
+<section class="page-header">
+  <div class="wrap">
+    <h1>Beyond business</h1>
+    <p>Building institutions and communities, not only businesses.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    {% set publishedProjects = impactProjects.items | selectattr("published") %}
+    {% if publishedProjects.length %}
+    <div class="card-grid">
+      {% for project in publishedProjects %}
+      <article class="story-card">
+        <h3>{{ project.title }}</h3>
+        <p class="card-body">{{ project.description }}</p>
+        {% if project.link %}<a class="btn btn--text" href="{{ project.link }}" target="_blank" rel="noopener noreferrer">Learn more →</a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No impact projects published yet. Add one via Admin → Impact.</div>
+    {% endif %}
+  </div>
+</section>

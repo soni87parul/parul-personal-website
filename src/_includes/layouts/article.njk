@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+---
+<section class="page-header">
+  <div class="wrap">
+    <span class="eyebrow">{{ category }}</span>
+    <h1>{{ title }}</h1>
+    {% if subtitle %}<p>{{ subtitle }}</p>{% endif %}
+    <p class="card-meta" style="margin-top: 1rem;">{{ date | readableDate }} · {{ content | readingTime }}</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    {% if coverImage %}
+    <div class="hero__image-wrap" style="aspect-ratio: 16/9; margin-bottom: 3rem;">
+      <img src="{{ coverImage }}" alt="{{ title }}">
+    </div>
+    {% endif %}
+
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    {% if tags.length %}
+    <div class="pill-list">
+      {% for tag in tags %}
+      <span class="pill">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="section-footer" style="text-align: left; margin-top: 3rem;">
+      <a class="btn btn--text" href="/thinking/">← Back to all thinking</a>
+    </div>
+  </div>
+</section>

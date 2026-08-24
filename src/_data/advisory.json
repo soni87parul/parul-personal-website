@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "title": "Strategy & Transformation",
+      "description": "Diagnosing what needs to change and designing the response — from strategy through to execution.",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "title": "CEO / Chief of Staff Advisory",
+      "description": "Structured thought partnership for founders and CEOs navigating complex, ambiguous decisions.",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "title": "Organisation Design",
+      "description": "Designing the team, structure and operating model an organisation needs for its next stage.",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "title": "0→1 Building",
+      "description": "Standing up new departments, products or business lines from a blank page.",
+      "enabled": true,
+      "order": 4
+    },
+    {
+      "title": "Scaling & Operating Models",
+      "description": "Making what already works repeatable and sustainable as the organisation grows.",
+      "enabled": true,
+      "order": 5
+    },
+    {
+      "title": "Technology / AI-enabled Transformation",
+      "description": "Using technology and AI to materially improve the operating model, not just automate it.",
+      "enabled": true,
+      "order": 6
+    },
+    {
+      "title": "Public / Policy Advisory",
+      "description": "Diagnosing policy and execution together for public and public-private initiatives.",
+      "enabled": true,
+      "order": 7
+    },
+    {
+      "title": "Strategic / Board Advisory",
+      "description": "Structured, evidence-based counsel for boards and leadership teams on strategic direction.",
+      "enabled": true,
+      "order": 8
+    }
+  ]
+}

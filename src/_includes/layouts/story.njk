@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+---
+<section class="page-header">
+  <div class="wrap">
+    <span class="eyebrow">{{ category }}{% if organisation %} · {{ organisation }}{% endif %}{% if year %} · {{ year }}{% endif %}</span>
+    <h1>{{ title }}</h1>
+    {% if situation %}<p>{{ situation }}</p>{% endif %}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <dl class="story-meta-grid">
+      {% if organisation %}<div><dt>Organisation</dt><dd>{{ organisation }}</dd></div>{% endif %}
+      {% if year %}<div><dt>Year</dt><dd>{{ year }}</dd></div>{% endif %}
+      {% if category %}<div><dt>Category</dt><dd>{{ category }}</dd></div>{% endif %}
+      {% if scale %}<div><dt>Scale</dt><dd>{{ scale }}</dd></div>{% endif %}
+      {% if framework %}<div><dt>Framework</dt><dd>{{ framework }}</dd></div>{% endif %}
+    </dl>
+
+    {% if image %}
+    <div class="hero__image-wrap" style="aspect-ratio: 16/9; margin-bottom: 3rem;">
+      <img src="{{ image }}" alt="{{ imageAlt or title }}">
+    </div>
+    {% endif %}
+
+    <div class="prose">
+      {% if challenge %}
+      <h2>The challenge</h2>
+      <p>{{ challenge }}</p>
+      {% endif %}
+
+      {% if thinking %}
+      <h2>The thinking</h2>
+      <p>{{ thinking }}</p>
+      {% endif %}
+
+      {% if action %}
+      <h2>What we did</h2>
+      <p>{{ action }}</p>
+      {% endif %}
+
+      {% if result %}
+      <h2>The result</h2>
+      <p>{{ result }}</p>
+      {% endif %}
+
+      {{ content | safe }}
+
+      {% if lesson %}
+      <h2>The lesson</h2>
+      <p>{{ lesson }}</p>
+      {% endif %}
+    </div>
+
+    <div class="section-footer" style="text-align: left; margin-top: 3rem;">
+      <a class="btn btn--text" href="/experience/">← Back to all experience</a>
+    </div>
+  </div>
+</section>

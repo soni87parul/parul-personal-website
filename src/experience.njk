@@ -1,0 +1,46 @@
+---
+title: Problems I've worked on
+layout: layouts/base.njk
+seoTitle: Experience — Parul Soni Manvati
+seoDescription: 15+ problems, different organisations, one way of thinking. Selected stories from Parul Soni Manvati's career across strategy, transformation, 0→1 building, scale, technology and public policy.
+---
+<section class="page-header">
+  <div class="wrap">
+    <h1>15+ problems. Different organisations. One way of thinking.</h1>
+    <p>A career is more useful when you can see the problems behind the titles.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="filter-bar" data-filter-bar>
+      <button type="button" class="is-active" data-filter="all">All</button>
+      <button type="button" data-filter="Strategy">Strategy</button>
+      <button type="button" data-filter="Transformation">Transformation</button>
+      <button type="button" data-filter="0→1">0→1</button>
+      <button type="button" data-filter="Scale">Scale</button>
+      <button type="button" data-filter="AI / Technology">AI / Technology</button>
+      <button type="button" data-filter="Operations">Operations</button>
+      <button type="button" data-filter="Public Policy">Public Policy</button>
+      <button type="button" data-filter="Leadership">Leadership</button>
+    </div>
+
+    {% if collections.experienceStories.length %}
+    <div class="card-grid">
+      {% for story in collections.experienceStories %}
+      <article class="story-card" data-story-card data-categories="{{ story.data.category }}">
+        <span class="card-category">{{ story.data.category }}</span>
+        <h3>{{ story.data.title }}</h3>
+        <p class="card-body">{{ story.data.challenge }}</p>
+        <div class="card-meta">{{ story.data.organisation }}{% if story.data.year %} · {{ story.data.year }}{% endif %}</div>
+        <div class="card-footer-row">
+          <a class="btn btn--text" href="{{ story.url }}">Explore the story →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No experience stories published yet. Add one via Admin → Experience.</div>
+    {% endif %}
+  </div>
+</section>

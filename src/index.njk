@@ -1,0 +1,191 @@
+---
+title: Parul Soni Manvati — Transformation Leader & Strategic Operator
+layout: layouts/base.njk
+---
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__label">{{ homepage.heroPositioningLabel }}</span>
+      <h1 class="hero__headline">{{ homepage.heroHeadline }}</h1>
+      <p class="hero__subtext">{{ homepage.heroSubtext }}</p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="{{ homepage.heroPrimaryCtaLink }}">{{ homepage.heroPrimaryCtaLabel }}</a>
+        <a class="btn btn--secondary" href="{{ homepage.heroSecondaryCtaLink }}">{{ homepage.heroSecondaryCtaLabel }}</a>
+      </div>
+    </div>
+    <div class="hero__image-wrap">
+      {% if homepage.heroImage and "placeholder" not in homepage.heroImage %}
+      <img src="{{ homepage.heroImage }}" alt="{{ homepage.heroImageAlt }}">
+      {% else %}
+      <div class="hero__image-placeholder">
+        [Hero photograph placeholder]<br>Replace via Admin → Homepage → Hero Image
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="credibility">
+  <div class="wrap">
+    <p class="credibility__heading">{{ homepage.credibilityHeading }}</p>
+    <ul class="credibility__logos">
+      {% for logo in homepage.credibilityLogos %}
+      <li>{{ logo }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="method">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Method</span>
+      <h2>{{ homepage.methodHeading }}</h2>
+      <p>{{ homepage.methodSubheading }}</p>
+    </div>
+    <div class="method__stages">
+      {% for stage in homepage.methodStages %}
+      <button class="method__stage" type="button" aria-expanded="false">
+        <span class="method__stage-number">{{ stage.number }}</span>
+        <span class="method__stage-title">{{ stage.title }}</span>
+        <p class="method__stage-short">{{ stage.short }}</p>
+        <p class="method__stage-detail">{{ stage.detail }}</p>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="experience-teaser">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Experience</span>
+      <h2>{{ homepage.experienceHeading }}</h2>
+      <p>{{ homepage.experienceSubheading }}</p>
+    </div>
+
+    {% set featuredStories = collections.experienceStories | featured(3) %}
+    {% if featuredStories.length %}
+    <div class="card-grid">
+      {% for story in featuredStories %}
+      <article class="story-card">
+        <span class="card-category">{{ story.data.category }}</span>
+        <h3>{{ story.data.title }}</h3>
+        <p class="card-body">{{ story.data.challenge }}</p>
+        <div class="card-meta">{{ story.data.organisation }}{% if story.data.year %} · {{ story.data.year }}{% endif %}</div>
+        <div class="card-footer-row">
+          <a class="btn btn--text" href="{{ story.url }}">{{ homepage.experienceCtaLabel }} →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No featured experience stories yet. Add some via Admin → Experience.</div>
+    {% endif %}
+
+    <div class="section-footer">
+      <a class="btn btn--text" href="/experience/">{{ homepage.experienceViewAllLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-teaser">
+  <div class="wrap split">
+    <div>
+      <span class="section-label">About</span>
+      <h2>{{ homepage.aboutHeading }}</h2>
+    </div>
+    <div>
+      <p>{{ homepage.aboutText }}</p>
+      <a class="btn btn--text" href="{{ homepage.aboutCtaLink }}">{{ homepage.aboutCtaLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="thinking-teaser">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Thinking</span>
+      <h2>{{ homepage.thinkingHeading }}</h2>
+      <p>{{ homepage.thinkingSubheading }}</p>
+    </div>
+
+    {% if collections.articles.length %}
+    <div class="card-grid">
+      {% for article in collections.articles | limit(3) %}
+      <article class="article-card">
+        <span class="card-category">{{ article.data.category }}</span>
+        <h3>{{ article.data.title }}</h3>
+        <p class="card-body">{{ article.data.excerpt }}</p>
+        <div class="card-meta">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
+        <a class="btn btn--text" href="{{ article.url }}">Read the article →</a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No published articles yet. Add one via Admin → Thinking.</div>
+    {% endif %}
+
+    <div class="section-footer">
+      <a class="btn btn--text" href="/thinking/">{{ homepage.thinkingCtaLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="teaser">
+  <div class="wrap split">
+    <div>
+      <span class="section-label">Advisory</span>
+      <h2>{{ homepage.advisoryHeading }}</h2>
+    </div>
+    <div>
+      <p>{{ homepage.advisoryText }}</p>
+      <div class="teaser__ctas">
+        <a class="btn btn--primary" href="/advisory/">{{ homepage.advisoryCtaLabel }}</a>
+        <a class="btn btn--text" href="/contact/">{{ homepage.advisorySecondaryCtaLabel }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="speaking-teaser">
+  <div class="wrap split">
+    <div>
+      <span class="section-label">Speaking</span>
+      <h2>{{ homepage.speakingHeading }}</h2>
+    </div>
+    <div>
+      <p>{{ homepage.speakingText }}</p>
+      <div class="teaser__ctas">
+        <a class="btn btn--primary" href="/speaking/">{{ homepage.speakingCtaLabel }}</a>
+        <a class="btn btn--text" href="/contact/">{{ homepage.speakingSecondaryCtaLabel }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact-teaser">
+  <div class="wrap split">
+    <div>
+      <span class="section-label">Impact</span>
+      <h2>{{ homepage.impactHeading }}</h2>
+    </div>
+    <div>
+      <p>{{ homepage.impactText }}</p>
+      <a class="btn btn--text" href="/impact/">{{ homepage.impactCtaLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>{{ homepage.finalCtaHeading }}</h2>
+    <p>{{ homepage.finalCtaText }}</p>
+    <div class="final-cta__ctas">
+      <a class="btn btn--primary" href="/contact/">{{ homepage.finalCtaPrimaryLabel }}</a>
+      {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
+      <a class="btn btn--secondary" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">{{ homepage.finalCtaSecondaryLabel }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,91 @@
+{
+  "heroPositioningLabel": "Transformation Leader · Strategic Operator · Builder",
+  "heroHeadline": "I help organisations figure out what's next.",
+  "heroSubtext": "I work with CEOs and leadership teams to understand complex problems, design the right response, build the systems and teams required, and scale what works.",
+  "heroImage": "/assets/images/hero-placeholder.svg",
+  "heroImageAlt": "Portrait of Parul Soni Manvati — [CONTENT NEEDED: replace with a real photograph]",
+  "heroPrimaryCtaLabel": "Explore My Work",
+  "heroPrimaryCtaLink": "/experience/",
+  "heroSecondaryCtaLabel": "Start a Conversation",
+  "heroSecondaryCtaLink": "/contact/",
+
+  "credibilityHeading": "A career across technology, operations, transformation and emerging businesses.",
+  "credibilityLogos": [
+    "Amazon",
+    "Snapdeal",
+    "Addverb Technologies",
+    "Paytm",
+    "ICICI Bank",
+    "DHL Express",
+    "ClearMeat",
+    "ABWCI"
+  ],
+
+  "methodHeading": "How I work",
+  "methodSubheading": "Complex problems rarely arrive neatly defined. The work starts before the solution.",
+  "methodStages": [
+    {
+      "number": "01",
+      "title": "Figure Out",
+      "short": "Understand the real problem.",
+      "detail": "Research, diagnose, listen, validate. Identify the root problem before reaching for a solution."
+    },
+    {
+      "number": "02",
+      "title": "Design",
+      "short": "Build the strategy and operating model.",
+      "detail": "Strategy, operating model, organisation, process, technology, KPIs and governance — structured into a coherent response."
+    },
+    {
+      "number": "03",
+      "title": "Build",
+      "short": "Turn plans into systems, teams and products.",
+      "detail": "Teams, products, departments, systems, processes and partnerships — the design made real."
+    },
+    {
+      "number": "04",
+      "title": "Scale",
+      "short": "Make what works repeatable.",
+      "detail": "People, capital, technology, process, go-to-market and governance — built for operating leverage."
+    },
+    {
+      "number": "05",
+      "title": "Transform",
+      "short": "Prepare the organisation for what comes next.",
+      "detail": "Business, organisation, technology, customer experience, operating model and policy — readied for the next stage."
+    }
+  ],
+
+  "experienceHeading": "Problems I've worked on",
+  "experienceSubheading": "A career is more useful when you can see the problems behind the titles.",
+  "experienceCtaLabel": "Explore the story",
+  "experienceViewAllLabel": "View all experience →",
+
+  "aboutHeading": "I like difficult problems.",
+  "aboutText": "I'm most effective when the problem is complex, the answer isn't obvious, different stakeholders see it differently, the organisation needs structure, and someone needs to figure out what comes next.",
+  "aboutCtaLabel": "More about Parul →",
+  "aboutCtaLink": "/about/",
+
+  "thinkingHeading": "Thinking",
+  "thinkingSubheading": "Notes on strategy, transformation, technology, organisations, scaling and the problems leaders don't always have time to think through.",
+  "thinkingCtaLabel": "Read all thinking →",
+
+  "advisoryHeading": "When the problem is bigger than a meeting.",
+  "advisoryText": "I work selectively with founders, CEOs, leadership teams and organisations navigating important transitions — from defining what needs to change to designing and building what comes next.",
+  "advisoryCtaLabel": "Explore Advisory →",
+  "advisorySecondaryCtaLabel": "Start a Conversation →",
+
+  "speakingHeading": "Conversations worth having.",
+  "speakingText": "Parul speaks on strategy, transformation, technology, scaling, emerging businesses, leadership and building organisations for what comes next.",
+  "speakingCtaLabel": "Speaking & Events →",
+  "speakingSecondaryCtaLabel": "Invite Parul to speak →",
+
+  "impactHeading": "Beyond business",
+  "impactText": "Building institutions and communities, not only businesses — including work with ABWCI / Women in Supply Chain.",
+  "impactCtaLabel": "Explore Impact →",
+
+  "finalCtaHeading": "Have a difficult problem to think through?",
+  "finalCtaText": "I'm always interested in thoughtful conversations around organisations, transformation, technology, emerging businesses and what comes next.",
+  "finalCtaPrimaryLabel": "Start a Conversation",
+  "finalCtaSecondaryLabel": "Connect on LinkedIn"
+}

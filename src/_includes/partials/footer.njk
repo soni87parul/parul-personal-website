@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{{ site.name }}</p>
+      <p class="site-footer__tagline">{{ site.positioning }}</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      <ul>
+        {% for item in navigation.items %}
+        <li><a href="{{ item.link }}">{{ item.label }}</a></li>
+        {% endfor %}
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__social">
+      {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
+      <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      {% endif %}
+      {% if site.email and site.email != "[CONTENT NEEDED — public contact email]" %}
+      <a href="mailto:{{ site.email }}">Email</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="wrap site-footer__legal">
+    <p>&copy; {{ site.copyrightYear }} {{ site.name }}. All rights reserved.</p>
+  </div>
+</footer>

@@ -1,0 +1,32 @@
+---
+title: Thinking
+layout: layouts/base.njk
+seoTitle: Thinking — Parul Soni Manvati
+seoDescription: Notes on strategy, transformation, technology, organisations, scaling and the problems leaders don't always have time to think through.
+---
+<section class="page-header">
+  <div class="wrap">
+    <h1>Thinking</h1>
+    <p>Notes on strategy, transformation, technology, organisations, scaling and the problems leaders don't always have time to think through.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    {% if collections.articles.length %}
+    <div class="card-grid">
+      {% for article in collections.articles %}
+      <article class="article-card">
+        <span class="card-category">{{ article.data.category }}</span>
+        <h3>{{ article.data.title }}</h3>
+        <p class="card-body">{{ article.data.excerpt }}</p>
+        <div class="card-meta">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
+        <a class="btn btn--text" href="{{ article.url }}">Read the article →</a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No published articles yet. Add one via Admin → Thinking.</div>
+    {% endif %}
+  </div>
+</section>

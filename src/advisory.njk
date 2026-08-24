@@ -1,0 +1,34 @@
+---
+title: Advisory
+layout: layouts/base.njk
+seoTitle: Advisory — Parul Soni Manvati
+seoDescription: I work selectively with founders, CEOs, leadership teams and organisations navigating important transitions — from defining what needs to change to designing and building what comes next.
+---
+<section class="page-header">
+  <div class="wrap">
+    <h1>When the problem is bigger than a meeting.</h1>
+    <p>I work selectively with founders, CEOs, leadership teams and organisations navigating important transitions — from defining what needs to change to designing and building what comes next.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    {% set services = advisory.items | selectattr("enabled") | sort(attribute="order") %}
+    {% if services.length %}
+    <div class="card-grid">
+      {% for service in services %}
+      <article class="story-card">
+        <h3>{{ service.title }}</h3>
+        <p class="card-body">{{ service.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">No advisory services published yet. Add one via Admin → Advisory.</div>
+    {% endif %}
+
+    <div class="teaser__ctas" style="margin-top: 3rem;">
+      <a class="btn btn--primary" href="/contact/">Discuss an advisory need →</a>
+    </div>
+  </div>
+</section>

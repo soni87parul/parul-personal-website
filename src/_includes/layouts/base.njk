@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ seoTitle or title or site.siteTitle }}</title>
+  <meta name="description" content="{{ seoDescription or site.metaDescription }}">
+  <link rel="canonical" href="{{ site.baseUrl or '' }}{{ page.url }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ seoTitle or title or site.siteTitle }}">
+  <meta property="og:description" content="{{ seoDescription or site.metaDescription }}">
+  <meta property="og:image" content="{{ ogImage or site.ogImage }}">
+  <meta property="og:url" content="{{ site.baseUrl or '' }}{{ page.url }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="{{ site.favicon }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

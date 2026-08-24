@@ -1,0 +1,19 @@
+<header class="site-header" id="site-header">
+  <div class="wrap site-header__inner">
+    <a class="site-header__logo" href="/">{{ site.name | upper }}</a>
+
+    <button class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <span class="hamburger"></span>
+    </button>
+
+    <nav class="site-header__nav" id="site-nav">
+      <ul>
+        {% for item in navigation.items %}
+        <li><a href="{{ item.link }}"{% if page.url == item.link %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+      <a class="btn btn--primary btn--small" href="/contact/">Start a Conversation</a>
+    </nav>
+  </div>
+</header>
