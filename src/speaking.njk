@@ -44,7 +44,8 @@ seoDescription: Parul speaks on strategy, transformation, technology, scaling, e
       {% for event in publishedEvents %}
       <article class="story-card">
         <h3>{{ event.title }}</h3>
-        <p class="card-meta">{{ event.location }}{% if event.date %} · {{ event.date }}{% endif %}</p>
+        {% if event.topic %}<p class="card-body">{{ event.topic }}</p>{% endif %}
+        <p class="card-meta">{{ event.location }}{% if event.year %} · {{ event.year }}{% endif %}</p>
         {% if event.videoUrl %}<a class="btn btn--text" href="{{ event.videoUrl }}" target="_blank" rel="noopener noreferrer">Watch →</a>{% endif %}
       </article>
       {% endfor %}

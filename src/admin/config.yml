@@ -32,6 +32,8 @@ collections:
             name: "credibilityLogos"
             widget: "list"
 
+          - { label: "Signature Statement (personal pull-quote, shown between Credibility and Method)", name: "signatureStatement", widget: "string" }
+
           - { label: "Method — Heading", name: "methodHeading", widget: "string" }
           - { label: "Method — Subheading", name: "methodSubheading", widget: "text" }
           - label: "Method — Five Stages"
@@ -40,8 +42,8 @@ collections:
             fields:
               - { label: "Number (e.g. 01)", name: "number", widget: "string" }
               - { label: "Stage Title", name: "title", widget: "string" }
-              - { label: "Short Line (card)", name: "short", widget: "string" }
-              - { label: "Expanded Detail", name: "detail", widget: "text" }
+              - { label: "Stage Tags (3 short words, e.g. Research · Listen · Diagnose)", name: "short", widget: "string" }
+              - { label: "Expanded Detail (shown on hover/tap)", name: "detail", widget: "text" }
 
           - { label: "Experience — Heading", name: "experienceHeading", widget: "string" }
           - { label: "Experience — Subheading", name: "experienceSubheading", widget: "text" }
@@ -100,6 +102,8 @@ collections:
       - { label: "What We Did", name: "action", widget: "text" }
       - { label: "The Result", name: "result", widget: "text" }
       - { label: "Scale", name: "scale", widget: "string", required: false }
+      - { label: "Impact Metric (e.g. 130+ — leave blank if not yet available)", name: "impactMetric", widget: "string", required: false }
+      - { label: "Impact Metric Label (e.g. FTE-equivalent capacity created)", name: "impactLabel", widget: "string", required: false }
       - { label: "The Lesson", name: "lesson", widget: "text", required: false }
       - { label: "Relevant Framework", name: "framework", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
@@ -172,8 +176,9 @@ collections:
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Date", name: "date", widget: "string", required: false }
+              - { label: "Event / Organisation Name", name: "title", widget: "string" }
+              - { label: "Speaking Topic", name: "topic", widget: "string", required: false }
+              - { label: "Year", name: "year", widget: "string", required: false }
               - { label: "Location", name: "location", widget: "string", required: false }
               - { label: "Video URL", name: "videoUrl", widget: "string", required: false }
               - { label: "Image", name: "image", widget: "image", required: false }

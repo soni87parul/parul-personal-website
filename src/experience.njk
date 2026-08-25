@@ -29,10 +29,15 @@ seoDescription: 15+ problems, different organisations, one way of thinking. Sele
     <div class="card-grid">
       {% for story in collections.experienceStories %}
       <article class="story-card" data-story-card data-categories="{{ story.data.category }}">
-        <span class="card-category">{{ story.data.category }}</span>
+        <span class="card-category">{{ story.data.category }} — {{ story.data.organisation }}</span>
         <h3>{{ story.data.title }}</h3>
-        <p class="card-body">{{ story.data.challenge }}</p>
-        <div class="card-meta">{{ story.data.organisation }}{% if story.data.year %} · {{ story.data.year }}{% endif %}</div>
+        <p class="card-body">{{ story.data.situation }}</p>
+        {% if story.data.impactMetric %}
+        <div class="card-metric">
+          <span class="card-metric-value">{{ story.data.impactMetric }}</span>
+          <span class="card-metric-label">{{ story.data.impactLabel }}</span>
+        </div>
+        {% endif %}
         <div class="card-footer-row">
           <a class="btn btn--text" href="{{ story.url }}">Explore the story →</a>
         </div>

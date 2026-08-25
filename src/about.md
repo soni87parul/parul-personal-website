@@ -5,7 +5,7 @@ subtitle: More about how Parul works, and the kind of problems she's drawn to.
 seoTitle: About Parul Soni Manvati — Transformation Leader & Strategic Operator
 seoDescription: Parul is a cross-functional business leader and transformation operator with experience across large MNCs, technology businesses, startups, family-led businesses and emerging technology ventures.
 ---
-I'm most effective when the problem is complex, the answer isn't obvious, different stakeholders see it differently, the organisation needs structure, and someone needs to figure out what comes next.
+I'm most useful when the problem is complex, the answer isn't obvious, and different stakeholders see different versions of the truth. That's usually where structure, strategy and good execution matter most.
 
 ## How I got here
 

@@ -1,5 +1,5 @@
 {
-  "heroPositioningLabel": "Transformation Leader · Strategic Operator · Builder",
+  "heroPositioningLabel": "Transformation Leader · Chief of Staff · Strategic Operator",
   "heroHeadline": "I help organisations figure out what's next.",
   "heroSubtext": "I work with CEOs and leadership teams to understand complex problems, design the right response, build the systems and teams required, and scale what works.",
   "heroImage": "/assets/images/hero-placeholder.svg",
@@ -21,38 +21,40 @@
     "ABWCI"
   ],
 
+  "signatureStatement": "I am usually most useful when the answer isn't obvious yet.",
+
   "methodHeading": "How I work",
   "methodSubheading": "Complex problems rarely arrive neatly defined. The work starts before the solution.",
   "methodStages": [
     {
       "number": "01",
       "title": "Figure Out",
-      "short": "Understand the real problem.",
-      "detail": "Research, diagnose, listen, validate. Identify the root problem before reaching for a solution."
+      "short": "Research · Listen · Diagnose",
+      "detail": "Understand the real problem before prescribing the solution."
     },
     {
       "number": "02",
       "title": "Design",
-      "short": "Build the strategy and operating model.",
-      "detail": "Strategy, operating model, organisation, process, technology, KPIs and governance — structured into a coherent response."
+      "short": "Strategy · Operating Model · Governance",
+      "detail": "Turn complexity into a structured response."
     },
     {
       "number": "03",
       "title": "Build",
-      "short": "Turn plans into systems, teams and products.",
-      "detail": "Teams, products, departments, systems, processes and partnerships — the design made real."
+      "short": "Teams · Products · Systems",
+      "detail": "Turn the design into something real."
     },
     {
       "number": "04",
       "title": "Scale",
-      "short": "Make what works repeatable.",
-      "detail": "People, capital, technology, process, go-to-market and governance — built for operating leverage."
+      "short": "Processes · Technology · Capital",
+      "detail": "Make what works repeatable and sustainable."
     },
     {
       "number": "05",
       "title": "Transform",
-      "short": "Prepare the organisation for what comes next.",
-      "detail": "Business, organisation, technology, customer experience, operating model and policy — readied for the next stage."
+      "short": "Organisation · Capability · Business Model",
+      "detail": "Prepare the organisation for what comes next."
     }
   ],
 
@@ -62,7 +64,7 @@
   "experienceViewAllLabel": "View all experience →",
 
   "aboutHeading": "I like difficult problems.",
-  "aboutText": "I'm most effective when the problem is complex, the answer isn't obvious, different stakeholders see it differently, the organisation needs structure, and someone needs to figure out what comes next.",
+  "aboutText": "I'm most useful when the problem is complex, the answer isn't obvious, and different stakeholders see different versions of the truth. That's usually where structure, strategy and good execution matter most.",
   "aboutCtaLabel": "More about Parul →",
   "aboutCtaLink": "/about/",
 

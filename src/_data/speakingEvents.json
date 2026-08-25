@@ -1,9 +1,10 @@
 {
   "items": [
     {
-      "title": "[CONTENT NEEDED — event title]",
-      "date": "",
-      "location": "[CONTENT NEEDED]",
+      "title": "[CONTENT NEEDED — event or organisation name]",
+      "topic": "[CONTENT NEEDED — speaking topic]",
+      "year": "",
+      "location": "",
       "videoUrl": "",
       "image": "",
       "featured": false,
