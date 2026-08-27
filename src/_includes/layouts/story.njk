@@ -3,65 +3,96 @@ layout: layouts/base.njk
 ---
 <section class="page-header">
   <div class="wrap">
-    <span class="eyebrow">{{ category }}{% if organisation %} · {{ organisation }}{% endif %}{% if year %} · {{ year }}{% endif %}</span>
+    <span class="eyebrow">{{ theme }}{% if organisation %} · {{ organisation }}{% endif %}{% if year_or_period %} · {{ year_or_period }}{% endif %}</span>
     <h1>{{ title }}</h1>
-    {% if situation %}<p>{{ situation }}</p>{% endif %}
+    {% if summary %}<p>{{ summary }}</p>{% endif %}
+
+    {% set storyCapabilities = capabilities | capabilityNames(collections.capabilityList) %}
+    {% if storyCapabilities.length %}
+    <ul class="pill-list" style="margin-top: 1.5rem;">
+      {% for cap in storyCapabilities %}
+      <li><a class="pill" href="/experience/?capability={{ cap.slug }}">{{ cap.name }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <dl class="story-meta-grid">
-      {% if organisation %}<div><dt>Organisation</dt><dd>{{ organisation }}</dd></div>{% endif %}
-      {% if year %}<div><dt>Year</dt><dd>{{ year }}</dd></div>{% endif %}
-      {% if category %}<div><dt>Category</dt><dd>{{ category }}</dd></div>{% endif %}
-      {% if scale %}<div><dt>Scale</dt><dd>{{ scale }}</dd></div>{% endif %}
-      {% if framework %}<div><dt>Framework</dt><dd>{{ framework }}</dd></div>{% endif %}
-    </dl>
-
-    {% if impactMetric %}
-    <div class="card-metric" style="max-width: 320px; margin-bottom: 2.5rem;">
-      <span class="card-metric-value">{{ impactMetric }}</span>
-      <span class="card-metric-label">{{ impactLabel }}</span>
-    </div>
-    {% endif %}
-
-    {% if image %}
+    {% if featured_image %}
     <div class="hero__image-wrap" style="aspect-ratio: 16/9; margin-bottom: 3rem;">
-      <img src="{{ image }}" alt="{{ imageAlt or title }}">
+      <img src="{{ featured_image }}" alt="{{ featured_image_alt or title }}">
     </div>
     {% endif %}
 
     <div class="prose">
-      {% if challenge %}
-      <h2>The challenge</h2>
-      <p>{{ challenge }}</p>
+      {% if problem %}
+      <h2>The Problem</h2>
+      <p>{{ problem }}</p>
       {% endif %}
 
-      {% if thinking %}
-      <h2>The thinking</h2>
-      <p>{{ thinking }}</p>
+      {% if why_it_mattered %}
+      <h2>Why It Mattered</h2>
+      <p>{{ why_it_mattered }}</p>
       {% endif %}
 
-      {% if action %}
-      <h2>What we did</h2>
-      <p>{{ action }}</p>
+      {% if ("figure-out" in methodology_stages and figure_out) or ("design" in methodology_stages and design) or ("build" in methodology_stages and build) or ("scale" in methodology_stages and scale) or ("transform" in methodology_stages and transform) %}
+      <h2>How I Approached It</h2>
+      {% if "figure-out" in methodology_stages and figure_out %}
+      <h3>Figure Out</h3>
+      <p>{{ figure_out }}</p>
       {% endif %}
-
-      {% if result %}
-      <h2>The result</h2>
-      <p>{{ result }}</p>
+      {% if "design" in methodology_stages and design %}
+      <h3>Design</h3>
+      <p>{{ design }}</p>
+      {% endif %}
+      {% if "build" in methodology_stages and build %}
+      <h3>Build</h3>
+      <p>{{ build }}</p>
+      {% endif %}
+      {% if "scale" in methodology_stages and scale %}
+      <h3>Scale</h3>
+      <p>{{ scale }}</p>
+      {% endif %}
+      {% if "transform" in methodology_stages and transform %}
+      <h3>Transform</h3>
+      <p>{{ transform }}</p>
+      {% endif %}
       {% endif %}
 
       {{ content | safe }}
-
-      {% if lesson %}
-      <h2>The lesson</h2>
-      <p>{{ lesson }}</p>
-      {% endif %}
     </div>
 
-    <div class="section-footer" style="text-align: left; margin-top: 3rem;">
+    {% if impact.length %}
+    <div class="impact-list">
+      {% for item in impact %}
+      <div class="card-metric">
+        <span class="card-metric-value">{{ item.value }}</span>
+        <span class="card-metric-label">{{ item.label }}{% if item.context %} — {{ item.context }}{% endif %}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if takeaway %}
+    <div class="prose">
+      <h2>My Takeaway</h2>
+      <p>{{ takeaway }}</p>
+    </div>
+    {% endif %}
+
+    {% include "partials/linkedin-cta.njk" %}
+
+    {% set next = collections.experienceStories | nextStory(page.url) %}
+    {% if next %}
+    <div class="section-footer" style="text-align: left; margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+      <span class="eyebrow">Next story</span>
+      <p style="margin-top: 0.5rem;"><a class="btn btn--text" href="{{ next.url }}">{{ next.data.title }} →</a></p>
+    </div>
+    {% endif %}
+
+    <div class="section-footer" style="text-align: left; margin-top: 1.5rem;">
       <a class="btn btn--text" href="/experience/">← Back to all experience</a>
     </div>
   </div>

@@ -1,0 +1,20 @@
+{% macro storyCard(story, capabilityList, size) %}
+<article class="story-card{% if size %} story-card--{{ size }}{% endif %}" data-story-card data-capabilities="{{ story.data.capabilities | join(',') }}">
+  <span class="card-category">{{ story.data.theme }} — {{ story.data.organisation }}</span>
+  <h3>{{ story.data.title }}</h3>
+  {% if story.data.summary %}<p class="card-body">{{ story.data.summary }}</p>{% endif %}
+  {% if story.data.impact.length %}
+  <div class="card-metric">
+    <span class="card-metric-value">{{ story.data.impact[0].value }}</span>
+    <span class="card-metric-label">{{ story.data.impact[0].label }}</span>
+  </div>
+  {% endif %}
+  {% set caps = story.data.capabilities | capabilityNames(capabilityList) %}
+  {% if caps.length %}
+  <p class="card-capabilities">{% for c in caps %}{{ c.name }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  {% endif %}
+  <div class="card-footer-row">
+    <a class="btn btn--text" href="{{ story.url }}">Explore the story →</a>
+  </div>
+</article>
+{% endmacro %}

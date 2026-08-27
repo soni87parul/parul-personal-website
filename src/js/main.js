@@ -25,22 +25,51 @@ document.querySelectorAll(".method__stage").forEach((stage) => {
   });
 });
 
-// Experience filter (on /experience/ page)
+// Experience capability filter (on /experience/ page)
 const filterBar = document.querySelector("[data-filter-bar]");
 if (filterBar) {
-  const buttons = filterBar.querySelectorAll("button");
+  const buttons = filterBar.querySelectorAll("button[data-filter]");
   const cards = document.querySelectorAll("[data-story-card]");
+  const emptyState = document.querySelector(".filter-empty-state");
+
+  function applyFilter(filter, pushState) {
+    buttons.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-filter") === filter));
+
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const capabilities = (card.getAttribute("data-capabilities") || "").split(",");
+      const matches = filter === "all" || capabilities.includes(filter);
+      card.style.display = matches ? "" : "none";
+      if (matches) visibleCount++;
+    });
+
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+
+    if (pushState) {
+      const url = new URL(window.location.href);
+      if (filter === "all") {
+        url.searchParams.delete("capability");
+      } else {
+        url.searchParams.set("capability", filter);
+      }
+      window.history.pushState({ filter }, "", url);
+    }
+  }
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      buttons.forEach((b) => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
-      const filter = btn.getAttribute("data-filter");
-
-      cards.forEach((card) => {
-        const categories = (card.getAttribute("data-categories") || "").split(",");
-        card.style.display = filter === "all" || categories.includes(filter) ? "" : "none";
-      });
+      applyFilter(btn.getAttribute("data-filter"), true);
     });
   });
+
+  window.addEventListener("popstate", () => {
+    const params = new URLSearchParams(window.location.search);
+    applyFilter(params.get("capability") || "all", false);
+  });
+
+  const initialParams = new URLSearchParams(window.location.search);
+  const initialFilter = initialParams.get("capability");
+  if (initialFilter) {
+    applyFilter(initialFilter, false);
+  }
 }

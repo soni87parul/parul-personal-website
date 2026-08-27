@@ -47,7 +47,6 @@ collections:
 
           - { label: "Experience — Heading", name: "experienceHeading", widget: "string" }
           - { label: "Experience — Subheading", name: "experienceSubheading", widget: "text" }
-          - { label: "Experience — Card CTA Label", name: "experienceCtaLabel", widget: "string" }
           - { label: "Experience — View All CTA Label", name: "experienceViewAllLabel", widget: "string" }
 
           - { label: "About — Heading", name: "aboutHeading", widget: "string" }
@@ -78,6 +77,15 @@ collections:
           - { label: "Final CTA — Primary Label", name: "finalCtaPrimaryLabel", widget: "string" }
           - { label: "Final CTA — Secondary Label", name: "finalCtaSecondaryLabel", widget: "string" }
 
+      - name: "experiencePage"
+        label: "Experience Page Intro"
+        file: "src/_data/experiencePage.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Supporting Statement", name: "supportingStatement", widget: "string" }
+          - { label: "Explanation Paragraph (optional)", name: "explanation", widget: "text", required: false }
+
   - name: "experience"
     label: "Experience"
     folder: "src/experience"
@@ -87,28 +95,88 @@ collections:
       preview: false
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/story.njk" }
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Title (problem-led, e.g. \"Building operational capacity without adding headcount\")", name: "title", widget: "string" }
       - { label: "Organisation", name: "organisation", widget: "string" }
-      - { label: "Year", name: "year", widget: "string", required: false }
-      - label: "Category"
-        name: "category"
+      - { label: "Theme (e.g. \"AI / ML Transformation\")", name: "theme", widget: "string" }
+      - { label: "Summary (1-2 sentences, shown on cards)", name: "summary", widget: "text", required: false }
+      - { label: "Year / Period", name: "year_or_period", widget: "string", required: false }
+      - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
+      - { label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string", required: false }
+
+      - label: "Capabilities"
+        name: "capabilities"
+        widget: "relation"
+        collection: "capabilities"
+        search_fields: ["name"]
+        display_fields: ["name"]
+        value_field: "slug"
+        multiple: true
+        required: false
+
+      - label: "Methodology Stages (how she approached it — select all that apply)"
+        name: "methodology_stages"
         widget: "select"
-        options: ["Strategy", "Transformation", "0→1", "Scale", "AI / Technology", "Operations", "Public Policy", "Leadership"]
-      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
-      - { label: "Order (lower shows first)", name: "order", widget: "number", default: 99 }
-      - { label: "Situation (short summary — shown on cards)", name: "situation", widget: "text" }
-      - { label: "The Challenge", name: "challenge", widget: "text" }
-      - { label: "The Thinking", name: "thinking", widget: "text" }
-      - { label: "What We Did", name: "action", widget: "text" }
-      - { label: "The Result", name: "result", widget: "text" }
-      - { label: "Scale", name: "scale", widget: "string", required: false }
-      - { label: "Impact Metric (e.g. 130+ — leave blank if not yet available)", name: "impactMetric", widget: "string", required: false }
-      - { label: "Impact Metric Label (e.g. FTE-equivalent capacity created)", name: "impactLabel", widget: "string", required: false }
-      - { label: "The Lesson", name: "lesson", widget: "text", required: false }
-      - { label: "Relevant Framework", name: "framework", widget: "string", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+        multiple: true
+        options:
+          - { label: "Figure Out", value: "figure-out" }
+          - { label: "Design", value: "design" }
+          - { label: "Build", value: "build" }
+          - { label: "Scale", value: "scale" }
+          - { label: "Transform", value: "transform" }
+        required: false
+
+      - { label: "Industry (optional)", name: "industry", widget: "string", required: false }
+      - { label: "Featured (one of the five flagship slots)", name: "featured", widget: "boolean", default: false }
+      - { label: "Display Order (lower shows first)", name: "display_order", widget: "number", default: 99 }
+      - { label: "Published (show on live site)", name: "published", widget: "boolean", default: false, hint: "Leave unpublished until the story has real content — placeholder text must never go live." }
+
+      - { label: "The Problem", name: "problem", widget: "text", required: false }
+      - { label: "Why It Mattered", name: "why_it_mattered", widget: "text", required: false }
+      - { label: "Figure Out (only shown if this stage is selected above)", name: "figure_out", widget: "text", required: false }
+      - { label: "Design (only shown if this stage is selected above)", name: "design", widget: "text", required: false }
+      - { label: "Build (only shown if this stage is selected above)", name: "build", widget: "text", required: false }
+      - { label: "Scale (only shown if this stage is selected above)", name: "scale", widget: "text", required: false }
+      - { label: "Transform (only shown if this stage is selected above)", name: "transform", widget: "text", required: false }
+
+      - label: "Impact (one or more verified outcomes — leave empty if none yet)"
+        name: "impact"
+        widget: "list"
+        required: false
+        summary: "{{fields.value}} — {{fields.label}}"
+        fields:
+          - { label: "Value (e.g. \"130+\")", name: "value", widget: "string" }
+          - { label: "Label (e.g. \"FTE-equivalent capacity created\")", name: "label", widget: "string" }
+          - { label: "Context (optional)", name: "context", widget: "string", required: false }
+          - { label: "Needs Verification / Sourcing (admin-only — never shown publicly)", name: "verification_required", widget: "boolean", default: false }
+
+      - { label: "My Takeaway", name: "takeaway", widget: "text", required: false }
       - { label: "Additional Body Content (optional, Markdown)", name: "body", widget: "markdown", required: false }
+
+      - { label: "Related Articles (optional)", name: "related_articles", widget: "list", required: false }
+      - { label: "Related Experience (optional)", name: "related_experience", widget: "list", required: false }
+
+      - { label: "SEO Title (optional)", name: "seo_title", widget: "string", required: false }
+      - { label: "SEO Description (optional)", name: "seo_description", widget: "text", required: false }
+      - { label: "Social Share Image (optional)", name: "og_image", widget: "image", required: false }
+
+  - name: "capabilities"
+    label: "Capabilities"
+    folder: "src/capabilities"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Permalink (leave as false)", name: "permalink", widget: "hidden", default: false }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Slug (lowercase, hyphenated, must be unique)", name: "slug", widget: "string" }
+      - label: "Group"
+        name: "group"
+        widget: "select"
+        options: ["Strategy & Leadership", "Build & Scale", "Technology", "Operations", "Capital & Commercial", "Policy & Ecosystems"]
+      - { label: "Description (optional)", name: "description", widget: "text", required: false }
+      - { label: "Display Order within group", name: "display_order", widget: "number", default: 99 }
+      - { label: "Active (show as a filter option)", name: "active", widget: "boolean", default: true }
 
   - name: "thinking"
     label: "Thinking"
@@ -135,6 +203,28 @@ collections:
       - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
       - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "recommendations"
+    label: "Recommendations"
+    folder: "src/recommendations"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Permalink (leave as false)", name: "permalink", widget: "hidden", default: false }
+      - { label: "Quote (the full, genuine quote — e.g. from a LinkedIn recommendation)", name: "quote", widget: "text" }
+      - { label: "Short Excerpt (optional — shorter version for compact display; the full quote is used if left blank)", name: "short_excerpt", widget: "text", required: false }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role / Title", name: "role", widget: "string" }
+      - { label: "Organisation", name: "organisation", widget: "string", required: false }
+      - { label: "Relationship / Context (optional, e.g. \"Former manager at Amazon\")", name: "relationship_context", widget: "string", required: false }
+      - { label: "Profile / LinkedIn URL (optional)", name: "profile_url", widget: "string", required: false }
+      - { label: "Photo (optional)", name: "image", widget: "image", required: false }
+      - { label: "Photo Alt Text (optional)", name: "image_alt", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Display Order", name: "display_order", widget: "number", default: 99 }
+      - { label: "Published (show on live site)", name: "published", widget: "boolean", default: false }
 
   - name: "advisory"
     label: "Advisory"

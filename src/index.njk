@@ -2,6 +2,8 @@
 title: Parul Soni Manvati — Transformation Leader & Strategic Operator
 layout: layouts/base.njk
 ---
+{% import "partials/experience-card.njk" as cards %}
+
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
@@ -65,6 +67,8 @@ layout: layouts/base.njk
   </div>
 </section>
 
+{% set featuredStories = collections.experienceStories | featured(3) %}
+{% if featuredStories.length %}
 <section class="experience-teaser tier-dominant">
   <div class="wrap">
     <div class="section-heading">
@@ -73,35 +77,18 @@ layout: layouts/base.njk
       <p>{{ homepage.experienceSubheading }}</p>
     </div>
 
-    {% set featuredStories = collections.experienceStories | featured(3) %}
-    {% if featuredStories.length %}
     <div class="card-grid">
       {% for story in featuredStories %}
-      <article class="story-card">
-        <span class="card-category">{{ story.data.category }} — {{ story.data.organisation }}</span>
-        <h3>{{ story.data.title }}</h3>
-        <p class="card-body">{{ story.data.situation }}</p>
-        {% if story.data.impactMetric %}
-        <div class="card-metric">
-          <span class="card-metric-value">{{ story.data.impactMetric }}</span>
-          <span class="card-metric-label">{{ story.data.impactLabel }}</span>
-        </div>
-        {% endif %}
-        <div class="card-footer-row">
-          <a class="btn btn--text" href="{{ story.url }}">{{ homepage.experienceCtaLabel }} →</a>
-        </div>
-      </article>
+        {{ cards.storyCard(story, collections.capabilityList) }}
       {% endfor %}
     </div>
-    {% else %}
-    <div class="empty-state">No featured experience stories yet. Add some via Admin → Experience.</div>
-    {% endif %}
 
     <div class="section-footer">
       <a class="btn btn--text" href="/experience/">{{ homepage.experienceViewAllLabel }}</a>
     </div>
   </div>
 </section>
+{% endif %}
 
 <section class="thinking-teaser tier-secondary">
   <div class="wrap">

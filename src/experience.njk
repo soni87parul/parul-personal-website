@@ -1,51 +1,104 @@
 ---
-title: Problems I've worked on
+title: "Experience | Parul Soni Manvati"
 layout: layouts/base.njk
-seoTitle: Experience — Parul Soni Manvati
-seoDescription: 15+ problems, different organisations, one way of thinking. Selected stories from Parul Soni Manvati's career across strategy, transformation, 0→1 building, scale, technology and public policy.
+seoTitle: "Experience | Parul Soni Manvati"
+seoDescription: "A career is more useful when you can see the problems behind the titles. Explore Parul Soni Manvati's experience by capability — strategy, transformation, technology, operations, capital and policy."
 ---
+{% import "partials/experience-card.njk" as cards %}
+
 <section class="page-header">
   <div class="wrap">
-    <h1>15+ problems. Different organisations. One way of thinking.</h1>
-    <p>A career is more useful when you can see the problems behind the titles.</p>
+    <span class="eyebrow">{{ experiencePage.eyebrow }}</span>
+    <h1>{{ experiencePage.headline }}</h1>
+    <p>{{ experiencePage.supportingStatement }}</p>
+    {% if experiencePage.explanation %}
+    <p class="prose" style="margin-top: 1.5rem; max-width: 62ch; color: var(--muted);">{{ experiencePage.explanation }}</p>
+    {% endif %}
   </div>
 </section>
 
-<section>
+<section class="tier-secondary">
   <div class="wrap">
-    <div class="filter-bar" data-filter-bar>
-      <button type="button" class="is-active" data-filter="all">All</button>
-      <button type="button" data-filter="Strategy">Strategy</button>
-      <button type="button" data-filter="Transformation">Transformation</button>
-      <button type="button" data-filter="0→1">0→1</button>
-      <button type="button" data-filter="Scale">Scale</button>
-      <button type="button" data-filter="AI / Technology">AI / Technology</button>
-      <button type="button" data-filter="Operations">Operations</button>
-      <button type="button" data-filter="Public Policy">Public Policy</button>
-      <button type="button" data-filter="Leadership">Leadership</button>
-    </div>
-
-    {% if collections.experienceStories.length %}
-    <div class="card-grid">
-      {% for story in collections.experienceStories %}
-      <article class="story-card" data-story-card data-categories="{{ story.data.category }}">
-        <span class="card-category">{{ story.data.category }} — {{ story.data.organisation }}</span>
-        <h3>{{ story.data.title }}</h3>
-        <p class="card-body">{{ story.data.situation }}</p>
-        {% if story.data.impactMetric %}
-        <div class="card-metric">
-          <span class="card-metric-value">{{ story.data.impactMetric }}</span>
-          <span class="card-metric-label">{{ story.data.impactLabel }}</span>
+    <div class="capability-filter" data-filter-bar>
+      <div class="capability-filter__all">
+        <button type="button" class="is-active" data-filter="all">All</button>
+      </div>
+      {% for group in collections.capabilityGroups %}
+      <div class="capability-filter__group">
+        <span class="capability-filter__group-label">{{ group.name }}</span>
+        <div class="capability-filter__chips">
+          {% for cap in group.items %}
+          <button type="button" data-filter="{{ cap.data.slug }}">{{ cap.data.name }}</button>
+          {% endfor %}
         </div>
-        {% endif %}
-        <div class="card-footer-row">
-          <a class="btn btn--text" href="{{ story.url }}">Explore the story →</a>
-        </div>
-      </article>
+      </div>
       {% endfor %}
     </div>
-    {% else %}
-    <div class="empty-state">No experience stories published yet. Add one via Admin → Experience.</div>
-    {% endif %}
+    <p class="filter-empty-state" hidden>No stories match this capability yet — try another, or view all.</p>
+  </div>
+</section>
+
+{% set flagshipStories = collections.experienceStories | featured %}
+{% if flagshipStories.length %}
+<section class="experience-teaser tier-dominant">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Featured</span>
+      <h2>Featured Transformations</h2>
+    </div>
+    <div class="flagship-grid">
+      {% for story in flagshipStories %}
+        {{ cards.storyCard(story, collections.capabilityList, "large" if loop.first else "regular") }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% set layer2Stories = collections.experienceStories | notFeatured %}
+{% if layer2Stories.length %}
+<section class="tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">More</span>
+      <h2>More from my experience</h2>
+    </div>
+    <div class="card-grid">
+      {% for story in layer2Stories %}
+        {{ cards.storyCard(story, collections.capabilityList) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if collections.recommendations.length %}
+<section class="teaser tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Recommendations</span>
+      <h2>What people I've worked with say</h2>
+    </div>
+    <div class="recommendation-grid">
+      {% for rec in collections.recommendations %}
+      <blockquote class="recommendation">
+        <p class="recommendation__quote">"{{ rec.data.short_excerpt or rec.data.quote }}"</p>
+        <footer class="recommendation__attribution">
+          {% if rec.data.image %}<img src="{{ rec.data.image }}" alt="{{ rec.data.image_alt or rec.data.name }}" class="recommendation__photo">{% endif %}
+          <div>
+            <cite class="recommendation__name">{{ rec.data.name }}</cite>
+            <span class="recommendation__role">{{ rec.data.role }}{% if rec.data.organisation %}, {{ rec.data.organisation }}{% endif %}</span>
+          </div>
+        </footer>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="tier-supporting">
+  <div class="wrap">
+    {% include "partials/linkedin-cta.njk" %}
   </div>
 </section>
