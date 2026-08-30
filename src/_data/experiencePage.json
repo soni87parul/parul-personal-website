@@ -2,5 +2,8 @@
   "eyebrow": "Experience",
   "headline": "Problems I've helped solve.",
   "supportingStatement": "A career is more useful when you can see the problems behind the titles.",
-  "explanation": "Across technology, operations, emerging businesses and institutions, the industries have changed. The recurring work has been figuring out difficult problems, designing what needs to change, and helping build what comes next."
+  "explanationParagraphs": [
+    "Across e-commerce, technology, robotics, deep-tech and institutional transformation, I have often found myself working on problems where the answer was not obvious at the beginning.",
+    "Sometimes the problem was growth. Sometimes technology. Sometimes an operating model that no longer worked. And sometimes an entire market or regulatory system had to be built before the business itself could move forward."
+  ]
 }

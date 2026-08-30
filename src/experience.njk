@@ -5,14 +5,19 @@ seoTitle: "Experience | Parul Soni Manvati"
 seoDescription: "A career is more useful when you can see the problems behind the titles. Explore Parul Soni Manvati's experience by capability — strategy, transformation, technology, operations, capital and policy."
 ---
 {% import "partials/experience-card.njk" as cards %}
+{% import "partials/recommendation-card.njk" as recs %}
 
 <section class="page-header">
   <div class="wrap">
     <span class="eyebrow">{{ experiencePage.eyebrow }}</span>
     <h1>{{ experiencePage.headline }}</h1>
     <p>{{ experiencePage.supportingStatement }}</p>
-    {% if experiencePage.explanation %}
-    <p class="prose" style="margin-top: 1.5rem; max-width: 62ch; color: var(--muted);">{{ experiencePage.explanation }}</p>
+    {% if experiencePage.explanationParagraphs.length %}
+    <div class="prose" style="margin-top: 1.5rem; max-width: 62ch; color: var(--muted);">
+      {% for para in experiencePage.explanationParagraphs %}
+      <p>{{ para }}</p>
+      {% endfor %}
+    </div>
     {% endif %}
   </div>
 </section>
@@ -55,7 +60,7 @@ seoDescription: "A career is more useful when you can see the problems behind th
   <div class="wrap">
     <div class="section-heading">
       <span class="section-label">More</span>
-      <h2>More from my experience</h2>
+      <h2>More problems I've worked on</h2>
     </div>
     <div class="card-grid">
       {% for story in layer2Stories %}
@@ -75,16 +80,7 @@ seoDescription: "A career is more useful when you can see the problems behind th
     </div>
     <div class="recommendation-grid">
       {% for rec in collections.recommendations %}
-      <blockquote class="recommendation">
-        <p class="recommendation__quote">"{{ rec.data.short_excerpt or rec.data.quote }}"</p>
-        <footer class="recommendation__attribution">
-          {% if rec.data.image %}<img src="{{ rec.data.image }}" alt="{{ rec.data.image_alt or rec.data.name }}" class="recommendation__photo">{% endif %}
-          <div>
-            <cite class="recommendation__name">{{ rec.data.name }}</cite>
-            <span class="recommendation__role">{{ rec.data.role }}{% if rec.data.organisation %}, {{ rec.data.organisation }}{% endif %}</span>
-          </div>
-        </footer>
-      </blockquote>
+        {{ recs.quote(rec) }}
       {% endfor %}
     </div>
   </div>

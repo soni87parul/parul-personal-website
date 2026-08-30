@@ -49,6 +49,22 @@ const BROAD_FILTERS = [
   },
 ];
 
+// Resolve which broad filters a story belongs to. Curated public_categories
+// (matched against the known broad-filter labels) take priority, since those
+// are what's actually displayed on the card -- what you see is what it's
+// filed under. Falls back to the granular-capability mapping only for
+// stories that haven't had public_categories curated yet.
+function storyBroadFilterSlugs(storyData) {
+  const categories = storyData.public_categories;
+  if (Array.isArray(categories) && categories.length) {
+    const normalized = categories.map((c) => String(c).toLowerCase().trim());
+    return BROAD_FILTERS.filter((bf) => normalized.includes(bf.label.toLowerCase())).map((bf) => bf.slug);
+  }
+  const capSlugs = storyData.capabilities;
+  if (!Array.isArray(capSlugs)) return [];
+  return BROAD_FILTERS.filter((bf) => bf.capabilities.some((c) => capSlugs.includes(c))).map((bf) => bf.slug);
+}
+
 module.exports = function (eleventyConfig) {
   // Static passthroughs
   eleventyConfig.addPassthroughCopy("src/css");
@@ -109,9 +125,8 @@ module.exports = function (eleventyConfig) {
   // Only broad filters with at least one published, matching story are ever shown publicly.
   eleventyConfig.addCollection("activeBroadFilters", (collectionApi) => {
     const stories = collectionApi.getFilteredByGlob("src/experience/*.md").filter((item) => item.data.published);
-    return BROAD_FILTERS.filter((bf) =>
-      stories.some((s) => (s.data.capabilities || []).some((c) => bf.capabilities.includes(c)))
-    );
+    const activeSlugs = new Set(stories.flatMap((s) => storyBroadFilterSlugs(s.data)));
+    return BROAD_FILTERS.filter((bf) => activeSlugs.has(bf.slug));
   });
 
   // Filters
@@ -135,6 +150,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("limit", (arr, limit) => {
     if (!Array.isArray(arr)) return arr;
     return arr.slice(0, limit);
+  });
+
+  eleventyConfig.addFilter("sliceArr", (arr, start, end) => {
+    if (!Array.isArray(arr)) return arr;
+    return arr.slice(start, end);
   });
 
   eleventyConfig.addFilter("featured", (arr, limit) => {
@@ -163,10 +183,19 @@ module.exports = function (eleventyConfig) {
     return allStories[(index + 1) % allStories.length];
   });
 
+  eleventyConfig.addFilter("recommendationsByRefs", (refs, allRecs) => {
+    if (!Array.isArray(refs) || !Array.isArray(allRecs)) return [];
+    return refs
+      .map((slug) => allRecs.find((r) => r.data.slug === slug))
+      .filter(Boolean);
+  });
+
   eleventyConfig.addFilter("broadFilterSlugs", (capSlugs) => {
     if (!Array.isArray(capSlugs)) return [];
     return BROAD_FILTERS.filter((bf) => bf.capabilities.some((c) => capSlugs.includes(c))).map((bf) => bf.slug);
   });
+
+  eleventyConfig.addFilter("storyBroadFilterSlugs", (storyData) => storyBroadFilterSlugs(storyData || {}));
 
   // Never render a metric that still needs verification/sourcing.
   eleventyConfig.addFilter("publicImpact", (impact) => {

@@ -416,6 +416,20 @@ section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
   font-weight: 500;
   margin-bottom: 0.9rem;
 }
+.status-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+}
 .story-card h3, .article-card h3 {
   font-size: 1.25rem;
   margin-bottom: 0.65rem;
@@ -467,6 +481,20 @@ section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
   margin-top: 2.5rem;
   text-align: center;
 }
+
+.secondary-story-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+.secondary-story-links a {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.secondary-story-links a:hover { color: var(--accent); }
 
 @media (max-width: 960px) {
   .card-grid { grid-template-columns: repeat(2, 1fr); }
@@ -570,7 +598,11 @@ section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
   width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
 }
 .recommendation__name { font-style: normal; font-weight: 500; display: block; font-size: 0.92rem; }
-.recommendation__role { font-size: 0.85rem; color: var(--muted); }
+.recommendation__role { font-size: 0.85rem; color: var(--foreground); display: block; }
+.recommendation__context { font-size: 0.82rem; color: var(--muted); display: block; }
+
+.recommendation--compact { max-width: 56ch; }
+.recommendation--compact .recommendation__quote { font-size: 1.1rem; }
 
 @media (max-width: 800px) {
   .recommendation-grid { grid-template-columns: 1fr; }

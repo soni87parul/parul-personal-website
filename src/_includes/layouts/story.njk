@@ -4,18 +4,23 @@ layout: layouts/base.njk
 <section class="page-header">
   <div class="wrap">
     <span class="eyebrow">{{ theme }}{% if organisation %} · {{ organisation }}{% endif %}{% if year_or_period %} · {{ year_or_period }}{% endif %}</span>
-    <h1>{{ title }}</h1>
+    <h1>{{ title }}{% if status_label %} <span class="status-badge">{{ status_label }}</span>{% endif %}</h1>
     {% if summary %}<p>{{ summary }}</p>{% endif %}
 
-    {% set storyCapabilities = capabilities | capabilityNames(collections.capabilityList) %}
-    {% if storyCapabilities.length %}
-    <span class="eyebrow" style="margin-top: 1.75rem; display: block;">Related Capabilities</span>
-    <ul class="pill-list" style="margin-top: 0.75rem;">
-      {% for cap in storyCapabilities %}
-      {% set targetFilters = [cap.slug] | broadFilterSlugs %}
-      <li><a class="pill" href="/experience/{% if targetFilters.length %}?capability={{ targetFilters[0] }}{% endif %}">{{ cap.name }}</a></li>
+    {% if public_categories.length %}
+    <ul class="pill-list" style="margin-top: 1.25rem;">
+      {% for label in public_categories %}
+      <li class="pill">{{ label }}</li>
       {% endfor %}
     </ul>
+    {% endif %}
+
+    {% set publicImpactItems = impact | publicImpact %}
+    {% if publicImpactItems.length %}
+    <div class="card-metric" style="max-width: 420px; margin-top: 1.75rem;">
+      <span class="card-metric-value">{{ publicImpactItems[0].value }}</span>
+      <span class="card-metric-label">{{ publicImpactItems[0].label }}{% if publicImpactItems[0].context %} — {{ publicImpactItems[0].context }}{% endif %}</span>
+    </div>
     {% endif %}
   </div>
 </section>
@@ -64,28 +69,36 @@ layout: layouts/base.njk
       {% endif %}
 
       {{ content | safe }}
+
+      {% if takeaway %}
+      <h2>My Takeaway</h2>
+      <p>{{ takeaway }}</p>
+      {% endif %}
     </div>
 
-    {% set publicImpactItems = impact | publicImpact %}
-    {% if publicImpactItems.length %}
-    <div class="impact-list">
-      {% for item in publicImpactItems %}
-      <div class="card-metric">
-        <span class="card-metric-value">{{ item.value }}</span>
-        <span class="card-metric-label">{{ item.label }}{% if item.context %} — {{ item.context }}{% endif %}</span>
-      </div>
+    {% set relevantRecs = related_recommendations | recommendationsByRefs(collections.recommendations) %}
+    {% if relevantRecs.length %}
+    {% import "partials/recommendation-card.njk" as recs %}
+    <div style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <span class="eyebrow" style="display: block; margin-bottom: 1.25rem;">In their words</span>
+      {% for rec in relevantRecs %}
+        {{ recs.quote(rec, true) }}
       {% endfor %}
     </div>
     {% endif %}
 
-    {% if takeaway %}
-    <div class="prose">
-      <h2>My Takeaway</h2>
-      <p>{{ takeaway }}</p>
+    {% set storyCapabilities = capabilities | capabilityNames(collections.capabilityList) %}
+    {% if storyCapabilities.length %}
+    <div style="margin-top: 2.5rem;">
+      <span class="eyebrow" style="display: block;">Related Capabilities</span>
+      <ul class="pill-list" style="margin-top: 0.75rem;">
+        {% for cap in storyCapabilities %}
+        {% set targetFilters = [cap.slug] | broadFilterSlugs %}
+        <li><a class="pill" href="/experience/{% if targetFilters.length %}?capability={{ targetFilters[0] }}{% endif %}">{{ cap.name }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
     {% endif %}
-
-    {% include "partials/linkedin-cta.njk" %}
 
     {% set next = collections.experienceStories | nextStory(page.url) %}
     {% if next %}
@@ -95,7 +108,10 @@ layout: layouts/base.njk
     </div>
     {% endif %}
 
-    <div class="section-footer" style="text-align: left; margin-top: 1.5rem;">
+    {% include "partials/linkedin-cta.njk" %}
+
+    <div class="section-footer" style="text-align: left; margin-top: 2rem; display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+      <a class="btn btn--primary" href="/contact/">Start a Conversation</a>
       <a class="btn btn--text" href="/experience/">← Back to all experience</a>
     </div>
   </div>

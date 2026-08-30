@@ -1,0 +1,15 @@
+{% macro quote(rec, compact) %}
+<blockquote class="recommendation{% if compact %} recommendation--compact{% endif %}">
+  <p class="recommendation__quote">"{{ rec.data.short_excerpt or rec.data.quote }}"</p>
+  <footer class="recommendation__attribution">
+    {% if rec.data.image %}<img src="{{ rec.data.image }}" alt="{{ rec.data.image_alt or rec.data.name }}" class="recommendation__photo">{% endif %}
+    <div>
+      <cite class="recommendation__name">{{ rec.data.name }}</cite>
+      {% if rec.data.role %}<span class="recommendation__role">{{ rec.data.role }}</span>{% endif %}
+      {% if rec.data.relationship_context or rec.data.organisation %}
+      <span class="recommendation__context">{% if rec.data.organisation %}{{ rec.data.organisation }}{% endif %}{% if rec.data.organisation and rec.data.relationship_context %} · {% endif %}{{ rec.data.relationship_context }}</span>
+      {% endif %}
+    </div>
+  </footer>
+</blockquote>
+{% endmacro %}

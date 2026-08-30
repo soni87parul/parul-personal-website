@@ -1,8 +1,8 @@
 {% macro storyCard(story, capabilityList, size) %}
 {% set publicImpactItems = story.data.impact | publicImpact %}
-<article class="story-card{% if size %} story-card--{{ size }}{% endif %}" data-story-card data-broad-filters="{{ story.data.capabilities | broadFilterSlugs | join(',') }}">
+<article class="story-card{% if size %} story-card--{{ size }}{% endif %}" data-story-card data-broad-filters="{{ story.data | storyBroadFilterSlugs | join(',') }}">
   <span class="card-category">{{ story.data.theme }} — {{ story.data.organisation }}</span>
-  <h3>{{ story.data.title }}</h3>
+  <h3>{{ story.data.title }}{% if story.data.status_label %} <span class="status-badge">{{ story.data.status_label }}</span>{% endif %}</h3>
   {% if story.data.summary %}<p class="card-body">{{ story.data.summary }}</p>{% endif %}
   {% if publicImpactItems.length %}
   <div class="card-metric">
@@ -10,9 +10,13 @@
     <span class="card-metric-label">{{ publicImpactItems[0].label }}</span>
   </div>
   {% endif %}
-  {% set caps = story.data.capabilities | capabilityNames(capabilityList) | limit(3) %}
-  {% if caps.length %}
-  <p class="card-capabilities">{% for c in caps %}{{ c.name }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  {% if story.data.public_categories.length %}
+  <p class="card-capabilities">{% for label in story.data.public_categories | limit(3) %}{{ label }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  {% else %}
+    {% set caps = story.data.capabilities | capabilityNames(capabilityList) | limit(3) %}
+    {% if caps.length %}
+    <p class="card-capabilities">{% for c in caps %}{{ c.name }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+    {% endif %}
   {% endif %}
   <div class="card-footer-row">
     <a class="btn btn--text" href="{{ story.url }}">Explore the story →</a>

@@ -84,7 +84,7 @@ collections:
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
           - { label: "Headline", name: "headline", widget: "string" }
           - { label: "Supporting Statement", name: "supportingStatement", widget: "string" }
-          - { label: "Explanation Paragraph (optional)", name: "explanation", widget: "text", required: false }
+          - { label: "Introduction Paragraphs (optional, one per line)", name: "explanationParagraphs", widget: "list", required: false }
 
   - name: "about"
     label: "About Page"
@@ -144,6 +144,13 @@ collections:
           - { label: "Transform", value: "transform" }
         required: false
 
+      - label: "Public Categories (2-3 short labels shown on the card, e.g. \"Transformation\", \"Chief of Staff\" — curated by you, separate from the filter taxonomy below)"
+        name: "public_categories"
+        widget: "list"
+        required: false
+
+      - { label: "Status Label (optional, e.g. \"Story in progress\" — shown as a small badge)", name: "status_label", widget: "string", required: false }
+
       - { label: "Industry (optional)", name: "industry", widget: "string", required: false }
       - { label: "Featured (one of the five flagship slots)", name: "featured", widget: "boolean", default: false }
       - { label: "Display Order (lower shows first)", name: "display_order", widget: "number", default: 99 }
@@ -170,6 +177,16 @@ collections:
 
       - { label: "My Takeaway", name: "takeaway", widget: "text", required: false }
       - { label: "Additional Body Content (optional, Markdown)", name: "body", widget: "markdown", required: false }
+
+      - label: "Relevant Recommendation(s) (optional — shown on the story page)"
+        name: "related_recommendations"
+        widget: "relation"
+        collection: "recommendations"
+        search_fields: ["name"]
+        display_fields: ["name"]
+        value_field: "slug"
+        multiple: true
+        required: false
 
       - { label: "Related Articles (optional)", name: "related_articles", widget: "list", required: false }
       - { label: "Related Experience (optional)", name: "related_experience", widget: "list", required: false }
@@ -232,12 +249,13 @@ collections:
       preview: false
     fields:
       - { label: "Permalink (leave as false)", name: "permalink", widget: "hidden", default: false }
-      - { label: "Quote (the full, genuine quote — e.g. from a LinkedIn recommendation)", name: "quote", widget: "text" }
-      - { label: "Short Excerpt (optional — shorter version for compact display; the full quote is used if left blank)", name: "short_excerpt", widget: "text", required: false }
+      - { label: "Slug (lowercase, hyphenated, must be unique — used to link this recommendation to a story)", name: "slug", widget: "string" }
+      - { label: "Quote (the full, genuine quote — preserved exactly as given, never rewritten)", name: "quote", widget: "text" }
+      - { label: "Short Excerpt (optional — a verbatim shorter snippet for compact display; the full quote is used if left blank)", name: "short_excerpt", widget: "text", required: false }
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "Role / Title", name: "role", widget: "string" }
-      - { label: "Organisation", name: "organisation", widget: "string", required: false }
-      - { label: "Relationship / Context (optional, e.g. \"Former manager at Amazon\")", name: "relationship_context", widget: "string", required: false }
+      - { label: "Current Role / Title (optional, editable as it changes)", name: "role", widget: "string", required: false }
+      - { label: "Organisation (where you worked together)", name: "organisation", widget: "string", required: false }
+      - { label: "Relationship / Context (e.g. \"Senior colleague; supply-chain efficiency programme\")", name: "relationship_context", widget: "string", required: false }
       - { label: "Profile / LinkedIn URL (optional)", name: "profile_url", widget: "string", required: false }
       - { label: "Photo (optional)", name: "image", widget: "image", required: false }
       - { label: "Photo Alt Text (optional)", name: "image_alt", widget: "string", required: false }

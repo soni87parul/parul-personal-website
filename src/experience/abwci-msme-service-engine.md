@@ -1,18 +1,20 @@
 ---
 layout: layouts/story.njk
-title: "MSME Service Engine"
+title: "Rebuilding an institution while it continues to operate"
 organisation: "ABWCI"
-theme: "MSME Service Engine"
-summary: ""
+theme: "Institution Rebuild"
+summary: "The ABWCI 2.0 programme addresses organisational structure, digital infrastructure, member engagement and revenue simultaneously, with the objective of moving away from tribal knowledge and fragmented activity toward a repeatable operating model."
 year_or_period: ""
 featured_image: ""
 featured_image_alt: ""
-capabilities: ["0-to-1-building", "ecosystem-building", "msme", "women-in-business", "digital-transformation", "public-private-systems"]
-methodology_stages: ["figure-out", "design", "build", "transform"]
+public_categories: ["Transformation", "Policy & Ecosystems"]
+status_label: "Story in progress"
+capabilities: ["organisation-design", "digital-transformation", "ecosystem-building", "public-policy"]
+methodology_stages: []
 industry: ""
-featured: true
-display_order: 5
-published: false
+featured: false
+display_order: 20
+published: true
 problem: ""
 why_it_mattered: ""
 figure_out: ""
@@ -20,13 +22,9 @@ design: ""
 build: ""
 scale: ""
 transform: ""
-impact:
-  - value: "USD 300 billion"
-    label: "Working TAM estimate — MSME segment"
-    context: ""
-    verification_required: true
+impact: []
 takeaway: ""
-gallery: []
+related_recommendations: []
 related_articles: []
 related_experience: []
 seo_title: ""

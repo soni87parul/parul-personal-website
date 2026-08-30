@@ -67,21 +67,31 @@ layout: layouts/base.njk
   </div>
 </section>
 
-{% set featuredStories = collections.experienceStories | featured(3) %}
-{% if featuredStories.length %}
+{% set allFeatured = collections.experienceStories | featured %}
+{% set primaryStories = allFeatured | limit(3) %}
+{% set secondaryStories = allFeatured | sliceArr(3, 5) %}
+{% if primaryStories.length %}
 <section class="experience-teaser tier-dominant">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Experience</span>
+      <span class="section-label">Selected Experience</span>
       <h2>{{ homepage.experienceHeading }}</h2>
       <p>{{ homepage.experienceSubheading }}</p>
     </div>
 
     <div class="card-grid">
-      {% for story in featuredStories %}
+      {% for story in primaryStories %}
         {{ cards.storyCard(story, collections.capabilityList) }}
       {% endfor %}
     </div>
+
+    {% if secondaryStories.length %}
+    <ul class="secondary-story-links">
+      {% for story in secondaryStories %}
+      <li><a href="{{ story.url }}">{{ story.data.organisation }} — {{ story.data.title }} →</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 
     <div class="section-footer">
       <a class="btn btn--text" href="/experience/">{{ homepage.experienceViewAllLabel }}</a>

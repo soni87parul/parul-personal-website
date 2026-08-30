@@ -1,6 +1,8 @@
 ---
 layout: layouts/base.njk
 ---
+{% import "partials/recommendation-card.njk" as recs %}
+
 <section class="page-header">
   <div class="wrap">
     <h1>{{ title }}</h1>
@@ -42,16 +44,7 @@ layout: layouts/base.njk
     </div>
     <div class="recommendation-grid">
       {% for rec in collections.recommendations %}
-      <blockquote class="recommendation">
-        <p class="recommendation__quote">"{{ rec.data.short_excerpt or rec.data.quote }}"</p>
-        <footer class="recommendation__attribution">
-          {% if rec.data.image %}<img src="{{ rec.data.image }}" alt="{{ rec.data.image_alt or rec.data.name }}" class="recommendation__photo">{% endif %}
-          <div>
-            <cite class="recommendation__name">{{ rec.data.name }}</cite>
-            <span class="recommendation__role">{{ rec.data.role }}{% if rec.data.organisation %}, {{ rec.data.organisation }}{% endif %}</span>
-          </div>
-        </footer>
-      </blockquote>
+        {{ recs.quote(rec) }}
       {% endfor %}
     </div>
   </div>
