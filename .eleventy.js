@@ -9,6 +9,46 @@ const CAPABILITY_GROUP_ORDER = [
   "Policy & Ecosystems",
 ];
 
+// Broad, visitor-facing filters. Each maps to several granular capability
+// slugs from the full CMS taxonomy (kept intact for classification/detail).
+const BROAD_FILTERS = [
+  {
+    slug: "transformation",
+    label: "Transformation",
+    capabilities: ["transformation-strategy", "digital-transformation", "organisation-design", "operating-model-design", "business-excellence"],
+  },
+  {
+    slug: "0-1-building",
+    label: "0→1 & Building",
+    capabilities: ["0-to-1-building", "new-department-setup", "product-transformation", "ecosystem-building", "operating-model-design"],
+  },
+  {
+    slug: "ai-technology",
+    label: "AI & Technology",
+    capabilities: ["ai-ml-literacy", "digital-transformation", "technology-adoption", "automation", "product-transformation"],
+  },
+  {
+    slug: "operations",
+    label: "Operations",
+    capabilities: ["operations-excellence", "supply-chain", "customer-experience", "process-re-engineering", "marketplace-operations"],
+  },
+  {
+    slug: "business-scaling",
+    label: "Business Scaling",
+    capabilities: ["business-scaling", "program-management", "business-excellence", "gtm", "commercialisation"],
+  },
+  {
+    slug: "capital",
+    label: "Capital",
+    capabilities: ["fundraising", "investor-relations", "budgeting", "business-model", "commercialisation"],
+  },
+  {
+    slug: "policy-ecosystems",
+    label: "Policy & Ecosystems",
+    capabilities: ["government-liaison", "public-policy", "public-private-systems", "ecosystem-building", "msme", "women-in-business"],
+  },
+];
+
 module.exports = function (eleventyConfig) {
   // Static passthroughs
   eleventyConfig.addPassthroughCopy("src/css");
@@ -66,6 +106,14 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => (a.data.display_order ?? 999) - (b.data.display_order ?? 999));
   });
 
+  // Only broad filters with at least one published, matching story are ever shown publicly.
+  eleventyConfig.addCollection("activeBroadFilters", (collectionApi) => {
+    const stories = collectionApi.getFilteredByGlob("src/experience/*.md").filter((item) => item.data.published);
+    return BROAD_FILTERS.filter((bf) =>
+      stories.some((s) => (s.data.capabilities || []).some((c) => bf.capabilities.includes(c)))
+    );
+  });
+
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     if (!dateObj) return "";
@@ -113,6 +161,17 @@ module.exports = function (eleventyConfig) {
     const index = allStories.findIndex((s) => s.url === currentUrl);
     if (index === -1) return null;
     return allStories[(index + 1) % allStories.length];
+  });
+
+  eleventyConfig.addFilter("broadFilterSlugs", (capSlugs) => {
+    if (!Array.isArray(capSlugs)) return [];
+    return BROAD_FILTERS.filter((bf) => bf.capabilities.some((c) => capSlugs.includes(c))).map((bf) => bf.slug);
+  });
+
+  // Never render a metric that still needs verification/sourcing.
+  eleventyConfig.addFilter("publicImpact", (impact) => {
+    if (!Array.isArray(impact)) return [];
+    return impact.filter((item) => !item.verification_required);
   });
 
   return {

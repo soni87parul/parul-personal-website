@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+---
+<section class="page-header">
+  <div class="wrap">
+    <h1>{{ title }}</h1>
+    {% if shortIntro %}<p>{{ shortIntro }}</p>{% endif %}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="prose">
+      {% if howIGotHere %}
+      <h2>How I got here</h2>
+      <p>{{ howIGotHere }}</p>
+      {% endif %}
+
+      {% if threadThroughCareer %}
+      <h2>The thread through my career</h2>
+      <p>{{ threadThroughCareer }}</p>
+      {% endif %}
+
+      {% if beyondWork %}
+      <h2>Beyond work</h2>
+      <p>{{ beyondWork }}</p>
+      {% endif %}
+    </div>
+
+    {% if methodologyReference %}
+    <p class="about-methodology-reference"><a href="/#method">{{ methodologyReference }}</a></p>
+    {% endif %}
+  </div>
+</section>
+
+{% if collections.recommendations.length %}
+<section class="teaser tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Recommendations</span>
+      <h2>What people I've worked with say</h2>
+    </div>
+    <div class="recommendation-grid">
+      {% for rec in collections.recommendations %}
+      <blockquote class="recommendation">
+        <p class="recommendation__quote">"{{ rec.data.short_excerpt or rec.data.quote }}"</p>
+        <footer class="recommendation__attribution">
+          {% if rec.data.image %}<img src="{{ rec.data.image }}" alt="{{ rec.data.image_alt or rec.data.name }}" class="recommendation__photo">{% endif %}
+          <div>
+            <cite class="recommendation__name">{{ rec.data.name }}</cite>
+            <span class="recommendation__role">{{ rec.data.role }}{% if rec.data.organisation %}, {{ rec.data.organisation }}{% endif %}</span>
+          </div>
+        </footer>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="tier-supporting">
+  <div class="wrap">
+    {% include "partials/linkedin-cta.njk" %}
+  </div>
+</section>

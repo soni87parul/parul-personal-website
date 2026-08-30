@@ -17,26 +17,20 @@ seoDescription: "A career is more useful when you can see the problems behind th
   </div>
 </section>
 
-<section class="tier-secondary">
+{% if collections.activeBroadFilters.length %}
+<section class="capability-filter-section">
   <div class="wrap">
+    <span class="capability-filter__intro-label">Explore</span>
     <div class="capability-filter" data-filter-bar>
-      <div class="capability-filter__all">
-        <button type="button" class="is-active" data-filter="all">All</button>
-      </div>
-      {% for group in collections.capabilityGroups %}
-      <div class="capability-filter__group">
-        <span class="capability-filter__group-label">{{ group.name }}</span>
-        <div class="capability-filter__chips">
-          {% for cap in group.items %}
-          <button type="button" data-filter="{{ cap.data.slug }}">{{ cap.data.name }}</button>
-          {% endfor %}
-        </div>
-      </div>
+      <button type="button" class="is-active" data-filter="all">All</button>
+      {% for bf in collections.activeBroadFilters %}
+      <button type="button" data-filter="{{ bf.slug }}">{{ bf.label }}</button>
       {% endfor %}
     </div>
-    <p class="filter-empty-state" hidden>No stories match this capability yet — try another, or view all.</p>
+    <p class="filter-empty-state" hidden>No stories match this filter yet. <a href="/experience/" data-filter-reset>View all →</a></p>
   </div>
 </section>
+{% endif %}
 
 {% set flagshipStories = collections.experienceStories | featured %}
 {% if flagshipStories.length %}

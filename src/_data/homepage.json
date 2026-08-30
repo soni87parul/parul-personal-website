@@ -29,32 +29,32 @@
     {
       "number": "01",
       "title": "Figure Out",
-      "short": "Research · Listen · Diagnose",
-      "detail": "Understand the real problem before prescribing the solution."
+      "short": "Understand",
+      "detail": "Understand the ambition. Research the context. Listen to leadership, investors and people closest to the problem. Separate symptoms from the real constraint."
     },
     {
       "number": "02",
       "title": "Design",
-      "short": "Strategy · Operating Model · Governance",
-      "detail": "Turn complexity into a structured response."
+      "short": "Architect",
+      "detail": "Define the future state and decide what needs to change across strategy, organisation, process, technology and behaviour. Establish priorities, governance and measures."
     },
     {
       "number": "03",
       "title": "Build",
-      "short": "Teams · Products · Systems",
-      "detail": "Turn the design into something real."
+      "short": "Create",
+      "detail": "Put the operating model behind the strategy: teams, processes, technology, ownership, resources and execution mechanisms."
     },
     {
       "number": "04",
       "title": "Scale",
-      "short": "Processes · Technology · Capital",
-      "detail": "Make what works repeatable and sustainable."
+      "short": "Systematise",
+      "detail": "Move beyond the pilot. Standardise what works, strengthen capability, use technology where useful and make the model repeatable."
     },
     {
       "number": "05",
       "title": "Transform",
-      "short": "Organisation · Capability · Business Model",
-      "detail": "Prepare the organisation for what comes next."
+      "short": "Change",
+      "detail": "Embed the change into how the organisation operates and prepare it for its next stage."
     }
   ],
 

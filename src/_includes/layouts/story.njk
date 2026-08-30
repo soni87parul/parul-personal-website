@@ -9,9 +9,11 @@ layout: layouts/base.njk
 
     {% set storyCapabilities = capabilities | capabilityNames(collections.capabilityList) %}
     {% if storyCapabilities.length %}
-    <ul class="pill-list" style="margin-top: 1.5rem;">
+    <span class="eyebrow" style="margin-top: 1.75rem; display: block;">Related Capabilities</span>
+    <ul class="pill-list" style="margin-top: 0.75rem;">
       {% for cap in storyCapabilities %}
-      <li><a class="pill" href="/experience/?capability={{ cap.slug }}">{{ cap.name }}</a></li>
+      {% set targetFilters = [cap.slug] | broadFilterSlugs %}
+      <li><a class="pill" href="/experience/{% if targetFilters.length %}?capability={{ targetFilters[0] }}{% endif %}">{{ cap.name }}</a></li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -64,9 +66,10 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
 
-    {% if impact.length %}
+    {% set publicImpactItems = impact | publicImpact %}
+    {% if publicImpactItems.length %}
     <div class="impact-list">
-      {% for item in impact %}
+      {% for item in publicImpactItems %}
       <div class="card-metric">
         <span class="card-metric-value">{{ item.value }}</span>
         <span class="card-metric-label">{{ item.label }}{% if item.context %} — {{ item.context }}{% endif %}</span>

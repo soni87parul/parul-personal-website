@@ -25,20 +25,23 @@ document.querySelectorAll(".method__stage").forEach((stage) => {
   });
 });
 
-// Experience capability filter (on /experience/ page)
+// Experience broad-filter bar (on /experience/ page)
 const filterBar = document.querySelector("[data-filter-bar]");
 if (filterBar) {
   const buttons = filterBar.querySelectorAll("button[data-filter]");
+  const validFilters = new Set([...buttons].map((b) => b.getAttribute("data-filter")));
   const cards = document.querySelectorAll("[data-story-card]");
   const emptyState = document.querySelector(".filter-empty-state");
 
   function applyFilter(filter, pushState) {
+    if (!validFilters.has(filter)) filter = "all";
+
     buttons.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-filter") === filter));
 
     let visibleCount = 0;
     cards.forEach((card) => {
-      const capabilities = (card.getAttribute("data-capabilities") || "").split(",");
-      const matches = filter === "all" || capabilities.includes(filter);
+      const filters = (card.getAttribute("data-broad-filters") || "").split(",");
+      const matches = filter === "all" || filters.includes(filter);
       card.style.display = matches ? "" : "none";
       if (matches) visibleCount++;
     });

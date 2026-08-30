@@ -42,7 +42,7 @@ collections:
             fields:
               - { label: "Number (e.g. 01)", name: "number", widget: "string" }
               - { label: "Stage Title", name: "title", widget: "string" }
-              - { label: "Stage Tags (3 short words, e.g. Research · Listen · Diagnose)", name: "short", widget: "string" }
+              - { label: "Short Action Word (e.g. Understand, Architect, Create)", name: "short", widget: "string" }
               - { label: "Expanded Detail (shown on hover/tap)", name: "detail", widget: "text" }
 
           - { label: "Experience — Heading", name: "experienceHeading", widget: "string" }
@@ -85,6 +85,25 @@ collections:
           - { label: "Headline", name: "headline", widget: "string" }
           - { label: "Supporting Statement", name: "supportingStatement", widget: "string" }
           - { label: "Explanation Paragraph (optional)", name: "explanation", widget: "text", required: false }
+
+  - name: "about"
+    label: "About Page"
+    editor:
+      preview: false
+    files:
+      - name: "about"
+        label: "About Page Content"
+        file: "src/about.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/about.njk" }
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Short Introduction (who Parul is, shown right under the heading)", name: "shortIntro", widget: "text" }
+          - { label: "How I Got Here (optional — hidden until filled in)", name: "howIGotHere", widget: "text", required: false }
+          - { label: "The Thread Through My Career (optional — hidden until filled in)", name: "threadThroughCareer", widget: "text", required: false }
+          - { label: "Beyond Work (optional — hidden until filled in)", name: "beyondWork", widget: "text", required: false }
+          - { label: "Methodology Reference Line (optional, links to the homepage method section)", name: "methodologyReference", widget: "string", required: false }
+          - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
+          - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
 
   - name: "experience"
     label: "Experience"
