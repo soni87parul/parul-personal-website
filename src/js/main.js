@@ -38,6 +38,14 @@ if (filterBar) {
 
     buttons.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-filter") === filter));
 
+    // A story hidden inside a collapsed <details> stays invisible even if we
+    // set its display here (browsers hide details content regardless), so
+    // force it open whenever a specific filter might need to reveal something inside.
+    const storiesDisclosure = document.getElementById("more-stories-disclosure");
+    if (filter !== "all" && storiesDisclosure) {
+      storiesDisclosure.open = true;
+    }
+
     let visibleCount = 0;
     cards.forEach((card) => {
       const filters = (card.getAttribute("data-broad-filters") || "").split(",");

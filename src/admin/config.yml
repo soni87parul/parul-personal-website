@@ -117,7 +117,8 @@ collections:
       - { label: "Title (problem-led, e.g. \"Building operational capacity without adding headcount\")", name: "title", widget: "string" }
       - { label: "Organisation", name: "organisation", widget: "string" }
       - { label: "Theme (e.g. \"AI / ML Transformation\")", name: "theme", widget: "string" }
-      - { label: "Summary (1-2 sentences, shown on cards)", name: "summary", widget: "text", required: false }
+      - { label: "Summary (shown on the story page itself)", name: "summary", widget: "text", required: false }
+      - { label: "Card Summary (optional — shorter version for the card grid, ~2-3 lines; falls back to Summary above if left blank)", name: "card_summary", widget: "text", required: false }
       - { label: "Year / Period", name: "year_or_period", widget: "string", required: false }
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
       - { label: "Featured Image Alt Text", name: "featured_image_alt", widget: "string", required: false }

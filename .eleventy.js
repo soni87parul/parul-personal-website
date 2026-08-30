@@ -47,18 +47,29 @@ const BROAD_FILTERS = [
     label: "Policy & Ecosystems",
     capabilities: ["government-liaison", "public-policy", "public-private-systems", "ecosystem-building", "msme", "women-in-business"],
   },
+  {
+    slug: "chief-of-staff-strategy",
+    label: "Chief of Staff & Strategy",
+    // Public cards sometimes say just "Chief of Staff" or "Strategy" -- these
+    // count as this filter too, so what's displayed still matches what it's filed under.
+    aliases: ["chief of staff", "strategy", "ceo office"],
+    capabilities: ["chief-of-staff", "ceo-office", "strategic-planning", "organisation-design", "operating-model-design", "governance", "transformation-strategy"],
+  },
 ];
 
 // Resolve which broad filters a story belongs to. Curated public_categories
-// (matched against the known broad-filter labels) take priority, since those
-// are what's actually displayed on the card -- what you see is what it's
-// filed under. Falls back to the granular-capability mapping only for
-// stories that haven't had public_categories curated yet.
+// (matched against the known broad-filter labels/aliases) take priority,
+// since those are what's actually displayed on the card -- what you see is
+// what it's filed under. Falls back to the granular-capability mapping only
+// for stories that haven't had public_categories curated yet.
 function storyBroadFilterSlugs(storyData) {
   const categories = storyData.public_categories;
   if (Array.isArray(categories) && categories.length) {
     const normalized = categories.map((c) => String(c).toLowerCase().trim());
-    return BROAD_FILTERS.filter((bf) => normalized.includes(bf.label.toLowerCase())).map((bf) => bf.slug);
+    return BROAD_FILTERS.filter((bf) => {
+      const labels = [bf.label.toLowerCase(), ...(bf.aliases || [])];
+      return labels.some((l) => normalized.includes(l));
+    }).map((bf) => bf.slug);
   }
   const capSlugs = storyData.capabilities;
   if (!Array.isArray(capSlugs)) return [];

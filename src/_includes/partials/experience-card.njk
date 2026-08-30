@@ -3,7 +3,8 @@
 <article class="story-card{% if size %} story-card--{{ size }}{% endif %}" data-story-card data-broad-filters="{{ story.data | storyBroadFilterSlugs | join(',') }}">
   <span class="card-category">{{ story.data.theme }} — {{ story.data.organisation }}</span>
   <h3>{{ story.data.title }}{% if story.data.status_label %} <span class="status-badge">{{ story.data.status_label }}</span>{% endif %}</h3>
-  {% if story.data.summary %}<p class="card-body">{{ story.data.summary }}</p>{% endif %}
+  {% set cardText = story.data.card_summary or story.data.summary %}
+  {% if cardText %}<p class="card-body">{{ cardText }}</p>{% endif %}
   {% if publicImpactItems.length %}
   <div class="card-metric">
     <span class="card-metric-value">{{ publicImpactItems[0].value }}</span>

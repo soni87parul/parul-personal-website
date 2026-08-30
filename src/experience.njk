@@ -55,6 +55,8 @@ seoDescription: "A career is more useful when you can see the problems behind th
 {% endif %}
 
 {% set layer2Stories = collections.experienceStories | notFeatured %}
+{% set layer2Initial = layer2Stories | limit(6) %}
+{% set layer2Extra = layer2Stories | sliceArr(6, layer2Stories.length) %}
 {% if layer2Stories.length %}
 <section class="tier-secondary">
   <div class="wrap">
@@ -63,14 +65,30 @@ seoDescription: "A career is more useful when you can see the problems behind th
       <h2>More problems I've worked on</h2>
     </div>
     <div class="card-grid">
-      {% for story in layer2Stories %}
+      {% for story in layer2Initial %}
         {{ cards.storyCard(story, collections.capabilityList) }}
       {% endfor %}
     </div>
+
+    {% if layer2Extra.length %}
+    <details class="disclosure" id="more-stories-disclosure">
+      <summary class="disclosure__summary">
+        <span class="disclosure__label-more">View more problems I've worked on ↓</span>
+        <span class="disclosure__label-fewer">Show fewer ↑</span>
+      </summary>
+      <div class="card-grid" style="margin-top: 1.75rem;">
+        {% for story in layer2Extra %}
+          {{ cards.storyCard(story, collections.capabilityList) }}
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
   </div>
 </section>
 {% endif %}
 
+{% set recsInitial = collections.recommendations | limit(4) %}
+{% set recsExtra = collections.recommendations | sliceArr(4, collections.recommendations.length) %}
 {% if collections.recommendations.length %}
 <section class="teaser tier-secondary">
   <div class="wrap">
@@ -79,10 +97,24 @@ seoDescription: "A career is more useful when you can see the problems behind th
       <h2>What people I've worked with say</h2>
     </div>
     <div class="recommendation-grid">
-      {% for rec in collections.recommendations %}
+      {% for rec in recsInitial %}
         {{ recs.quote(rec) }}
       {% endfor %}
     </div>
+
+    {% if recsExtra.length %}
+    <details class="disclosure">
+      <summary class="disclosure__summary">
+        <span class="disclosure__label-more">Read more from people I've worked with ↓</span>
+        <span class="disclosure__label-fewer">Show fewer ↑</span>
+      </summary>
+      <div class="recommendation-grid" style="margin-top: 1.75rem;">
+        {% for rec in recsExtra %}
+          {{ recs.quote(rec) }}
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
   </div>
 </section>
 {% endif %}

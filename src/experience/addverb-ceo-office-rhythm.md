@@ -4,12 +4,13 @@ title: "Building the operating rhythm behind a scaling CEO office"
 organisation: "Addverb"
 theme: "CEO Office Operating Rhythm"
 summary: "Working directly with the Global CEO, strategic priorities were translated into AOPs, leadership reviews, KPI mechanisms and cross-functional accountability across a rapidly scaling robotics organisation."
+card_summary: "Working directly with the Global CEO, strategic priorities were translated into AOPs, leadership reviews and KPI mechanisms."
 year_or_period: ""
 featured_image: ""
 featured_image_alt: ""
-public_categories: ["Transformation", "Business Scaling"]
+public_categories: ["Chief of Staff", "Transformation", "Business Scaling"]
 status_label: ""
-capabilities: ["transformation-strategy", "governance", "business-scaling"]
+capabilities: ["chief-of-staff", "ceo-office", "transformation-strategy", "governance", "business-scaling"]
 methodology_stages: []
 industry: ""
 featured: false
