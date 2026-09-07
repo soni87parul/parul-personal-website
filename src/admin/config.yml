@@ -288,7 +288,7 @@ collections:
           - { label: "Hero — Heading", name: "heroHeading", widget: "string" }
           - { label: "Hero — Supporting Text", name: "heroIntro", widget: "text" }
           - { label: "Positioning Heading (\"I am usually most useful when...\")", name: "positioningHeading", widget: "string" }
-          - label: "Situation Cards (six, shown under the positioning heading)"
+          - label: "Situation Cards (six, shown under the positioning heading — the whole card links to Contact)"
             name: "situations"
             widget: "list"
             summary: "{{fields.title}}"
@@ -299,6 +299,12 @@ collections:
                 name: "accent"
                 widget: "select"
                 options: ["terracotta", "gold", "slate", "sage", "forest", "rose"]
+              - label: "Contact Opportunity Type (preselects this on the Contact form)"
+                name: "contactIntent"
+                widget: "select"
+                options: ["leadership", "transformation", "ceo-advisory", "advisory", "investor", "board", "government", "policy", "speaking", "collaboration", "other"]
+                default: "transformation"
+              - { label: "Contact Topic (passed through as context, e.g. \"operating-model\")", name: "contactTopic", widget: "string" }
               - { label: "Enabled (show on site)", name: "enabled", widget: "boolean", default: true }
               - { label: "Order", name: "order", widget: "number" }
           - { label: "Engagement Types — Heading", name: "engagementHeading", widget: "string" }

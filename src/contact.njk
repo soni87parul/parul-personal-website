@@ -1,7 +1,7 @@
 ---
 title: Contact
 layout: layouts/base.njk
-seoTitle: Start a Conversation — Parul Soni Manvati
+seoTitle: Start a Conversation | Parul Soni Manvati
 seoDescription: Tell me what you're working through. The more context you share, the more useful the first conversation can be.
 ---
 {% import "partials/cta.njk" as cta %}
@@ -22,6 +22,7 @@ seoDescription: Tell me what you're working through. The more context you share,
     <div class="contact-layout">
       <form class="contact-form" style="max-width: none;" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thank-you/">
         <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="referralTopic" id="referralTopic" value="">
         <p style="display:none">
           <label>Don't fill this out if you're human: <input name="bot-field"></label>
         </p>
@@ -205,7 +206,7 @@ seoDescription: Tell me what you're working through. The more context you share,
         </div>
 
         <button type="submit" class="btn btn--primary">Send message</button>
-        <p class="form-note">This form is handled by Netlify Forms — submissions arrive in your Netlify dashboard and can be forwarded to your email.</p>
+        <p class="form-note">This form is handled by Netlify Forms. Submissions arrive in your Netlify dashboard and can be forwarded to your email.</p>
       </form>
 
       <aside class="contact-side">
@@ -213,7 +214,7 @@ seoDescription: Tell me what you're working through. The more context you share,
         <ol>
           <li>I review every conversation personally.</li>
           <li>If the opportunity looks relevant, I follow up using the details you've shared.</li>
-          <li>We have a first conversation to understand whether — and how — I can be useful.</li>
+          <li>We have a first conversation to understand whether I can be useful and what that could look like.</li>
         </ol>
         {{ cta.linkedinLink() }}
       </aside>

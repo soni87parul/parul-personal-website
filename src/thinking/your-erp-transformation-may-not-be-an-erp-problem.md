@@ -2,7 +2,7 @@
 layout: layouts/article.njk
 title: "Your ERP transformation may not actually be an ERP problem."
 subtitle: ""
-excerpt: "Transformation programmes often begin with the visible object — a new ERP, a new CRM, a new workflow tool. At Addverb, the real fragmentation lived in the operating model, not the software."
+excerpt: "Transformation programmes often begin with the visible object: a new ERP, a new CRM, a new workflow tool. At Addverb, the real fragmentation lived in the operating model, not the software."
 territory: "Transformation & Organisations"
 tags: []
 date: 2026-08-24
@@ -12,8 +12,8 @@ featured: true
 draft: false
 related_experience: "addverb-enterprise-transformation"
 takeaway: "Before asking which system the organisation needs, ask what the organisation should become capable of doing. Then design the process, ownership, information flow and technology around that answer."
-seoTitle: "Your ERP transformation may not actually be an ERP problem — Parul Soni Manvati"
-seoDescription: "Why digitising a broken process without first redesigning it just creates a faster, more expensive version of the same confusion — lessons from an enterprise transformation at Addverb."
+seoTitle: "Your ERP transformation may not actually be an ERP problem | Parul Soni Manvati"
+seoDescription: "Why digitising a broken process without first redesigning it just creates a faster, more expensive version of the same confusion, drawn from an enterprise transformation at Addverb."
 ---
 Transformation programmes often begin with the visible object.
 
@@ -54,7 +54,7 @@ Where does information change hands?
 
 Who owns the truth at each stage?
 
-Where is manual judgement useful — and where is it simply compensating for a broken system?
+Where is manual judgement useful, and where is it simply compensating for a broken system?
 
 Which hand-offs repeatedly fail?
 
@@ -89,4 +89,4 @@ These are not side effects.
 
 They are the transformation.
 
-The technology matters enormously. But it should sit inside a redesigned operating system — not become the operating system by default.
+The technology matters enormously. But it should sit inside a redesigned operating system rather than become the operating system by default.

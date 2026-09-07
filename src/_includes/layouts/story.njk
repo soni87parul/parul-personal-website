@@ -19,7 +19,7 @@ layout: layouts/base.njk
     {% if publicImpactItems.length %}
     <div class="card-metric" style="max-width: 420px; margin-top: 1.75rem;">
       <span class="card-metric-value">{{ publicImpactItems[0].value }}</span>
-      <span class="card-metric-label">{{ publicImpactItems[0].label }}{% if publicImpactItems[0].context %} — {{ publicImpactItems[0].context }}{% endif %}</span>
+      <span class="card-metric-label">{{ publicImpactItems[0].label }}{% if publicImpactItems[0].context %} ({{ publicImpactItems[0].context }}){% endif %}</span>
     </div>
     {% endif %}
   </div>

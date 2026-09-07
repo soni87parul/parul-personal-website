@@ -8,6 +8,8 @@
       "title": "The organisation has grown faster than its operating model.",
       "description": "Processes, teams and systems that worked at one stage no longer work at the next.",
       "accent": "terracotta",
+      "contactIntent": "transformation",
+      "contactTopic": "operating-model",
       "enabled": true,
       "order": 1
     },
@@ -15,6 +17,8 @@
       "title": "The CEO knows something needs to change, but the real problem is still unclear.",
       "description": "Several symptoms are appearing across functions and leadership needs someone to diagnose the underlying constraint.",
       "accent": "gold",
+      "contactIntent": "transformation",
+      "contactTopic": "diagnosis",
       "enabled": true,
       "order": 2
     },
@@ -22,6 +26,8 @@
       "title": "Strategy exists, but execution keeps breaking between functions.",
       "description": "Everyone has a plan. Nobody owns the hand-offs.",
       "accent": "slate",
+      "contactIntent": "transformation",
+      "contactTopic": "cross-functional-execution",
       "enabled": true,
       "order": 3
     },
@@ -29,6 +35,8 @@
       "title": "A founder needs to rethink the product, GTM or business model.",
       "description": "The company may be pushing harder when the better answer is changing direction.",
       "accent": "sage",
+      "contactIntent": "advisory",
+      "contactTopic": "business-model",
       "enabled": true,
       "order": 4
     },
@@ -36,6 +44,8 @@
       "title": "AI is being discussed, but nobody has defined what actually needs to change.",
       "description": "Technology selection is happening before operating-model design.",
       "accent": "forest",
+      "contactIntent": "transformation",
+      "contactTopic": "ai-operating-model",
       "enabled": true,
       "order": 5
     },
@@ -43,6 +53,8 @@
       "title": "An emerging industry needs more than company-building.",
       "description": "Regulation, government, infrastructure, partners and ecosystem development become part of the strategy.",
       "accent": "rose",
+      "contactIntent": "policy",
+      "contactTopic": "ecosystem",
       "enabled": true,
       "order": 6
     }

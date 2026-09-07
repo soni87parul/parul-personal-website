@@ -1,7 +1,7 @@
 ---
 title: Speaking
 layout: layouts/base.njk
-seoTitle: Speaking — Parul Soni Manvati
+seoTitle: Speaking | Parul Soni Manvati
 seoDescription: Parul speaks on strategy, transformation, technology, scaling, emerging businesses, leadership and building organisations for what comes next.
 ---
 <section class="page-header">
@@ -42,12 +42,20 @@ seoDescription: Parul speaks on strategy, transformation, technology, scaling, e
     {% if publishedEvents.length %}
     <div class="card-grid">
       {% for event in publishedEvents %}
+      {% if event.videoUrl %}
+      <a class="story-card" href="{{ event.videoUrl }}" target="_blank" rel="noopener noreferrer">
+        <h3>{{ event.title }}</h3>
+        {% if event.topic %}<p class="card-body">{{ event.topic }}</p>{% endif %}
+        <p class="card-meta">{{ event.location }}{% if event.year %} · {{ event.year }}{% endif %}</p>
+        <span class="accent-card__link">Watch →</span>
+      </a>
+      {% else %}
       <article class="story-card">
         <h3>{{ event.title }}</h3>
         {% if event.topic %}<p class="card-body">{{ event.topic }}</p>{% endif %}
         <p class="card-meta">{{ event.location }}{% if event.year %} · {{ event.year }}{% endif %}</p>
-        {% if event.videoUrl %}<a class="btn btn--text" href="{{ event.videoUrl }}" target="_blank" rel="noopener noreferrer">Watch →</a>{% endif %}
       </article>
+      {% endif %}
       {% endfor %}
     </div>
     {% else %}

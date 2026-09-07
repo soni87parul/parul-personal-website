@@ -2,7 +2,7 @@
 layout: layouts/article.njk
 title: "A CEO should not be the organisation's integration layer."
 subtitle: ""
-excerpt: "When a CEO is repeatedly reconciling departmental priorities and chasing updates, it can look like strong leadership from the outside — inside, it's often a warning sign."
+excerpt: "When a CEO is repeatedly reconciling departmental priorities and chasing updates, it can look like strong leadership from the outside. Inside, it's often a warning sign."
 territory: "CEO Office & Strategy"
 tags: []
 date: 2026-07-27
@@ -12,8 +12,8 @@ featured: true
 draft: false
 related_experience: "addverb-ceo-office-rhythm"
 takeaway: "A CEO Office creates leverage when it reduces the amount of organisational integration the CEO has to perform personally."
-seoTitle: "A CEO should not be the organisation's integration layer — Parul Soni Manvati"
-seoDescription: "Why the strongest CEO Offices reduce dependency on themselves over time — building mechanisms, priorities, decision rights and review rhythms instead."
+seoTitle: "A CEO should not be the organisation's integration layer | Parul Soni Manvati"
+seoDescription: "Why the strongest CEO Offices reduce dependency on themselves over time, building mechanisms, priorities, decision rights and review rhythms instead."
 ---
 There is a pattern I have seen in scaling organisations.
 

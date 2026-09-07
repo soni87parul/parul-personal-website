@@ -1,7 +1,7 @@
 ---
 title: Advisory
 layout: layouts/base.njk
-seoTitle: Advisory — Parul Soni Manvati
+seoTitle: Advisory | Parul Soni Manvati
 seoDescription: When the problem is bigger than a meeting. I work through the trade-offs with leadership, design a response and help turn it into execution.
 ---
 {% import "partials/cta.njk" as cta %}
@@ -27,10 +27,11 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
     </div>
     <div class="card-grid">
       {% for s in situations %}
-      <article class="accent-card accent-card--{{ s.accent }}">
+      <a class="accent-card accent-card--{{ s.accent }}" href="/contact/?intent={{ s.contactIntent }}&topic={{ s.contactTopic }}">
         <h3>{{ s.title }}</h3>
         <p>{{ s.description }}</p>
-      </article>
+        <span class="accent-card__link">Discuss this →</span>
+      </a>
       {% endfor %}
     </div>
   </div>

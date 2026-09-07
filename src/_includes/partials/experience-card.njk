@@ -1,7 +1,7 @@
 {% macro storyCard(story, capabilityList, size) %}
 {% set publicImpactItems = story.data.impact | publicImpact %}
-<article class="story-card{% if size %} story-card--{{ size }}{% endif %}" data-story-card data-broad-filters="{{ story.data | storyBroadFilterSlugs | join(',') }}">
-  <span class="card-category">{{ story.data.theme }} — {{ story.data.organisation }}</span>
+<a class="story-card{% if size %} story-card--{{ size }}{% endif %}" data-story-card data-broad-filters="{{ story.data | storyBroadFilterSlugs | join(',') }}" href="{{ story.url }}">
+  <span class="card-category">{{ story.data.theme }} · {{ story.data.organisation }}</span>
   <h3>{{ story.data.title }}{% if story.data.status_label %} <span class="status-badge">{{ story.data.status_label }}</span>{% endif %}</h3>
   {% set cardText = story.data.card_summary or story.data.summary %}
   {% if cardText %}<p class="card-body">{{ cardText }}</p>{% endif %}
@@ -20,7 +20,7 @@
     {% endif %}
   {% endif %}
   <div class="card-footer-row">
-    <a class="btn btn--text" href="{{ story.url }}">Explore the story →</a>
+    <span class="accent-card__link">Explore the story →</span>
   </div>
-</article>
+</a>
 {% endmacro %}

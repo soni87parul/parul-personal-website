@@ -24,7 +24,7 @@ build: "A digital agency was engaged to develop the LMS. I acted as the subject-
 scale: "The significance of the model is that the knowledge architecture can move beyond one physical masterclass at a time and become a reusable digital capacity layer. The marketplace and BSS components were conceived to extend that capacity-building into commercial and operating support."
 transform: ""
 impact: []
-takeaway: "Training scales when it stops being only an event and becomes infrastructure — something people can return to, use at their own stage and connect to the next practical step in building their business."
+takeaway: "Training scales when it stops being only an event and becomes infrastructure: something people can return to, use at their own stage and connect to the next practical step in building their business."
 related_recommendations: []
 related_articles: []
 related_experience: []

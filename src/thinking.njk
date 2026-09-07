@@ -1,8 +1,8 @@
 ---
 title: Thinking
 layout: layouts/base.njk
-seoTitle: Thinking — Parul Soni Manvati
-seoDescription: Notes on transformation, organisations and building what comes next — how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them.
+seoTitle: Thinking | Parul Soni Manvati
+seoDescription: "Notes on transformation, organisations and building what comes next: how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them."
 ---
 {% import "partials/cta.njk" as cta %}
 
@@ -10,7 +10,7 @@ seoDescription: Notes on transformation, organisations and building what comes n
   <div class="wrap">
     <span class="eyebrow">Thinking</span>
     <h1>Notes on transformation, organisations and building what comes next.</h1>
-    <p>I write about problems I encounter repeatedly — how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them.</p>
+    <p>I write about problems I encounter repeatedly: how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them.</p>
     <div class="hero__ctas" style="margin-top: 1.75rem;">
       <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
       {{ cta.linkedinLink() }}
@@ -74,15 +74,15 @@ seoDescription: Notes on transformation, organisations and building what comes n
     <div class="card-grid">
       {% for article in featuredArticles %}
       {% set territory = article.data.territory | territoryData %}
-      <article class="accent-card{% if territory %} accent-card--{{ territory.accent }}{% endif %}" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %}>
+      <a class="accent-card{% if territory %} accent-card--{{ territory.accent }}{% endif %}" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %} href="{{ article.url }}">
         {% if territory %}<span class="accent-card__label">{{ territory.title }}</span>{% endif %}
         <h3>{{ article.data.title }}</h3>
         <p>{{ article.data.excerpt }}</p>
         <div class="card-meta" style="margin-top: 0.9rem; margin-bottom: 0;">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
         {% set relatedStory = article.data.related_experience | experienceByRef(collections.experienceStories) %}
         {% if relatedStory %}<p style="font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem;">From the field: {{ relatedStory.data.title }}</p>{% endif %}
-        <a class="accent-card__link" href="{{ article.url }}">Read the article →</a>
-      </article>
+        <span class="accent-card__link">Read the article →</span>
+      </a>
       {% endfor %}
     </div>
   </div>
@@ -99,13 +99,13 @@ seoDescription: Notes on transformation, organisations and building what comes n
     <div class="card-grid">
       {% for article in moreArticles %}
       {% set territory = article.data.territory | territoryData %}
-      <article class="article-card" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %}>
+      <a class="article-card" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %} href="{{ article.url }}">
         {% if territory %}<span class="card-category">{{ territory.title }}</span>{% endif %}
         <h3>{{ article.data.title }}</h3>
         <p class="card-body">{{ article.data.excerpt }}</p>
         <div class="card-meta">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
-        <a class="btn btn--text" href="{{ article.url }}">Read the article →</a>
-      </article>
+        <span class="accent-card__link">Read the article →</span>
+      </a>
       {% endfor %}
     </div>
   </div>

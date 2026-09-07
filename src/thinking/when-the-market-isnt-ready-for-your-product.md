@@ -2,7 +2,7 @@
 layout: layouts/article.njk
 title: "When the market isn't ready for your product, ask what customers are ready to pay for."
 subtitle: ""
-excerpt: "At ClearMeat, the long-term ambition was cultivated meat — but the better near-term question turned out to be which capability the company already owned was commercially useful today."
+excerpt: "At ClearMeat, the long-term ambition was cultivated meat, but the better near-term question turned out to be which capability the company already owned was commercially useful today."
 territory: "Building & Scaling"
 tags: []
 date: 2026-07-13
@@ -12,8 +12,8 @@ featured: false
 draft: false
 related_experience: "clearmeat-business-model"
 takeaway: "Sometimes the most strategic form of persistence is changing what you sell while preserving what makes the company valuable."
-seoTitle: "When the market isn't ready for your product — Parul Soni Manvati"
-seoDescription: "A company's original product vision and its first scalable revenue engine do not always have to be the same thing — a business-model pivot at ClearMeat."
+seoTitle: "When the market isn't ready for your product | Parul Soni Manvati"
+seoDescription: "A company's original product vision and its first scalable revenue engine do not always have to be the same thing, as shown by a business-model pivot at ClearMeat."
 ---
 Startups are taught to persist.
 

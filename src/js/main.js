@@ -131,5 +131,22 @@ if (opportunityTypeSelect) {
   }
 
   opportunityTypeSelect.addEventListener("change", () => applyOpportunityType(opportunityTypeSelect.value));
+
+  // Advisory situation cards link here with ?intent=...&topic=... — preselect
+  // the closest matching opportunity type and carry the topic through as context.
+  const INTENT_TO_OPPORTUNITY = { advisory: "ceo-advisory", policy: "government" };
+  const params = new URLSearchParams(window.location.search);
+  const intent = params.get("intent");
+  const topic = params.get("topic");
+
+  if (intent) {
+    const mapped = INTENT_TO_OPPORTUNITY[intent] || intent;
+    const matchingOption = [...opportunityTypeSelect.options].find((o) => o.value === mapped);
+    if (matchingOption) opportunityTypeSelect.value = mapped;
+  }
+
+  const referralTopicField = document.getElementById("referralTopic");
+  if (referralTopicField && topic) referralTopicField.value = topic;
+
   applyOpportunityType(opportunityTypeSelect.value);
 }

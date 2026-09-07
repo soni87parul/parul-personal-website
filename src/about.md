@@ -6,6 +6,6 @@ howIGotHere: ""
 threadThroughCareer: ""
 beyondWork: ""
 methodologyReference: "I approach every problem through a consistent method: Figure Out → Design → Build → Scale → Transform →"
-seoTitle: "About Parul Soni Manvati — Transformation Leader & Strategic Operator"
+seoTitle: "About Parul Soni Manvati | Transformation Leader & Strategic Operator"
 seoDescription: "Parul is a cross-functional business leader and transformation operator with experience across large MNCs, technology businesses, startups, family-led businesses and emerging technology ventures."
 ---

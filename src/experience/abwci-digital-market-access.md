@@ -24,7 +24,7 @@ build: "I acted as product manager and programme bridge, managing the agency, bu
 scale: "The objective is to create a repeatable digital market-access layer that can move beyond one-off introductions between members and buyers. The source inventory records data collection from a large member cohort and work toward ONDC connectivity, but this remains ongoing."
 transform: ""
 impact: []
-takeaway: "Market access is not created by putting a catalogue online. The hard part is building the supply-side operating system — data, documentation, onboarding, trust and integration — that makes the catalogue usable."
+takeaway: "Market access is not created by putting a catalogue online. The hard part is building the supply-side operating system that makes the catalogue usable: data, documentation, onboarding, trust and integration."
 related_recommendations: []
 related_articles: []
 related_experience: []
