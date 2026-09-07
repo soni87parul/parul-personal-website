@@ -2,33 +2,80 @@
 title: Advisory
 layout: layouts/base.njk
 seoTitle: Advisory — Parul Soni Manvati
-seoDescription: I work selectively with founders, CEOs, leadership teams and organisations navigating important transitions — from defining what needs to change to designing and building what comes next.
+seoDescription: When the problem is bigger than a meeting. I work through the trade-offs with leadership, design a response and help turn it into execution.
 ---
+{% import "partials/cta.njk" as cta %}
+
 <section class="page-header">
   <div class="wrap">
-    <h1>When the problem is bigger than a meeting.</h1>
-    <p>I work selectively with founders, CEOs, leadership teams and organisations navigating important transitions — from defining what needs to change to designing and building what comes next.</p>
+    <span class="eyebrow">{{ advisory.heroEyebrow }}</span>
+    <h1>{{ advisory.heroHeading }}</h1>
+    <p>{{ advisory.heroIntro }}</p>
+    <div class="hero__ctas" style="margin-top: 1.75rem;">
+      <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
+      {{ cta.linkedinLink() }}
+    </div>
   </div>
 </section>
 
-<section>
+{% set situations = advisory.situations | selectattr("enabled") | sort(attribute="order") %}
+{% if situations.length %}
+<section class="tier-secondary">
   <div class="wrap">
-    {% set services = advisory.items | selectattr("enabled") | sort(attribute="order") %}
-    {% if services.length %}
+    <div class="section-heading">
+      <h2>{{ advisory.positioningHeading }}</h2>
+    </div>
     <div class="card-grid">
-      {% for service in services %}
-      <article class="story-card">
-        <h3>{{ service.title }}</h3>
-        <p class="card-body">{{ service.description }}</p>
+      {% for s in situations %}
+      <article class="accent-card accent-card--{{ s.accent }}">
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.description }}</p>
       </article>
       {% endfor %}
     </div>
-    {% else %}
-    <div class="empty-state">No advisory services published yet. Add one via Admin → Advisory.</div>
-    {% endif %}
+  </div>
+</section>
+{% endif %}
 
-    <div class="teaser__ctas" style="margin-top: 3rem;">
-      <a class="btn btn--primary" href="/contact/">Discuss an advisory need →</a>
+<section class="tier-secondary teaser">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Method</span>
+      <h2>How an engagement moves</h2>
+    </div>
+    <div class="mini-strip">
+      <span>Figure Out</span><span>Design</span><span>Build</span><span>Scale</span><span>Transform</span>
     </div>
   </div>
 </section>
+
+{% set engagementTypes = advisory.engagementTypes | selectattr("enabled") | sort(attribute="order") %}
+{% if engagementTypes.length %}
+<section class="tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <h2>{{ advisory.engagementHeading }}</h2>
+    </div>
+    <div class="engagement-list">
+      {% for e in engagementTypes %}
+      <div class="engagement-row">
+        <h3>{{ e.title }}</h3>
+        <div>
+          <p>{{ e.description }}</p>
+          {% if e.outcome %}<span class="engagement-outcome"><strong>Typical outcome:</strong> {{ e.outcome }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if advisory.openToLine %}
+    <p style="margin-top: 2rem; font-size: 1.05rem; color: var(--muted);">{{ advisory.openToLine }}</p>
+    {% endif %}
+
+    <div class="teaser__ctas">
+      <a class="btn btn--primary" href="/contact/">{{ advisory.finalCtaPrimaryLabel or "Start a Conversation" }} →</a>
+      {{ cta.linkedinLink(advisory.linkedinCtaLabel + " →" if advisory.linkedinCtaLabel else null) }}
+    </div>
+  </div>
+</section>
+{% endif %}

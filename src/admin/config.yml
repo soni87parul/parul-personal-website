@@ -227,19 +227,32 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
       - { label: "Excerpt (shown on cards)", name: "excerpt", widget: "text" }
-      - label: "Category"
+      - label: "Territory (one of the six Thinking territories — controls the filter and card colour)"
+        name: "territory"
+        widget: "select"
+        options:
+          - "Transformation & Organisations"
+          - "CEO Office & Strategy"
+          - "AI, Technology & Operating Models"
+          - "Building & Scaling"
+          - "Future of Food & Emerging Industries"
+          - "Policy, Markets & Economic Systems"
+      - label: "Category (secondary, optional — shown only if Territory is not set)"
         name: "category"
         widget: "select"
         options: ["Essay", "Operator's Notebook", "Framework", "Case Study", "Research", "Book Notes"]
+        required: false
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
       - { label: "Author", name: "author", widget: "string", default: "Parul Soni Manvati" }
-      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Featured (one of the three top launch slots)", name: "featured", widget: "boolean", default: false }
       - { label: "Draft (hide from live site)", name: "draft", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Closing Takeaway (shown as a highlighted callout at the end)", name: "takeaway", widget: "text", required: false }
+      - { label: "Related Experience Story (the URL slug of an Experience story, e.g. \"addverb-enterprise-transformation\" — find it in the Experience story's URL)", name: "related_experience", widget: "string", required: false }
       - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
       - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "recommendations"
     label: "Recommendations"
@@ -268,18 +281,40 @@ collections:
     label: "Advisory"
     files:
       - name: "advisory"
-        label: "Advisory Services"
+        label: "Advisory Page"
         file: "src/_data/advisory.json"
         fields:
-          - label: "Services"
-            name: "items"
+          - { label: "Hero — Eyebrow", name: "heroEyebrow", widget: "string" }
+          - { label: "Hero — Heading", name: "heroHeading", widget: "string" }
+          - { label: "Hero — Supporting Text", name: "heroIntro", widget: "text" }
+          - { label: "Positioning Heading (\"I am usually most useful when...\")", name: "positioningHeading", widget: "string" }
+          - label: "Situation Cards (six, shown under the positioning heading)"
+            name: "situations"
             widget: "list"
             summary: "{{fields.title}}"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - label: "Accent Colour"
+                name: "accent"
+                widget: "select"
+                options: ["terracotta", "gold", "slate", "sage", "forest", "rose"]
               - { label: "Enabled (show on site)", name: "enabled", widget: "boolean", default: true }
               - { label: "Order", name: "order", widget: "number" }
+          - { label: "Engagement Types — Heading", name: "engagementHeading", widget: "string" }
+          - label: "Engagement Types (editorial rows, not a price table)"
+            name: "engagementTypes"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Typical Outcome (optional)", name: "outcome", widget: "string", required: false }
+              - { label: "Enabled (show on site)", name: "enabled", widget: "boolean", default: true }
+              - { label: "Order", name: "order", widget: "number" }
+          - { label: "\"Also open to\" Line (Board / speaking)", name: "openToLine", widget: "string" }
+          - { label: "Primary CTA Label", name: "finalCtaPrimaryLabel", widget: "string" }
+          - { label: "LinkedIn CTA Label", name: "linkedinCtaLabel", widget: "string" }
 
   - name: "speaking"
     label: "Speaking"

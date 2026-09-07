@@ -2,22 +2,105 @@
 title: Thinking
 layout: layouts/base.njk
 seoTitle: Thinking — Parul Soni Manvati
-seoDescription: Notes on strategy, transformation, technology, organisations, scaling and the problems leaders don't always have time to think through.
+seoDescription: Notes on transformation, organisations and building what comes next — how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them.
 ---
+{% import "partials/cta.njk" as cta %}
+
 <section class="page-header">
   <div class="wrap">
-    <h1>Thinking</h1>
-    <p>Notes on strategy, transformation, technology, organisations, scaling and the problems leaders don't always have time to think through.</p>
+    <span class="eyebrow">Thinking</span>
+    <h1>Notes on transformation, organisations and building what comes next.</h1>
+    <p>I write about problems I encounter repeatedly — how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them.</p>
+    <div class="hero__ctas" style="margin-top: 1.75rem;">
+      <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
+      {{ cta.linkedinLink() }}
+    </div>
   </div>
 </section>
 
-<section>
+<section class="flywheel-section">
   <div class="wrap">
-    {% if collections.articles.length %}
+    <div class="section-heading" style="text-align: center; margin-left: auto; margin-right: auto;">
+      <h2>How my thinking evolves</h2>
+      <p style="margin-left: auto; margin-right: auto;">Most of my ideas start in the work itself.</p>
+    </div>
+    {% include "partials/flywheel.njk" %}
+  </div>
+</section>
+
+<section class="tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Territories</span>
+      <h2>What I keep coming back to</h2>
+    </div>
     <div class="card-grid">
-      {% for article in collections.articles %}
-      <article class="article-card">
-        <span class="card-category">{{ article.data.category }}</span>
+      {% for t in thinkingTerritories %}
+      <a class="accent-card accent-card--{{ t.accent }}" href="/thinking/?territory={{ t.slug }}">
+        <span class="accent-card__label">{{ t.title }}</span>
+        <p>{{ t.description }}</p>
+        <span class="accent-card__link">Explore →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% set featuredArticles = collections.articles | featured %}
+{% set moreArticles = collections.articles | notFeatured %}
+
+{% if collections.activeThinkingTerritories.length %}
+<section class="capability-filter-section">
+  <div class="wrap">
+    <span class="capability-filter__intro-label">Filter by territory</span>
+    <div class="capability-filter" data-thinking-filter-bar>
+      <button type="button" class="is-active" data-territory-filter="all">All</button>
+      {% for t in collections.activeThinkingTerritories %}
+      <button type="button" data-territory-filter="{{ t.slug }}">{{ t.title }}</button>
+      {% endfor %}
+    </div>
+    <p class="filter-empty-state" data-thinking-empty-state hidden>No articles match this territory yet. <a href="/thinking/" data-thinking-filter-reset>View all →</a></p>
+  </div>
+</section>
+{% endif %}
+
+{% if featuredArticles.length %}
+<section class="tier-dominant">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Featured</span>
+      <h2>Featured Thinking</h2>
+    </div>
+    <div class="card-grid">
+      {% for article in featuredArticles %}
+      {% set territory = article.data.territory | territoryData %}
+      <article class="accent-card{% if territory %} accent-card--{{ territory.accent }}{% endif %}" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %}>
+        {% if territory %}<span class="accent-card__label">{{ territory.title }}</span>{% endif %}
+        <h3>{{ article.data.title }}</h3>
+        <p>{{ article.data.excerpt }}</p>
+        <div class="card-meta" style="margin-top: 0.9rem; margin-bottom: 0;">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
+        {% set relatedStory = article.data.related_experience | experienceByRef(collections.experienceStories) %}
+        {% if relatedStory %}<p style="font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem;">From the field: {{ relatedStory.data.title }}</p>{% endif %}
+        <a class="accent-card__link" href="{{ article.url }}">Read the article →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if moreArticles.length %}
+<section class="tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">More</span>
+      <h2>More Notes</h2>
+    </div>
+    <div class="card-grid">
+      {% for article in moreArticles %}
+      {% set territory = article.data.territory | territoryData %}
+      <article class="article-card" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %}>
+        {% if territory %}<span class="card-category">{{ territory.title }}</span>{% endif %}
         <h3>{{ article.data.title }}</h3>
         <p class="card-body">{{ article.data.excerpt }}</p>
         <div class="card-meta">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
@@ -25,8 +108,20 @@ seoDescription: Notes on strategy, transformation, technology, organisations, sc
       </article>
       {% endfor %}
     </div>
-    {% else %}
+  </div>
+</section>
+{% endif %}
+
+{% if not collections.articles.length %}
+<section>
+  <div class="wrap">
     <div class="empty-state">No published articles yet. Add one via Admin → Thinking.</div>
-    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section class="tier-supporting">
+  <div class="wrap">
+    {% include "partials/linkedin-cta.njk" %}
   </div>
 </section>

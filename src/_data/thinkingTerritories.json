@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "transformation-organisations",
+    "title": "Transformation & Organisations",
+    "description": "How organisations diagnose, redesign and change themselves.",
+    "accent": "terracotta"
+  },
+  {
+    "slug": "ceo-office-strategy",
+    "title": "CEO Office & Strategy",
+    "description": "Decision-making, priorities, governance, operating rhythms and execution.",
+    "accent": "gold"
+  },
+  {
+    "slug": "ai-technology-operating-models",
+    "title": "AI, Technology & Operating Models",
+    "description": "How technology changes the way work gets done — not just the tools people use.",
+    "accent": "slate"
+  },
+  {
+    "slug": "building-scaling",
+    "title": "Building & Scaling",
+    "description": "0→1, business models, GTM, scale and organisational capability.",
+    "accent": "forest"
+  },
+  {
+    "slug": "future-of-food-emerging-industries",
+    "title": "Future of Food & Emerging Industries",
+    "description": "Cultivated meat, cell culture, commercialisation and ecosystem-building.",
+    "accent": "sage"
+  },
+  {
+    "slug": "policy-markets-economic-systems",
+    "title": "Policy, Markets & Economic Systems",
+    "description": "Innovation, regulation, women's economic participation and public-private systems.",
+    "accent": "rose"
+  }
+]

@@ -1,52 +1,98 @@
 {
-  "items": [
+  "heroEyebrow": "ADVISORY",
+  "heroHeading": "When the problem is bigger than a meeting.",
+  "heroIntro": "Some problems don't need another presentation. They need someone to understand what is really happening, work through the trade-offs with leadership, design a response and help turn it into execution.",
+  "positioningHeading": "I am usually most useful when the answer isn't obvious yet.",
+  "situations": [
     {
-      "title": "Strategy & Transformation",
-      "description": "Diagnosing what needs to change and designing the response — from strategy through to execution.",
+      "title": "The organisation has grown faster than its operating model.",
+      "description": "Processes, teams and systems that worked at one stage no longer work at the next.",
+      "accent": "terracotta",
       "enabled": true,
       "order": 1
     },
     {
-      "title": "CEO / Chief of Staff Advisory",
-      "description": "Structured thought partnership for founders and CEOs navigating complex, ambiguous decisions.",
+      "title": "The CEO knows something needs to change, but the real problem is still unclear.",
+      "description": "Several symptoms are appearing across functions and leadership needs someone to diagnose the underlying constraint.",
+      "accent": "gold",
       "enabled": true,
       "order": 2
     },
     {
-      "title": "Organisation Design",
-      "description": "Designing the team, structure and operating model an organisation needs for its next stage.",
+      "title": "Strategy exists, but execution keeps breaking between functions.",
+      "description": "Everyone has a plan. Nobody owns the hand-offs.",
+      "accent": "slate",
       "enabled": true,
       "order": 3
     },
     {
-      "title": "0→1 Building",
-      "description": "Standing up new departments, products or business lines from a blank page.",
+      "title": "A founder needs to rethink the product, GTM or business model.",
+      "description": "The company may be pushing harder when the better answer is changing direction.",
+      "accent": "sage",
       "enabled": true,
       "order": 4
     },
     {
-      "title": "Scaling & Operating Models",
-      "description": "Making what already works repeatable and sustainable as the organisation grows.",
+      "title": "AI is being discussed, but nobody has defined what actually needs to change.",
+      "description": "Technology selection is happening before operating-model design.",
+      "accent": "forest",
       "enabled": true,
       "order": 5
     },
     {
-      "title": "Technology / AI-enabled Transformation",
-      "description": "Using technology and AI to materially improve the operating model, not just automate it.",
+      "title": "An emerging industry needs more than company-building.",
+      "description": "Regulation, government, infrastructure, partners and ecosystem development become part of the strategy.",
+      "accent": "rose",
       "enabled": true,
       "order": 6
-    },
-    {
-      "title": "Public / Policy Advisory",
-      "description": "Diagnosing policy and execution together for public and public-private initiatives.",
-      "enabled": true,
-      "order": 7
-    },
-    {
-      "title": "Strategic / Board Advisory",
-      "description": "Structured, evidence-based counsel for boards and leadership teams on strategic direction.",
-      "enabled": true,
-      "order": 8
     }
-  ]
+  ],
+  "engagementHeading": "Ways I can engage",
+  "engagementTypes": [
+    {
+      "title": "Strategic Diagnostic",
+      "description": "For situations where leadership knows something is wrong but has not yet isolated the real constraint.",
+      "outcome": "A sharper problem definition, current-state view, priorities and recommended response.",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "title": "Transformation Engagement",
+      "description": "For organisations that need to move from diagnosis into operating-model, process, technology and execution change.",
+      "outcome": "A structured transformation programme with governance and execution mechanisms.",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "title": "CEO / Founder Advisory",
+      "description": "For leaders who need an ongoing strategic thought partner across priorities, operating questions and difficult decisions.",
+      "outcome": "",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "title": "Investor / Portfolio Support",
+      "description": "For investors who need help diagnosing operating, scaling or transformation challenges inside a portfolio company.",
+      "outcome": "",
+      "enabled": true,
+      "order": 4
+    },
+    {
+      "title": "0→1 & Scale-up Support",
+      "description": "For businesses refining a product, business model, GTM or organisational capability while moving toward the next stage.",
+      "outcome": "",
+      "enabled": true,
+      "order": 5
+    },
+    {
+      "title": "Policy & Ecosystem Projects",
+      "description": "For government, institutions or emerging sectors where company-building intersects with policy, research, regulation or ecosystem infrastructure.",
+      "outcome": "",
+      "enabled": true,
+      "order": 6
+    }
+  ],
+  "openToLine": "I am also open to Board / leadership opportunities and speaking engagements.",
+  "finalCtaPrimaryLabel": "Start a Conversation",
+  "linkedinCtaLabel": "Connect on LinkedIn"
 }

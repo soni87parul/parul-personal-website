@@ -84,3 +84,52 @@ if (filterBar) {
     applyFilter(initialFilter, false);
   }
 }
+
+// Thinking territory filter bar (on /thinking/ page)
+const thinkingFilterBar = document.querySelector("[data-thinking-filter-bar]");
+if (thinkingFilterBar) {
+  const buttons = thinkingFilterBar.querySelectorAll("button[data-territory-filter]");
+  const validFilters = new Set([...buttons].map((b) => b.getAttribute("data-territory-filter")));
+  const cards = document.querySelectorAll("[data-thinking-card]");
+  const emptyState = document.querySelector("[data-thinking-empty-state]");
+
+  function applyThinkingFilter(filter) {
+    if (!validFilters.has(filter)) filter = "all";
+    buttons.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-territory-filter") === filter));
+
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const matches = filter === "all" || card.getAttribute("data-territory") === filter;
+      card.style.display = matches ? "" : "none";
+      if (matches) visibleCount++;
+    });
+
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      applyThinkingFilter(btn.getAttribute("data-territory-filter"));
+    });
+  });
+
+  const initialTerritory = new URLSearchParams(window.location.search).get("territory");
+  if (initialTerritory) {
+    applyThinkingFilter(initialTerritory);
+  }
+}
+
+// Contact form — light conditional fields based on opportunity type
+const opportunityTypeSelect = document.getElementById("opportunityType");
+if (opportunityTypeSelect) {
+  const conditionalGroups = document.querySelectorAll("[data-opportunity-group]");
+
+  function applyOpportunityType(value) {
+    conditionalGroups.forEach((group) => {
+      group.hidden = !!value && group.getAttribute("data-opportunity-group") !== value;
+    });
+  }
+
+  opportunityTypeSelect.addEventListener("change", () => applyOpportunityType(opportunityTypeSelect.value));
+  applyOpportunityType(opportunityTypeSelect.value);
+}

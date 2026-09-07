@@ -1,9 +1,11 @@
 ---
 layout: layouts/base.njk
 ---
+{% import "partials/cta.njk" as cta %}
+{% set territory = territory | territoryData %}
 <section class="page-header">
   <div class="wrap">
-    <span class="eyebrow">{{ category }}</span>
+    <span class="eyebrow">{{ territory.title if territory else category }}</span>
     <h1>{{ title }}</h1>
     {% if subtitle %}<p>{{ subtitle }}</p>{% endif %}
     <p class="card-meta" style="margin-top: 1rem;">{{ date | readableDate }} · {{ content | readingTime }}</p>
@@ -22,6 +24,13 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
 
+    {% if takeaway %}
+    <div class="takeaway-block">
+      <span class="eyebrow">Closing takeaway</span>
+      <p>{{ takeaway }}</p>
+    </div>
+    {% endif %}
+
     {% if tags.length %}
     <div class="pill-list">
       {% for tag in tags %}
@@ -30,7 +39,21 @@ layout: layouts/base.njk
     </div>
     {% endif %}
 
-    <div class="section-footer" style="text-align: left; margin-top: 3rem;">
+    {% set relatedStory = related_experience | experienceByRef(collections.experienceStories) %}
+    {% if relatedStory %}
+    <a class="related-experience-card" href="{{ relatedStory.url }}">
+      <span class="eyebrow">Related Experience</span>
+      <h3>{{ relatedStory.data.title }} →</h3>
+    </a>
+    {% endif %}
+
+    <div class="article-cta-row">
+      {% if relatedStory %}<a class="btn btn--secondary" href="{{ relatedStory.url }}">Read the {{ relatedStory.data.organisation }} Experience story →</a>{% endif %}
+      <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
+      {{ cta.linkedinLink() }}
+    </div>
+
+    <div class="section-footer" style="text-align: left; margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem;">
       <a class="btn btn--text" href="/thinking/">← Back to all thinking</a>
     </div>
   </div>

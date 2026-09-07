@@ -2,58 +2,221 @@
 title: Contact
 layout: layouts/base.njk
 seoTitle: Start a Conversation — Parul Soni Manvati
-seoDescription: I'm always interested in thoughtful conversations around organisations, transformation, technology, emerging businesses and what comes next.
+seoDescription: Tell me what you're working through. The more context you share, the more useful the first conversation can be.
 ---
+{% import "partials/cta.njk" as cta %}
+
 <section class="page-header">
   <div class="wrap">
-    <h1>Start a conversation.</h1>
-    <p>I'm always interested in thoughtful conversations around organisations, transformation, technology, emerging businesses and what comes next.</p>
+    <span class="eyebrow">Start a Conversation</span>
+    <h1>Tell me what you're working through.</h1>
+    <p>The more context you share, the more useful the first conversation can be.</p>
+    {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
+    <p style="margin-top: 0.75rem; color: var(--muted);">Prefer to connect first? <a class="btn--text btn" style="padding:0;" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">Connect with me on LinkedIn →</a></p>
+    {% endif %}
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thank-you/">
-      <input type="hidden" name="form-name" value="contact">
-      <p style="display:none">
-        <label>Don't fill this out if you're human: <input name="bot-field"></label>
-      </p>
+    <div class="contact-layout">
+      <form class="contact-form" style="max-width: none;" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thank-you/">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
 
-      <div class="form-row">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-      </div>
+        <div class="form-section">
+          <h2 class="form-section-title">About you</h2>
+          <p class="form-section-hint">So I know who I'm speaking with and can build a professional record of our conversation.</p>
 
-      <div class="form-row">
-        <label for="organisation">Organisation</label>
-        <input type="text" id="organisation" name="organisation">
-      </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-row">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
 
-      <div class="form-row">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-      </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-row">
+              <label for="organisation">Company / Organisation *</label>
+              <input type="text" id="organisation" name="organisation" required placeholder="Or Independent / Self-employed / Not applicable">
+            </div>
+          </div>
 
-      <div class="form-row">
-        <label for="topic">What would you like to discuss?</label>
-        <select id="topic" name="topic">
-          <option value="Advisory">Advisory</option>
-          <option value="Speaking">Speaking</option>
-          <option value="Board / Strategic Opportunity">Board / Strategic Opportunity</option>
-          <option value="Professional Opportunity">Professional Opportunity</option>
-          <option value="Government / Policy">Government / Policy</option>
-          <option value="Collaboration">Collaboration</option>
-          <option value="Something else">Something else</option>
-        </select>
-      </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="role">Role / Designation</label>
+              <input type="text" id="role" name="role">
+            </div>
+            <div class="form-row">
+              <label for="linkedinProfile">LinkedIn Profile</label>
+              <input type="url" id="linkedinProfile" name="linkedinProfile" placeholder="https://linkedin.com/in/...">
+            </div>
+          </div>
 
-      <div class="form-row">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
+          <div class="form-row">
+            <label for="location">City / Country</label>
+            <input type="text" id="location" name="location">
+          </div>
+        </div>
 
-      <button type="submit" class="btn btn--primary">Send message</button>
-      <p class="form-note">This form is handled by Netlify Forms — submissions arrive in your Netlify dashboard and can be forwarded to your email.</p>
-    </form>
+        <div class="form-section">
+          <h2 class="form-section-title">What brings you here?</h2>
+
+          <div class="form-row">
+            <label for="opportunityType">Opportunity Type *</label>
+            <select id="opportunityType" name="opportunityType" required>
+              <option value="">Select one</option>
+              <option value="leadership">Leadership / Executive Role</option>
+              <option value="transformation">Transformation Project</option>
+              <option value="ceo-advisory">CEO / Founder Advisory</option>
+              <option value="investor">Investor / Portfolio Company Support</option>
+              <option value="board">Board Opportunity</option>
+              <option value="government">Government / Policy Project</option>
+              <option value="speaking">Speaking</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+
+          <fieldset class="conditional-fieldset" data-opportunity-group="leadership">
+            <legend>Leadership / Executive Role</legend>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="l_organisation">Organisation</label><input type="text" id="l_organisation" name="l_organisation"></div>
+              <div class="form-row"><label for="l_role">Role / Mandate</label><input type="text" id="l_role" name="l_role"></div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="l_location">Location</label><input type="text" id="l_location" name="l_location"></div>
+              <div class="form-row"><label for="l_employment">Employment Model</label><input type="text" id="l_employment" name="l_employment"></div>
+            </div>
+            <div class="form-row"><label for="l_why">Why are you reaching out to Parul?</label><textarea id="l_why" name="l_why"></textarea></div>
+          </fieldset>
+
+          <fieldset class="conditional-fieldset" data-opportunity-group="transformation">
+            <legend>Transformation Project</legend>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="t_size">Approximate Organisation Size</label><input type="text" id="t_size" name="t_size"></div>
+              <div class="form-row"><label for="t_functions">Functions Involved</label><input type="text" id="t_functions" name="t_functions"></div>
+            </div>
+            <div class="form-row">
+              <label for="t_stage">Current Stage</label>
+              <select id="t_stage" name="t_stage">
+                <option value="">Select one</option>
+                <option value="diagnosing">Diagnosing</option>
+                <option value="designing">Designing</option>
+                <option value="implementing">Implementing</option>
+                <option value="stuck">Stuck in execution</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset class="conditional-fieldset" data-opportunity-group="investor">
+            <legend>Investor / Portfolio Support</legend>
+            <div class="form-row"><label for="i_fund">Fund / Investment Organisation</label><input type="text" id="i_fund" name="i_fund"></div>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="i_stage">Portfolio Company Stage</label><input type="text" id="i_stage" name="i_stage"></div>
+              <div class="form-row"><label for="i_challenge">Nature of Challenge</label><input type="text" id="i_challenge" name="i_challenge"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="conditional-fieldset" data-opportunity-group="board">
+            <legend>Board Opportunity</legend>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="b_organisation">Organisation</label><input type="text" id="b_organisation" name="b_organisation"></div>
+              <div class="form-row"><label for="b_role">Board / Advisory Role Type</label><input type="text" id="b_role" name="b_role"></div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="b_sector">Sector</label><input type="text" id="b_sector" name="b_sector"></div>
+              <div class="form-row"><label for="b_mandate">Expected Mandate</label><input type="text" id="b_mandate" name="b_mandate"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="conditional-fieldset" data-opportunity-group="government">
+            <legend>Government / Policy</legend>
+            <div class="form-row"><label for="g_institution">Institution</label><input type="text" id="g_institution" name="g_institution"></div>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="g_programme">Programme / Policy Area</label><input type="text" id="g_programme" name="g_programme"></div>
+              <div class="form-row"><label for="g_nature">Nature of Engagement</label><input type="text" id="g_nature" name="g_nature"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="conditional-fieldset" data-opportunity-group="speaking">
+            <legend>Speaking</legend>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="sp_event">Event / Organisation</label><input type="text" id="sp_event" name="sp_event"></div>
+              <div class="form-row"><label for="sp_date">Date</label><input type="text" id="sp_date" name="sp_date"></div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="sp_location">Location / Online</label><input type="text" id="sp_location" name="sp_location"></div>
+              <div class="form-row"><label for="sp_audience">Audience</label><input type="text" id="sp_audience" name="sp_audience"></div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-row"><label for="sp_topic">Topic</label><input type="text" id="sp_topic" name="sp_topic"></div>
+              <div class="form-row"><label for="sp_paid">Paid / Honorarium / To Be Discussed</label><input type="text" id="sp_paid" name="sp_paid"></div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-section">
+          <h2 class="form-section-title">The context</h2>
+
+          <div class="form-row">
+            <label for="goal">What are you trying to accomplish? *</label>
+            <textarea id="goal" name="goal" required></textarea>
+          </div>
+          <div class="form-row">
+            <label for="currentState">What is happening today? *</label>
+            <textarea id="currentState" name="currentState" required></textarea>
+          </div>
+          <div class="form-row">
+            <label for="constraint">What feels like the biggest constraint? *</label>
+            <textarea id="constraint" name="constraint" required></textarea>
+          </div>
+          <div class="form-row">
+            <label for="successOutcome">What would a successful outcome look like? *</label>
+            <textarea id="successOutcome" name="successOutcome" required></textarea>
+          </div>
+          <div class="form-row">
+            <label for="urgency">Why does this need attention now? *</label>
+            <textarea id="urgency" name="urgency" required></textarea>
+          </div>
+          <div class="form-row">
+            <label for="decisionMakers">Who is involved in making the decision?</label>
+            <input type="text" id="decisionMakers" name="decisionMakers">
+          </div>
+          <div class="form-row">
+            <label for="additionalContext">Anything else I should understand before we speak?</label>
+            <textarea id="additionalContext" name="additionalContext"></textarea>
+          </div>
+        </div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I understand that the information I provide will be used to review my enquiry, contact me about it, and maintain a record of our professional interaction.</label>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Send message</button>
+        <p class="form-note">This form is handled by Netlify Forms — submissions arrive in your Netlify dashboard and can be forwarded to your email.</p>
+      </form>
+
+      <aside class="contact-side">
+        <h2>What happens after you submit</h2>
+        <ol>
+          <li>I review every conversation personally.</li>
+          <li>If the opportunity looks relevant, I follow up using the details you've shared.</li>
+          <li>We have a first conversation to understand whether — and how — I can be useful.</li>
+        </ol>
+        {{ cta.linkedinLink() }}
+      </aside>
+    </div>
   </div>
 </section>

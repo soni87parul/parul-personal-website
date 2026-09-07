@@ -1,0 +1,3 @@
+{% macro linkedinLink(text) %}{% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}<a class="btn btn--secondary" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">{{ text or "Connect on LinkedIn →" }}</a>{% endif %}{% endmacro %}
+
+{% macro linkedinTextLink(text) %}{% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}<a class="btn btn--text" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">{{ text or "Connect on LinkedIn →" }}</a>{% endif %}{% endmacro %}

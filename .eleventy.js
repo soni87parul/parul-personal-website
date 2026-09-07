@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+const THINKING_TERRITORIES = require("./src/_data/thinkingTerritories.json");
 
 const CAPABILITY_GROUP_ORDER = [
   "Strategy & Leadership",
@@ -101,6 +102,13 @@ module.exports = function (eleventyConfig) {
       .getFilteredByGlob("src/thinking/*.md")
       .filter((item) => !item.data.draft)
       .sort((a, b) => b.date - a.date);
+  });
+
+  // Only territories with at least one published article are ever shown as a filter option.
+  eleventyConfig.addCollection("activeThinkingTerritories", (collectionApi) => {
+    const published = collectionApi.getFilteredByGlob("src/thinking/*.md").filter((item) => !item.data.draft);
+    const activeTitles = new Set(published.map((item) => item.data.territory).filter(Boolean));
+    return THINKING_TERRITORIES.filter((t) => activeTitles.has(t.title));
   });
 
   eleventyConfig.addCollection("capabilityList", (collectionApi) => {
@@ -212,6 +220,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("publicImpact", (impact) => {
     if (!Array.isArray(impact)) return [];
     return impact.filter((item) => !item.verification_required);
+  });
+
+  eleventyConfig.addFilter("territoryData", (title) => THINKING_TERRITORIES.find((t) => t.title === title) || null);
+
+  eleventyConfig.addFilter("experienceByRef", (slug, allStories) => {
+    if (!slug || !Array.isArray(allStories)) return null;
+    return allStories.find((s) => s.fileSlug === slug) || null;
   });
 
   return {

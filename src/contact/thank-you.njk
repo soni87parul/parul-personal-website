@@ -2,14 +2,20 @@
 title: Thank You
 layout: layouts/base.njk
 seoTitle: Thank You — Parul Soni Manvati
-seoDescription: Your message has been received.
+seoDescription: Thank you. I have your context.
 ---
+{% import "partials/cta.njk" as cta %}
 <section class="page-header">
   <div class="wrap">
-    <h1>Thank you.</h1>
-    <p>Your message has been received — I'll get back to you soon.</p>
+    <h1>Thank you. I have your context.</h1>
+    <p>I review conversations personally. If the opportunity looks relevant, I will follow up using the details you shared.</p>
+    <p style="margin-top: 1.5rem; color: var(--muted);">In the meantime:</p>
+    <div class="hero__ctas" style="margin-top: 1.25rem;">
+      {{ cta.linkedinLink() }}
+      <a class="btn btn--secondary" href="/thinking/">Explore my Thinking →</a>
+    </div>
     <div style="margin-top: 2rem;">
-      <a class="btn btn--secondary" href="/">← Back to homepage</a>
+      <a class="btn btn--text" href="/">← Back to homepage</a>
     </div>
   </div>
 </section>
