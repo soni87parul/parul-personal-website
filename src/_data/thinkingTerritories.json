@@ -3,36 +3,42 @@
     "slug": "transformation-organisations",
     "title": "Transformation & Organisations",
     "description": "How organisations diagnose, redesign and change themselves.",
+    "question": "Is the technology broken, or is it just where a broken process becomes visible?",
     "accent": "terracotta"
   },
   {
     "slug": "ceo-office-strategy",
     "title": "CEO Office & Strategy",
     "description": "Decision-making, priorities, governance, operating rhythms and execution.",
+    "question": "Is the CEO making decisions, or absorbing every decision the organisation can't make itself?",
     "accent": "gold"
   },
   {
     "slug": "ai-technology-operating-models",
     "title": "AI, Technology & Operating Models",
     "description": "How technology changes the way work gets done, not just the tools people use.",
+    "question": "If a model makes part of the decision, who owns the part it gets wrong?",
     "accent": "slate"
   },
   {
     "slug": "building-scaling",
     "title": "Building & Scaling",
     "description": "0→1, business models, GTM, scale and organisational capability.",
+    "question": "Is the constraint the product, or which part of it customers are actually ready to pay for?",
     "accent": "forest"
   },
   {
     "slug": "future-of-food-emerging-industries",
     "title": "Future of Food & Emerging Industries",
     "description": "Cultivated meat, cell culture, commercialisation and ecosystem-building.",
+    "question": "What do you build first when the market exists before the category does?",
     "accent": "sage"
   },
   {
     "slug": "policy-markets-economic-systems",
     "title": "Policy, Markets & Economic Systems",
     "description": "Innovation, regulation, women's economic participation and public-private systems.",
+    "question": "When does a company problem actually become a system problem?",
     "accent": "rose"
   }
 ]

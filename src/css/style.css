@@ -201,6 +201,15 @@ section { padding: var(--space-base) 0; }
   font-weight: 500;
   border-bottom-color: var(--accent);
 }
+.site-header__linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color var(--transition);
+}
+.site-header__linkedin:hover,
+.site-header__linkedin:focus-visible { color: var(--accent); }
 .site-header__toggle { display: none; padding: 0.4rem; }
 .hamburger, .hamburger::before, .hamburger::after {
   display: block; width: 22px; height: 2px; background: var(--foreground);
@@ -333,96 +342,7 @@ section { padding: var(--space-base) 0; }
   color: var(--foreground);
 }
 
-/* ============================================
-   METHOD (5-STAGE FRAMEWORK) — connected journey
-   ============================================ */
-.method__journey {
-  display: flex;
-  position: relative;
-  margin-top: 1rem;
-}
-.method__journey::before {
-  content: "";
-  position: absolute;
-  top: 23px;
-  left: calc(10% + 2px);
-  right: calc(10% + 2px);
-  height: 1px;
-  background: var(--border);
-}
-.method__node {
-  flex: 1;
-  position: relative;
-  padding: 0 0.85rem;
-}
-.method__stage {
-  background: none;
-  cursor: pointer;
-  text-align: center;
-  width: 100%;
-  display: block;
-  padding: 0;
-}
-.method__stage-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--background);
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 1.1rem;
-  transition: background var(--transition), color var(--transition);
-}
-.method__stage:hover .method__stage-number,
-.method__stage[aria-expanded="true"] .method__stage-number {
-  background: var(--accent);
-  color: #fff;
-}
-.method__stage-title {
-  display: block;
-  font-size: 1.2rem;
-  margin-bottom: 0.6rem;
-}
-.method__stage-short {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--accent-secondary);
-  font-weight: 500;
-  margin-bottom: 0;
-}
-.method__stage-detail {
-  font-size: 0.88rem;
-  color: var(--muted);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 240ms ease, margin-top 240ms ease;
-  margin-top: 0;
-}
-.method__stage[aria-expanded="true"] .method__stage-detail {
-  max-height: 140px;
-  margin-top: 0.75rem;
-}
-
-@media (max-width: 860px) {
-  .method__journey { flex-direction: column; margin-top: 0.5rem; }
-  .method__journey::before {
-    top: 0; bottom: 0; left: 22px; right: auto; width: 1px; height: auto;
-  }
-  .method__node { padding: 0 0 2.25rem 0; }
-  .method__node:last-child { padding-bottom: 0; }
-  .method__stage { text-align: left; padding-left: 3.5rem; position: relative; min-height: 46px; }
-  .method__stage-number { position: absolute; left: 0; top: 0; margin-bottom: 0; }
-  .method__stage-title, .method__stage-short, .method__stage-detail { text-align: left; }
-}
+/* Old 5-card method section replaced by .method-path (Visual System 2.0) — see below. */
 
 /* ============================================
    CARDS — EXPERIENCE / THINKING
@@ -916,6 +836,25 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
   font-weight: 500;
   color: var(--card-accent, var(--accent));
 }
+.accent-card__question {
+  font-style: italic;
+  color: var(--foreground);
+  font-size: 0.88rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin: 0;
+  transition: max-height 220ms ease, opacity 220ms ease, margin-top 220ms ease;
+}
+a.accent-card:hover .accent-card__question,
+a.accent-card:focus-visible .accent-card__question {
+  max-height: 100px;
+  opacity: 1;
+  margin-top: 0.75rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accent-card__question { transition: none; }
+}
 
 .accent-card--terracotta { --card-accent: var(--terracotta); --card-tint: rgba(181, 103, 58, 0.07); }
 .accent-card--gold       { --card-accent: var(--gold);       --card-tint: rgba(184, 134, 43, 0.08); }
@@ -1221,3 +1160,410 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
   align-items: center;
   margin-top: 2.5rem;
 }
+
+/* ============================================
+   VISUAL SYSTEM 2.0 — MEDIA PLACEHOLDER
+   Reusable in place of real photography until the
+   photography phase begins. Never a plain grey box.
+   ============================================ */
+.media-placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-align: center;
+  padding: 1.75rem;
+  background: linear-gradient(160deg, #EFEAE0, #F7F4EE);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+.media-placeholder__eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--accent-secondary);
+}
+.media-placeholder__desc {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--foreground);
+  max-width: 26ch;
+}
+.media-placeholder__note { font-size: 0.76rem; color: var(--muted); max-width: 30ch; }
+.media-placeholder--dark {
+  background: linear-gradient(160deg, #2a3f30, #35513F);
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
+}
+.media-placeholder--dark .media-placeholder__desc { color: #fff; }
+.media-placeholder--dark .media-placeholder__eyebrow { color: var(--sand); }
+
+/* ============================================
+   METHODOLOGY PATH — flowing horizontal/vertical
+   transformation path (replaces 5 SaaS process cards)
+   ============================================ */
+.method-path { position: relative; }
+.method-path__track {
+  display: flex;
+  position: relative;
+  gap: 0;
+}
+.method-path__track::before {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-terracotta, var(--terracotta)), var(--accent));
+  opacity: 0.35;
+}
+.method-path__stage {
+  flex: 1;
+  position: relative;
+  padding: 0 0.9rem;
+  text-align: center;
+}
+.method-path__toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+.method-path__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 1.5px solid var(--stage-accent, var(--accent));
+  color: var(--stage-accent, var(--accent));
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.1rem;
+  transition: background var(--transition), color var(--transition);
+}
+.method-path__toggle:hover .method-path__number,
+.method-path__toggle[aria-expanded="true"] .method-path__number {
+  background: var(--stage-accent, var(--accent));
+  color: #fff;
+}
+.method-path__title { display: block; font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.4rem; }
+.method-path__action { display: block; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--stage-accent, var(--accent-secondary)); font-weight: 500; }
+.method-path__example {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: max-height 260ms ease, margin-top 260ms ease;
+}
+.method-path__toggle[aria-expanded="true"] .method-path__example { max-height: 120px; margin-top: 0.75rem; }
+.method-path__stage--1 { --stage-accent: var(--terracotta); }
+.method-path__stage--2 { --stage-accent: var(--gold); }
+.method-path__stage--3 { --stage-accent: var(--slate); }
+.method-path__stage--4 { --stage-accent: var(--sage); }
+.method-path__stage--5 { --stage-accent: var(--accent); }
+.method-path__loop {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 860px) {
+  .method-path__track { flex-direction: column; gap: 2rem; }
+  .method-path__track::before { top: 0; bottom: 0; left: 26px; right: auto; width: 2px; height: auto; }
+  .method-path__stage { text-align: left; padding: 0 0 0 3.75rem; position: relative; min-height: 54px; }
+  .method-path__number { position: absolute; left: 0; top: 0; margin-bottom: 0; }
+}
+
+/* ============================================
+   JOURNEY LINE — Experience chronological spine
+   ============================================ */
+.journey-line { position: relative; padding-left: 2.5rem; }
+.journey-line::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--border);
+}
+.journey-chapter { position: relative; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.journey-chapter:last-child { margin-bottom: 0; }
+.journey-chapter::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 0.4rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 3px solid var(--chapter-accent, var(--accent));
+}
+.journey-chapter__eyebrow {
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--chapter-accent, var(--accent-secondary));
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.journey-chapter__title {
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  max-width: 26ch;
+  margin-bottom: 0.5rem;
+}
+.journey-chapter__role {
+  font-family: var(--font-body);
+  font-style: normal;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+.journey-chapter__body { max-width: 68ch; }
+.journey-chapter__body p { color: var(--foreground); margin-bottom: 1rem; font-size: 1.02rem; }
+.journey-chapter--foundation { --chapter-accent: var(--slate); }
+.journey-chapter--snapdeal { --chapter-accent: var(--terracotta); }
+.journey-chapter--amazon { --chapter-accent: var(--gold); }
+.journey-chapter--addverb { --chapter-accent: var(--accent); }
+.journey-chapter--paytm { --chapter-accent: var(--rose); }
+.journey-chapter--clearmeat { --chapter-accent: var(--sage); }
+.journey-chapter--system { --chapter-accent: var(--slate); }
+
+.journey-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.5rem 1.1rem;
+  margin: 0.5rem 0 1.25rem;
+  border-radius: 999px;
+  background: var(--chapter-tint, rgba(53,81,63,0.07));
+  border: 1px solid var(--border);
+}
+.journey-metric-value { font-family: var(--font-display); font-size: 1.35rem; color: var(--chapter-accent, var(--accent)); }
+.journey-metric-label { font-size: 0.82rem; color: var(--muted); }
+
+.journey-waypoint {
+  position: relative;
+  padding: 0.25rem 0 0.25rem 0;
+  color: var(--muted);
+}
+.journey-waypoint::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 0.55rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--background);
+}
+.journey-waypoint strong { color: var(--foreground); font-weight: 500; }
+
+/* ============================================
+   CONVERGENCE — "What I carry forward"
+   ============================================ */
+.convergence-threads { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2rem; margin-bottom: 2.5rem; }
+.convergence-thread { padding-left: 1rem; border-left: 2px solid var(--border); font-size: 0.98rem; color: var(--foreground); }
+@media (max-width: 700px) { .convergence-threads { grid-template-columns: 1fr; } }
+.convergence-path {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+  color: var(--accent);
+  text-align: center;
+  padding: 2rem 0;
+}
+.convergence-path span:not(:last-child)::after { content: "→"; margin-left: 0.6rem; color: var(--muted); font-family: var(--font-body); font-size: 1rem; }
+
+/* ============================================
+   APPEARANCE CARD — Speaking (event/date/topic-led,
+   distinct from Story/Thinking/Territory families)
+   ============================================ */
+.appearance-list { border-top: 1px solid var(--border); margin-top: 1rem; }
+.appearance-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.appearance-card__year {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--accent-secondary);
+}
+.appearance-card__title { font-size: 1.05rem; margin-bottom: 0.3rem; }
+.appearance-card__meta { font-size: 0.85rem; color: var(--muted); }
+.appearance-card__link { display: inline-block; margin-top: 0.5rem; font-size: 0.85rem; font-weight: 500; color: var(--accent); }
+@media (max-width: 560px) {
+  .appearance-card { grid-template-columns: 1fr; gap: 0.4rem; }
+  .appearance-card__year { font-size: 1.1rem; }
+}
+
+/* ============================================
+   REVEAL-ON-INTERACTION — small discoverable detail
+   that stays reachable via keyboard focus and touch
+   (native <details>, so it degrades to always-visible
+   with JS/CSS disabled)
+   ============================================ */
+.reveal-detail { margin-top: 0.6rem; }
+.reveal-detail summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  display: inline-block;
+}
+.reveal-detail summary::-webkit-details-marker { display: none; }
+.reveal-detail summary::marker { content: ""; }
+.reveal-detail summary:hover { text-decoration: underline; }
+.reveal-detail p { margin-top: 0.5rem; font-size: 0.88rem; color: var(--muted); font-style: italic; }
+
+/* ============================================
+   HOMEPAGE — hero glimpses, evidence grid, ideas grid
+   ============================================ */
+.hero__glimpses {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.hero__glimpse { flex: 1; }
+.hero__glimpse .media-placeholder { min-height: 90px; padding: 0.75rem; }
+.hero__glimpse .media-placeholder__desc { font-size: 0.8rem; }
+@media (max-width: 860px) { .hero__glimpses { max-width: 320px; margin: 1rem auto 0; } }
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+.evidence-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.evidence-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 24px rgba(32, 29, 26, 0.07);
+}
+.evidence-card--compact { padding: 1.75rem; justify-content: flex-start; }
+.evidence-card--dominant { grid-row: span 1; overflow: hidden; }
+.evidence-card--dominant .evidence-card__visual { aspect-ratio: 3/2; }
+.evidence-card--dominant .evidence-card__content { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.evidence-card__meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.evidence-card h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+.evidence-card--dominant h3 { font-size: 1.4rem; }
+.evidence-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; }
+.evidence-card__metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.75rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.evidence-card__metric-value { font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); line-height: 1; }
+.evidence-card__metric-label { font-size: 0.8rem; color: var(--muted); }
+.evidence-card .accent-card__link { margin-top: auto; padding-top: 0.5rem; color: var(--accent); }
+
+@media (max-width: 1024px) {
+  .evidence-grid { grid-template-columns: 1fr; }
+  .evidence-card--dominant { order: -1; }
+}
+
+.ideas-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: stretch; }
+.ideas-grid__featured h3 { font-size: 1.5rem; }
+.ideas-grid__side { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; }
+.ideas-grid__caption { font-size: 0.9rem; color: var(--muted); }
+.ideas-grid__caption a { color: var(--accent); font-weight: 500; }
+.ideas-grid__links { display: flex; flex-direction: column; gap: 0.75rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+.ideas-grid__links a { font-size: 0.95rem; color: var(--foreground); }
+.ideas-grid__links a:hover { color: var(--accent); }
+.mini-strip--compact { font-size: 0.92rem; }
+.mini-strip--compact span:not(:last-child)::after { margin: 0 0.5rem; font-size: 0.85rem; }
+@media (max-width: 860px) { .ideas-grid { grid-template-columns: 1fr; } }
+
+.final-cta__opportunity-line {
+  margin-top: 2rem !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.02em;
+  color: #C9C4BC !important;
+  max-width: 60ch !important;
+}
+
+/* ============================================
+   ABOUT — portrait + career chapters
+   ============================================ */
+.about-portrait { max-width: 280px; margin-left: auto; }
+@media (max-width: 800px) { .about-portrait { max-width: 220px; margin: 0 auto; order: -1; } }
+
+.about-chapters { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.about-chapters__item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.about-chapters__item:last-child { border-bottom: none; }
+.about-chapters__number { font-family: var(--font-display); font-size: 1.5rem; color: var(--accent-secondary); }
+.about-chapters__label { display: block; font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.35rem; }
+.about-chapters__desc { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+/* Dark section (Speaking / major transition) */
+.section--dark {
+  background: var(--foreground);
+  color: var(--background);
+}
+.section--dark .section-label { color: var(--sand); }
+.section--dark h2, .section--dark h3 { color: var(--background); }
+.section--dark p { color: #C9C4BC; }
+.section--dark .btn--secondary { border-color: var(--background); color: var(--background); }
+.section--dark .btn--secondary:hover,
+.section--dark .btn--secondary:active { background: var(--background); color: var(--foreground); }

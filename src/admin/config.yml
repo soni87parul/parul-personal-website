@@ -26,6 +26,13 @@ collections:
           - { label: "Hero — Primary CTA Link", name: "heroPrimaryCtaLink", widget: "string" }
           - { label: "Hero — Secondary CTA Label", name: "heroSecondaryCtaLabel", widget: "string" }
           - { label: "Hero — Secondary CTA Link", name: "heroSecondaryCtaLink", widget: "string" }
+          - label: "Hero — Supporting Glimpses (2-3 small placeholders shown around the portrait)"
+            name: "heroSupportingGlimpses"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Label (what the future photo will show)", name: "label", widget: "string" }
+              - { label: "Aspect Ratio (e.g. \"3/2\", \"16/9\")", name: "ratio", widget: "string" }
 
           - { label: "Credibility — Heading", name: "credibilityHeading", widget: "string" }
           - label: "Credibility — Organisation Names"
@@ -42,40 +49,26 @@ collections:
             fields:
               - { label: "Number (e.g. 01)", name: "number", widget: "string" }
               - { label: "Stage Title", name: "title", widget: "string" }
-              - { label: "Short Action Word (e.g. Understand, Architect, Create)", name: "short", widget: "string" }
-              - { label: "Expanded Detail (shown on hover/tap)", name: "detail", widget: "text" }
+              - { label: "Action Phrase (e.g. \"Find the real constraint\")", name: "action", widget: "string" }
+              - { label: "Discoverable Example (a short concrete example shown on hover/tap/focus)", name: "example", widget: "string" }
 
           - { label: "Experience — Heading", name: "experienceHeading", widget: "string" }
           - { label: "Experience — Subheading", name: "experienceSubheading", widget: "text" }
           - { label: "Experience — View All CTA Label", name: "experienceViewAllLabel", widget: "string" }
 
-          - { label: "About — Heading", name: "aboutHeading", widget: "string" }
-          - { label: "About — Text", name: "aboutText", widget: "text" }
-          - { label: "About — CTA Label", name: "aboutCtaLabel", widget: "string" }
-          - { label: "About — CTA Link", name: "aboutCtaLink", widget: "string" }
-
           - { label: "Thinking — Heading", name: "thinkingHeading", widget: "string" }
           - { label: "Thinking — Subheading", name: "thinkingSubheading", widget: "text" }
           - { label: "Thinking — CTA Label", name: "thinkingCtaLabel", widget: "string" }
 
-          - { label: "Advisory — Heading", name: "advisoryHeading", widget: "string" }
-          - { label: "Advisory — Text", name: "advisoryText", widget: "text" }
-          - { label: "Advisory — CTA Label", name: "advisoryCtaLabel", widget: "string" }
-          - { label: "Advisory — Secondary CTA Label", name: "advisorySecondaryCtaLabel", widget: "string" }
-
           - { label: "Speaking — Heading", name: "speakingHeading", widget: "string" }
           - { label: "Speaking — Text", name: "speakingText", widget: "text" }
           - { label: "Speaking — CTA Label", name: "speakingCtaLabel", widget: "string" }
-          - { label: "Speaking — Secondary CTA Label", name: "speakingSecondaryCtaLabel", widget: "string" }
-
-          - { label: "Impact — Heading", name: "impactHeading", widget: "string" }
-          - { label: "Impact — Text", name: "impactText", widget: "text" }
-          - { label: "Impact — CTA Label", name: "impactCtaLabel", widget: "string" }
 
           - { label: "Final CTA — Heading", name: "finalCtaHeading", widget: "string" }
           - { label: "Final CTA — Text", name: "finalCtaText", widget: "text" }
           - { label: "Final CTA — Primary Label", name: "finalCtaPrimaryLabel", widget: "string" }
           - { label: "Final CTA — Secondary Label", name: "finalCtaSecondaryLabel", widget: "string" }
+          - { label: "Final CTA — Opportunity Line (quiet list beneath, middot-separated)", name: "opportunityLine", widget: "string" }
 
       - name: "experiencePage"
         label: "Experience Page Intro"
@@ -100,7 +93,16 @@ collections:
           - { label: "Short Introduction (who Parul is, shown right under the heading)", name: "shortIntro", widget: "text" }
           - { label: "How I Got Here (optional — hidden until filled in)", name: "howIGotHere", widget: "text", required: false }
           - { label: "The Thread Through My Career (optional — hidden until filled in)", name: "threadThroughCareer", widget: "text", required: false }
+          - label: "Career Chapters (a short why-focused summary, distinct from the detailed Experience page)"
+            name: "careerChapters"
+            widget: "list"
+            required: false
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Chapter Label (e.g. \"Learning the customer\")", name: "label", widget: "string" }
+              - { label: "One-line Description", name: "description", widget: "string" }
           - { label: "Beyond Work (optional — hidden until filled in)", name: "beyondWork", widget: "text", required: false }
+          - { label: "Education (optional, quiet credentials note — hidden until filled in)", name: "education", widget: "text", required: false }
           - { label: "Methodology Reference Line (optional, links to the homepage method section)", name: "methodologyReference", widget: "string", required: false }
           - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
           - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
@@ -381,32 +383,16 @@ collections:
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "Event / Organisation Name", name: "title", widget: "string" }
+              - { label: "Event Name", name: "title", widget: "string" }
+              - { label: "Organisation (optional)", name: "organisation", widget: "string", required: false }
               - { label: "Speaking Topic", name: "topic", widget: "string", required: false }
               - { label: "Year", name: "year", widget: "string", required: false }
               - { label: "Location", name: "location", widget: "string", required: false }
-              - { label: "Video URL", name: "videoUrl", widget: "string", required: false }
               - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Video URL (shows \"Watch talk →\")", name: "videoUrl", widget: "string", required: false }
+              - { label: "External URL (shows \"Learn more →\" if there's no video)", name: "externalUrl", widget: "string", required: false }
               - { label: "Featured", name: "featured", widget: "boolean", default: false }
               - { label: "Published (show on site)", name: "published", widget: "boolean", default: false }
-
-  - name: "impact"
-    label: "Impact"
-    files:
-      - name: "impactProjects"
-        label: "Impact Projects"
-        file: "src/_data/impactProjects.json"
-        fields:
-          - label: "Projects"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.title}}"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Image", name: "image", widget: "image", required: false }
-              - { label: "Link", name: "link", widget: "string", required: false }
-              - { label: "Published (show on site)", name: "published", widget: "boolean", default: true }
 
   - name: "navigation"
     label: "Navigation"

@@ -6,6 +6,7 @@ seoDescription: "A career is more useful when you can see the problems behind th
 ---
 {% import "partials/experience-card.njk" as cards %}
 {% import "partials/recommendation-card.njk" as recs %}
+{% import "partials/media-placeholder.njk" as media %}
 
 <section class="page-header">
   <div class="wrap">
@@ -22,10 +23,192 @@ seoDescription: "A career is more useful when you can see the problems behind th
   </div>
 </section>
 
-{% if collections.activeBroadFilters.length %}
-<section class="capability-filter-section">
+{% set snapdealFlagship = "snapdeal-same-day-next-day" | experienceByRef(collections.experienceStories) %}
+{% set snapdealMore = "snapdeal-supply-chain-recovery" | experienceByRef(collections.experienceStories) %}
+{% set amazonFlagship = "amazon-ai-ml-transformation" | experienceByRef(collections.experienceStories) %}
+{% set addverbFlagship = "addverb-enterprise-transformation" | experienceByRef(collections.experienceStories) %}
+{% set addverbCeoOffice = "addverb-ceo-office-rhythm" | experienceByRef(collections.experienceStories) %}
+{% set addverbSupply = "addverb-semiconductor-supply" | experienceByRef(collections.experienceStories) %}
+{% set clearmeatBusiness = "clearmeat-business-model" | experienceByRef(collections.experienceStories) %}
+{% set clearmeatRegulatory = "clearmeat-building-emerging-category" | experienceByRef(collections.experienceStories) %}
+{% set clearmeatSales = "clearmeat-techno-commercial-sales" | experienceByRef(collections.experienceStories) %}
+{% set clearmeatVendor = "clearmeat-vendor-operations-portal" | experienceByRef(collections.experienceStories) %}
+{% set systemFlagship = "abwci-msme-service-engine" | experienceByRef(collections.experienceStories) %}
+{% set systemMarket = "abwci-digital-market-access" | experienceByRef(collections.experienceStories) %}
+{% set systemUnctad = "unctad-abwci-digital-capacity-building" | experienceByRef(collections.experienceStories) %}
+
+<section class="tier-dominant">
   <div class="wrap">
-    <span class="capability-filter__intro-label">Explore</span>
+    <div class="section-heading">
+      <span class="section-label">The Journey</span>
+      <h2>Increasing complexity, one connecting thread.</h2>
+      <p>Each stage of this career took on a harder version of the same question: what does this organisation actually need to change?</p>
+    </div>
+
+    <div class="journey-line">
+
+      <div class="journey-chapter journey-chapter--foundation">
+        <span class="journey-chapter__eyebrow">Foundation · DHL Express &amp; ICICI Bank</span>
+        <h3 class="journey-chapter__title">Learning the customer and commercial reality</h3>
+        <div class="journey-chapter__body">
+          <p>Early career at DHL Express and ICICI Bank built the fundamentals everything after it relies on: understanding the customer, commercial discipline, frontline execution, and learning how businesses actually operate day to day.</p>
+        </div>
+      </div>
+
+      {% if snapdealFlagship %}
+      <div class="journey-chapter journey-chapter--snapdeal">
+        <span class="journey-chapter__eyebrow">Snapdeal{% if snapdealFlagship.data.year_or_period %} · {{ snapdealFlagship.data.year_or_period }}{% endif %}</span>
+        <h3 class="journey-chapter__title">Building speed and operational foundations</h3>
+        <div class="journey-chapter__body">
+          <p>{{ snapdealFlagship.data.summary }}</p>
+          {% set snapImpact = snapdealFlagship.data.impact | publicImpact %}
+          {% if snapImpact.length %}
+          <div class="journey-metric">
+            <span class="journey-metric-value">{{ snapImpact[0].value }}</span>
+            <span class="journey-metric-label">{{ snapImpact[0].label }}</span>
+          </div>
+          {% endif %}
+          <a class="btn btn--text" href="{{ snapdealFlagship.url }}">Explore the transformation →</a>
+          {% if snapdealMore %}
+          <p class="journey-waypoint" style="margin-top: 1.5rem;">Related: <a href="{{ snapdealMore.url }}"><strong>{{ snapdealMore.data.title }}</strong></a></p>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if amazonFlagship %}
+      <div class="journey-chapter journey-chapter--amazon">
+        <span class="journey-chapter__eyebrow">Amazon{% if amazonFlagship.data.year_or_period %} · {{ amazonFlagship.data.year_or_period }}{% endif %}</span>
+        <h3 class="journey-chapter__title">Operating at global scale and redesigning work with technology</h3>
+        <div class="journey-chapter__body">
+          <div class="split" style="align-items: start; gap: 2rem;">
+            <div>
+              <p>{{ amazonFlagship.data.summary }}</p>
+              {% set amazonImpact = amazonFlagship.data.impact | publicImpact %}
+              {% if amazonImpact.length %}
+              <div class="journey-metric">
+                <span class="journey-metric-value">{{ amazonImpact[0].value }}</span>
+                <span class="journey-metric-label">{{ amazonImpact[0].label }}</span>
+              </div>
+              {% endif %}
+              <a class="btn btn--text" href="{{ amazonFlagship.url }}">Explore the transformation →</a>
+            </div>
+            <div>{{ media.placeholder("Amazon operations, working session", "3/2") }}</div>
+          </div>
+          <p class="journey-waypoint" style="margin-top: 1.5rem;">Related:
+            {% if amazonFlagship %}<a href="/experience/amazon-catalogue-compliance/"><strong>Catalogue Compliance</strong></a>,{% endif %}
+            <a href="/experience/amazon-five-marketplace-launch/"><strong>Marketplace Launch</strong></a> and
+            <a href="/experience/amazon-governance-scale/"><strong>Governance at Scale</strong></a>
+          </p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if addverbFlagship %}
+      <div class="journey-chapter journey-chapter--addverb">
+        <span class="journey-chapter__eyebrow">Addverb{% if addverbCeoOffice.data.year_or_period %} · {{ addverbCeoOffice.data.year_or_period }}{% endif %}</span>
+        <h3 class="journey-chapter__title">Working beside leadership on enterprise transformation</h3>
+        <div class="journey-chapter__body">
+          <p>{{ addverbFlagship.data.summary }}</p>
+          {% set addverbImpact = addverbFlagship.data.impact | publicImpact %}
+          {% if addverbImpact.length %}
+          <div class="journey-metric">
+            <span class="journey-metric-value">{{ addverbImpact[0].value }}</span>
+            <span class="journey-metric-label">{{ addverbImpact[0].label }}</span>
+          </div>
+          {% endif %}
+          <a class="btn btn--text" href="{{ addverbFlagship.url }}">Explore the transformation →</a>
+          <p class="journey-waypoint" style="margin-top: 1.5rem;">Related:
+            {% if addverbCeoOffice %}<a href="{{ addverbCeoOffice.url }}"><strong>{{ addverbCeoOffice.data.title }}</strong></a>{% endif %}{% if addverbSupply %} and <a href="{{ addverbSupply.url }}"><strong>{{ addverbSupply.data.title }}</strong></a>{% endif %}
+          </p>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="journey-chapter journey-chapter--paytm">
+        <span class="journey-chapter__eyebrow">Paytm</span>
+        <h3 class="journey-chapter__title">Operating inside a large-scale digital ecosystem</h3>
+        <div class="journey-chapter__body">
+          <p>A chapter still being written up in detail. Watch this space, or ask directly in a conversation.</p>
+        </div>
+      </div>
+
+      {% if clearmeatBusiness %}
+      <div class="journey-chapter journey-chapter--clearmeat">
+        <span class="journey-chapter__eyebrow">ClearMeat</span>
+        <h3 class="journey-chapter__title">I chose to step into the unknown.</h3>
+        <div class="journey-chapter__body">
+          <p>After years operating inside established organisations and large systems, I deliberately stepped into an emerging industry where many of the structures a business normally relies on were still being created. This chapter is not a pivot into a narrow specialism. It is a bet on operating range: learning across emerging technology, business-model adaptation, commercialisation, capital discipline, government and regulation, and ecosystem development, with fewer established structures to lean on than at any previous stage.</p>
+          <p>{{ clearmeatBusiness.data.summary }}</p>
+          {% set clearmeatImpact = clearmeatBusiness.data.impact | publicImpact %}
+          {% if clearmeatImpact.length %}
+          <div class="journey-metric">
+            <span class="journey-metric-value">{{ clearmeatImpact[0].value }}</span>
+            <span class="journey-metric-label">{{ clearmeatImpact[0].label }}</span>
+          </div>
+          {% endif %}
+          <a class="btn btn--text" href="{{ clearmeatBusiness.url }}">Explore the transformation →</a>
+          {% if clearmeatRegulatory %}
+          <p style="margin-top: 1.5rem; color: var(--muted);">{{ clearmeatRegulatory.data.summary }}</p>
+          <a class="btn btn--text" href="{{ clearmeatRegulatory.url }}">Explore the regulatory ecosystem story →</a>
+          {% endif %}
+          <p class="journey-waypoint" style="margin-top: 1.5rem;">Related:
+            {% if clearmeatSales %}<a href="{{ clearmeatSales.url }}"><strong>{{ clearmeatSales.data.title }}</strong></a>{% endif %}{% if clearmeatVendor %} and <a href="{{ clearmeatVendor.url }}"><strong>{{ clearmeatVendor.data.title }}</strong></a>{% endif %}
+          </p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if systemFlagship %}
+      <div class="journey-chapter journey-chapter--system">
+        <span class="journey-chapter__eyebrow">System &amp; Ecosystem Work</span>
+        <h3 class="journey-chapter__title">Applying operating experience to broader institutional and policy problems</h3>
+        <div class="journey-chapter__body">
+          <p>{{ systemFlagship.data.summary }}</p>
+          <a class="btn btn--text" href="{{ systemFlagship.url }}">Explore the transformation →</a>
+          <p class="journey-waypoint" style="margin-top: 1.5rem;">Related:
+            {% if systemMarket %}<a href="{{ systemMarket.url }}"><strong>{{ systemMarket.data.title }}</strong></a>{% endif %}{% if systemUnctad %} and <a href="{{ systemUnctad.url }}"><strong>{{ systemUnctad.data.title }}</strong></a>{% endif %}
+          </p>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<section class="tier-dominant teaser">
+  <div class="wrap">
+    <div class="section-heading" style="margin-left: auto; margin-right: auto; text-align: center;">
+      <span class="section-label" style="text-align: center; display: block;">What I Carry Forward</span>
+      <h2>Threads that connect every chapter</h2>
+    </div>
+    <div class="convergence-threads">
+      <p class="convergence-thread">Large-scale operating discipline, from running global operations at Amazon scale.</p>
+      <p class="convergence-thread">CEO-level transformation thinking, from working directly inside the CEO Office at Addverb.</p>
+      <p class="convergence-thread">Commercial and customer understanding, built from the ground up at DHL and ICICI.</p>
+      <p class="convergence-thread">Zero-to-one resilience and capital discipline, forged by building ClearMeat's commercial engine from nothing.</p>
+      <p class="convergence-thread">An AI and technology operating-model perspective, from redesigning how machine learning changes real work.</p>
+      <p class="convergence-thread">Policy and ecosystem thinking, from building market and regulatory infrastructure where none existed.</p>
+    </div>
+    <div class="convergence-path" aria-label="Figure Out, Design, Build, Scale, Transform">
+      <span>Figure Out</span><span>Design</span><span>Build</span><span>Scale</span><span>Transform</span>
+    </div>
+    <p style="text-align: center; max-width: 56ch; margin: 0 auto 2rem; color: var(--muted); font-size: 1.05rem;">The next chapter is about applying these lessons to problems where the scale, complexity and consequence are even greater.</p>
+    <div class="teaser__ctas" style="justify-content: center;">
+      <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
+    </div>
+  </div>
+</section>
+
+{% if collections.activeBroadFilters.length %}
+<section class="capability-filter-section" style="padding-top: clamp(2rem, 4vw, 3rem);">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Explore</span>
+      <h2>Every problem, by theme</h2>
+    </div>
+    <span class="capability-filter__intro-label">Filter by capability</span>
     <div class="capability-filter" data-filter-bar>
       <button type="button" class="is-active" data-filter="all">All</button>
       {% for bf in collections.activeBroadFilters %}
@@ -39,12 +222,8 @@ seoDescription: "A career is more useful when you can see the problems behind th
 
 {% set flagshipStories = collections.experienceStories | featured %}
 {% if flagshipStories.length %}
-<section class="experience-teaser tier-dominant">
+<section class="experience-teaser tier-secondary">
   <div class="wrap">
-    <div class="section-heading">
-      <span class="section-label">Featured</span>
-      <h2>Featured Transformations</h2>
-    </div>
     <div class="flagship-grid">
       {% for story in flagshipStories %}
         {{ cards.storyCard(story, collections.capabilityList, "large" if loop.first else "regular") }}
@@ -60,10 +239,6 @@ seoDescription: "A career is more useful when you can see the problems behind th
 {% if layer2Stories.length %}
 <section class="tier-secondary">
   <div class="wrap">
-    <div class="section-heading">
-      <span class="section-label">More</span>
-      <h2>More problems I've worked on</h2>
-    </div>
     <div class="card-grid">
       {% for story in layer2Initial %}
         {{ cards.storyCard(story, collections.capabilityList) }}

@@ -2,11 +2,17 @@
 layout: layouts/base.njk
 ---
 {% import "partials/recommendation-card.njk" as recs %}
+{% import "partials/media-placeholder.njk" as media %}
 
 <section class="page-header">
-  <div class="wrap">
-    <h1>{{ title }}</h1>
-    {% if shortIntro %}<p>{{ shortIntro }}</p>{% endif %}
+  <div class="wrap split">
+    <div>
+      <h1>{{ title }}</h1>
+      {% if shortIntro %}<p>{{ shortIntro }}</p>{% endif %}
+    </div>
+    <div class="about-portrait">
+      {{ media.placeholder("Executive portrait, natural setting", "4/5") }}
+    </div>
   </div>
 </section>
 
@@ -22,18 +28,45 @@ layout: layouts/base.njk
       <h2>The thread through my career</h2>
       <p>{{ threadThroughCareer }}</p>
       {% endif %}
+    </div>
 
-      {% if beyondWork %}
+    {% if careerChapters.length %}
+    <div class="about-chapters">
+      {% for chapter in careerChapters %}
+      <div class="about-chapters__item">
+        <span class="about-chapters__number">{{ "0" + (loop.index | string) if loop.index < 10 else loop.index }}</span>
+        <div>
+          <span class="about-chapters__label">{{ chapter.label }}</span>
+          <p class="about-chapters__desc">{{ chapter.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if beyondWork %}
+    <div class="prose" style="margin-top: 2.5rem;">
       <h2>Beyond work</h2>
       <p>{{ beyondWork }}</p>
-      {% endif %}
     </div>
+    {% endif %}
 
     {% if methodologyReference %}
     <p class="about-methodology-reference"><a href="/#method">{{ methodologyReference }}</a></p>
     {% endif %}
   </div>
 </section>
+
+{% if education %}
+<section class="tier-supporting">
+  <div class="wrap">
+    <div class="section-heading" style="margin-bottom: 1rem;">
+      <span class="section-label">Education</span>
+    </div>
+    <p style="color: var(--muted); max-width: 60ch;">{{ education }}</p>
+  </div>
+</section>
+{% endif %}
 
 {% if collections.recommendations.length %}
 <section class="teaser tier-secondary">

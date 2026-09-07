@@ -1,0 +1,7 @@
+{% macro placeholder(desc, ratio, note, dark) %}
+<div class="media-placeholder{% if dark %} media-placeholder--dark{% endif %}" style="aspect-ratio: {{ ratio or '4/5' }};">
+  <span class="media-placeholder__eyebrow">Image placeholder</span>
+  <span class="media-placeholder__desc">{{ desc }}</span>
+  {% if note %}<span class="media-placeholder__note">{{ note }}</span>{% endif %}
+</div>
+{% endmacro %}

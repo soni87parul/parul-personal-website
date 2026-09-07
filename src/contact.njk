@@ -78,15 +78,19 @@ seoDescription: Tell me what you're working through. The more context you share,
             <label for="opportunityType">Opportunity Type *</label>
             <select id="opportunityType" name="intent" required>
               <option value="">Select one</option>
-              <option value="leadership">Leadership / Executive Role</option>
-              <option value="transformation">Transformation Project</option>
-              <option value="ceo-advisory">CEO / Founder Advisory</option>
-              <option value="investor">Investor / Portfolio Company Support</option>
-              <option value="board">Board Opportunity</option>
-              <option value="government">Government / Policy Project</option>
-              <option value="speaking">Speaking</option>
-              <option value="collaboration">Collaboration</option>
-              <option value="other">Something Else</option>
+              <optgroup label="Senior leadership &amp; transformation">
+                <option value="leadership">Leadership / Executive Role</option>
+                <option value="transformation">Transformation / CEO Office Mandate</option>
+                <option value="board">Board / Independent Director</option>
+              </optgroup>
+              <optgroup label="Also welcome">
+                <option value="ceo-advisory">CEO / Founder Advisory</option>
+                <option value="investor">Investor / Portfolio Company Support</option>
+                <option value="government">Government / Policy Project</option>
+                <option value="speaking">Speaking</option>
+                <option value="collaboration">Collaboration</option>
+                <option value="other">Something Else</option>
+              </optgroup>
             </select>
           </div>
 

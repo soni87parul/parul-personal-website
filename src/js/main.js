@@ -16,11 +16,13 @@ if (navToggle && siteNav) {
   });
 }
 
-// Five-stage method — click to expand detail
-document.querySelectorAll(".method__stage").forEach((stage) => {
+// Methodology path — click/Enter/Space reveals the discoverable example.
+// A real <button> already gets keyboard activation for free; this just
+// toggles the visual state and keeps only one stage open at a time.
+document.querySelectorAll(".method-path__toggle").forEach((stage) => {
   stage.addEventListener("click", () => {
     const isExpanded = stage.getAttribute("aria-expanded") === "true";
-    document.querySelectorAll(".method__stage").forEach((s) => s.setAttribute("aria-expanded", "false"));
+    document.querySelectorAll(".method-path__toggle").forEach((s) => s.setAttribute("aria-expanded", "false"));
     stage.setAttribute("aria-expanded", isExpanded ? "false" : "true");
   });
 });

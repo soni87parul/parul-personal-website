@@ -4,7 +4,6 @@
     { "label": "Experience", "link": "/experience/" },
     { "label": "Thinking", "link": "/thinking/" },
     { "label": "Advisory", "link": "/advisory/" },
-    { "label": "Speaking", "link": "/speaking/" },
-    { "label": "Impact", "link": "/impact/" }
+    { "label": "Speaking", "link": "/speaking/" }
   ]
 }

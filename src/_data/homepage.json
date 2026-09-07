@@ -1,5 +1,5 @@
 {
-  "heroPositioningLabel": "Transformation Leader · Chief of Staff · Strategic Operator",
+  "heroPositioningLabel": "Transformation Leader · Strategic Operator",
   "heroHeadline": "I help organisations figure out what's next.",
   "heroSubtext": "I work with CEOs and leadership teams to understand complex problems, design the right response, build the systems and teams required, and scale what works.",
   "heroImage": "/assets/images/hero-placeholder.svg",
@@ -8,6 +8,10 @@
   "heroPrimaryCtaLink": "/experience/",
   "heroSecondaryCtaLabel": "Start a Conversation",
   "heroSecondaryCtaLink": "/contact/",
+  "heroSupportingGlimpses": [
+    { "label": "Working session", "ratio": "3/2" },
+    { "label": "Speaking", "ratio": "16/9" }
+  ],
 
   "credibilityHeading": "A career across technology, operations, transformation and emerging businesses.",
   "credibilityLogos": [
@@ -23,71 +27,56 @@
 
   "signatureStatement": "I am usually most useful when the answer isn't obvious yet.",
 
-  "methodHeading": "How I work",
+  "methodHeading": "How I work through difficult problems",
   "methodSubheading": "Complex problems rarely arrive neatly defined. The work starts before the solution.",
   "methodStages": [
     {
       "number": "01",
       "title": "Figure Out",
-      "short": "Understand",
-      "detail": "Understand the ambition. Research the context. Listen to leadership, investors and people closest to the problem. Separate symptoms from the real constraint."
+      "action": "Find the real constraint",
+      "example": "The ERP isn't the problem. The process is fragmented."
     },
     {
       "number": "02",
       "title": "Design",
-      "short": "Architect",
-      "detail": "Define the future state and decide what needs to change across strategy, organisation, process, technology and behaviour. Establish priorities, governance and measures."
+      "action": "Define the better way",
+      "example": "Redesign ownership, process and governance."
     },
     {
       "number": "03",
       "title": "Build",
-      "short": "Create",
-      "detail": "Put the operating model behind the strategy: teams, processes, technology, ownership, resources and execution mechanisms."
+      "action": "Put it into operation",
+      "example": "Build the team, system and execution rhythm."
     },
     {
       "number": "04",
       "title": "Scale",
-      "short": "Systematise",
-      "detail": "Move beyond the pilot. Standardise what works, strengthen capability, use technology where useful and make the model repeatable."
+      "action": "Make it repeatable",
+      "example": "Standardise what works across the organisation."
     },
     {
       "number": "05",
       "title": "Transform",
-      "short": "Change",
-      "detail": "Embed the change into how the organisation operates and prepare it for its next stage."
+      "action": "Change what the organisation can do",
+      "example": "The new way of working becomes the normal way."
     }
   ],
 
   "experienceHeading": "Problems I've helped solve.",
   "experienceSubheading": "A career is more useful when you can see the problems behind the titles.",
-  "experienceCtaLabel": "Explore the story",
-  "experienceViewAllLabel": "View all experience →",
-
-  "aboutHeading": "I like difficult problems.",
-  "aboutText": "I'm most useful when the problem is complex, the answer isn't obvious, and different stakeholders see different versions of the truth. That's usually where structure, strategy and good execution matter most.",
-  "aboutCtaLabel": "More about Parul →",
-  "aboutCtaLink": "/about/",
+  "experienceViewAllLabel": "Explore the full career journey →",
 
   "thinkingHeading": "Thinking",
   "thinkingSubheading": "Notes on strategy, transformation, technology, organisations, scaling and the problems leaders don't always have time to think through.",
-  "thinkingCtaLabel": "Read all thinking →",
-
-  "advisoryHeading": "When the problem is bigger than a meeting.",
-  "advisoryText": "I work selectively with founders, CEOs, leadership teams and organisations navigating important transitions, from defining what needs to change to designing and building what comes next.",
-  "advisoryCtaLabel": "Explore Advisory →",
-  "advisorySecondaryCtaLabel": "Start a Conversation →",
+  "thinkingCtaLabel": "Explore Thinking →",
 
   "speakingHeading": "Conversations worth having.",
   "speakingText": "Parul speaks on strategy, transformation, technology, scaling, emerging businesses, leadership and building organisations for what comes next.",
-  "speakingCtaLabel": "Speaking & Events →",
-  "speakingSecondaryCtaLabel": "Invite Parul to speak →",
-
-  "impactHeading": "Beyond business",
-  "impactText": "Building institutions and communities, not only businesses, including work with ABWCI / Women in Supply Chain.",
-  "impactCtaLabel": "Explore Impact →",
+  "speakingCtaLabel": "Explore Speaking →",
 
   "finalCtaHeading": "Have a difficult problem to think through?",
-  "finalCtaText": "I'm always interested in thoughtful conversations around organisations, transformation, technology, emerging businesses and what comes next.",
+  "finalCtaText": "I'm entering the next chapter of my career with a broader operating lens, shaped by building at scale, working through transformation, and stepping into emerging industries where the answers were not already written. I'm interested in consequential problems, ambitious organisations and opportunities where I can help figure out what comes next.",
   "finalCtaPrimaryLabel": "Start a Conversation",
-  "finalCtaSecondaryLabel": "Connect on LinkedIn"
+  "finalCtaSecondaryLabel": "Connect on LinkedIn",
+  "opportunityLine": "Leadership · Transformation · CEO Office · Board · Advisory · Investor / Portfolio · Policy & Ecosystems · Speaking"
 }

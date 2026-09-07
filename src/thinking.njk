@@ -39,6 +39,7 @@ seoDescription: "Notes on transformation, organisations and building what comes 
       <a class="accent-card accent-card--{{ t.accent }}" href="/thinking/?territory={{ t.slug }}">
         <span class="accent-card__label">{{ t.title }}</span>
         <p>{{ t.description }}</p>
+        {% if t.question %}<p class="accent-card__question">{{ t.question }}</p>{% endif %}
         <span class="accent-card__link">Explore →</span>
       </a>
       {% endfor %}

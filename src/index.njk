@@ -2,7 +2,8 @@
 title: Parul Soni Manvati | Transformation Leader & Strategic Operator
 layout: layouts/base.njk
 ---
-{% import "partials/experience-card.njk" as cards %}
+{% import "partials/media-placeholder.njk" as media %}
+{% import "partials/cta.njk" as cta %}
 
 <section class="hero">
   <div class="wrap hero__grid">
@@ -15,12 +16,17 @@ layout: layouts/base.njk
         <a class="btn btn--secondary" href="{{ homepage.heroSecondaryCtaLink }}">{{ homepage.heroSecondaryCtaLabel }}</a>
       </div>
     </div>
-    <div class="hero__image-wrap">
-      {% if homepage.heroImage and "placeholder" not in homepage.heroImage %}
-      <img src="{{ homepage.heroImage }}" alt="{{ homepage.heroImageAlt }}">
-      {% else %}
-      <div class="hero__image-placeholder">
-        [Hero photograph placeholder]<br>Replace via Admin → Homepage → Hero Image
+    <div>
+      <div class="hero__image-wrap">
+        {{ media.placeholder("Executive portrait", "4/5", "Confident, approachable, credible for a CEO/board/investor audience.") }}
+      </div>
+      {% if homepage.heroSupportingGlimpses.length %}
+      <div class="hero__glimpses">
+        {% for glimpse in homepage.heroSupportingGlimpses %}
+        <div class="hero__glimpse">
+          {{ media.placeholder(glimpse.label, glimpse.ratio) }}
+        </div>
+        {% endfor %}
       </div>
       {% endif %}
     </div>
@@ -52,148 +58,158 @@ layout: layouts/base.njk
       <h2>{{ homepage.methodHeading }}</h2>
       <p>{{ homepage.methodSubheading }}</p>
     </div>
-    <div class="method__journey">
-      {% for stage in homepage.methodStages %}
-      <div class="method__node">
-        <button class="method__stage" type="button" aria-expanded="false">
-          <span class="method__stage-number">{{ stage.number }}</span>
-          <span class="method__stage-title">{{ stage.title }}</span>
-          <span class="method__stage-short">{{ stage.short }}</span>
-          <p class="method__stage-detail">{{ stage.detail }}</p>
-        </button>
-      </div>
-      {% endfor %}
-    </div>
+    {% include "partials/method-path.njk" %}
   </div>
 </section>
 
-{% set allFeatured = collections.experienceStories | featured %}
-{% set primaryStories = allFeatured | limit(3) %}
-{% set secondaryStories = allFeatured | sliceArr(3, 5) %}
-{% if primaryStories.length %}
 <section class="experience-teaser tier-dominant">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Selected Experience</span>
+      <span class="section-label">Evidence</span>
       <h2>{{ homepage.experienceHeading }}</h2>
       <p>{{ homepage.experienceSubheading }}</p>
     </div>
 
-    <div class="card-grid">
-      {% for story in primaryStories %}
-        {{ cards.storyCard(story, collections.capabilityList) }}
-      {% endfor %}
-    </div>
+    {% set snapdeal = "snapdeal-same-day-next-day" | experienceByRef(collections.experienceStories) %}
+    {% set amazon = "amazon-ai-ml-transformation" | experienceByRef(collections.experienceStories) %}
+    {% set addverb = "addverb-enterprise-transformation" | experienceByRef(collections.experienceStories) %}
 
-    {% if secondaryStories.length %}
-    <ul class="secondary-story-links">
-      {% for story in secondaryStories %}
-      <li><a href="{{ story.url }}">{{ story.data.organisation }}: {{ story.data.title }} →</a></li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    <div class="evidence-grid">
+      {% if snapdeal %}
+      <a class="evidence-card evidence-card--compact" href="{{ snapdeal.url }}">
+        <span class="evidence-card__meta">{{ snapdeal.data.organisation }}{% if snapdeal.data.year_or_period %} · {{ snapdeal.data.year_or_period }}{% endif %}</span>
+        <h3>{{ snapdeal.data.title }}</h3>
+        <p>{{ snapdeal.data.summary }}</p>
+        {% set snapImpact = snapdeal.data.impact | publicImpact %}
+        {% if snapImpact.length %}
+        <div class="evidence-card__metric">
+          <span class="evidence-card__metric-value">{{ snapImpact[0].value }}</span>
+          <span class="evidence-card__metric-label">{{ snapImpact[0].label }}</span>
+        </div>
+        {% endif %}
+        <span class="accent-card__link">Explore the transformation →</span>
+      </a>
+      {% endif %}
+
+      {% if amazon %}
+      <a class="evidence-card evidence-card--dominant" href="{{ amazon.url }}">
+        <div class="evidence-card__visual">
+          {{ media.placeholder("Working session, operations review", "3/2") }}
+        </div>
+        <div class="evidence-card__content">
+          <span class="evidence-card__meta">{{ amazon.data.organisation }}{% if amazon.data.year_or_period %} · {{ amazon.data.year_or_period }}{% endif %}</span>
+          <h3>{{ amazon.data.title }}</h3>
+          <p>{{ amazon.data.summary }}</p>
+          {% set amazonImpact = amazon.data.impact | publicImpact %}
+          {% if amazonImpact.length %}
+          <div class="evidence-card__metric">
+            <span class="evidence-card__metric-value">{{ amazonImpact[0].value }}</span>
+            <span class="evidence-card__metric-label">{{ amazonImpact[0].label }}</span>
+          </div>
+          {% endif %}
+          {% if amazon.data.public_categories.length %}
+          <ul class="pill-list" style="margin-top: 0;">
+            {% for label in amazon.data.public_categories | limit(3) %}
+            <li class="pill">{{ label }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          <span class="accent-card__link">Explore the transformation →</span>
+        </div>
+      </a>
+      {% endif %}
+
+      {% if addverb %}
+      <a class="evidence-card evidence-card--compact" href="{{ addverb.url }}">
+        <span class="evidence-card__meta">{{ addverb.data.organisation }}{% if addverb.data.year_or_period %} · {{ addverb.data.year_or_period }}{% endif %}</span>
+        <h3>{{ addverb.data.title }}</h3>
+        <p>{{ addverb.data.summary }}</p>
+        {% set addverbImpact = addverb.data.impact | publicImpact %}
+        {% if addverbImpact.length %}
+        <div class="evidence-card__metric">
+          <span class="evidence-card__metric-value">{{ addverbImpact[0].value }}</span>
+          <span class="evidence-card__metric-label">{{ addverbImpact[0].label }}</span>
+        </div>
+        {% endif %}
+        <span class="accent-card__link">Explore the transformation →</span>
+      </a>
+      {% endif %}
+    </div>
 
     <div class="section-footer">
       <a class="btn btn--text" href="/experience/">{{ homepage.experienceViewAllLabel }}</a>
     </div>
   </div>
 </section>
-{% endif %}
 
+{% set featuredIdea = collections.articles | featured | limit(1) %}
+{% set moreIdeas = collections.articles | notFeatured | limit(3) %}
+{% if featuredIdea.length or moreIdeas.length %}
 <section class="thinking-teaser tier-secondary">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Thinking</span>
+      <span class="section-label">Ideas</span>
       <h2>{{ homepage.thinkingHeading }}</h2>
       <p>{{ homepage.thinkingSubheading }}</p>
     </div>
 
-    {% if collections.articles.length %}
-    <div class="card-grid">
-      {% for article in collections.articles | limit(3) %}
-      <a class="article-card" href="{{ article.url }}">
-        <span class="card-category">{{ article.data.category }}</span>
-        <h3>{{ article.data.title }}</h3>
-        <p class="card-body">{{ article.data.excerpt }}</p>
-        <div class="card-meta">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
+    <div class="ideas-grid">
+      {% if featuredIdea.length %}
+      {% set idea = featuredIdea[0] %}
+      {% set ideaTerritory = idea.data.territory | territoryData %}
+      <a class="accent-card ideas-grid__featured{% if ideaTerritory %} accent-card--{{ ideaTerritory.accent }}{% endif %}" href="{{ idea.url }}">
+        {% if ideaTerritory %}<span class="accent-card__label">{{ ideaTerritory.title }}</span>{% endif %}
+        <h3>{{ idea.data.title }}</h3>
+        <p>{{ idea.data.excerpt }}</p>
         <span class="accent-card__link">Read the article →</span>
       </a>
-      {% endfor %}
+      {% endif %}
+
+      <div class="ideas-grid__side">
+        <div class="mini-strip mini-strip--compact">
+          <span>Work</span><span>Observe</span><span>Figure Out</span><span>Codify</span><span>Share</span><span>Converse</span>
+        </div>
+        <p class="ideas-grid__caption">How my thinking evolves: <a href="/thinking/#method">see the full loop →</a></p>
+
+        {% if moreIdeas.length %}
+        <ul class="ideas-grid__links">
+          {% for idea in moreIdeas %}
+          <li><a href="{{ idea.url }}">{{ idea.data.title }} →</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
     </div>
-    {% else %}
-    <div class="empty-state">No published articles yet. Add one via Admin → Thinking.</div>
-    {% endif %}
 
     <div class="section-footer">
       <a class="btn btn--text" href="/thinking/">{{ homepage.thinkingCtaLabel }}</a>
+      {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
+      <a class="btn btn--text" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" style="margin-left: 1.5rem;">Continue the conversation on LinkedIn →</a>
+      {% endif %}
     </div>
   </div>
 </section>
+{% endif %}
 
-<section class="teaser tier-secondary">
+<section class="speaking-teaser tier-dominant section--dark">
   <div class="wrap split">
     <div>
-      <span class="section-label">Advisory</span>
-      <h2>{{ homepage.advisoryHeading }}</h2>
+      {{ media.placeholder("Parul speaking on stage", "16/9", null, true) }}
     </div>
     <div>
-      <p>{{ homepage.advisoryText }}</p>
-      <div class="teaser__ctas">
-        <a class="btn btn--secondary" href="/advisory/">{{ homepage.advisoryCtaLabel }}</a>
-        <a class="btn btn--text" href="/contact/">{{ homepage.advisorySecondaryCtaLabel }}</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="about-teaser tier-supporting">
-  <div class="wrap split">
-    <div>
-      <span class="section-label">About</span>
-      <h2>{{ homepage.aboutHeading }}</h2>
-    </div>
-    <div>
-      <p>{{ homepage.aboutText }}</p>
-      <a class="btn btn--text" href="{{ homepage.aboutCtaLink }}">{{ homepage.aboutCtaLabel }}</a>
-    </div>
-  </div>
-</section>
-
-<section class="speaking-teaser tier-supporting">
-  <div class="wrap split">
-    <div>
-      <span class="section-label">Speaking</span>
+      <span class="section-label">Voice</span>
       <h2>{{ homepage.speakingHeading }}</h2>
-    </div>
-    <div>
       <p>{{ homepage.speakingText }}</p>
-
-      {% set featuredSpeaking = speakingEvents.items | selectattr("featured") | selectattr("published") %}
-      {% if featuredSpeaking.length %}
-      <ul class="pill-list">
-        {% for event in featuredSpeaking | limit(3) %}
-        <li class="pill">{{ event.title }}{% if event.year %} · {{ event.year }}{% endif %}</li>
+      {% if speakingTopics.items.length %}
+      <ul class="pill-list" style="margin-top: 1.5rem;">
+        {% for topic in speakingTopics.items | limit(4) %}
+        <li class="pill" style="background: transparent; border-color: rgba(255,255,255,0.3); color: var(--background);">{{ topic.title }}</li>
         {% endfor %}
       </ul>
       {% endif %}
-
       <div class="teaser__ctas">
-        <a class="btn btn--text" href="/speaking/">{{ homepage.speakingCtaLabel }}</a>
-        <a class="btn btn--text" href="/contact/">{{ homepage.speakingSecondaryCtaLabel }}</a>
+        <a class="btn btn--secondary" href="/speaking/">{{ homepage.speakingCtaLabel }}</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="impact-teaser tier-supporting">
-  <div class="wrap split">
-    <div>
-      <span class="section-label">Impact</span>
-      <h2>{{ homepage.impactHeading }}</h2>
-    </div>
-    <div>
-      <p>{{ homepage.impactText }}</p>
-      <a class="btn btn--text" href="/impact/">{{ homepage.impactCtaLabel }}</a>
     </div>
   </div>
 </section>
@@ -203,10 +219,13 @@ layout: layouts/base.njk
     <h2>{{ homepage.finalCtaHeading }}</h2>
     <p>{{ homepage.finalCtaText }}</p>
     <div class="final-cta__ctas">
-      <a class="btn btn--primary" href="/contact/">{{ homepage.finalCtaPrimaryLabel }}</a>
+      <a class="btn btn--primary" href="/contact/">{{ homepage.finalCtaPrimaryLabel }} →</a>
       {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
       <a class="btn btn--secondary" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">{{ homepage.finalCtaSecondaryLabel }}</a>
       {% endif %}
     </div>
+    {% if homepage.opportunityLine %}
+    <p class="final-cta__opportunity-line">{{ homepage.opportunityLine }}</p>
+    {% endif %}
   </div>
 </section>

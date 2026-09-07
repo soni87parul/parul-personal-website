@@ -1,0 +1,15 @@
+<div class="method-path">
+  <div class="method-path__track">
+    {% for stage in homepage.methodStages %}
+    <div class="method-path__stage method-path__stage--{{ loop.index }}">
+      <button type="button" class="method-path__toggle" aria-expanded="false">
+        <span class="method-path__number">{{ stage.number }}</span>
+        <span class="method-path__title">{{ stage.title }}</span>
+        <span class="method-path__action">{{ stage.action }}</span>
+        <span class="method-path__example">“{{ stage.example }}”</span>
+      </button>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="method-path__loop">Transform leads back into the next Figure Out.</p>
+</div>

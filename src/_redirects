@@ -1,2 +1,8 @@
 # Netlify redirect rules.
 # Add custom redirects here if needed, e.g. old URLs -> new URLs.
+
+# Impact was removed as a standalone page in Visual System 2.0. Its
+# professional content lives in Experience; its personal/community note
+# lives in About.
+/impact/  /about/  301
+/impact   /about/  301
