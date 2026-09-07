@@ -13,7 +13,7 @@ seoDescription: Building institutions and communities, not only businesses, incl
 
 <section>
   <div class="wrap">
-    {% set publishedProjects = impactProjects.items | selectattr("published") %}
+    {% set publishedProjects = impactProjects.items | selectattr("published") | publiclySafe %}
     {% if publishedProjects.length %}
     <div class="card-grid">
       {% for project in publishedProjects %}

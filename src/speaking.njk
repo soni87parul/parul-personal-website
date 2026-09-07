@@ -17,9 +17,10 @@ seoDescription: Parul speaks on strategy, transformation, technology, scaling, e
       <span class="section-label">Topics</span>
       <h2>Speaking topics</h2>
     </div>
-    {% if speakingTopics.items.length %}
+    {% set safeTopics = speakingTopics.items | publiclySafe %}
+    {% if safeTopics.length %}
     <div class="card-grid">
-      {% for topic in speakingTopics.items %}
+      {% for topic in safeTopics %}
       <article class="story-card">
         <h3>{{ topic.title }}</h3>
         <p class="card-body">{{ topic.description }}</p>
@@ -38,7 +39,7 @@ seoDescription: Parul speaks on strategy, transformation, technology, scaling, e
       <span class="section-label">Past events</span>
       <h2>Where Parul has spoken</h2>
     </div>
-    {% set publishedEvents = speakingEvents.items | selectattr("published") %}
+    {% set publishedEvents = speakingEvents.items | selectattr("published") | publiclySafe %}
     {% if publishedEvents.length %}
     <div class="card-grid">
       {% for event in publishedEvents %}

@@ -18,7 +18,7 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
   </div>
 </section>
 
-{% set situations = advisory.situations | selectattr("enabled") | sort(attribute="order") %}
+{% set situations = advisory.situations | selectattr("enabled") | sort(attribute="order") | publiclySafe %}
 {% if situations.length %}
 <section class="tier-secondary">
   <div class="wrap">
@@ -50,7 +50,7 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
   </div>
 </section>
 
-{% set engagementTypes = advisory.engagementTypes | selectattr("enabled") | sort(attribute="order") %}
+{% set engagementTypes = advisory.engagementTypes | selectattr("enabled") | sort(attribute="order") | publiclySafe %}
 {% if engagementTypes.length %}
 <section class="tier-secondary">
   <div class="wrap">

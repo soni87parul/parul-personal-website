@@ -1,5 +1,12 @@
 const { DateTime } = require("luxon");
 const THINKING_TERRITORIES = require("./src/_data/thinkingTerritories.json");
+const {
+  containsPlaceholder,
+  fieldsContainPlaceholder,
+  EXPERIENCE_PLACEHOLDER_FIELDS,
+  ARTICLE_PLACEHOLDER_FIELDS,
+  RECOMMENDATION_PLACEHOLDER_FIELDS,
+} = require("./src/_utils/placeholder");
 
 const CAPABILITY_GROUP_ORDER = [
   "Strategy & Leadership",
@@ -93,14 +100,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("experienceStories", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("src/experience/*.md")
-      .filter((item) => item.data.published)
+      .filter((item) => item.data.published && !fieldsContainPlaceholder(item.data, EXPERIENCE_PLACEHOLDER_FIELDS))
       .sort((a, b) => (a.data.display_order ?? 999) - (b.data.display_order ?? 999));
   });
 
   eleventyConfig.addCollection("articles", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("src/thinking/*.md")
-      .filter((item) => !item.data.draft)
+      .filter((item) => !item.data.draft && !fieldsContainPlaceholder(item.data, ARTICLE_PLACEHOLDER_FIELDS))
       .sort((a, b) => b.date - a.date);
   });
 
@@ -137,7 +144,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("recommendations", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("src/recommendations/*.md")
-      .filter((item) => item.data.published)
+      .filter((item) => item.data.published && !fieldsContainPlaceholder(item.data, RECOMMENDATION_PLACEHOLDER_FIELDS))
       .sort((a, b) => (a.data.display_order ?? 999) - (b.data.display_order ?? 999));
   });
 
@@ -220,6 +227,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("publicImpact", (impact) => {
     if (!Array.isArray(impact)) return [];
     return impact.filter((item) => !item.verification_required);
+  });
+
+  // Production-safety net for CMS list content (Impact, Speaking, Advisory):
+  // strips any item that still contains an internal placeholder sentinel,
+  // regardless of its published/enabled flag.
+  eleventyConfig.addFilter("publiclySafe", (items) => {
+    if (!Array.isArray(items)) return items;
+    return items.filter((item) => !containsPlaceholder(item));
   });
 
   eleventyConfig.addFilter("territoryData", (title) => THINKING_TERRITORIES.find((t) => t.title === title) || null);
