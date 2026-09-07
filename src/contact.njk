@@ -11,6 +11,7 @@ seoDescription: Tell me what you're working through. The more context you share,
     <span class="eyebrow">Start a Conversation</span>
     <h1>Tell me what you're working through.</h1>
     <p>The more context you share, the more useful the first conversation can be.</p>
+    <p class="context-banner" id="contextBanner" hidden></p>
     {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
     <p style="margin-top: 0.75rem; color: var(--muted);">Prefer to connect first? <a class="btn--text btn" style="padding:0;" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">Connect with me on LinkedIn →</a></p>
     {% endif %}
@@ -22,7 +23,7 @@ seoDescription: Tell me what you're working through. The more context you share,
     <div class="contact-layout">
       <form class="contact-form" style="max-width: none;" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thank-you/">
         <input type="hidden" name="form-name" value="contact">
-        <input type="hidden" name="referralTopic" id="referralTopic" value="">
+        <input type="hidden" name="topic" id="referralTopic" value="">
         <p style="display:none">
           <label>Don't fill this out if you're human: <input name="bot-field"></label>
         </p>
@@ -33,8 +34,8 @@ seoDescription: Tell me what you're working through. The more context you share,
 
           <div class="form-grid-2">
             <div class="form-row">
-              <label for="name">Full Name *</label>
-              <input type="text" id="name" name="name" required>
+              <label for="full_name">Full Name *</label>
+              <input type="text" id="full_name" name="full_name" required>
             </div>
             <div class="form-row">
               <label for="email">Email Address *</label>
@@ -48,8 +49,8 @@ seoDescription: Tell me what you're working through. The more context you share,
               <input type="tel" id="phone" name="phone" required>
             </div>
             <div class="form-row">
-              <label for="organisation">Company / Organisation *</label>
-              <input type="text" id="organisation" name="organisation" required placeholder="Or Independent / Self-employed / Not applicable">
+              <label for="company">Company / Organisation *</label>
+              <input type="text" id="company" name="company" required placeholder="Or Independent / Self-employed / Not applicable">
             </div>
           </div>
 
@@ -59,14 +60,14 @@ seoDescription: Tell me what you're working through. The more context you share,
               <input type="text" id="role" name="role">
             </div>
             <div class="form-row">
-              <label for="linkedinProfile">LinkedIn Profile</label>
-              <input type="url" id="linkedinProfile" name="linkedinProfile" placeholder="https://linkedin.com/in/...">
+              <label for="linkedin">LinkedIn Profile</label>
+              <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
             </div>
           </div>
 
           <div class="form-row">
-            <label for="location">City / Country</label>
-            <input type="text" id="location" name="location">
+            <label for="city_country">City / Country</label>
+            <input type="text" id="city_country" name="city_country">
           </div>
         </div>
 
@@ -75,7 +76,7 @@ seoDescription: Tell me what you're working through. The more context you share,
 
           <div class="form-row">
             <label for="opportunityType">Opportunity Type *</label>
-            <select id="opportunityType" name="opportunityType" required>
+            <select id="opportunityType" name="intent" required>
               <option value="">Select one</option>
               <option value="leadership">Leadership / Executive Role</option>
               <option value="transformation">Transformation Project</option>
@@ -168,35 +169,41 @@ seoDescription: Tell me what you're working through. The more context you share,
         </div>
 
         <div class="form-section">
-          <h2 class="form-section-title">The context</h2>
+          <h2 class="form-section-title">Tell me about the situation</h2>
 
           <div class="form-row">
-            <label for="goal">What are you trying to accomplish? *</label>
-            <textarea id="goal" name="goal" required></textarea>
+            <label for="objective">What are you trying to accomplish? *</label>
+            <textarea id="objective" name="objective" required></textarea>
           </div>
           <div class="form-row">
-            <label for="currentState">What is happening today? *</label>
-            <textarea id="currentState" name="currentState" required></textarea>
+            <label for="current_state">What is happening today? *</label>
+            <textarea id="current_state" name="current_state" required></textarea>
           </div>
           <div class="form-row">
             <label for="constraint">What feels like the biggest constraint? *</label>
             <textarea id="constraint" name="constraint" required></textarea>
           </div>
           <div class="form-row">
-            <label for="successOutcome">What would a successful outcome look like? *</label>
-            <textarea id="successOutcome" name="successOutcome" required></textarea>
+            <label for="desired_outcome">What would a successful outcome look like? *</label>
+            <textarea id="desired_outcome" name="desired_outcome" required></textarea>
           </div>
           <div class="form-row">
             <label for="urgency">Why does this need attention now? *</label>
             <textarea id="urgency" name="urgency" required></textarea>
           </div>
+        </div>
+
+        <div class="form-section">
+          <h2 class="form-section-title">Final context</h2>
+          <p class="form-section-hint">Optional, but useful if you have it to hand.</p>
+
           <div class="form-row">
-            <label for="decisionMakers">Who is involved in making the decision?</label>
-            <input type="text" id="decisionMakers" name="decisionMakers">
+            <label for="decision_makers">Who is involved in making the decision?</label>
+            <input type="text" id="decision_makers" name="decision_makers">
           </div>
           <div class="form-row">
-            <label for="additionalContext">Anything else I should understand before we speak?</label>
-            <textarea id="additionalContext" name="additionalContext"></textarea>
+            <label for="additional_context">Anything else I should understand before we speak?</label>
+            <textarea id="additional_context" name="additional_context"></textarea>
           </div>
         </div>
 
@@ -210,11 +217,11 @@ seoDescription: Tell me what you're working through. The more context you share,
       </form>
 
       <aside class="contact-side">
-        <h2>What happens after you submit</h2>
+        <h2>What happens next</h2>
         <ol>
-          <li>I review every conversation personally.</li>
-          <li>If the opportunity looks relevant, I follow up using the details you've shared.</li>
-          <li>We have a first conversation to understand whether I can be useful and what that could look like.</li>
+          <li>You share the context.</li>
+          <li>I review it personally.</li>
+          <li>If there is a useful reason to speak, I will follow up.</li>
         </ol>
         {{ cta.linkedinLink() }}
       </aside>

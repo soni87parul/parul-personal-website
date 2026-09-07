@@ -740,6 +740,18 @@ a.story-card:focus-visible, a.article-card:focus-visible {
 }
 .page-header p { color: var(--muted); font-size: 1.15rem; max-width: 60ch; }
 
+.context-banner {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.1rem;
+  background: rgba(53, 81, 63, 0.07);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--foreground);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
 .prose { max-width: 68ch; font-size: 1.08rem; }
 .prose p { margin-bottom: 1.4rem; color: var(--foreground); }
 .prose h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; }
@@ -1036,6 +1048,7 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
   color: var(--foreground);
 }
 .engagement-row .engagement-outcome strong { color: var(--muted); font-weight: 500; }
+.engagement-row__cta { display: inline-block; margin-top: 0.85rem; font-size: 0.88rem; }
 @media (max-width: 700px) {
   .engagement-row { grid-template-columns: 1fr; padding: 1.5rem 0.75rem; }
 }

@@ -9,7 +9,7 @@ date: 2026-06-29
 coverImage: ""
 author: "Parul Soni Manvati"
 featured: false
-draft: false
+published: true
 related_experience: "clearmeat-building-emerging-category"
 from_the_field_context: "working on regulatory ecosystem-building for cultivated meat in India"
 contact_intent: "policy"

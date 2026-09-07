@@ -7,7 +7,7 @@ category: Essay
 tags: ["Strategy", "Framework"]
 date: 2026-01-01
 coverImage: ""
-draft: true
+published: false
 featured: false
 seoTitle: ""
 seoDescription: ""

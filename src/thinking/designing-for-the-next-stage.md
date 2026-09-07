@@ -7,7 +7,7 @@ category: "Operator's Notebook"
 tags: ["Organisation Design", "Scale"]
 date: 2026-01-01
 coverImage: ""
-draft: true
+published: false
 featured: false
 seoTitle: ""
 seoDescription: ""

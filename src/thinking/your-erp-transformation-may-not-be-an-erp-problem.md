@@ -9,7 +9,7 @@ date: 2026-08-24
 coverImage: ""
 author: "Parul Soni Manvati"
 featured: true
-draft: false
+published: true
 related_experience: "addverb-enterprise-transformation"
 from_the_field_context: "leading the Addverb enterprise transformation"
 contact_intent: "transformation"

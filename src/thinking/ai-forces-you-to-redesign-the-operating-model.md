@@ -9,7 +9,7 @@ date: 2026-08-10
 coverImage: ""
 author: "Parul Soni Manvati"
 featured: true
-draft: false
+published: true
 related_experience: "amazon-ai-ml-transformation"
 from_the_field_context: "working on AI/ML transformation initiatives at Amazon"
 contact_intent: "transformation"

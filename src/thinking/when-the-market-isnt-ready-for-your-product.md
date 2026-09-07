@@ -9,7 +9,7 @@ date: 2026-07-13
 coverImage: ""
 author: "Parul Soni Manvati"
 featured: false
-draft: false
+published: true
 related_experience: "clearmeat-business-model"
 from_the_field_context: "working through ClearMeat's business model shift"
 contact_intent: "advisory"

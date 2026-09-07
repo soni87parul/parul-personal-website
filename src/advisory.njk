@@ -64,19 +64,26 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
         <div>
           <p>{{ e.description }}</p>
           {% if e.outcome %}<span class="engagement-outcome"><strong>Typical outcome:</strong> {{ e.outcome }}</span>{% endif %}
+          {% set engagementHref = "/contact/?intent=" + e.contactIntent + "&topic=" + e.contactTopic if e.contactTopic else "/contact/?intent=" + e.contactIntent %}
+          <a class="btn btn--text engagement-row__cta" href="{{ engagementHref }}">{{ e.ctaLabel or "Start a Conversation" }} →</a>
         </div>
       </div>
       {% endfor %}
     </div>
+  </div>
+</section>
+{% endif %}
 
-    {% if advisory.openToLine %}
-    <p style="margin-top: 2rem; font-size: 1.05rem; color: var(--muted);">{{ advisory.openToLine }}</p>
-    {% endif %}
-
+<section class="tier-supporting">
+  <div class="wrap">
+    <div class="section-heading">
+      <h2>{{ advisory.otherConversationsHeading }}</h2>
+    </div>
+    <p style="max-width: 60ch; color: var(--muted); font-size: 1.05rem;">{{ advisory.otherConversationsText }}</p>
     <div class="teaser__ctas">
+      <a class="btn btn--secondary" href="/speaking/">Explore Speaking →</a>
       <a class="btn btn--primary" href="/contact/">{{ advisory.finalCtaPrimaryLabel or "Start a Conversation" }} →</a>
       {{ cta.linkedinLink(advisory.linkedinCtaLabel + " →" if advisory.linkedinCtaLabel else null) }}
     </div>
   </div>
 </section>
-{% endif %}

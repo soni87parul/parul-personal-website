@@ -16,7 +16,7 @@ layout: layouts/base.njk
   <div class="wrap">
     {% if coverImage %}
     <div class="hero__image-wrap" style="aspect-ratio: 16/9; margin-bottom: 3rem;">
-      <img src="{{ coverImage }}" alt="{{ title }}">
+      <img src="{{ coverImage }}" alt="{{ coverImageAlt or title }}">
     </div>
     {% endif %}
 
@@ -54,6 +54,10 @@ layout: layouts/base.njk
       <a class="btn btn--primary" href="{{ contactHref }}">Start a Conversation →</a>
       {{ cta.linkedinLink() }}
     </div>
+
+    {% if linkedin_post_url %}
+    <p style="margin-top: 1rem;"><a class="btn btn--text" href="{{ linkedin_post_url }}" target="_blank" rel="noopener noreferrer">Discuss this on LinkedIn →</a></p>
+    {% endif %}
 
     <div class="section-footer" style="text-align: left; margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem;">
       <a class="btn btn--text" href="/thinking/">← Back to all thinking</a>

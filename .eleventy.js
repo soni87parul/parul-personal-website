@@ -107,13 +107,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("articles", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("src/thinking/*.md")
-      .filter((item) => !item.data.draft && !fieldsContainPlaceholder(item.data, ARTICLE_PLACEHOLDER_FIELDS))
-      .sort((a, b) => b.date - a.date);
+      .filter((item) => item.data.published && !fieldsContainPlaceholder(item.data, ARTICLE_PLACEHOLDER_FIELDS))
+      .sort((a, b) => (a.data.display_order ?? 999) - (b.data.display_order ?? 999) || b.date - a.date);
   });
 
   // Only territories with at least one published article are ever shown as a filter option.
   eleventyConfig.addCollection("activeThinkingTerritories", (collectionApi) => {
-    const published = collectionApi.getFilteredByGlob("src/thinking/*.md").filter((item) => !item.data.draft);
+    const published = collectionApi.getFilteredByGlob("src/thinking/*.md").filter((item) => item.data.published);
     const activeTitles = new Set(published.map((item) => item.data.territory).filter(Boolean));
     return THINKING_TERRITORIES.filter((t) => activeTitles.has(t.title));
   });

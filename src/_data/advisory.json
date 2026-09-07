@@ -65,6 +65,9 @@
       "title": "Strategic Diagnostic",
       "description": "For situations where leadership knows something is wrong but has not yet isolated the real constraint.",
       "outcome": "A sharper problem definition, current-state view, priorities and recommended response.",
+      "ctaLabel": "Discuss a diagnostic",
+      "contactIntent": "transformation",
+      "contactTopic": "strategic-diagnostic",
       "enabled": true,
       "order": 1
     },
@@ -72,6 +75,9 @@
       "title": "Transformation Engagement",
       "description": "For organisations that need to move from diagnosis into operating-model, process, technology and execution change.",
       "outcome": "A structured transformation programme with governance and execution mechanisms.",
+      "ctaLabel": "Discuss a transformation",
+      "contactIntent": "transformation",
+      "contactTopic": "transformation-engagement",
       "enabled": true,
       "order": 2
     },
@@ -79,6 +85,9 @@
       "title": "CEO / Founder Advisory",
       "description": "For leaders who need an ongoing strategic thought partner across priorities, operating questions and difficult decisions.",
       "outcome": "",
+      "ctaLabel": "Start a conversation",
+      "contactIntent": "advisory",
+      "contactTopic": "",
       "enabled": true,
       "order": 3
     },
@@ -86,6 +95,9 @@
       "title": "Investor / Portfolio Support",
       "description": "For investors who need help diagnosing operating, scaling or transformation challenges inside a portfolio company.",
       "outcome": "",
+      "ctaLabel": "Discuss a portfolio company",
+      "contactIntent": "investor",
+      "contactTopic": "portfolio-support",
       "enabled": true,
       "order": 4
     },
@@ -93,6 +105,9 @@
       "title": "0→1 & Scale-up Support",
       "description": "For businesses refining a product, business model, GTM or organisational capability while moving toward the next stage.",
       "outcome": "",
+      "ctaLabel": "Discuss what you're building",
+      "contactIntent": "transformation",
+      "contactTopic": "0-to-1-scaleup",
       "enabled": true,
       "order": 5
     },
@@ -100,11 +115,15 @@
       "title": "Policy & Ecosystem Projects",
       "description": "For government, institutions or emerging sectors where company-building intersects with policy, research, regulation or ecosystem infrastructure.",
       "outcome": "",
+      "ctaLabel": "Discuss a policy or ecosystem project",
+      "contactIntent": "policy",
+      "contactTopic": "ecosystem-project",
       "enabled": true,
       "order": 6
     }
   ],
-  "openToLine": "I am also open to Board / leadership opportunities and speaking engagements.",
+  "otherConversationsHeading": "Other Conversations",
+  "otherConversationsText": "I am also open to conversations around board and independent-director opportunities, senior leadership mandates, speaking engagements and selected collaborations.",
   "finalCtaPrimaryLabel": "Start a Conversation",
   "linkedinCtaLabel": "Connect on LinkedIn"
 }

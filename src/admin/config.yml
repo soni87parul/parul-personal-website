@@ -217,17 +217,19 @@ collections:
 
   - name: "thinking"
     label: "Thinking"
+    label_singular: "Thinking Article"
     folder: "src/thinking"
     create: true
     slug: "{{slug}}"
     editor:
       preview: false
     fields:
+      # --- Article Basics ---
       - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/article.njk" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
-      - { label: "Excerpt (shown on cards)", name: "excerpt", widget: "text" }
-      - label: "Territory (one of the six Thinking territories — controls the filter and card colour)"
+      - { label: "Subtitle (optional short deck — falls back to the Excerpt below if left blank)", name: "subtitle", widget: "string", required: false }
+      - { label: "Short Excerpt (required — shown on cards, and as the deck under the title if Subtitle is blank)", name: "excerpt", widget: "text" }
+      - label: "Thinking Territory (controls the filter and card colour)"
         name: "territory"
         widget: "select"
         options:
@@ -242,25 +244,39 @@ collections:
         widget: "select"
         options: ["Essay", "Operator's Notebook", "Framework", "Case Study", "Research", "Book Notes"]
         required: false
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
-      - { label: "Author", name: "author", widget: "string", default: "Parul Soni Manvati" }
-      - { label: "Featured (one of the three top launch slots)", name: "featured", widget: "boolean", default: false }
-      - { label: "Draft (hide from live site)", name: "draft", widget: "boolean", default: true }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Closing Takeaway (shown as a highlighted callout at the end)", name: "takeaway", widget: "text", required: false }
-      - { label: "Related Experience Story (the URL slug of an Experience story, e.g. \"addverb-enterprise-transformation\" — find it in the Experience story's URL)", name: "related_experience", widget: "string", required: false }
-      - { label: "From the Field — short context (completes \"This idea came from work I did while ...\"; leave blank to fall back to the story title)", name: "from_the_field_context", widget: "string", required: false }
+      - { label: "Tags (optional)", name: "tags", widget: "list", required: false }
+
+      # --- Content ---
+      - { label: "Article Body", name: "body", widget: "markdown" }
+      - { label: "Closing Takeaway (optional — shown as a highlighted callout at the end)", name: "takeaway", widget: "text", required: false }
+      - { label: "Hero Image (optional — the article looks complete without one)", name: "coverImage", widget: "image", required: false }
+      - { label: "Hero Image Alt Text (required if a Hero Image is set)", name: "coverImageAlt", widget: "string", required: false }
+
+      # --- Connections ---
+      - { label: "Related Experience Story (optional — the URL slug of an Experience story, e.g. \"addverb-enterprise-transformation\", found in that story's URL)", name: "related_experience", widget: "string", required: false }
+      - { label: "From the Field — short context (optional, completes \"This idea came from work I did while ...\"; falls back to the story title if left blank)", name: "from_the_field_context", widget: "string", required: false }
       - label: "Start a Conversation — Opportunity Type (optional, preselects this on the Contact form when someone clicks through from this article)"
         name: "contact_intent"
         widget: "select"
         options: ["transformation", "advisory", "policy"]
         required: false
       - { label: "Start a Conversation — Topic (optional, short slug carried through as context, e.g. \"erp-transformation\")", name: "contact_topic", widget: "string", required: false }
+
+      # --- LinkedIn ---
+      - { label: "LinkedIn Adaptation (optional, internal only)", name: "linkedin_adaptation", widget: "text", required: false, hint: "A shorter LinkedIn-ready version of this idea. This does not publish automatically, and never appears on the website — it just keeps the website article and its LinkedIn version together in one record." }
+      - { label: "LinkedIn Post URL (optional)", name: "linkedin_post_url", widget: "string", required: false, hint: "Add the LinkedIn URL after publishing the post. Once set, a \"Discuss this on LinkedIn →\" link appears on the article." }
+
+      # --- SEO & Social ---
       - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
       - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
       - { label: "Social Share Image (optional)", name: "ogImage", widget: "image", required: false }
+
+      # --- Publishing ---
+      - { label: "Publication Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Author", name: "author", widget: "string", default: "Parul Soni Manvati" }
+      - { label: "Featured (one of the three top Featured Thinking slots)", name: "featured", widget: "boolean", default: false }
+      - { label: "Display Order (optional — lower shows first among Featured or More Notes; leave blank to sort by date)", name: "display_order", widget: "number", required: false }
+      - { label: "Published (turn on to make this article live — leave off while still drafting)", name: "published", widget: "boolean", default: false }
 
   - name: "recommendations"
     label: "Recommendations"
@@ -324,9 +340,17 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Typical Outcome (optional)", name: "outcome", widget: "string", required: false }
+              - { label: "CTA Label (e.g. \"Discuss a diagnostic\" — the arrow is added automatically)", name: "ctaLabel", widget: "string" }
+              - label: "Contact Opportunity Type (preselects this on the Contact form)"
+                name: "contactIntent"
+                widget: "select"
+                options: ["leadership", "transformation", "ceo-advisory", "advisory", "investor", "board", "government", "policy", "speaking", "collaboration", "other"]
+                default: "transformation"
+              - { label: "Contact Topic (optional, passed through as context, e.g. \"portfolio-support\")", name: "contactTopic", widget: "string", required: false }
               - { label: "Enabled (show on site)", name: "enabled", widget: "boolean", default: true }
               - { label: "Order", name: "order", widget: "number" }
-          - { label: "\"Also open to\" Line (Board / speaking)", name: "openToLine", widget: "string" }
+          - { label: "\"Other Conversations\" — Heading", name: "otherConversationsHeading", widget: "string" }
+          - { label: "\"Other Conversations\" — Text (board, leadership, speaking, collaborations)", name: "otherConversationsText", widget: "text" }
           - { label: "Primary CTA Label", name: "finalCtaPrimaryLabel", widget: "string" }
           - { label: "LinkedIn CTA Label", name: "linkedinCtaLabel", widget: "string" }
 

@@ -132,9 +132,38 @@ if (opportunityTypeSelect) {
 
   opportunityTypeSelect.addEventListener("change", () => applyOpportunityType(opportunityTypeSelect.value));
 
-  // Advisory situation cards link here with ?intent=...&topic=... — preselect
-  // the closest matching opportunity type and carry the topic through as context.
+  // Advisory/Thinking cards and CTAs link here with ?intent=...&topic=... —
+  // preselect the closest matching opportunity type once on load, carry the
+  // topic through as context, and show a friendly summary line instead of
+  // the raw query string. Never re-applied after load, so a visitor who
+  // changes the dropdown themselves is never overwritten.
   const INTENT_TO_OPPORTUNITY = { advisory: "ceo-advisory", policy: "government" };
+  const TOPIC_LABELS = {
+    "operating-model": "your operating model",
+    "diagnosis": "diagnosing what's really going on",
+    "cross-functional-execution": "execution breaking down between functions",
+    "business-model": "your business model",
+    "ai-operating-model": "AI and operating-model transformation",
+    "ecosystem": "policy and ecosystem building",
+    "strategic-diagnostic": "a strategic diagnostic",
+    "transformation-engagement": "a transformation engagement",
+    "portfolio-support": "portfolio company support",
+    "0-to-1-scaleup": "0→1 or scale-up support",
+    "ecosystem-project": "a policy or ecosystem project",
+    "erp-transformation": "an ERP or systems transformation",
+    "ceo-office": "the CEO Office and operating rhythm",
+  };
+  const INTENT_LABELS = {
+    "leadership": "a leadership or executive opportunity",
+    "transformation": "a transformation project",
+    "ceo-advisory": "CEO / founder advisory",
+    "investor": "investor or portfolio support",
+    "board": "a board opportunity",
+    "government": "a government or policy project",
+    "speaking": "a speaking engagement",
+    "collaboration": "a collaboration",
+  };
+
   const params = new URLSearchParams(window.location.search);
   const intent = params.get("intent");
   const topic = params.get("topic");
@@ -143,6 +172,13 @@ if (opportunityTypeSelect) {
     const mapped = INTENT_TO_OPPORTUNITY[intent] || intent;
     const matchingOption = [...opportunityTypeSelect.options].find((o) => o.value === mapped);
     if (matchingOption) opportunityTypeSelect.value = mapped;
+
+    const contextBanner = document.getElementById("contextBanner");
+    const label = TOPIC_LABELS[topic] || INTENT_LABELS[mapped];
+    if (contextBanner && label) {
+      contextBanner.textContent = "You're reaching out about: " + label;
+      contextBanner.hidden = false;
+    }
   }
 
   const referralTopicField = document.getElementById("referralTopic");
