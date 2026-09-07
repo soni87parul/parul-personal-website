@@ -11,6 +11,9 @@ author: "Parul Soni Manvati"
 featured: false
 draft: false
 related_experience: "clearmeat-business-model"
+from_the_field_context: "working through ClearMeat's business model shift"
+contact_intent: "advisory"
+contact_topic: "business-model"
 takeaway: "Sometimes the most strategic form of persistence is changing what you sell while preserving what makes the company valuable."
 seoTitle: "When the market isn't ready for your product | Parul Soni Manvati"
 seoDescription: "A company's original product vision and its first scalable revenue engine do not always have to be the same thing, as shown by a business-model pivot at ClearMeat."
@@ -67,7 +70,7 @@ And critically, revenue while the larger category continued to develop.
 
 This is an important distinction for founders.
 
-A company's original product vision and its first scalable revenue engine do not always have to be the same thing.
+<div class="pull-quote"><p>A company's original product vision and its first scalable revenue engine do not always have to be the same thing.</p></div>
 
 The key is not pivoting randomly.
 

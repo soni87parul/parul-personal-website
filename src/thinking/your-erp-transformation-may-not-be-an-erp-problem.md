@@ -11,6 +11,9 @@ author: "Parul Soni Manvati"
 featured: true
 draft: false
 related_experience: "addverb-enterprise-transformation"
+from_the_field_context: "leading the Addverb enterprise transformation"
+contact_intent: "transformation"
+contact_topic: "erp-transformation"
 takeaway: "Before asking which system the organisation needs, ask what the organisation should become capable of doing. Then design the process, ownership, information flow and technology around that answer."
 seoTitle: "Your ERP transformation may not actually be an ERP problem | Parul Soni Manvati"
 seoDescription: "Why digitising a broken process without first redesigning it just creates a faster, more expensive version of the same confusion, drawn from an enterprise transformation at Addverb."
@@ -42,7 +45,7 @@ The software landscape reflected the operating model.
 
 That distinction matters.
 
-If you digitise a broken process without first deciding how the process should work, you often create a faster, more expensive version of the same confusion.
+<div class="pull-quote"><p>If you digitise a broken process without first deciding how the process should work, you often create a faster, more expensive version of the same confusion.</p></div>
 
 So before selecting technology, I prefer to ask a different set of questions.
 

@@ -11,6 +11,9 @@ author: "Parul Soni Manvati"
 featured: true
 draft: false
 related_experience: "amazon-ai-ml-transformation"
+from_the_field_context: "working on AI/ML transformation initiatives at Amazon"
+contact_intent: "transformation"
+contact_topic: "ai-operating-model"
 takeaway: "The useful AI question is not \"What can the model do?\" It is: \"How should people, machines, controls and accountability work together now?\""
 seoTitle: "AI doesn't eliminate the operating model | Parul Soni Manvati"
 seoDescription: "Why AI transformation is not a technology rollout: decision rights, human oversight and accountability all have to be redesigned alongside the model, from machine-learning work at Amazon."
@@ -93,8 +96,6 @@ performance measurement
 
 and sometimes the organisation itself.
 
-AI is not simply inserted into an operating model.
-
-It changes the operating model.
+<div class="pull-quote"><p>AI is not simply inserted into an operating model. It changes the operating model.</p></div>
 
 And in many cases, that is where most of the value and most of the difficulty sit.

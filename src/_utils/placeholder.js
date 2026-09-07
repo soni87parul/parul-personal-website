@@ -25,7 +25,7 @@ function fieldsContainPlaceholder(data, fields) {
 // filters (.eleventy.js) and each content type's computed permalink
 // (*.11tydata.js) can never drift apart.
 const EXPERIENCE_PLACEHOLDER_FIELDS = ["title", "organisation", "theme", "summary", "card_summary", "status_label", "problem", "why_it_mattered", "figure_out", "design", "build", "scale", "transform", "takeaway", "public_categories", "impact"];
-const ARTICLE_PLACEHOLDER_FIELDS = ["title", "subtitle", "excerpt", "takeaway"];
+const ARTICLE_PLACEHOLDER_FIELDS = ["title", "subtitle", "excerpt", "takeaway", "from_the_field_context"];
 const RECOMMENDATION_PLACEHOLDER_FIELDS = ["quote", "short_excerpt", "name", "role", "relationship_context"];
 
 module.exports = {

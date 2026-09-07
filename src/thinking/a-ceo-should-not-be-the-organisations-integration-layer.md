@@ -11,6 +11,9 @@ author: "Parul Soni Manvati"
 featured: true
 draft: false
 related_experience: "addverb-ceo-office-rhythm"
+from_the_field_context: "building Addverb's CEO Office operating rhythm"
+contact_intent: "advisory"
+contact_topic: "ceo-office"
 takeaway: "A CEO Office creates leverage when it reduces the amount of organisational integration the CEO has to perform personally."
 seoTitle: "A CEO should not be the organisation's integration layer | Parul Soni Manvati"
 seoDescription: "Why the strongest CEO Offices reduce dependency on themselves over time, building mechanisms, priorities, decision rights and review rhythms instead."
@@ -83,6 +86,4 @@ Escalation paths.
 
 Ownership.
 
-The goal is not to sit at the centre of every conversation.
-
-The goal is to make fewer conversations require the centre.
+<div class="pull-quote"><p>The goal is not to sit at the centre of every conversation. The goal is to make fewer conversations require the centre.</p></div>

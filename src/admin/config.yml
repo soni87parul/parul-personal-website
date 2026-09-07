@@ -251,8 +251,16 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Closing Takeaway (shown as a highlighted callout at the end)", name: "takeaway", widget: "text", required: false }
       - { label: "Related Experience Story (the URL slug of an Experience story, e.g. \"addverb-enterprise-transformation\" — find it in the Experience story's URL)", name: "related_experience", widget: "string", required: false }
+      - { label: "From the Field — short context (completes \"This idea came from work I did while ...\"; leave blank to fall back to the story title)", name: "from_the_field_context", widget: "string", required: false }
+      - label: "Start a Conversation — Opportunity Type (optional, preselects this on the Contact form when someone clicks through from this article)"
+        name: "contact_intent"
+        widget: "select"
+        options: ["transformation", "advisory", "policy"]
+        required: false
+      - { label: "Start a Conversation — Topic (optional, short slug carried through as context, e.g. \"erp-transformation\")", name: "contact_topic", widget: "string", required: false }
       - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
       - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
+      - { label: "Social Share Image (optional)", name: "ogImage", widget: "image", required: false }
 
   - name: "recommendations"
     label: "Recommendations"

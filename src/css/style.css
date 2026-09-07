@@ -906,7 +906,7 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
 .flywheel {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 640px;
   aspect-ratio: 1;
   margin: 2rem auto;
 }
@@ -925,11 +925,11 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
 .flywheel__node {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: clamp(112px, 27%, 168px);
+  width: clamp(96px, 23%, 148px);
   text-align: center;
   background: var(--background);
   border-radius: var(--radius);
-  padding: 0.55rem 0.4rem;
+  padding: 0.5rem 0.35rem;
   border-top: 2px solid var(--node-accent, var(--accent));
   transition: transform var(--transition);
 }
@@ -1143,6 +1143,49 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
 }
 .related-experience-card .eyebrow { margin-bottom: 0.5rem; }
 .related-experience-card h3 { font-size: 1.1rem; margin-bottom: 0; }
+
+/* Article deck (short intro line under the title) */
+.article-deck {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 58ch;
+  margin-top: 1rem;
+}
+
+/* Pull quote — a standout line surfaced from the article's own prose */
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 3px solid var(--accent-secondary);
+}
+.pull-quote p {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  line-height: 1.35;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* From the Field — links an article back to the Experience story it came from */
+.from-the-field {
+  display: block;
+  margin: 2.75rem 0;
+  padding: 1.75rem 2rem;
+  background: rgba(53, 81, 63, 0.05);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius);
+}
+.from-the-field__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.from-the-field p { margin: 0 0 0.85rem; color: var(--foreground); }
+.from-the-field__link { font-size: 0.92rem; font-weight: 500; color: var(--accent); }
 
 .article-cta-row {
   display: flex;

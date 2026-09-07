@@ -7,7 +7,7 @@ layout: layouts/base.njk
   <div class="wrap">
     <span class="eyebrow">{{ territory.title if territory else category }}</span>
     <h1>{{ title }}</h1>
-    {% if subtitle %}<p>{{ subtitle }}</p>{% endif %}
+    <p class="article-deck">{{ subtitle or excerpt }}</p>
     <p class="card-meta" style="margin-top: 1rem;">{{ date | readableDate }} · {{ content | readingTime }}</p>
   </div>
 </section>
@@ -24,13 +24,6 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
 
-    {% if takeaway %}
-    <div class="takeaway-block">
-      <span class="eyebrow">Closing takeaway</span>
-      <p>{{ takeaway }}</p>
-    </div>
-    {% endif %}
-
     {% if tags.length %}
     <div class="pill-list">
       {% for tag in tags %}
@@ -41,15 +34,24 @@ layout: layouts/base.njk
 
     {% set relatedStory = related_experience | experienceByRef(collections.experienceStories) %}
     {% if relatedStory %}
-    <a class="related-experience-card" href="{{ relatedStory.url }}">
-      <span class="eyebrow">Related Experience</span>
-      <h3>{{ relatedStory.data.title }} →</h3>
+    <a class="from-the-field" href="{{ relatedStory.url }}">
+      <span class="from-the-field__label">From the Field</span>
+      <p>{% if from_the_field_context %}This idea came from work I did while {{ from_the_field_context }}{% else %}This idea came from work I did on {{ relatedStory.data.title | lower }}{% endif %}.</p>
+      <span class="from-the-field__link">Read the Experience story →</span>
     </a>
     {% endif %}
 
+    {% if takeaway %}
+    <div class="takeaway-block">
+      <span class="eyebrow">Closing takeaway</span>
+      <p>{{ takeaway }}</p>
+    </div>
+    {% endif %}
+
+    {% set contactHref = "/contact/?intent=" + contact_intent + "&topic=" + contact_topic if contact_intent and contact_topic else "/contact/" %}
     <div class="article-cta-row">
       {% if relatedStory %}<a class="btn btn--secondary" href="{{ relatedStory.url }}">Read the {{ relatedStory.data.organisation }} Experience story →</a>{% endif %}
-      <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
+      <a class="btn btn--primary" href="{{ contactHref }}">Start a Conversation →</a>
       {{ cta.linkedinLink() }}
     </div>
 
