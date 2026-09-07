@@ -29,6 +29,14 @@
 
   --radius: 4px;
   --transition: 180ms ease;
+
+  /* Section vertical-rhythm scale. Every <section> uses one of these as its
+     top/bottom padding via the tier-* classes below — change the rhythm
+     site-wide from here rather than one-off margins on individual sections. */
+  --space-dominant: clamp(3.25rem, 7vw, 6rem);
+  --space-base: clamp(2.5rem, 5.5vw, 5rem);
+  --space-secondary: clamp(2.25rem, 5vw, 4rem);
+  --space-supporting: clamp(1.75rem, 3.5vw, 2.75rem);
 }
 
 /* ============================================
@@ -81,10 +89,10 @@ p { margin: 0; }
   padding-left: var(--gutter);
   padding-right: var(--gutter);
 }
-section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
+section { padding: var(--space-base) 0; }
 .section-heading {
   max-width: 640px;
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.5rem);
 }
 .section-label {
   display: block;
@@ -107,12 +115,12 @@ section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
 }
 
 /* Visual hierarchy tiers — Primary/Dominant, Secondary, Supporting */
-.tier-dominant { padding: clamp(4.5rem, 10vw, 8.5rem) 0; }
+.tier-dominant { padding: var(--space-dominant) 0; }
 .tier-dominant .section-heading h2 { font-size: clamp(2.1rem, 4.5vw, 3.1rem); }
 
-.tier-secondary { padding: clamp(3.25rem, 7vw, 5.75rem) 0; }
+.tier-secondary { padding: var(--space-secondary) 0; }
 
-.tier-supporting { padding: clamp(2.25rem, 4.5vw, 3.5rem) 0; }
+.tier-supporting { padding: var(--space-supporting) 0; }
 .tier-supporting .section-heading,
 .tier-supporting .split > div:first-child { margin-bottom: 1.25rem; }
 .tier-supporting .section-heading h2,
@@ -182,11 +190,17 @@ section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
 .site-header__nav ul a {
   font-size: 0.92rem;
   color: var(--foreground);
-  transition: color var(--transition);
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
 }
 .site-header__nav ul a:visited { color: var(--foreground); }
-.site-header__nav ul a:hover,
-.site-header__nav ul a[aria-current="page"] { color: var(--accent); }
+.site-header__nav ul a:hover { color: var(--accent); }
+.site-header__nav ul a[aria-current="page"] {
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom-color: var(--accent);
+}
 .site-header__toggle { display: none; padding: 0.4rem; }
 .hamburger, .hamburger::before, .hamburger::after {
   display: block; width: 22px; height: 2px; background: var(--foreground);
@@ -913,14 +927,14 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
 /* ============================================
    THINKING FLYWHEEL
    ============================================ */
-.flywheel-section { padding-top: clamp(1rem, 3vw, 2rem); }
+.flywheel-section { padding-top: clamp(1rem, 3vw, 2rem); padding-bottom: clamp(1rem, 2.5vw, 1.75rem); }
 .flywheel-wrap { display: block; }
 .flywheel {
   position: relative;
   width: 100%;
-  max-width: 640px;
+  max-width: 460px;
   aspect-ratio: 1;
-  margin: 2rem auto;
+  margin: 1.25rem auto;
 }
 .flywheel__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .flywheel__arc { fill: none; stroke: var(--border); stroke-width: 1.25; }
@@ -937,11 +951,11 @@ a.accent-card:focus-visible { border-color: var(--card-accent, var(--accent)); }
 .flywheel__node {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: clamp(96px, 23%, 148px);
+  width: clamp(84px, 21%, 128px);
   text-align: center;
   background: var(--background);
   border-radius: var(--radius);
-  padding: 0.5rem 0.35rem;
+  padding: 0.4rem 0.3rem;
   border-top: 2px solid var(--node-accent, var(--accent));
   transition: transform var(--transition);
 }

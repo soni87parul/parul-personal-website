@@ -10,7 +10,7 @@
     <nav class="site-header__nav" id="site-nav">
       <ul>
         {% for item in navigation.items %}
-        <li><a href="{{ item.link }}"{% if page.url == item.link %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        <li><a href="{{ item.link }}"{% if page.url and page.url.startsWith(item.link) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
         {% endfor %}
       </ul>
       <a class="btn btn--primary btn--small" href="/contact/">Start a Conversation</a>

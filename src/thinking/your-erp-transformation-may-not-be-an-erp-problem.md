@@ -59,7 +59,7 @@ Who owns the truth at each stage?
 
 Where is manual judgement useful, and where is it simply compensating for a broken system?
 
-Which hand-offs repeatedly fail?
+Which handoffs repeatedly fail?
 
 What should the future state actually look like?
 

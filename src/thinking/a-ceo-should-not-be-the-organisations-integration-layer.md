@@ -48,7 +48,7 @@ Inside the organisation, it can be a warning sign.
 
 The CEO should be spending disproportionate time on direction, choices, capital, people and the most consequential decisions.
 
-If the CEO is repeatedly reconciling departmental priorities, chasing updates, resolving routine hand-offs and reminding leaders about commitments, the organisation may have an operating-rhythm problem.
+If the CEO is repeatedly reconciling departmental priorities, chasing updates, resolving routine handoffs and reminding leaders about commitments, the organisation may have an operating-rhythm problem.
 
 This is one of the reasons I think a good CEO Office is often misunderstood.
 

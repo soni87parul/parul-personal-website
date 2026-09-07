@@ -106,7 +106,8 @@ collections:
           - { label: "SEO Description (optional)", name: "seoDescription", widget: "text", required: false }
 
   - name: "experience"
-    label: "Experience"
+    label: "Experience Stories"
+    label_singular: "Experience Story"
     folder: "src/experience"
     create: true
     slug: "{{slug}}"
@@ -216,11 +217,14 @@ collections:
       - { label: "Active (show as a filter option)", name: "active", widget: "boolean", default: true }
 
   - name: "thinking"
-    label: "Thinking"
+    label: "Thinking / Articles"
     label_singular: "Thinking Article"
+    description: "This is the blog. Every article you write and publish lives here — there is no separate Blog section."
     folder: "src/thinking"
     create: true
     slug: "{{slug}}"
+    sortableFields: ["title", "date", "territory", "featured", "published"]
+    summary: "{{territory}} · {{date}}"
     editor:
       preview: false
     fields:
@@ -420,7 +424,7 @@ collections:
               - { label: "Link", name: "link", widget: "string" }
 
   - name: "settings"
-    label: "Settings"
+    label: "Site Settings"
     files:
       - name: "settings"
         label: "Site Settings"
