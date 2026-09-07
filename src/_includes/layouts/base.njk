@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Netlify Identity invite/recovery/confirmation links redirect to the site's
+    // root URL with a token in the hash. Only /admin/ knows how to handle that
+    // token (it loads the Identity widget), so forward it there immediately —
+    // before this page renders — regardless of which page the link landed on.
+    (function () {
+      var hash = window.location.hash;
+      if (hash && /^#(confirmation_token|invite_token|recovery_token|email_change_token)=/.test(hash)) {
+        window.location.replace("/admin/" + hash);
+      }
+    })();
+  </script>
   <title>{{ seoTitle or title or site.siteTitle }}</title>
   <meta name="description" content="{{ seoDescription or site.metaDescription }}">
   <link rel="canonical" href="{{ site.baseUrl or '' }}{{ page.url }}">
