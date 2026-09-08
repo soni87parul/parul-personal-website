@@ -10,7 +10,7 @@ seoDescription: "Ideas shaped by the problems I work on: transformation, AI, ope
   <div class="wrap">
     <span class="eyebrow">Thinking</span>
     <h1>Ideas shaped by the problems I work on.</h1>
-    <p>I write about transformation, AI, operating models, business building, future industries and the systems around them.</p>
+    <p>My ideas come from the work itself: how I diagnose problems, design responses, build systems and learn from what happens next.</p>
     <div class="hero__ctas" style="margin-top: 1.75rem;">
       <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
       {{ cta.linkedinLink() }}
@@ -24,24 +24,26 @@ seoDescription: "Ideas shaped by the problems I work on: transformation, AI, ope
       <h2>How my thinking evolves</h2>
       <p style="margin-left: auto; margin-right: auto;">Most of my ideas start in the work itself.</p>
     </div>
-    {% include "partials/flywheel.njk" %}
+    {% include "partials/thinking-ribbon.njk" %}
   </div>
 </section>
 
+{% set territoryIcons = ["⚙", "◎", "⌕", "▲", "✦", "◐"] %}
 <section class="tier-secondary">
   <div class="wrap">
-    <div class="section-heading">
-      <span class="section-label">Territories</span>
-      <h2>What I keep coming back to. Click to filter.</h2>
+    <div class="section-heading" style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+      <div>
+        <span class="section-label">Territories</span>
+        <h2>What I keep coming back to. Click to filter.</h2>
+      </div>
+      <button type="button" class="btn btn--text" data-territory-filter="all" data-territory-reset-link hidden>Show all articles ×</button>
     </div>
-    <div class="topic-mosaic" data-thinking-filter-bar style="grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(120px, auto);">
-      <button type="button" class="topic-tile topic-tile--forest is-active" data-territory-filter="all" style="grid-column: span 1; align-items: center; text-align: center; justify-content: center;">
-        <span class="topic-tile__title" style="margin: 0;">All</span>
-      </button>
+    <div class="territory-grid" data-thinking-filter-bar>
       {% for t in thinkingTerritories %}
-      <button type="button" class="topic-tile topic-tile--{{ t.accent }}" data-territory-filter="{{ t.slug }}">
-        <span class="topic-tile__title">{{ t.title }}</span>
-        <span class="topic-tile__keywords">{{ t.description }}</span>
+      <button type="button" class="territory-card" data-territory-filter="{{ t.slug }}" style="--territory-accent: var(--{{ t.accent }});">
+        <span class="territory-card__icon" aria-hidden="true">{{ territoryIcons[loop.index0] }}</span>
+        <span class="territory-card__title">{{ t.title }}</span>
+        <span class="territory-card__desc">{{ t.description }}</span>
       </button>
       {% endfor %}
     </div>

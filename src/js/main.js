@@ -24,22 +24,66 @@ if (navToggle && siteNav) {
   });
 }
 
-// Loop diagrams (homepage methodology loop, Thinking flywheel) — draw the
-// connecting line in once the diagram scrolls into view, rather than on
-// page load, so the motion reads as a reveal rather than noise.
-const loopEls = document.querySelectorAll("[data-loop-diagram], .flywheel");
-if (loopEls.length && "IntersectionObserver" in window) {
-  const loopObserver = new IntersectionObserver((entries) => {
+// Line-flow diagrams (homepage methodology, Thinking ribbon) — a line
+// draws left to right through each stage, pauses at the end, then resets
+// and redraws from the start. Never connects the last stage back to the
+// first visually; the reset is a plain state change, not a loop-back.
+function initLineFlow(el) {
+  const stages = el.querySelectorAll(".line-flow__stage");
+  const fill = el.querySelector(".line-flow__fill");
+  const n = stages.length;
+  if (!n) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) {
+    stages.forEach((s) => s.classList.add("is-done"));
+    el.classList.add("is-playing");
+    return;
+  }
+  const drawMs = 700 + n * 260;
+  const pauseMs = 1500;
+  let timers = [];
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+  function cycle() {
+    clearTimers();
+    // Reset instantly (no reverse-wipe) — disable the transition just for
+    // this one frame, snap back to the start, then restore it before the
+    // next forward draw begins.
+    if (fill) fill.style.transition = "none";
+    el.classList.remove("is-playing");
+    stages.forEach((s) => s.classList.remove("is-active", "is-done"));
+    void el.offsetWidth;
+    if (fill) fill.style.transition = "";
+    requestAnimationFrame(() => {
+      el.classList.add("is-playing");
+      stages.forEach((s, i) => {
+        const t = n <= 1 ? 0 : (i / (n - 1)) * drawMs;
+        timers.push(setTimeout(() => {
+          stages.forEach((x) => x.classList.remove("is-active"));
+          s.classList.add("is-active");
+        }, t));
+        timers.push(setTimeout(() => s.classList.add("is-done"), t + 150));
+      });
+      timers.push(setTimeout(() => {
+        stages.forEach((s) => s.classList.remove("is-active"));
+        timers.push(setTimeout(cycle, pauseMs));
+      }, drawMs + 150));
+    });
+  }
+  cycle();
+}
+const lineFlowEls = document.querySelectorAll("[data-line-flow]");
+if (lineFlowEls.length && "IntersectionObserver" in window) {
+  const lineFlowObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("is-drawn");
-        loopObserver.unobserve(entry.target);
+        initLineFlow(entry.target);
+        lineFlowObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.35 });
-  loopEls.forEach((el) => loopObserver.observe(el));
+  lineFlowEls.forEach((el) => lineFlowObserver.observe(el));
 } else {
-  loopEls.forEach((el) => el.classList.add("is-drawn"));
+  lineFlowEls.forEach((el) => initLineFlow(el));
 }
 
 // Methodology path — click/Enter/Space reveals the discoverable example.
@@ -117,6 +161,7 @@ if (filterBar) {
 const thinkingFilterBar = document.querySelector("[data-thinking-filter-bar]");
 if (thinkingFilterBar) {
   const buttons = thinkingFilterBar.querySelectorAll("button[data-territory-filter]");
+  const resetLink = document.querySelector("[data-territory-reset-link]");
   const validFilters = new Set([...buttons].map((b) => b.getAttribute("data-territory-filter")));
   const cards = document.querySelectorAll("[data-thinking-card]");
   const emptyState = document.querySelector("[data-thinking-empty-state]");
@@ -124,6 +169,7 @@ if (thinkingFilterBar) {
   function applyThinkingFilter(filter) {
     if (!validFilters.has(filter)) filter = "all";
     buttons.forEach((b) => b.classList.toggle("is-active", b.getAttribute("data-territory-filter") === filter));
+    if (resetLink) resetLink.hidden = filter === "all";
 
     let visibleCount = 0;
     cards.forEach((card) => {
@@ -140,6 +186,10 @@ if (thinkingFilterBar) {
       applyThinkingFilter(btn.getAttribute("data-territory-filter"));
     });
   });
+
+  if (resetLink) {
+    resetLink.addEventListener("click", () => applyThinkingFilter("all"));
+  }
 
   const initialTerritory = new URLSearchParams(window.location.search).get("territory");
   if (initialTerritory) {

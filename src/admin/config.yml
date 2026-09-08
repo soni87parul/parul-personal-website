@@ -35,13 +35,14 @@ collections:
               - { label: "Aspect Ratio (e.g. \"3/2\", \"16/9\")", name: "ratio", widget: "string" }
 
           - { label: "Credibility — Heading", name: "credibilityHeading", widget: "string" }
-          - label: "Credibility — Companies (shown as a colour-coded wordmark strip)"
+          - label: "Credibility — Companies (real logo if uploaded, otherwise a clearly labelled placeholder — never coloured text pretending to be a logo)"
             name: "credibilityLogos"
             widget: "list"
             summary: "{{fields.name}}"
             fields:
               - { label: "Company Name", name: "name", widget: "string" }
-              - { label: "Brand Colour (hex, e.g. #FF9900 — use the site's neutral palette if no authentic brand colour is confirmed)", name: "color", widget: "string" }
+              - { label: "Brand Colour (hex, e.g. #FF9900 — used on the placeholder border/tint until a real logo is uploaded)", name: "color", widget: "string" }
+              - { label: "Logo Image (upload the real logo asset here when available)", name: "logo", widget: "image", required: false }
 
           - { label: "Signature Statement (personal pull-quote, shown between Credibility and Method)", name: "signatureStatement", widget: "string" }
 
@@ -95,14 +96,19 @@ collections:
           - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/about.njk" }
           - { label: "Heading", name: "title", widget: "string" }
           - { label: "Short Introduction (who Parul is, shown right under the heading)", name: "shortIntro", widget: "text" }
-          - label: "Proof Row (2-3 small stats shown under the intro)"
-            name: "proofRow"
+          - label: "Proof Cards (Operator / Builder / Ecosystem Thinker)"
+            name: "proofCards"
             widget: "list"
             required: false
-            summary: "{{fields.value}}"
+            summary: "{{fields.title}}"
             fields:
-              - { label: "Value (e.g. \"15+ years\")", name: "value", widget: "string" }
-              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title (e.g. \"Operator\")", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon (a single character/glyph)", name: "icon", widget: "string" }
+              - label: "Accent Colour"
+                name: "accent"
+                widget: "select"
+                options: ["terracotta", "gold", "slate", "sage", "forest", "rose"]
           - { label: "How I Got Here (optional — hidden until filled in)", name: "howIGotHere", widget: "text", required: false }
           - { label: "The Thread Through My Career (one to two sentences)", name: "threadThroughCareer", widget: "text", required: false }
           - label: "Career Journey (the horizontal, expandable chapter timeline)"
@@ -112,6 +118,9 @@ collections:
             summary: "{{fields.company}}"
             fields:
               - { label: "Company", name: "company", widget: "string" }
+              - { label: "Logo Name (used for the placeholder label if no logo image is uploaded)", name: "logoName", widget: "string", required: false }
+              - { label: "Logo Colour (hex, for the placeholder border/tint)", name: "logoColor", widget: "string", required: false }
+              - { label: "Logo Image (upload the real logo asset here when available)", name: "logoAsset", widget: "image", required: false }
               - { label: "Chapter Headline (e.g. \"Building operations and speed\")", name: "label", widget: "string" }
               - { label: "Problem / Summary (shown when expanded)", name: "problem", widget: "text" }
               - { label: "Key Learning (optional)", name: "learning", widget: "string", required: false }

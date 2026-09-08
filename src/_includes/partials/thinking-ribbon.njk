@@ -1,0 +1,26 @@
+{% set ribbonAccents = ["forest", "terracotta", "gold", "slate", "rose", "sage", "forest"] %}
+{% set ribbonIcons = ["▪", "◎", "⌕", "▤", "↗", "◐", "⟳"] %}
+{% set ribbonStages = [
+  { title: "Work", desc: "Solve a real problem." },
+  { title: "Observe", desc: "Notice what breaks or creates leverage." },
+  { title: "Figure Out", desc: "Separate symptoms from the real constraint." },
+  { title: "Codify", desc: "Turn the lesson into a principle." },
+  { title: "Share", desc: "Write, speak, make it visible." },
+  { title: "Converse", desc: "Test it with leaders and operators." },
+  { title: "Apply", desc: "Carry it into the next problem." }
+] %}
+<div class="line-flow ribbon-flow" data-line-flow role="img" aria-label="A sequence: Work, Observe, Figure Out, Codify, Share, Converse, Apply.">
+  <div class="line-flow__track">
+    <div class="line-flow__rail"></div>
+    <div class="line-flow__fill"></div>
+    <div class="line-flow__stages">
+      {% for stage in ribbonStages %}
+      <div class="line-flow__stage" style="--stage-accent: var(--{{ ribbonAccents[loop.index0] }});">
+        <span class="line-flow__node" aria-hidden="true">{{ ribbonIcons[loop.index0] }}</span>
+        <span class="line-flow__title">{{ stage.title }}</span>
+        <span class="line-flow__desc">{{ stage.desc }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

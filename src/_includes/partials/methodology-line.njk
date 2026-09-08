@@ -1,0 +1,17 @@
+{% set stageAccents = ["terracotta", "gold", "slate", "sage", "forest"] %}
+{% set stageIcons = ["⌕", "◈", "⚙", "▲", "✦"] %}
+<div class="line-flow" data-line-flow role="img" aria-label="A sequence: Figure Out, Design, Build, Scale, Transform.">
+  <div class="line-flow__track">
+    <div class="line-flow__rail"></div>
+    <div class="line-flow__fill"></div>
+    <div class="line-flow__stages">
+      {% for stage in homepage.methodStages %}
+      <div class="line-flow__stage" style="--stage-accent: var(--{{ stageAccents[loop.index0] }});">
+        <span class="line-flow__node" aria-hidden="true">{{ stageIcons[loop.index0] }}</span>
+        <span class="line-flow__title">{{ stage.title }}</span>
+        <span class="line-flow__desc">{{ stage.action }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

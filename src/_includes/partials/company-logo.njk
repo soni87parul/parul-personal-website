@@ -1,0 +1,10 @@
+{% macro logo(company) %}
+{% if company.logo %}
+<span class="company-logo"><img src="{{ company.logo }}" alt="{{ company.name }} logo"></span>
+{% else %}
+<span class="company-logo company-logo--placeholder" style="--logo-accent: {{ company.color or 'var(--muted)' }};">
+  <span class="company-logo__tag">Logo needed</span>
+  <span class="company-logo__name">{{ company.name }}</span>
+</span>
+{% endif %}
+{% endmacro %}

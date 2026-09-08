@@ -15,14 +15,14 @@
 
   "credibilityHeading": "A career across technology, operations, transformation and emerging businesses.",
   "credibilityLogos": [
-    { "name": "Amazon", "color": "#FF9900" },
-    { "name": "Snapdeal", "color": "#E4002B" },
-    { "name": "Addverb", "color": "#35513F" },
-    { "name": "Paytm", "color": "#00BAF2" },
-    { "name": "ICICI Bank", "color": "#F58220" },
-    { "name": "DHL Express", "color": "#D40511" },
-    { "name": "ClearMeat", "color": "#7C8F6E" },
-    { "name": "ABWCI", "color": "#5B7088" }
+    { "name": "Amazon", "color": "#FF9900", "logo": "" },
+    { "name": "Snapdeal", "color": "#E4002B", "logo": "" },
+    { "name": "Addverb", "color": "#35513F", "logo": "" },
+    { "name": "Paytm", "color": "#00BAF2", "logo": "" },
+    { "name": "ICICI Bank", "color": "#F58220", "logo": "" },
+    { "name": "DHL Express", "color": "#D40511", "logo": "" },
+    { "name": "ClearMeat", "color": "#7C8F6E", "logo": "" },
+    { "name": "ABWCI", "color": "#5B7088", "logo": "" }
   ],
 
   "signatureStatement": "I am usually most useful when the answer isn't obvious yet.",

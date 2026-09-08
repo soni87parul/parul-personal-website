@@ -9,13 +9,18 @@ seoDescription: "A career is more useful when you can see the problems behind th
 {% import "partials/media-placeholder.njk" as media %}
 
 <section class="page-header page-header--tight">
-  <div class="wrap">
-    <span class="eyebrow">{{ experiencePage.eyebrow }}</span>
-    <h1>{{ experiencePage.headline }}</h1>
-    <p>{{ experiencePage.supportingStatement }}</p>
-    {% if experiencePage.explanationParagraphs.length %}
-    <p style="margin-top: 1rem; max-width: 62ch; color: var(--muted); font-size: 1rem;">{{ experiencePage.explanationParagraphs[0] }}</p>
-    {% endif %}
+  <div class="wrap grid-12">
+    <div class="col-6">
+      <span class="eyebrow">{{ experiencePage.eyebrow }}</span>
+      <h1>{{ experiencePage.headline }}</h1>
+      <p>{{ experiencePage.supportingStatement }}</p>
+      {% if experiencePage.explanationParagraphs.length %}
+      <p style="margin-top: 1rem; max-width: 62ch; color: var(--muted); font-size: 1rem;">{{ experiencePage.explanationParagraphs[0] }}</p>
+      {% endif %}
+    </div>
+    <div class="col-6">
+      {{ media.placeholder("Systems, infrastructure and transformation across a career", "16/9", "A systems / network / operations-architecture visual, not stock photography.") }}
+    </div>
   </div>
 </section>
 
@@ -285,12 +290,13 @@ seoDescription: "A career is more useful when you can see the problems behind th
 {% set layer2Stories = collections.experienceStories | notFeatured %}
 {% set layer2Initial = layer2Stories | limit(6) %}
 {% set layer2Extra = layer2Stories | sliceArr(6, layer2Stories.length) %}
+{% set cardTints = ["terracotta", "gold", "slate", "sage", "forest", "rose"] %}
 {% if layer2Stories.length %}
 <section class="tier-secondary">
   <div class="wrap">
     <div class="card-grid">
       {% for story in layer2Initial %}
-        {{ cards.storyCard(story, collections.capabilityList) }}
+        {{ cards.storyCard(story, collections.capabilityList, null, cardTints[loop.index0 % 6]) }}
       {% endfor %}
     </div>
 
@@ -302,7 +308,7 @@ seoDescription: "A career is more useful when you can see the problems behind th
       </summary>
       <div class="card-grid" style="margin-top: 1.75rem;">
         {% for story in layer2Extra %}
-          {{ cards.storyCard(story, collections.capabilityList) }}
+          {{ cards.storyCard(story, collections.capabilityList, null, cardTints[(loop.index0 + 6) % 6]) }}
         {% endfor %}
       </div>
     </details>

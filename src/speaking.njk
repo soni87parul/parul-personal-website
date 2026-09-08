@@ -33,16 +33,13 @@ seoDescription: "From the future of food and alternative proteins to supply chai
       <span class="section-label">Topics</span>
       <h2>What I speak about</h2>
     </div>
-    <div class="topic-mosaic">
+    {% set topicIcons = ["◐", "⚙", "▲", "✦", "◎", "⌕"] %}
+    <div class="territory-grid">
       {% for topic in safeTopics %}
-      {% set sizeClass = "topic-tile--large" if loop.index0 == 0 else ("topic-tile--wide" if loop.index0 == 5 else "topic-tile--small") %}
-      <a class="topic-tile {{ sizeClass }} topic-tile--{{ topic.accent }}{% if topic.hasImage %} topic-tile--image{% endif %}" href="/contact/?intent=speaking&topic={{ topic.title | lower | replace(' ', '-') }}">
-        {% if topic.hasImage %}<span class="topic-tile__icon" aria-hidden="true">◈</span>{% endif %}
-        <div>
-          <span class="topic-tile__eyebrow">{% if topic.hasImage %}Image placeholder{% else %}Topic{% endif %}</span>
-          <span class="topic-tile__title">{{ topic.title }}</span>
-          <span class="topic-tile__keywords">{{ topic.keywords }}</span>
-        </div>
+      <a class="territory-card" href="/contact/?intent=speaking&topic={{ topic.title | lower | replace(' ', '-') }}" style="--territory-accent: var(--{{ topic.accent }});">
+        <span class="territory-card__icon" aria-hidden="true">{{ topicIcons[loop.index0] }}</span>
+        <span class="territory-card__title">{{ topic.title }}{% if topic.hasImage %} <span style="font-size: 0.65rem; color: var(--muted); font-weight: 400;">(photo)</span>{% endif %}</span>
+        <span class="territory-card__desc">{{ topic.keywords }}</span>
       </a>
       {% endfor %}
     </div>

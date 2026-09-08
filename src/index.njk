@@ -4,6 +4,7 @@ layout: layouts/base.njk
 ---
 {% import "partials/media-placeholder.njk" as media %}
 {% import "partials/cta.njk" as cta %}
+{% import "partials/company-logo.njk" as companyLogo %}
 
 <section class="hero">
   <div class="wrap hero__grid">
@@ -36,9 +37,9 @@ layout: layouts/base.njk
 <section class="credibility">
   <div class="wrap">
     <p class="credibility__heading">{{ homepage.credibilityHeading }}</p>
-    <div class="company-strip">
-      {% for logo in homepage.credibilityLogos %}
-      <span class="company-strip__mark" style="--mark-color: {{ logo.color }};">{{ logo.name }}</span>
+    <div class="company-logo-strip">
+      {% for c in homepage.credibilityLogos %}
+        {{ companyLogo.logo(c) }}
       {% endfor %}
     </div>
   </div>
@@ -58,7 +59,7 @@ layout: layouts/base.njk
       <h2>{{ homepage.methodHeading }}</h2>
       <p style="margin-left: auto; margin-right: auto;">{{ homepage.methodSubheading }}</p>
     </div>
-    {% include "partials/methodology-loop.njk" %}
+    {% include "partials/methodology-line.njk" %}
   </div>
 </section>
 
@@ -139,47 +140,35 @@ layout: layouts/base.njk
   </div>
 </section>
 
-{% set featuredIdea = collections.articles | featured | limit(1) %}
-{% set moreIdeas = collections.articles | notFeatured | limit(3) %}
-{% if featuredIdea.length or moreIdeas.length %}
+{% set homeIdeas = collections.articles | limit(3) %}
+{% if homeIdeas.length %}
 <section class="thinking-teaser tier-secondary">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Ideas</span>
+      <span class="section-label">How I Work and Think</span>
       <h2>{{ homepage.thinkingHeading }}</h2>
       <p>{{ homepage.thinkingSubheading }}</p>
     </div>
 
-    <div class="ideas-grid">
-      {% if featuredIdea.length %}
-      {% set idea = featuredIdea[0] %}
+    <div class="mini-strip mini-strip--compact" style="margin-bottom: 2.5rem;">
+      <span>Work</span><span>Observe</span><span>Figure Out</span><span>Codify</span><span>Share</span><span>Converse</span><span>Apply</span>
+    </div>
+
+    <div class="card-grid">
+      {% for idea in homeIdeas %}
       {% set ideaTerritory = idea.data.territory | territoryData %}
-      <a class="accent-card ideas-grid__featured{% if ideaTerritory %} accent-card--{{ ideaTerritory.accent }}{% endif %}" href="{{ idea.url }}">
-        {% if ideaTerritory %}<span class="accent-card__label">{{ ideaTerritory.title }}</span>{% endif %}
+      <a class="article-card" href="{{ idea.url }}">
+        {% if ideaTerritory %}<span class="card-category">{{ ideaTerritory.title }}</span>{% endif %}
         <h3>{{ idea.data.title }}</h3>
-        <p>{{ idea.data.excerpt }}</p>
+        <p class="card-body">{{ idea.data.excerpt }}</p>
+        <div class="card-meta">{{ idea.data.date | readableDate }} · {{ idea.templateContent | readingTime }}</div>
         <span class="accent-card__link">Read the article →</span>
       </a>
-      {% endif %}
-
-      <div class="ideas-grid__side">
-        <div class="mini-strip mini-strip--compact">
-          <span>Work</span><span>Observe</span><span>Figure Out</span><span>Codify</span><span>Share</span><span>Converse</span>
-        </div>
-        <p class="ideas-grid__caption">How my thinking evolves: <a href="/thinking/#method">see the full loop →</a></p>
-
-        {% if moreIdeas.length %}
-        <ul class="ideas-grid__links">
-          {% for idea in moreIdeas %}
-          <li><a href="{{ idea.url }}">{{ idea.data.title }} →</a></li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </div>
+      {% endfor %}
     </div>
 
     <div class="section-footer">
-      <a class="btn btn--text" href="/thinking/">{{ homepage.thinkingCtaLabel }}</a>
+      <a class="btn btn--text" href="/thinking/">View all articles →</a>
       {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
       <a class="btn btn--text" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" style="margin-left: 1.5rem;">Continue the conversation on LinkedIn →</a>
       {% endif %}
