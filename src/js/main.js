@@ -1,3 +1,11 @@
+// Header scroll state — slightly shorter band + shadow once scrolled.
+const siteHeader = document.getElementById("site-header");
+if (siteHeader) {
+  const applyScrollState = () => siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
+  applyScrollState();
+  window.addEventListener("scroll", applyScrollState, { passive: true });
+}
+
 // Mobile nav toggle
 const navToggle = document.getElementById("nav-toggle");
 const siteNav = document.getElementById("site-nav");

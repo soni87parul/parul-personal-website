@@ -1,12 +1,50 @@
 {
   "items": [
     {
-      "title": "[CONTENT NEEDED — event or organisation name]",
-      "topic": "[CONTENT NEEDED — speaking topic]",
+      "title": "[CONTENT NEEDED — confirm: Gulfood / Gulfood 2024, Dubai]",
+      "organisation": "",
+      "topic": "Future of Food",
+      "year": "",
+      "location": "Dubai",
+      "image": "",
+      "videoUrl": "",
+      "externalUrl": "",
+      "featured": false,
+      "published": false
+    },
+    {
+      "title": "[CONTENT NEEDED — confirm: CII / Future of Food forum]",
+      "organisation": "CII",
+      "topic": "Future of Food",
       "year": "",
       "location": "",
-      "videoUrl": "",
       "image": "",
+      "videoUrl": "",
+      "externalUrl": "",
+      "featured": false,
+      "published": false
+    },
+    {
+      "title": "[CONTENT NEEDED — confirm: Digital Bharat Summit]",
+      "organisation": "",
+      "topic": "",
+      "year": "",
+      "location": "",
+      "image": "",
+      "videoUrl": "",
+      "externalUrl": "",
+      "featured": false,
+      "published": false
+    },
+    {
+      "title": "[CONTENT NEEDED — confirm: Women in Supply Chain leadership conversation]",
+      "organisation": "",
+      "topic": "Women in Business & Supply Chain",
+      "year": "",
+      "location": "",
+      "image": "",
+      "videoUrl": "",
+      "externalUrl": "",
       "featured": false,
       "published": false
     }

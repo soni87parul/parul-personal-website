@@ -373,7 +373,9 @@ collections:
             summary: "{{fields.title}}"
             fields:
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Keywords (short, middot-separated — always visible, not hidden behind a click)", name: "keywords", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Example Talk Titles (illustrative — not a record of past talks)", name: "talks", widget: "list", required: false }
       - name: "speakingEvents"
         label: "Speaking Events"
         file: "src/_data/speakingEvents.json"

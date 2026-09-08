@@ -1,9 +1,70 @@
 {
   "items": [
-    { "title": "From Strategy to Transformation", "description": "Why strategy so often fails at the point of execution, and what closes the gap." },
-    { "title": "Building Before Scaling", "description": "What has to be true before an organisation is ready to scale." },
-    { "title": "AI and the Future of Work", "description": "How AI changes the operating model, not just the tooling." },
-    { "title": "Designing Organisations for the Next Stage", "description": "Structuring people, process and technology for where the organisation is going, not where it's been." },
-    { "title": "What It Takes to Build in an Emerging Category", "description": "Lessons from operating inside categories that don't have an established playbook yet." }
+    {
+      "title": "Future of Food",
+      "keywords": "Cultivated Meat · Alternative Protein · FoodTech · Cellular Agriculture",
+      "description": "Science is moving quickly. Commercialisation is harder. Parul speaks about what it will take to move cultivated meat and alternative proteins from laboratories into viable industries: regulation, scale-up, economics, infrastructure, consumer adoption and India's opportunity.",
+      "talks": [
+        "From Lab to Market: What It Will Take to Build the Future of Food",
+        "Cultivated Meat: Beyond the Hype",
+        "Can India Build a Future-of-Food Industry?",
+        "Alternative Protein: Where Science Meets Commercial Reality"
+      ]
+    },
+    {
+      "title": "Supply Chains",
+      "keywords": "Logistics · E-commerce · Last Mile · Warehousing · Scale",
+      "description": "Supply chains reveal whether a business is truly ready to scale. Drawing from experience across logistics, e-commerce and large operating systems, Parul speaks about designing supply chains that work beyond the PowerPoint.",
+      "talks": [
+        "Building Supply Chains That Can Survive Scale",
+        "What E-commerce Taught Us About the Future of Logistics",
+        "From Last Mile to Business Model",
+        "Resilient Supply Chains Are Designed, Not Discovered"
+      ]
+    },
+    {
+      "title": "MSME Transformation",
+      "keywords": "Technology · Processes · Productivity · Growth",
+      "description": "Many MSMEs do not need another strategy deck. They need stronger operating systems. Parul speaks about how businesses can move from founder-dependent execution to process-led, technology-enabled and scalable organisations.",
+      "talks": [
+        "From Founder-Led to System-Led",
+        "Why MSME Transformation Is an Operating Problem",
+        "Technology Is Not Digital Transformation",
+        "Building Businesses That Can Grow Without Breaking"
+      ]
+    },
+    {
+      "title": "Automation & the Future of Operations",
+      "keywords": "Robotics · Industry 4.0 · Automation · Future Operating Models",
+      "description": "Automation creates value only when technology, process and economics come together. Parul brings a business lens to robotics, automation and the future of operating systems.",
+      "talks": [
+        "Automation Beyond the Robot",
+        "When Should a Business Actually Automate?",
+        "Industry 4.0 Through a Business Lens",
+        "Designing the Future Operating Model"
+      ]
+    },
+    {
+      "title": "Women in Business & Supply Chain",
+      "keywords": "Economic Participation · Supply Chain · Leadership · Ecosystems",
+      "description": "Women's participation is not only a leadership conversation. It is an economic and ecosystem question. Parul speaks about representation, professional networks, leadership pipelines and the systems that enable more women to participate and progress.",
+      "talks": [
+        "Where Are the Women in Supply Chain?",
+        "Participation Before Leadership",
+        "Building Professional Ecosystems for Women",
+        "Moving From Representation to Economic Opportunity"
+      ]
+    },
+    {
+      "title": "Policy × Industry × Innovation",
+      "keywords": "Emerging Industries · Regulation · Ecosystems · Commercialisation",
+      "description": "New industries cannot scale through entrepreneurship alone. They need policy, regulation, capital, infrastructure, talent and industry to move together. Parul speaks about how emerging sectors become functioning ecosystems.",
+      "talks": [
+        "Who Builds an Industry Before the Industry Exists?",
+        "The Missing Infrastructure Behind Emerging Innovation",
+        "Regulation as an Enabler of New Markets",
+        "Building India's Next Industry Ecosystems"
+      ]
+    }
   ]
 }
