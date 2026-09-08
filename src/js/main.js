@@ -24,6 +24,24 @@ if (navToggle && siteNav) {
   });
 }
 
+// Loop diagrams (homepage methodology loop, Thinking flywheel) — draw the
+// connecting line in once the diagram scrolls into view, rather than on
+// page load, so the motion reads as a reveal rather than noise.
+const loopEls = document.querySelectorAll("[data-loop-diagram], .flywheel");
+if (loopEls.length && "IntersectionObserver" in window) {
+  const loopObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-drawn");
+        loopObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  loopEls.forEach((el) => loopObserver.observe(el));
+} else {
+  loopEls.forEach((el) => el.classList.add("is-drawn"));
+}
+
 // Methodology path — click/Enter/Space reveals the discoverable example.
 // A real <button> already gets keyboard activation for free; this just
 // toggles the visual state and keeps only one stage open at a time.
@@ -128,6 +146,20 @@ if (thinkingFilterBar) {
     applyThinkingFilter(initialTerritory);
   }
 }
+
+// Featured-quote selector (About recommendations) — click a name to swap
+// which recommendation is shown as the large featured quote.
+document.querySelectorAll("[data-quote-block]").forEach((block) => {
+  const buttons = block.querySelectorAll("[data-quote-selector] button");
+  const quotes = block.querySelectorAll("[data-quote-featured] blockquote");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = btn.getAttribute("data-quote-index");
+      buttons.forEach((b) => b.classList.toggle("is-active", b === btn));
+      quotes.forEach((q) => { q.hidden = q.getAttribute("data-quote-index") !== index; });
+    });
+  });
+});
 
 // Contact form — light conditional fields based on opportunity type
 const opportunityTypeSelect = document.getElementById("opportunityType");

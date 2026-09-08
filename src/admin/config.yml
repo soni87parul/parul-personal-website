@@ -35,9 +35,13 @@ collections:
               - { label: "Aspect Ratio (e.g. \"3/2\", \"16/9\")", name: "ratio", widget: "string" }
 
           - { label: "Credibility — Heading", name: "credibilityHeading", widget: "string" }
-          - label: "Credibility — Organisation Names"
+          - label: "Credibility — Companies (shown as a colour-coded wordmark strip)"
             name: "credibilityLogos"
             widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Company Name", name: "name", widget: "string" }
+              - { label: "Brand Colour (hex, e.g. #FF9900 — use the site's neutral palette if no authentic brand colour is confirmed)", name: "color", widget: "string" }
 
           - { label: "Signature Statement (personal pull-quote, shown between Credibility and Method)", name: "signatureStatement", widget: "string" }
 
@@ -91,17 +95,35 @@ collections:
           - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/about.njk" }
           - { label: "Heading", name: "title", widget: "string" }
           - { label: "Short Introduction (who Parul is, shown right under the heading)", name: "shortIntro", widget: "text" }
+          - label: "Proof Row (2-3 small stats shown under the intro)"
+            name: "proofRow"
+            widget: "list"
+            required: false
+            summary: "{{fields.value}}"
+            fields:
+              - { label: "Value (e.g. \"15+ years\")", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
           - { label: "How I Got Here (optional — hidden until filled in)", name: "howIGotHere", widget: "text", required: false }
-          - { label: "The Thread Through My Career (optional — hidden until filled in)", name: "threadThroughCareer", widget: "text", required: false }
-          - label: "Career Chapters (a short why-focused summary, distinct from the detailed Experience page)"
+          - { label: "The Thread Through My Career (one to two sentences)", name: "threadThroughCareer", widget: "text", required: false }
+          - label: "Career Journey (the horizontal, expandable chapter timeline)"
             name: "careerChapters"
             widget: "list"
             required: false
-            summary: "{{fields.label}}"
+            summary: "{{fields.company}}"
             fields:
-              - { label: "Chapter Label (e.g. \"Learning the customer\")", name: "label", widget: "string" }
-              - { label: "One-line Description", name: "description", widget: "string" }
-          - { label: "Beyond Work (optional — hidden until filled in)", name: "beyondWork", widget: "text", required: false }
+              - { label: "Company", name: "company", widget: "string" }
+              - { label: "Chapter Headline (e.g. \"Building operations and speed\")", name: "label", widget: "string" }
+              - { label: "Problem / Summary (shown when expanded)", name: "problem", widget: "text" }
+              - { label: "Key Learning (optional)", name: "learning", widget: "string", required: false }
+              - { label: "Metric Value (optional, e.g. \"₹90 Cr\")", name: "metricValue", widget: "string", required: false }
+              - { label: "Metric Label (optional)", name: "metricLabel", widget: "string", required: false }
+              - { label: "Link to full Experience story (optional)", name: "link", widget: "string", required: false }
+          - { label: "Advisory, Institutional & Ecosystem Work (optional — hidden until filled in)", name: "advisoryInstitutionalWork", widget: "text", required: false }
+          - label: "What Matters to Me (personal values, kept secondary to the professional work)"
+            name: "whatMattersToMe"
+            widget: "list"
+            required: false
+          - { label: "Beyond Work (legacy — deprecated in favour of the two sections above)", name: "beyondWork", widget: "text", required: false }
           - { label: "Education (optional, quiet credentials note — hidden until filled in)", name: "education", widget: "text", required: false }
           - { label: "Methodology Reference Line (optional, links to the homepage method section)", name: "methodologyReference", widget: "string", required: false }
           - { label: "SEO Title (optional)", name: "seoTitle", widget: "string", required: false }
@@ -355,8 +377,24 @@ collections:
               - { label: "Contact Topic (optional, passed through as context, e.g. \"portfolio-support\")", name: "contactTopic", widget: "string", required: false }
               - { label: "Enabled (show on site)", name: "enabled", widget: "boolean", default: true }
               - { label: "Order", name: "order", widget: "number" }
-          - { label: "\"Other Conversations\" — Heading", name: "otherConversationsHeading", widget: "string" }
-          - { label: "\"Other Conversations\" — Text (board, leadership, speaking, collaborations)", name: "otherConversationsText", widget: "text" }
+          - { label: "\"Also Open To\" — Heading", name: "otherConversationsHeading", widget: "string" }
+          - { label: "\"Also Open To\" — Text (optional, shown above the opportunity blocks)", name: "otherConversationsText", widget: "text", required: false }
+          - label: "Opportunity Blocks (Board, Leadership, Speaking, Policy, Investor — kept visually prominent, not an afterthought)"
+            name: "opportunities"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Accent Colour"
+                name: "accent"
+                widget: "select"
+                options: ["terracotta", "gold", "slate", "sage", "forest", "rose"]
+              - label: "Contact Opportunity Type (preselects this on the Contact form)"
+                name: "contactIntent"
+                widget: "select"
+                options: ["leadership", "transformation", "ceo-advisory", "advisory", "investor", "board", "government", "policy", "speaking", "collaboration", "other"]
+              - { label: "Order", name: "order", widget: "number" }
           - { label: "Primary CTA Label", name: "finalCtaPrimaryLabel", widget: "string" }
           - { label: "LinkedIn CTA Label", name: "linkedinCtaLabel", widget: "string" }
 
@@ -374,6 +412,8 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Keywords (short, middot-separated — always visible, not hidden behind a click)", name: "keywords", widget: "string" }
+              - { label: "Colour Accent", name: "accent", widget: "select", options: ["forest", "terracotta", "gold", "slate", "sage", "rose"] }
+              - { label: "This tile gets a real photo (limit to 2 of 6 topics)", name: "hasImage", widget: "boolean", default: false }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Example Talk Titles (illustrative — not a record of past talks)", name: "talks", widget: "list", required: false }
       - name: "speakingEvents"

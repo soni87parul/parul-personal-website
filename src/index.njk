@@ -36,29 +36,29 @@ layout: layouts/base.njk
 <section class="credibility">
   <div class="wrap">
     <p class="credibility__heading">{{ homepage.credibilityHeading }}</p>
-    <ul class="credibility__logos">
+    <div class="company-strip">
       {% for logo in homepage.credibilityLogos %}
-      <li>{{ logo }}</li>
+      <span class="company-strip__mark" style="--mark-color: {{ logo.color }};">{{ logo.name }}</span>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </section>
 
-<section class="signature-statement">
+<section class="statement-dark">
   <div class="wrap">
-    <span class="signature-statement__mark" aria-hidden="true">“</span>
+    <span class="statement-dark__mark" aria-hidden="true">“</span>
     <blockquote>{{ homepage.signatureStatement }}</blockquote>
   </div>
 </section>
 
 <section class="method tier-secondary" id="method">
   <div class="wrap">
-    <div class="section-heading">
+    <div class="section-heading" style="text-align: center; margin-left: auto; margin-right: auto;">
       <span class="section-label">Method</span>
       <h2>{{ homepage.methodHeading }}</h2>
-      <p>{{ homepage.methodSubheading }}</p>
+      <p style="margin-left: auto; margin-right: auto;">{{ homepage.methodSubheading }}</p>
     </div>
-    {% include "partials/method-path.njk" %}
+    {% include "partials/methodology-loop.njk" %}
   </div>
 </section>
 
@@ -70,67 +70,64 @@ layout: layouts/base.njk
       <p>{{ homepage.experienceSubheading }}</p>
     </div>
 
-    {% set snapdeal = "snapdeal-same-day-next-day" | experienceByRef(collections.experienceStories) %}
-    {% set amazon = "amazon-ai-ml-transformation" | experienceByRef(collections.experienceStories) %}
     {% set addverb = "addverb-enterprise-transformation" | experienceByRef(collections.experienceStories) %}
+    {% set amazon = "amazon-ai-ml-transformation" | experienceByRef(collections.experienceStories) %}
+    {% set clearmeat = "clearmeat-business-model" | experienceByRef(collections.experienceStories) %}
 
     <div class="evidence-grid">
-      {% if snapdeal %}
-      <a class="evidence-card evidence-card--compact" href="{{ snapdeal.url }}">
-        <span class="evidence-card__meta">{{ snapdeal.data.organisation }}{% if snapdeal.data.year_or_period %} · {{ snapdeal.data.year_or_period }}{% endif %}</span>
-        <h3>{{ snapdeal.data.title }}</h3>
-        <p>{{ snapdeal.data.summary }}</p>
-        {% set snapImpact = snapdeal.data.impact | publicImpact %}
-        {% if snapImpact.length %}
-        <div class="evidence-card__metric">
-          <span class="evidence-card__metric-value">{{ snapImpact[0].value }}</span>
-          <span class="evidence-card__metric-label">{{ snapImpact[0].label }}</span>
-        </div>
-        {% endif %}
-        <span class="accent-card__link">Explore the transformation →</span>
-      </a>
-      {% endif %}
-
-      {% if amazon %}
-      <a class="evidence-card evidence-card--dominant" href="{{ amazon.url }}">
+      {% if addverb %}
+      <a class="evidence-card evidence-card--dominant evidence-card--forest" href="{{ addverb.url }}">
         <div class="evidence-card__visual">
-          {{ media.placeholder("Working session, operations review", "3/2") }}
+          <div class="diagram-flow" style="justify-content: center; padding: 1.5rem;">
+            <span class="diagram-flow__node" style="--diagram-accent: var(--terracotta);">Fragmented functions</span>
+            <span class="diagram-flow__arrow">→</span>
+            <span class="diagram-flow__node" style="--diagram-accent: var(--accent); --diagram-tint: rgba(53,81,63,0.08);">Connected operating backbone</span>
+          </div>
         </div>
         <div class="evidence-card__content">
-          <span class="evidence-card__meta">{{ amazon.data.organisation }}{% if amazon.data.year_or_period %} · {{ amazon.data.year_or_period }}{% endif %}</span>
-          <h3>{{ amazon.data.title }}</h3>
-          <p>{{ amazon.data.summary }}</p>
-          {% set amazonImpact = amazon.data.impact | publicImpact %}
-          {% if amazonImpact.length %}
-          <div class="evidence-card__metric">
-            <span class="evidence-card__metric-value">{{ amazonImpact[0].value }}</span>
-            <span class="evidence-card__metric-label">{{ amazonImpact[0].label }}</span>
+          <span class="evidence-card__meta">{{ addverb.data.organisation }}{% if addverb.data.year_or_period %} · {{ addverb.data.year_or_period }}{% endif %}</span>
+          <h3>{{ addverb.data.title }}</h3>
+          <p>{{ addverb.data.summary }}</p>
+          {% set addverbImpact = addverb.data.impact | publicImpact %}
+          {% if addverbImpact.length %}
+          <div class="metric-block" style="margin-bottom: 1rem;">
+            <span class="metric-block__value" style="--metric-accent: var(--accent); font-size: 1.9rem;">{{ addverbImpact[0].value }}</span>
+            <span class="metric-block__label">{{ addverbImpact[0].label }}</span>
           </div>
-          {% endif %}
-          {% if amazon.data.public_categories.length %}
-          <ul class="pill-list" style="margin-top: 0;">
-            {% for label in amazon.data.public_categories | limit(3) %}
-            <li class="pill">{{ label }}</li>
-            {% endfor %}
-          </ul>
           {% endif %}
           <span class="accent-card__link">Explore the transformation →</span>
         </div>
       </a>
       {% endif %}
 
-      {% if addverb %}
-      <a class="evidence-card evidence-card--compact" href="{{ addverb.url }}">
-        <span class="evidence-card__meta">{{ addverb.data.organisation }}{% if addverb.data.year_or_period %} · {{ addverb.data.year_or_period }}{% endif %}</span>
-        <h3>{{ addverb.data.title }}</h3>
-        <p>{{ addverb.data.summary }}</p>
-        {% set addverbImpact = addverb.data.impact | publicImpact %}
-        {% if addverbImpact.length %}
-        <div class="evidence-card__metric">
-          <span class="evidence-card__metric-value">{{ addverbImpact[0].value }}</span>
-          <span class="evidence-card__metric-label">{{ addverbImpact[0].label }}</span>
+      {% if amazon %}
+      <a class="evidence-card evidence-card--compact evidence-card--slate" href="{{ amazon.url }}">
+        <span class="evidence-card__meta">{{ amazon.data.organisation }}{% if amazon.data.year_or_period %} · {{ amazon.data.year_or_period }}{% endif %}</span>
+        <h3>{{ amazon.data.title }}</h3>
+        {% set amazonImpact = amazon.data.impact | publicImpact %}
+        {% if amazonImpact.length %}
+        <div class="metric-block" style="margin-bottom: 1rem;">
+          <span class="metric-block__value" style="--metric-accent: var(--slate); font-size: 1.9rem;">{{ amazonImpact[0].value }}</span>
+          <span class="metric-block__label">{{ amazonImpact[0].label }}</span>
         </div>
         {% endif %}
+        <p>Using AI to create capacity without simply adding people.</p>
+        <span class="accent-card__link">Explore the transformation →</span>
+      </a>
+      {% endif %}
+
+      {% if clearmeat %}
+      <a class="evidence-card evidence-card--compact evidence-card--sage" href="{{ clearmeat.url }}">
+        <span class="evidence-card__meta">{{ clearmeat.data.organisation }}</span>
+        <h3>B2C → B2B / B2G</h3>
+        {% set clearmeatImpact = clearmeat.data.impact | publicImpact %}
+        {% if clearmeatImpact.length %}
+        <div class="metric-block" style="margin-bottom: 1rem;">
+          <span class="metric-block__value" style="--metric-accent: var(--sage); font-size: 1.9rem;">{{ clearmeatImpact[0].value }}</span>
+          <span class="metric-block__label">{{ clearmeatImpact[0].label }}</span>
+        </div>
+        {% endif %}
+        <p>Reframing a cultivated-meat startup toward an ingredient-led model.</p>
         <span class="accent-card__link">Explore the transformation →</span>
       </a>
       {% endif %}

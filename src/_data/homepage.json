@@ -15,14 +15,14 @@
 
   "credibilityHeading": "A career across technology, operations, transformation and emerging businesses.",
   "credibilityLogos": [
-    "Amazon",
-    "Snapdeal",
-    "Addverb Technologies",
-    "Paytm",
-    "ICICI Bank",
-    "DHL Express",
-    "ClearMeat",
-    "ABWCI"
+    { "name": "Amazon", "color": "#FF9900" },
+    { "name": "Snapdeal", "color": "#E4002B" },
+    { "name": "Addverb", "color": "#35513F" },
+    { "name": "Paytm", "color": "#00BAF2" },
+    { "name": "ICICI Bank", "color": "#F58220" },
+    { "name": "DHL Express", "color": "#D40511" },
+    { "name": "ClearMeat", "color": "#7C8F6E" },
+    { "name": "ABWCI", "color": "#5B7088" }
   ],
 
   "signatureStatement": "I am usually most useful when the answer isn't obvious yet.",
@@ -66,12 +66,12 @@
   "experienceSubheading": "A career is more useful when you can see the problems behind the titles.",
   "experienceViewAllLabel": "Explore the full career journey →",
 
-  "thinkingHeading": "Thinking",
-  "thinkingSubheading": "Notes on strategy, transformation, technology, organisations, scaling and the problems leaders don't always have time to think through.",
+  "thinkingHeading": "Ideas & Articles",
+  "thinkingSubheading": "Notes on transformation, AI and the systems around emerging industries.",
   "thinkingCtaLabel": "Explore Thinking →",
 
   "speakingHeading": "Conversations worth having.",
-  "speakingText": "Parul speaks on strategy, transformation, technology, scaling, emerging businesses, leadership and building organisations for what comes next.",
+  "speakingText": "From the future of food to supply chains, AI and emerging industries, Parul speaks about how businesses and systems evolve.",
   "speakingCtaLabel": "Explore Speaking →",
 
   "finalCtaHeading": "Have a difficult problem to think through?",

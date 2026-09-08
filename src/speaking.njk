@@ -2,21 +2,24 @@
 title: Speaking
 layout: layouts/base.njk
 seoTitle: Speaking | Parul Soni Manvati
-seoDescription: "From the future of food and alternative proteins to supply chains, MSMEs and emerging industries, Parul speaks about what it takes to build, scale and transform the systems shaping our future."
+seoDescription: "From the future of food and alternative proteins to supply chains, AI and emerging industries, Parul speaks about how businesses, technologies and systems evolve."
 ---
 {% import "partials/media-placeholder.njk" as media %}
 
-<section class="hero">
+<section class="hero page-header--tight">
   <div class="wrap hero__grid">
     <div>
-      <span class="eyebrow">SPEAKING <span style="opacity: 0.55; margin: 0 0.5em;">|</span> PARUL SONI MANVATI</span>
+      <span class="eyebrow">SPEAKING</span>
       <h1 class="hero__headline">Conversations worth having.</h1>
-      <p class="hero__subtext">From the future of food and alternative proteins to supply chains, MSMEs and emerging industries, Parul speaks about what it takes to build, scale and transform the systems shaping our future.</p>
-      <p style="color: var(--muted); font-size: 1.02rem; max-width: 52ch;">Her perspective comes from operating inside businesses, building new categories, working across large organisations and startups, and engaging with industry ecosystems.</p>
+      <p class="hero__subtext">From the future of food and alternative proteins to supply chains, AI and emerging industries, I speak about how businesses, technologies and systems evolve.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="/contact/?intent=speaking">Invite Parul to Speak →</a>
+        <a class="btn btn--secondary" href="/contact/">Start a Conversation →</a>
+      </div>
     </div>
     <div>
-      <div class="hero__image-wrap">
-        {{ media.placeholder("Parul speaking on stage", "4/5", "No real speaking photograph is in the project yet. Replace before this goes fully live.") }}
+      <div class="hero__image-wrap" style="aspect-ratio: 16/10;">
+        {{ media.placeholder("Parul speaking on stage", "16/10", "No real speaking photograph is in the project yet.") }}
       </div>
     </div>
   </div>
@@ -27,46 +30,54 @@ seoDescription: "From the future of food and alternative proteins to supply chai
 <section class="tier-dominant">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">What I speak about</span>
-      <h2>Ideas worth putting in a room together.</h2>
+      <span class="section-label">Topics</span>
+      <h2>What I speak about</h2>
     </div>
-    <div class="speaking-topics-list">
+    <div class="topic-mosaic">
       {% for topic in safeTopics %}
-      <details class="speaking-topic">
-        <summary class="speaking-topic__summary">
-          <span class="speaking-topic__number">{{ "0" + (loop.index | string) if loop.index < 10 else loop.index }}</span>
-          <span class="speaking-topic__headline">
-            <strong>{{ topic.title }}</strong>
-            <span class="speaking-topic__keywords">{{ topic.keywords }}</span>
-          </span>
-          <span class="speaking-topic__icon" aria-hidden="true">+</span>
-        </summary>
-        <div class="speaking-topic__body">
-          <p>{{ topic.description }}</p>
-          {% if topic.talks.length %}
-          <div class="speaking-topic__talks">
-            <span>Possible conversations</span>
-            <ul>
-              {% for talk in topic.talks %}
-              <li>{{ talk }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
+      {% set sizeClass = "topic-tile--large" if loop.index0 == 0 else ("topic-tile--wide" if loop.index0 == 5 else "topic-tile--small") %}
+      <a class="topic-tile {{ sizeClass }} topic-tile--{{ topic.accent }}{% if topic.hasImage %} topic-tile--image{% endif %}" href="/contact/?intent=speaking&topic={{ topic.title | lower | replace(' ', '-') }}">
+        {% if topic.hasImage %}<span class="topic-tile__icon" aria-hidden="true">◈</span>{% endif %}
+        <div>
+          <span class="topic-tile__eyebrow">{% if topic.hasImage %}Image placeholder{% else %}Topic{% endif %}</span>
+          <span class="topic-tile__title">{{ topic.title }}</span>
+          <span class="topic-tile__keywords">{{ topic.keywords }}</span>
         </div>
-      </details>
+      </a>
       {% endfor %}
     </div>
   </div>
 </section>
 {% endif %}
 
+{% set featuredEvent = speakingEvents.items | selectattr("published") | selectattr("featured") | publiclySafe | first %}
+<section class="tier-secondary teaser">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Featured</span>
+      <h2>Featured Speaking Appearance</h2>
+    </div>
+    {% if featuredEvent %}
+    <div class="split" style="align-items: center;">
+      <div>{{ media.placeholder(featuredEvent.title, "16/9") }}</div>
+      <div>
+        <h3>{{ featuredEvent.title }}</h3>
+        {% if featuredEvent.topic %}<p style="color: var(--muted);">{{ featuredEvent.topic }}</p>{% endif %}
+        {% if featuredEvent.externalUrl %}<a class="btn btn--text" href="{{ featuredEvent.externalUrl }}" target="_blank" rel="noopener noreferrer">View appearance →</a>{% endif %}
+      </div>
+    </div>
+    {% else %}
+    <div class="empty-state">A featured speaking appearance will appear here once one is confirmed and published.</div>
+    {% endif %}
+  </div>
+</section>
+
 <section class="tier-secondary">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Speaking &amp; Conversations</span>
-      <h2>From the work to the stage.</h2>
-      <p>Parul's speaking is grounded in the industries, organisations and systems she has worked inside, not commentary from the sidelines.</p>
+      <span class="section-label">Archive</span>
+      <h2>Selected Speaking &amp; Appearances</h2>
+      <p>Grounded in the industries, organisations and systems I've worked inside, not commentary from the sidelines.</p>
     </div>
     {% set publishedEvents = speakingEvents.items | selectattr("published") | publiclySafe %}
     {% if publishedEvents.length %}
@@ -93,12 +104,11 @@ seoDescription: "From the future of food and alternative proteins to supply chai
   </div>
 </section>
 
-<section class="tier-dominant section--sage">
-  <div class="wrap">
-    <span class="section-label">Speaking</span>
-    <h2>Bring this conversation to your room.</h2>
-    <p style="max-width: 56ch; margin-top: 1rem; margin-bottom: 2rem;">For conferences, leadership forums, industry conversations, panels and ecosystem events.</p>
-    <div class="teaser__ctas">
+<section class="tier-dominant section--dark">
+  <div class="wrap" style="text-align: center;">
+    <span class="section-label" style="display: block;">Speaking</span>
+    <h2 style="max-width: 24ch; margin: 0 auto 1.5rem;">Bring an operator's perspective to the room.</h2>
+    <div class="teaser__ctas" style="justify-content: center;">
       <a class="btn btn--primary" href="/contact/?intent=speaking">Invite Parul to Speak →</a>
       <a class="btn btn--secondary" href="/contact/">Start a Conversation →</a>
     </div>

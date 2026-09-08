@@ -6,7 +6,7 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
 ---
 {% import "partials/cta.njk" as cta %}
 
-<section class="page-header">
+<section class="page-header page-header--tight">
   <div class="wrap">
     <span class="eyebrow">{{ advisory.heroEyebrow }}</span>
     <h1>{{ advisory.heroHeading }}</h1>
@@ -38,18 +38,6 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
 </section>
 {% endif %}
 
-<section class="tier-secondary teaser">
-  <div class="wrap">
-    <div class="section-heading">
-      <span class="section-label">Method</span>
-      <h2>How an engagement moves</h2>
-    </div>
-    <div class="mini-strip">
-      <span>Figure Out</span><span>Design</span><span>Build</span><span>Scale</span><span>Transform</span>
-    </div>
-  </div>
-</section>
-
 {% set engagementTypes = advisory.engagementTypes | selectattr("enabled") | sort(attribute="order") | publiclySafe %}
 {% if engagementTypes.length %}
 <section class="tier-secondary">
@@ -57,33 +45,39 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
     <div class="section-heading">
       <h2>{{ advisory.engagementHeading }}</h2>
     </div>
-    <div class="engagement-list">
+    <div class="engagement-tiles">
       {% for e in engagementTypes %}
-      <div class="engagement-row">
+      {% set engagementHref = "/contact/?intent=" + e.contactIntent + "&topic=" + e.contactTopic if e.contactTopic else "/contact/?intent=" + e.contactIntent %}
+      <a class="engagement-tile" href="{{ engagementHref }}">
         <h3>{{ e.title }}</h3>
-        <div>
-          <p>{{ e.description }}</p>
-          {% if e.outcome %}<span class="engagement-outcome"><strong>Typical outcome:</strong> {{ e.outcome }}</span>{% endif %}
-          {% set engagementHref = "/contact/?intent=" + e.contactIntent + "&topic=" + e.contactTopic if e.contactTopic else "/contact/?intent=" + e.contactIntent %}
-          <a class="btn btn--text engagement-row__cta" href="{{ engagementHref }}">{{ e.ctaLabel or "Start a Conversation" }} →</a>
-        </div>
-      </div>
+        <p>{{ e.description }}</p>
+      </a>
       {% endfor %}
     </div>
   </div>
 </section>
 {% endif %}
 
-<section class="tier-supporting">
+{% set opportunities = advisory.opportunities | sort(attribute="order") %}
+{% if opportunities.length %}
+<section class="tier-dominant teaser">
   <div class="wrap">
     <div class="section-heading">
       <h2>{{ advisory.otherConversationsHeading }}</h2>
     </div>
-    <p style="max-width: 60ch; color: var(--muted); font-size: 1.05rem;">{{ advisory.otherConversationsText }}</p>
-    <div class="teaser__ctas">
+    <div class="opportunity-grid">
+      {% for o in opportunities %}
+      <a class="opportunity-block opportunity-block--{{ o.accent }}" href="/contact/?intent={{ o.contactIntent }}">
+        <span class="opportunity-block__label">{{ o.title }}</span>
+        <p>{{ o.description }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="teaser__ctas" style="margin-top: 2rem;">
       <a class="btn btn--secondary" href="/speaking/">Explore Speaking →</a>
       <a class="btn btn--primary" href="/contact/">{{ advisory.finalCtaPrimaryLabel or "Start a Conversation" }} →</a>
       {{ cta.linkedinLink(advisory.linkedinCtaLabel + " →" if advisory.linkedinCtaLabel else null) }}
     </div>
   </div>
 </section>
+{% endif %}

@@ -1,6 +1,6 @@
-{% macro storyCard(story, capabilityList, size) %}
+{% macro storyCard(story, capabilityList, size, tint) %}
 {% set publicImpactItems = story.data.impact | publicImpact %}
-<a class="story-card{% if size %} story-card--{{ size }}{% endif %}" data-story-card data-broad-filters="{{ story.data | storyBroadFilterSlugs | join(',') }}" href="{{ story.url }}">
+<a class="story-card{% if size %} story-card--{{ size }}{% endif %}{% if tint %} story-card--{{ tint }}{% endif %}" data-story-card data-broad-filters="{{ story.data | storyBroadFilterSlugs | join(',') }}" href="{{ story.url }}">
   <span class="card-category">{{ story.data.theme }} · {{ story.data.organisation }}</span>
   <h3>{{ story.data.title }}{% if story.data.status_label %} <span class="status-badge">{{ story.data.status_label }}</span>{% endif %}</h3>
   {% set cardText = story.data.card_summary or story.data.summary %}

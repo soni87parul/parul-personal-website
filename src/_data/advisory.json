@@ -1,12 +1,12 @@
 {
   "heroEyebrow": "ADVISORY",
   "heroHeading": "When the problem is bigger than a meeting.",
-  "heroIntro": "Some problems don't need another presentation. They need someone to understand what is really happening, work through the trade-offs with leadership, design a response and help turn it into execution.",
+  "heroIntro": "Some problems need someone to understand what's really happening, work through the trade-offs with leadership, and help turn a response into execution.",
   "positioningHeading": "I am usually most useful when the answer isn't obvious yet.",
   "situations": [
     {
-      "title": "The organisation has grown faster than its operating model.",
-      "description": "Processes, teams and systems that worked at one stage no longer work at the next.",
+      "title": "Your organisation has outgrown its operating model.",
+      "description": "Processes and systems no longer fit the next stage.",
       "accent": "terracotta",
       "contactIntent": "transformation",
       "contactTopic": "operating-model",
@@ -14,8 +14,8 @@
       "order": 1
     },
     {
-      "title": "The CEO knows something needs to change, but the real problem is still unclear.",
-      "description": "Several symptoms are appearing across functions and leadership needs someone to diagnose the underlying constraint.",
+      "title": "The real problem is still unclear.",
+      "description": "Several symptoms. One underlying constraint.",
       "accent": "gold",
       "contactIntent": "transformation",
       "contactTopic": "diagnosis",
@@ -23,8 +23,8 @@
       "order": 2
     },
     {
-      "title": "Strategy exists, but execution keeps breaking between functions.",
-      "description": "Everyone has a plan. Nobody owns the handoffs.",
+      "title": "Strategy exists. Execution keeps breaking.",
+      "description": "Cross-functional ownership is missing.",
       "accent": "slate",
       "contactIntent": "transformation",
       "contactTopic": "cross-functional-execution",
@@ -32,8 +32,8 @@
       "order": 3
     },
     {
-      "title": "A founder needs to rethink the product, GTM or business model.",
-      "description": "The company may be pushing harder when the better answer is changing direction.",
+      "title": "The product or business model needs to change.",
+      "description": "The company may be pushing harder in the wrong direction.",
       "accent": "sage",
       "contactIntent": "advisory",
       "contactTopic": "business-model",
@@ -41,7 +41,7 @@
       "order": 4
     },
     {
-      "title": "AI is being discussed, but nobody has defined what actually needs to change.",
+      "title": "AI is being discussed before the work is redesigned.",
       "description": "Technology selection is happening before operating-model design.",
       "accent": "forest",
       "contactIntent": "transformation",
@@ -50,8 +50,8 @@
       "order": 5
     },
     {
-      "title": "An emerging industry needs more than company-building.",
-      "description": "Regulation, government, infrastructure, partners and ecosystem development become part of the strategy.",
+      "title": "The industry needs an ecosystem, not just a company.",
+      "description": "Regulation, partners and infrastructure become part of strategy.",
       "accent": "rose",
       "contactIntent": "policy",
       "contactTopic": "ecosystem",
@@ -63,8 +63,8 @@
   "engagementTypes": [
     {
       "title": "Strategic Diagnostic",
-      "description": "For situations where leadership knows something is wrong but has not yet isolated the real constraint.",
-      "outcome": "A sharper problem definition, current-state view, priorities and recommended response.",
+      "description": "Find the real problem.",
+      "outcome": "",
       "ctaLabel": "Discuss a diagnostic",
       "contactIntent": "transformation",
       "contactTopic": "strategic-diagnostic",
@@ -72,9 +72,9 @@
       "order": 1
     },
     {
-      "title": "Transformation Engagement",
-      "description": "For organisations that need to move from diagnosis into operating-model, process, technology and execution change.",
-      "outcome": "A structured transformation programme with governance and execution mechanisms.",
+      "title": "Transformation",
+      "description": "Redesign how the organisation operates.",
+      "outcome": "",
       "ctaLabel": "Discuss a transformation",
       "contactIntent": "transformation",
       "contactTopic": "transformation-engagement",
@@ -83,7 +83,7 @@
     },
     {
       "title": "CEO / Founder Advisory",
-      "description": "For leaders who need an ongoing strategic thought partner across priorities, operating questions and difficult decisions.",
+      "description": "Think through consequential decisions.",
       "outcome": "",
       "ctaLabel": "Start a conversation",
       "contactIntent": "advisory",
@@ -93,7 +93,7 @@
     },
     {
       "title": "Investor / Portfolio Support",
-      "description": "For investors who need help diagnosing operating, scaling or transformation challenges inside a portfolio company.",
+      "description": "Solve operating and scaling problems.",
       "outcome": "",
       "ctaLabel": "Discuss a portfolio company",
       "contactIntent": "investor",
@@ -102,8 +102,8 @@
       "order": 4
     },
     {
-      "title": "0→1 & Scale-up Support",
-      "description": "For businesses refining a product, business model, GTM or organisational capability while moving toward the next stage.",
+      "title": "0→1 & Scale",
+      "description": "Build or rethink what comes next.",
       "outcome": "",
       "ctaLabel": "Discuss what you're building",
       "contactIntent": "transformation",
@@ -112,8 +112,8 @@
       "order": 5
     },
     {
-      "title": "Policy & Ecosystem Projects",
-      "description": "For government, institutions or emerging sectors where company-building intersects with policy, research, regulation or ecosystem infrastructure.",
+      "title": "Policy & Ecosystems",
+      "description": "Work across business, institutions and government.",
       "outcome": "",
       "ctaLabel": "Discuss a policy or ecosystem project",
       "contactIntent": "policy",
@@ -122,8 +122,45 @@
       "order": 6
     }
   ],
-  "otherConversationsHeading": "Other Conversations",
-  "otherConversationsText": "I am also open to conversations around board and independent-director opportunities, senior leadership mandates, speaking engagements and selected collaborations.",
+  "otherConversationsHeading": "Also open to",
+  "otherConversationsText": "",
+  "opportunities": [
+    {
+      "title": "Board & Independent Director",
+      "description": "Selected Board and Independent Director opportunities.",
+      "accent": "forest",
+      "contactIntent": "board",
+      "order": 1
+    },
+    {
+      "title": "Leadership",
+      "description": "Senior leadership and strategic operating mandates.",
+      "accent": "terracotta",
+      "contactIntent": "leadership",
+      "order": 2
+    },
+    {
+      "title": "Speaking",
+      "description": "Conferences, leadership forums and industry conversations.",
+      "accent": "gold",
+      "contactIntent": "speaking",
+      "order": 3
+    },
+    {
+      "title": "Policy & Institutional",
+      "description": "Government, industry bodies, institutions and public-private initiatives.",
+      "accent": "slate",
+      "contactIntent": "government",
+      "order": 4
+    },
+    {
+      "title": "Investor / Portfolio",
+      "description": "Operating and transformation support for portfolio businesses.",
+      "accent": "sage",
+      "contactIntent": "investor",
+      "order": 5
+    }
+  ],
   "finalCtaPrimaryLabel": "Start a Conversation",
   "linkedinCtaLabel": "Connect on LinkedIn"
 }

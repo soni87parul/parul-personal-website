@@ -4,50 +4,75 @@ layout: layouts/base.njk
 {% import "partials/recommendation-card.njk" as recs %}
 {% import "partials/media-placeholder.njk" as media %}
 
-<section class="page-header">
-  <div class="wrap split">
-    <div>
+<section class="page-header page-header--tight">
+  <div class="wrap grid-12">
+    <div class="col-7">
       <h1>{{ title }}</h1>
       {% if shortIntro %}<p>{{ shortIntro }}</p>{% endif %}
+      {% if proofRow.length %}
+      <div class="proof-row">
+        {% for item in proofRow %}
+        <div class="proof-row__item">
+          <span class="proof-row__value">{{ item.value }}</span>
+          <span class="proof-row__label">{{ item.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
-    <div class="about-portrait">
+    <div class="col-5 about-portrait" style="max-width: none; margin-left: 0;">
       {{ media.placeholder("Executive portrait, natural setting", "4/5") }}
     </div>
   </div>
 </section>
 
-<section>
+{% if homepage.credibilityLogos.length %}
+<section class="credibility" style="border-top: none;">
   <div class="wrap">
-    <div class="prose">
-      {% if howIGotHere %}
-      <h2>How I got here</h2>
-      <p>{{ howIGotHere }}</p>
-      {% endif %}
-
-      {% if threadThroughCareer %}
-      <h2>The thread through my career</h2>
-      <p>{{ threadThroughCareer }}</p>
-      {% endif %}
-    </div>
-
-    {% if careerChapters.length %}
-    <div class="about-chapters">
-      {% for chapter in careerChapters %}
-      <div class="about-chapters__item">
-        <span class="about-chapters__number">{{ "0" + (loop.index | string) if loop.index < 10 else loop.index }}</span>
-        <div>
-          <span class="about-chapters__label">{{ chapter.label }}</span>
-          <p class="about-chapters__desc">{{ chapter.description }}</p>
-        </div>
-      </div>
+    <p class="credibility__heading">{{ homepage.credibilityHeading }}</p>
+    <div class="company-strip">
+      {% for logo in homepage.credibilityLogos %}
+      <span class="company-strip__mark" style="--mark-color: {{ logo.color }};">{{ logo.name }}</span>
       {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="tier-dominant">
+  <div class="wrap">
+    {% if threadThroughCareer %}
+    <div class="section-heading">
+      <span class="section-label">The Thread Through My Career</span>
+      <h2 style="font-size: clamp(1.5rem, 3vw, 2.1rem); max-width: 48ch;">{{ threadThroughCareer }}</h2>
     </div>
     {% endif %}
 
-    {% if beyondWork %}
-    <div class="prose" style="margin-top: 2.5rem;">
-      <h2>Beyond work</h2>
-      <p>{{ beyondWork }}</p>
+    {% if careerChapters.length %}
+    {% set milestoneAccents = ["foundation","snapdeal","amazon","addverb","paytm","clearmeat","system"] %}
+    <div class="journey-scroll">
+      <div class="journey-track">
+        {% for chapter in careerChapters %}
+        <div class="milestone milestone--{{ milestoneAccents[loop.index0] }}">
+          <span class="milestone__company">{{ chapter.company }}</span>
+          <span class="milestone__title">{{ chapter.label }}</span>
+          <details>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand {{ chapter.company }}</span></summary>
+            <div class="milestone__panel">
+              <p>{{ chapter.problem }}</p>
+              {% if chapter.learning %}<p><strong>Learning:</strong> {{ chapter.learning }}</p>{% endif %}
+              {% if chapter.metricValue %}
+              <div class="metric-block" style="margin: 0.75rem 0;">
+                <span class="metric-block__value" style="font-size: 1.5rem;">{{ chapter.metricValue }}</span>
+                <span class="metric-block__label">{{ chapter.metricLabel }}</span>
+              </div>
+              {% endif %}
+              {% if chapter.link %}<a href="{{ chapter.link }}">Read the full story →</a>{% endif %}
+            </div>
+          </details>
+        </div>
+        {% endfor %}
+      </div>
     </div>
     {% endif %}
 
@@ -56,6 +81,29 @@ layout: layouts/base.njk
     {% endif %}
   </div>
 </section>
+
+{% if advisoryInstitutionalWork or whatMattersToMe.length %}
+<section class="tier-secondary teaser">
+  <div class="wrap grid-12">
+    {% if advisoryInstitutionalWork %}
+    <div class="col-7">
+      <span class="section-label">Advisory, Institutional &amp; Ecosystem Work</span>
+      <p style="color: var(--foreground); font-size: 1.02rem; max-width: 60ch; margin-top: 0.75rem;">{{ advisoryInstitutionalWork }}</p>
+    </div>
+    {% endif %}
+    {% if whatMattersToMe.length %}
+    <div class="col-5">
+      <span class="section-label" style="color: var(--rose);">What Matters to Me</span>
+      <ul style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.6rem;">
+        {% for item in whatMattersToMe %}
+        <li style="color: var(--muted); font-size: 0.98rem; padding-left: 1rem; border-left: 2px solid var(--rose);">{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
 
 {% if education %}
 <section class="tier-supporting">
@@ -68,18 +116,49 @@ layout: layouts/base.njk
 </section>
 {% endif %}
 
-{% if collections.recommendations.length %}
+{% set featuredRecs = collections.recommendations | limit(4) %}
+{% if featuredRecs.length %}
 <section class="teaser tier-secondary">
   <div class="wrap">
     <div class="section-heading">
       <span class="section-label">Recommendations</span>
       <h2>What people I've worked with say</h2>
     </div>
-    <div class="recommendation-grid">
-      {% for rec in collections.recommendations %}
-        {{ recs.quote(rec) }}
-      {% endfor %}
+    <div class="quote-block" data-quote-block>
+      <div class="quote-block__featured" data-quote-featured>
+        {% for rec in featuredRecs %}
+        <blockquote data-quote-index="{{ loop.index0 }}"{% if not loop.first %} hidden{% endif %}>
+          <p>&ldquo;{{ rec.data.short_excerpt or rec.data.quote }}&rdquo;</p>
+          <footer class="recommendation__attribution">
+            <div>
+              <cite class="recommendation__name">{{ rec.data.name }}</cite>
+              {% if rec.data.role %}<span class="recommendation__role">{{ rec.data.role }}</span>{% endif %}
+              {% if rec.data.organisation %}<span class="recommendation__context">{{ rec.data.organisation }}</span>{% endif %}
+            </div>
+          </footer>
+        </blockquote>
+        {% endfor %}
+      </div>
+      <div class="quote-selector" data-quote-selector>
+        {% for rec in featuredRecs %}
+        <button type="button" data-quote-index="{{ loop.index0 }}"{% if loop.first %} class="is-active"{% endif %}>{{ rec.data.name }}</button>
+        {% endfor %}
+      </div>
     </div>
+    {% set moreRecs = collections.recommendations | sliceArr(4, collections.recommendations.length) %}
+    {% if moreRecs.length %}
+    <details class="disclosure" style="margin-top: 2rem;">
+      <summary class="disclosure__summary">
+        <span class="disclosure__label-more">View more recommendations ↓</span>
+        <span class="disclosure__label-fewer">Show fewer ↑</span>
+      </summary>
+      <div class="recommendation-grid" style="margin-top: 1.75rem;">
+        {% for rec in moreRecs %}
+          {{ recs.quote(rec) }}
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
   </div>
 </section>
 {% endif %}

@@ -2,15 +2,15 @@
 title: Thinking
 layout: layouts/base.njk
 seoTitle: Thinking | Parul Soni Manvati
-seoDescription: "Notes on transformation, organisations and building what comes next: how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them."
+seoDescription: "Ideas shaped by the problems I work on: transformation, AI, operating models, business building, future industries and the systems around them."
 ---
 {% import "partials/cta.njk" as cta %}
 
-<section class="page-header">
+<section class="page-header page-header--tight">
   <div class="wrap">
     <span class="eyebrow">Thinking</span>
-    <h1>Notes on transformation, organisations and building what comes next.</h1>
-    <p>I write about problems I encounter repeatedly: how organisations change, how technology alters operating models, how businesses scale, and what happens when markets move faster than the systems around them.</p>
+    <h1>Ideas shaped by the problems I work on.</h1>
+    <p>I write about transformation, AI, operating models, business building, future industries and the systems around them.</p>
     <div class="hero__ctas" style="margin-top: 1.75rem;">
       <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
       {{ cta.linkedinLink() }}
@@ -32,88 +32,78 @@ seoDescription: "Notes on transformation, organisations and building what comes 
   <div class="wrap">
     <div class="section-heading">
       <span class="section-label">Territories</span>
-      <h2>What I keep coming back to</h2>
+      <h2>What I keep coming back to. Click to filter.</h2>
     </div>
-    <div class="card-grid">
+    <div class="topic-mosaic" data-thinking-filter-bar style="grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(120px, auto);">
+      <button type="button" class="topic-tile topic-tile--forest is-active" data-territory-filter="all" style="grid-column: span 1; align-items: center; text-align: center; justify-content: center;">
+        <span class="topic-tile__title" style="margin: 0;">All</span>
+      </button>
       {% for t in thinkingTerritories %}
-      <a class="accent-card accent-card--{{ t.accent }}" href="/thinking/?territory={{ t.slug }}">
-        <span class="accent-card__label">{{ t.title }}</span>
-        <p>{{ t.description }}</p>
-        {% if t.question %}<p class="accent-card__question">{{ t.question }}</p>{% endif %}
-        <span class="accent-card__link">Explore →</span>
-      </a>
+      <button type="button" class="topic-tile topic-tile--{{ t.accent }}" data-territory-filter="{{ t.slug }}">
+        <span class="topic-tile__title">{{ t.title }}</span>
+        <span class="topic-tile__keywords">{{ t.description }}</span>
+      </button>
       {% endfor %}
     </div>
+    <p class="filter-empty-state" data-thinking-empty-state hidden style="margin-top: 1.5rem;">No articles match this territory yet. <a href="/thinking/" data-thinking-filter-reset>View all →</a></p>
   </div>
 </section>
 
-{% set featuredArticles = collections.articles | featured %}
-{% set moreArticles = collections.articles | notFeatured %}
+{% set allArticles = collections.articles %}
+{% set leadArticle = allArticles | limit(1) %}
+{% set supportArticles = allArticles | sliceArr(1, 3) %}
+{% set remainingArticles = allArticles | sliceArr(3, allArticles.length) %}
 
-{% if collections.activeThinkingTerritories.length %}
-<section class="capability-filter-section">
-  <div class="wrap">
-    <span class="capability-filter__intro-label">Filter by territory</span>
-    <div class="capability-filter" data-thinking-filter-bar>
-      <button type="button" class="is-active" data-territory-filter="all">All</button>
-      {% for t in collections.activeThinkingTerritories %}
-      <button type="button" data-territory-filter="{{ t.slug }}">{{ t.title }}</button>
-      {% endfor %}
-    </div>
-    <p class="filter-empty-state" data-thinking-empty-state hidden>No articles match this territory yet. <a href="/thinking/" data-thinking-filter-reset>View all →</a></p>
-  </div>
-</section>
-{% endif %}
-
-{% if featuredArticles.length %}
+{% if allArticles.length %}
 <section class="tier-dominant">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Featured</span>
-      <h2>Featured Thinking</h2>
+      <span class="section-label">Articles</span>
+      <h2>Articles</h2>
     </div>
-    <div class="card-grid">
-      {% for article in featuredArticles %}
-      {% set territory = article.data.territory | territoryData %}
-      <a class="accent-card{% if territory %} accent-card--{{ territory.accent }}{% endif %}" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %} href="{{ article.url }}">
-        {% if territory %}<span class="accent-card__label">{{ territory.title }}</span>{% endif %}
-        <h3>{{ article.data.title }}</h3>
-        <p>{{ article.data.excerpt }}</p>
-        <div class="card-meta" style="margin-top: 0.9rem; margin-bottom: 0;">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
-        {% set relatedStory = article.data.related_experience | experienceByRef(collections.experienceStories) %}
-        {% if relatedStory %}<p style="font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem;">From the field: {{ relatedStory.data.title }}</p>{% endif %}
-        <span class="accent-card__link">Read the article →</span>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
 
-{% if moreArticles.length %}
-<section class="tier-secondary">
-  <div class="wrap">
-    <div class="section-heading">
-      <span class="section-label">More</span>
-      <h2>More Notes</h2>
+    <div class="articles-layout">
+      {% if leadArticle.length %}
+      {% set idea = leadArticle[0] %}
+      {% set ideaTerritory = idea.data.territory | territoryData %}
+      <a class="article-lead" data-thinking-card{% if ideaTerritory %} data-territory="{{ ideaTerritory.slug }}" style="--article-accent: var(--{{ ideaTerritory.accent }});"{% endif %} href="{{ idea.url }}">
+        {% if ideaTerritory %}<span class="card-category">{{ ideaTerritory.title }}</span>{% endif %}
+        <h3>{{ idea.data.title }}</h3>
+        <p>{{ idea.data.excerpt }}</p>
+        <div class="card-meta" style="margin-top: 0.9rem;">{{ idea.data.date | readableDate }} · {{ idea.templateContent | readingTime }}</div>
+      </a>
+      {% endif %}
+
+      {% if supportArticles.length %}
+      <div class="article-support-stack">
+        {% for article in supportArticles %}
+        {% set territory = article.data.territory | territoryData %}
+        <a class="article-support" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}" style="--article-accent: var(--{{ territory.accent }});"{% endif %} href="{{ article.url }}">
+          {% if territory %}<span class="card-category" style="margin-bottom: 0.3rem;">{{ territory.title }}</span>{% endif %}
+          <h3>{{ article.data.title }}</h3>
+          <p>{{ article.data.excerpt }}</p>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
-    <div class="card-grid">
-      {% for article in moreArticles %}
+
+    {% if remainingArticles.length %}
+    <div class="articles-remaining-grid">
+      {% for article in remainingArticles %}
       {% set territory = article.data.territory | territoryData %}
       <a class="article-card" data-thinking-card{% if territory %} data-territory="{{ territory.slug }}"{% endif %} href="{{ article.url }}">
         {% if territory %}<span class="card-category">{{ territory.title }}</span>{% endif %}
         <h3>{{ article.data.title }}</h3>
         <p class="card-body">{{ article.data.excerpt }}</p>
         <div class="card-meta">{{ article.data.date | readableDate }} · {{ article.templateContent | readingTime }}</div>
-        <span class="accent-card__link">Read the article →</span>
       </a>
       {% endfor %}
     </div>
+    {% endif %}
   </div>
 </section>
-{% endif %}
-
-{% if not collections.articles.length %}
+{% else %}
 <section>
   <div class="wrap">
     <div class="empty-state">No published articles yet. Add one via Admin → Thinking.</div>

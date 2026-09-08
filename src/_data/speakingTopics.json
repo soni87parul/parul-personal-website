@@ -2,7 +2,9 @@
   "items": [
     {
       "title": "Future of Food",
-      "keywords": "Cultivated Meat · Alternative Protein · FoodTech · Cellular Agriculture",
+      "keywords": "Cultivated Meat · Alternative Protein · Cellular Agriculture · FoodTech",
+      "accent": "sage",
+      "hasImage": true,
       "description": "Science is moving quickly. Commercialisation is harder. Parul speaks about what it will take to move cultivated meat and alternative proteins from laboratories into viable industries: regulation, scale-up, economics, infrastructure, consumer adoption and India's opportunity.",
       "talks": [
         "From Lab to Market: What It Will Take to Build the Future of Food",
@@ -12,8 +14,23 @@
       ]
     },
     {
+      "title": "AI & the Future of Operations",
+      "keywords": "AI · Operating Models · Transformation",
+      "accent": "slate",
+      "hasImage": false,
+      "description": "AI creates value only when technology, process and economics come together. Parul brings a business lens to AI, automation and the future of operating models.",
+      "talks": [
+        "AI Beyond the Model",
+        "When Should a Business Actually Automate?",
+        "Redesigning the Operating Model Around AI",
+        "Technology Selection Is Not Operating-Model Design"
+      ]
+    },
+    {
       "title": "Supply Chains",
-      "keywords": "Logistics · E-commerce · Last Mile · Warehousing · Scale",
+      "keywords": "Logistics · E-commerce · Last Mile · Scale",
+      "accent": "terracotta",
+      "hasImage": false,
       "description": "Supply chains reveal whether a business is truly ready to scale. Drawing from experience across logistics, e-commerce and large operating systems, Parul speaks about designing supply chains that work beyond the PowerPoint.",
       "talks": [
         "Building Supply Chains That Can Survive Scale",
@@ -23,9 +40,11 @@
       ]
     },
     {
-      "title": "MSME Transformation",
-      "keywords": "Technology · Processes · Productivity · Growth",
-      "description": "Many MSMEs do not need another strategy deck. They need stronger operating systems. Parul speaks about how businesses can move from founder-dependent execution to process-led, technology-enabled and scalable organisations.",
+      "title": "MSMEs & Business Transformation",
+      "keywords": "Technology · Productivity · Growth",
+      "accent": "gold",
+      "hasImage": false,
+      "description": "Many MSMEs don't need another strategy deck. They need stronger operating systems. Parul speaks about moving from founder-dependent execution to process-led, technology-enabled, scalable organisations.",
       "talks": [
         "From Founder-Led to System-Led",
         "Why MSME Transformation Is an Operating Problem",
@@ -34,20 +53,11 @@
       ]
     },
     {
-      "title": "Automation & the Future of Operations",
-      "keywords": "Robotics · Industry 4.0 · Automation · Future Operating Models",
-      "description": "Automation creates value only when technology, process and economics come together. Parul brings a business lens to robotics, automation and the future of operating systems.",
-      "talks": [
-        "Automation Beyond the Robot",
-        "When Should a Business Actually Automate?",
-        "Industry 4.0 Through a Business Lens",
-        "Designing the Future Operating Model"
-      ]
-    },
-    {
       "title": "Women in Business & Supply Chain",
-      "keywords": "Economic Participation · Supply Chain · Leadership · Ecosystems",
-      "description": "Women's participation is not only a leadership conversation. It is an economic and ecosystem question. Parul speaks about representation, professional networks, leadership pipelines and the systems that enable more women to participate and progress.",
+      "keywords": "Economic Participation · Leadership · Supply Chains",
+      "accent": "rose",
+      "hasImage": true,
+      "description": "Women's participation is not only a leadership conversation. It's an economic and ecosystem question. Parul speaks about representation, professional networks, leadership pipelines and the systems that enable more women to participate and progress.",
       "talks": [
         "Where Are the Women in Supply Chain?",
         "Participation Before Leadership",
@@ -57,8 +67,10 @@
     },
     {
       "title": "Policy × Industry × Innovation",
-      "keywords": "Emerging Industries · Regulation · Ecosystems · Commercialisation",
-      "description": "New industries cannot scale through entrepreneurship alone. They need policy, regulation, capital, infrastructure, talent and industry to move together. Parul speaks about how emerging sectors become functioning ecosystems.",
+      "keywords": "Regulation · Emerging Industries · Commercialisation",
+      "accent": "forest",
+      "hasImage": false,
+      "description": "New industries can't scale through entrepreneurship alone. They need policy, regulation, capital, infrastructure, talent and industry to move together. Parul speaks about how emerging sectors become functioning ecosystems.",
       "talks": [
         "Who Builds an Industry Before the Industry Exists?",
         "The Missing Infrastructure Behind Emerging Innovation",
