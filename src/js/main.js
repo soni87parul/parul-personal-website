@@ -197,6 +197,74 @@ if (thinkingFilterBar) {
   }
 }
 
+// Dynamic Impact Strip — hover/focus/tap a company logo to reveal a
+// compact role + metric panel for that company.
+document.querySelectorAll("[data-impact-strip]").forEach((strip) => {
+  const buttons = strip.querySelectorAll(".impact-strip__logo-btn");
+  const panel = strip.querySelector("[data-impact-panel]");
+  if (!buttons.length || !panel) return;
+
+  function showCompany(btn) {
+    buttons.forEach((b) => b.classList.toggle("is-active", b === btn));
+    strip.classList.add("has-active");
+    const role = btn.getAttribute("data-role") || "";
+    const name = btn.getAttribute("data-name") || "";
+    const metricValue = btn.getAttribute("data-metric-value") || "";
+    const metricLabel = btn.getAttribute("data-metric-label") || "";
+    const accent = btn.getAttribute("data-accent") || "";
+    panel.style.setProperty("--panel-accent", accent);
+    panel.querySelector(".impact-strip__panel-role strong").textContent = name;
+    panel.querySelector(".impact-strip__panel-role span").textContent = role;
+    const metricEl = panel.querySelector(".impact-strip__panel-metric");
+    if (metricValue) {
+      metricEl.hidden = false;
+      metricEl.querySelector(".impact-strip__panel-metric-value").textContent = metricValue;
+      metricEl.querySelector(".impact-strip__panel-metric-label").textContent = metricLabel;
+    } else {
+      metricEl.hidden = true;
+    }
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("mouseenter", () => showCompany(btn));
+    btn.addEventListener("focus", () => showCompany(btn));
+    btn.addEventListener("click", () => showCompany(btn));
+  });
+
+  showCompany(buttons[0]);
+});
+
+// Expanding Panels (Motion Pattern B) — click/tap toggles an "is-active"
+// state so touch devices get the same reveal that :hover/:focus give
+// mouse and keyboard users.
+document.querySelectorAll("[data-expand-row]").forEach((row) => {
+  const items = row.querySelectorAll("[data-expand-item]");
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      const wasActive = item.classList.contains("is-active");
+      items.forEach((i) => i.classList.remove("is-active"));
+      if (!wasActive) item.classList.add("is-active");
+    });
+  });
+});
+
+// Circular Media Moment — hover/focus/tap a topic label to swap the caption.
+document.querySelectorAll("[data-circular-media]").forEach((widget) => {
+  const topics = widget.querySelectorAll(".circular-media__topic");
+  const caption = widget.querySelector("[data-circular-caption]");
+  if (!topics.length || !caption) return;
+  function showTopic(btn) {
+    topics.forEach((t) => t.classList.toggle("is-active", t === btn));
+    caption.textContent = btn.getAttribute("data-caption") || "";
+  }
+  topics.forEach((btn) => {
+    btn.addEventListener("mouseenter", () => showTopic(btn));
+    btn.addEventListener("focus", () => showTopic(btn));
+    btn.addEventListener("click", () => showTopic(btn));
+  });
+  showTopic(topics[0]);
+});
+
 // Featured-quote selector (About recommendations) — click a name to swap
 // which recommendation is shown as the large featured quote.
 document.querySelectorAll("[data-quote-block]").forEach((block) => {

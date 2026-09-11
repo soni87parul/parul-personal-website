@@ -37,10 +37,21 @@ layout: layouts/base.njk
 <section class="credibility">
   <div class="wrap">
     <p class="credibility__heading">{{ homepage.credibilityHeading }}</p>
-    <div class="company-logo-strip">
-      {% for c in homepage.credibilityLogos %}
-        {{ companyLogo.logo(c) }}
-      {% endfor %}
+    <div class="impact-strip" data-impact-strip>
+      <div class="impact-strip__logos">
+        {% for c in homepage.credibilityLogos %}
+        <button type="button" class="impact-strip__logo-btn" data-name="{{ c.name }}" data-role="{{ c.impactRole }}" data-metric-value="{{ c.impactMetricValue }}" data-metric-label="{{ c.impactMetricLabel }}" data-accent="{{ c.color }}">
+          {{ companyLogo.logo(c) }}
+        </button>
+        {% endfor %}
+      </div>
+      <div class="impact-strip__panel" data-impact-panel>
+        <p class="impact-strip__panel-role"><strong></strong><span></span></p>
+        <div class="impact-strip__panel-metric" hidden>
+          <span class="impact-strip__panel-metric-value"></span>
+          <span class="impact-strip__panel-metric-label"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

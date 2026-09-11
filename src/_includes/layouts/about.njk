@@ -46,6 +46,24 @@ layout: layouts/base.njk
 </section>
 {% endif %}
 
+{% if expandTrio.length %}
+<section class="tier-secondary">
+  <div class="wrap">
+    <div class="expand-row" data-expand-row>
+      {% for panel in expandTrio %}
+      <div class="expand-panel" data-expand-item tabindex="0">
+        <div class="expand-panel__media">{{ media.placeholder(panel.imageLabel, "3/4") }}</div>
+        <div class="expand-panel__overlay">
+          <span class="expand-panel__title">{{ panel.title }}</span>
+          <p class="expand-panel__desc">{{ panel.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <section class="tier-dominant">
   <div class="wrap">
     {% if threadThroughCareer %}

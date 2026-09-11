@@ -43,6 +43,9 @@ collections:
               - { label: "Company Name", name: "name", widget: "string" }
               - { label: "Brand Colour (hex, e.g. #FF9900 — used on the placeholder border/tint until a real logo is uploaded)", name: "color", widget: "string" }
               - { label: "Logo Image (upload the real logo asset here when available)", name: "logo", widget: "image", required: false }
+              - { label: "Impact Strip — Role (shown on hover/tap in the homepage impact strip, e.g. \"Global scale · AI · Operating models\")", name: "impactRole", widget: "string", required: false }
+              - { label: "Impact Strip — Metric Value (optional, e.g. \"130+ FTE\")", name: "impactMetricValue", widget: "string", required: false }
+              - { label: "Impact Strip — Metric Label (optional, e.g. \"Equivalent operational capacity created\")", name: "impactMetricLabel", widget: "string", required: false }
 
           - { label: "Signature Statement (personal pull-quote, shown between Credibility and Method)", name: "signatureStatement", widget: "string" }
 
@@ -127,6 +130,15 @@ collections:
               - { label: "Metric Value (optional, e.g. \"₹90 Cr\")", name: "metricValue", widget: "string", required: false }
               - { label: "Metric Label (optional)", name: "metricLabel", widget: "string", required: false }
               - { label: "Link to full Experience story (optional)", name: "link", widget: "string", required: false }
+          - label: "Expanding Visual Trio (Operate / Build / Transform — hover/tap-expand panels)"
+            name: "expandTrio"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image Label (until a real photo is selected)", name: "imageLabel", widget: "string" }
           - { label: "Advisory, Institutional & Ecosystem Work (optional — hidden until filled in)", name: "advisoryInstitutionalWork", widget: "text", required: false }
           - label: "What Matters to Me (personal values, kept secondary to the professional work)"
             name: "whatMattersToMe"

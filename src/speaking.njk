@@ -78,19 +78,18 @@ seoDescription: "From the future of food and alternative proteins to supply chai
     </div>
     {% set publishedEvents = speakingEvents.items | selectattr("published") | publiclySafe %}
     {% if publishedEvents.length %}
-    <div class="appearance-list">
+    <div class="expand-appearance-row" data-expand-row>
       {% for event in publishedEvents %}
-      <div class="appearance-card">
-        <span class="appearance-card__year">{{ event.year or "TBD" }}</span>
-        <div>
-          <h3 class="appearance-card__title">{{ event.title }}{% if event.organisation %} · {{ event.organisation }}{% endif %}</h3>
-          {% if event.topic %}<p class="appearance-card__meta">{{ event.topic }}</p>{% endif %}
-          {% if event.location %}<p class="appearance-card__meta">{{ event.location }}</p>{% endif %}
-          {% if event.videoUrl %}
-          <a class="appearance-card__link" href="{{ event.videoUrl }}" target="_blank" rel="noopener noreferrer">Watch talk →</a>
-          {% elif event.externalUrl %}
-          <a class="appearance-card__link" href="{{ event.externalUrl }}" target="_blank" rel="noopener noreferrer">Learn more →</a>
-          {% endif %}
+      <div class="expand-appearance" data-expand-item tabindex="0">
+        <div class="expand-appearance__media">{{ media.placeholder(event.title, "3/4") }}</div>
+        <div class="expand-appearance__overlay">
+          <span class="expand-appearance__year">{{ event.year or "TBD" }}</span>
+          <span class="expand-appearance__title">{{ event.title }}{% if event.organisation %} · {{ event.organisation }}{% endif %}</span>
+          <p class="expand-appearance__meta">
+            {%- if event.topic %}{{ event.topic }}{% endif -%}
+            {%- if event.videoUrl %} · <a href="{{ event.videoUrl }}" target="_blank" rel="noopener noreferrer" style="color: inherit;">Watch talk →</a>
+            {%- elif event.externalUrl %} · <a href="{{ event.externalUrl }}" target="_blank" rel="noopener noreferrer" style="color: inherit;">Learn more →</a>{% endif -%}
+          </p>
         </div>
       </div>
       {% endfor %}
@@ -102,8 +101,24 @@ seoDescription: "From the future of food and alternative proteins to supply chai
 </section>
 
 <section class="tier-dominant section--dark">
-  <div class="wrap" style="text-align: center;">
+  <div class="wrap circular-media-section" data-circular-media>
     <span class="section-label" style="display: block;">Speaking</span>
+    <div class="circular-media">
+      <div class="circular-media__disc">{{ media.placeholder("Speaking clip", "1/1") }}</div>
+      <div class="circular-media__topics">
+        {% for topic in safeTopics %}
+        {% set angle = loop.index0 * (360 / safeTopics.length) %}
+        <button type="button" class="circular-media__topic" data-caption="{{ topic.description | truncate(80) }}" style="left: 50%; top: 50%; transform: rotate({{ angle }}deg) translate(0, -210px) rotate(-{{ angle }}deg);"><span>{{ topic.title }}</span></button>
+        {% endfor %}
+      </div>
+    </div>
+    <p class="circular-media__caption" data-circular-caption></p>
+    <p style="font-size: 0.75rem; color: rgba(255,253,248,0.55); margin-top: 0.5rem;">No real speaking video is in the project yet. Placeholder shown until one is confirmed.</p>
+  </div>
+</section>
+
+<section class="tier-dominant section--dark" style="padding-top: 0;">
+  <div class="wrap" style="text-align: center;">
     <h2 style="max-width: 24ch; margin: 0 auto 1.5rem;">Bring an operator's perspective to the room.</h2>
     <div class="teaser__ctas" style="justify-content: center;">
       <a class="btn btn--primary" href="/contact/?intent=speaking">Invite Parul to Speak →</a>

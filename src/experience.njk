@@ -7,6 +7,7 @@ seoDescription: "A career is more useful when you can see the problems behind th
 {% import "partials/experience-card.njk" as cards %}
 {% import "partials/recommendation-card.njk" as recs %}
 {% import "partials/media-placeholder.njk" as media %}
+{% import "partials/company-logo.njk" as companyLogo %}
 
 <section class="page-header page-header--tight">
   <div class="wrap grid-12">
@@ -49,10 +50,11 @@ seoDescription: "A career is more useful when you can see the problems behind th
       <div class="journey-track">
 
         <div class="milestone milestone--foundation">
+          {{ companyLogo.logo({ name: "DHL Express", color: "#D40511", logo: "/assets/images/uploads/logos/dhl-express.svg" }) }}
           <span class="milestone__company">Foundation · DHL Express &amp; ICICI Bank</span>
           <span class="milestone__title">Learning the customer and commercial reality</span>
           <details>
-            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand Foundation</span></summary>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true"><span class="milestone__plus-glyph">+</span><span class="milestone__minus-glyph">−</span></span> <span class="sr-only">Expand Foundation</span></summary>
             <div class="milestone__panel">
               <p>Early career at DHL Express and ICICI Bank built the fundamentals everything after it relies on: understanding the customer, commercial discipline, frontline execution, and how businesses actually operate day to day.</p>
             </div>
@@ -61,10 +63,11 @@ seoDescription: "A career is more useful when you can see the problems behind th
 
         {% if snapdealFlagship %}
         <div class="milestone milestone--snapdeal">
+          {{ companyLogo.logo({ name: "Snapdeal", color: "#E4002B", logo: "/assets/images/uploads/logos/snapdeal.svg" }) }}
           <span class="milestone__company">Snapdeal{% if snapdealFlagship.data.year_or_period %} · {{ snapdealFlagship.data.year_or_period }}{% endif %}</span>
           <span class="milestone__title">Building speed and operational foundations</span>
           <details>
-            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand Snapdeal</span></summary>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true"><span class="milestone__plus-glyph">+</span><span class="milestone__minus-glyph">−</span></span> <span class="sr-only">Expand Snapdeal</span></summary>
             <div class="milestone__panel">
               <p>{{ snapdealFlagship.data.summary }}</p>
               <a href="{{ snapdealFlagship.url }}">Explore the transformation →</a>
@@ -84,10 +87,11 @@ seoDescription: "A career is more useful when you can see the problems behind th
 
         {% if amazonFlagship %}
         <div class="milestone milestone--amazon">
+          {{ companyLogo.logo({ name: "Amazon", color: "#FF9900", logo: "/assets/images/uploads/logos/amazon.svg" }) }}
           <span class="milestone__company">Amazon{% if amazonFlagship.data.year_or_period %} · {{ amazonFlagship.data.year_or_period }}{% endif %}</span>
           <span class="milestone__title">Operating at global scale, redesigning work with technology</span>
           <details>
-            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand Amazon</span></summary>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true"><span class="milestone__plus-glyph">+</span><span class="milestone__minus-glyph">−</span></span> <span class="sr-only">Expand Amazon</span></summary>
             <div class="milestone__panel">
               <p>{{ amazonFlagship.data.summary }}</p>
               <div class="diagram-flow">
@@ -115,10 +119,11 @@ seoDescription: "A career is more useful when you can see the problems behind th
 
         {% if addverbFlagship %}
         <div class="milestone milestone--addverb">
+          {{ companyLogo.logo({ name: "Addverb", color: "#35513F", logo: "/assets/images/uploads/logos/addverb.png" }) }}
           <span class="milestone__company">Addverb{% if addverbCeoOffice.data.year_or_period %} · {{ addverbCeoOffice.data.year_or_period }}{% endif %}</span>
           <span class="milestone__title">Working beside leadership on enterprise transformation</span>
           <details>
-            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand Addverb</span></summary>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true"><span class="milestone__plus-glyph">+</span><span class="milestone__minus-glyph">−</span></span> <span class="sr-only">Expand Addverb</span></summary>
             <div class="milestone__panel">
               <p>{{ addverbFlagship.data.summary }}</p>
               <div class="diagram-flow">
@@ -141,10 +146,11 @@ seoDescription: "A career is more useful when you can see the problems behind th
         {% endif %}
 
         <div class="milestone milestone--paytm">
+          {{ companyLogo.logo({ name: "Paytm", color: "#00BAF2", logo: "/assets/images/uploads/logos/paytm.svg" }) }}
           <span class="milestone__company">Paytm</span>
           <span class="milestone__title">Operating inside a large-scale digital ecosystem</span>
           <details>
-            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand Paytm</span></summary>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true"><span class="milestone__plus-glyph">+</span><span class="milestone__minus-glyph">−</span></span> <span class="sr-only">Expand Paytm</span></summary>
             <div class="milestone__panel">
               <p>Commercial and operating work across Paytm's retail offline business, spanning acquisitions and commercial execution inside one of India's largest digital platforms.</p>
             </div>
@@ -153,10 +159,11 @@ seoDescription: "A career is more useful when you can see the problems behind th
 
         {% if clearmeatBusiness %}
         <div class="milestone milestone--clearmeat">
+          {{ companyLogo.logo({ name: "ClearMeat", color: "#7C8F6E" }) }}
           <span class="milestone__company">ClearMeat</span>
           <span class="milestone__title">I chose to step into the unknown.</span>
           <details>
-            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand ClearMeat</span></summary>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true"><span class="milestone__plus-glyph">+</span><span class="milestone__minus-glyph">−</span></span> <span class="sr-only">Expand ClearMeat</span></summary>
             <div class="milestone__panel">
               <p>Stepping deliberately into an emerging industry: emerging technology, business-model adaptation, commercialisation, capital discipline, government and regulation, ecosystem-building, with fewer established structures to lean on than at any previous stage.</p>
               <div class="diagram-flow">
@@ -195,10 +202,11 @@ seoDescription: "A career is more useful when you can see the problems behind th
 
         {% if systemFlagship %}
         <div class="milestone milestone--system">
+          {{ companyLogo.logo({ name: "ABWCI", color: "#5B7088" }) }}
           <span class="milestone__company">System &amp; Ecosystem Work</span>
           <span class="milestone__title">Applying operating experience to institutional and policy problems</span>
           <details>
-            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true">+</span> <span class="sr-only">Expand System and Ecosystem Work</span></summary>
+            <summary class="milestone-toggle"><span class="milestone__plus" aria-hidden="true"><span class="milestone__plus-glyph">+</span><span class="milestone__minus-glyph">−</span></span> <span class="sr-only">Expand System and Ecosystem Work</span></summary>
             <div class="milestone__panel">
               <p>{{ systemFlagship.data.card_summary or systemFlagship.data.summary }}</p>
               <a href="{{ systemFlagship.url }}">Explore the transformation →</a>

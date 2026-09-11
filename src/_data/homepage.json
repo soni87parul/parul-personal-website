@@ -15,14 +15,14 @@
 
   "credibilityHeading": "A career across technology, operations, transformation and emerging businesses.",
   "credibilityLogos": [
-    { "name": "Amazon", "color": "#FF9900", "logo": "" },
-    { "name": "Snapdeal", "color": "#E4002B", "logo": "" },
-    { "name": "Addverb", "color": "#35513F", "logo": "" },
-    { "name": "Paytm", "color": "#00BAF2", "logo": "" },
-    { "name": "ICICI Bank", "color": "#F58220", "logo": "" },
-    { "name": "DHL Express", "color": "#D40511", "logo": "" },
-    { "name": "ClearMeat", "color": "#7C8F6E", "logo": "" },
-    { "name": "ABWCI", "color": "#5B7088", "logo": "" }
+    { "name": "Amazon", "color": "#FF9900", "logo": "/assets/images/uploads/logos/amazon.svg", "impactRole": "Global scale · AI · Operating models", "impactMetricValue": "130+ FTE", "impactMetricLabel": "Equivalent operational capacity created" },
+    { "name": "Snapdeal", "color": "#E4002B", "logo": "/assets/images/uploads/logos/snapdeal.svg", "impactRole": "Speed · Operations · 0→1 building", "impactMetricValue": "₹2.5 Cr", "impactMetricLabel": "Recovered" },
+    { "name": "Addverb", "color": "#35513F", "logo": "/assets/images/uploads/logos/addverb.png", "impactRole": "CEO Office · Enterprise transformation", "impactMetricValue": "₹90 Cr", "impactMetricLabel": "Savings opportunity addressed" },
+    { "name": "Paytm", "color": "#00BAF2", "logo": "/assets/images/uploads/logos/paytm.svg", "impactRole": "Retail · Acquisitions · Commercial execution", "impactMetricValue": "", "impactMetricLabel": "" },
+    { "name": "ICICI Bank", "color": "#F58220", "logo": "/assets/images/uploads/logos/icici-bank.svg", "impactRole": "Commercial discipline · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
+    { "name": "DHL Express", "color": "#D40511", "logo": "/assets/images/uploads/logos/dhl-express.svg", "impactRole": "Customer understanding · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
+    { "name": "ClearMeat", "color": "#7C8F6E", "logo": "", "impactRole": "Emerging industry · Business building", "impactMetricValue": "$150K ARR", "impactMetricLabel": "Built from zero" },
+    { "name": "ABWCI", "color": "#5B7088", "logo": "", "impactRole": "Institution-building · Policy · Ecosystems", "impactMetricValue": "", "impactMetricLabel": "" }
   ],
 
   "signatureStatement": "I am usually most useful when the answer isn't obvious yet.",
