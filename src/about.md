@@ -76,6 +76,7 @@ careerChapters:
   - company: "ClearMeat"
     logoName: "ClearMeat"
     logoColor: "#7C8F6E"
+    logoAsset: "/assets/images/uploads/logos/clearmeat.png"
     label: "Building in an emerging industry"
     problem: "Stepping deliberately into cultivated meat, where the business model, capital, regulation and ecosystem were still being built. Reframed the company from a consumer-meat ambition toward an ingredient-led B2B/B2G model."
     learning: "Sometimes scaling doesn't mean selling more of what you started with. It means recognising which capability customers are actually ready to pay for."

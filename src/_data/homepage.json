@@ -21,7 +21,7 @@
     { "name": "Paytm", "color": "#00BAF2", "logo": "/assets/images/uploads/logos/paytm.svg", "impactRole": "Retail · Acquisitions · Commercial execution", "impactMetricValue": "", "impactMetricLabel": "" },
     { "name": "ICICI Bank", "color": "#F58220", "logo": "/assets/images/uploads/logos/icici-bank.svg", "impactRole": "Commercial discipline · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
     { "name": "DHL Express", "color": "#D40511", "logo": "/assets/images/uploads/logos/dhl-express.svg", "impactRole": "Customer understanding · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
-    { "name": "ClearMeat", "color": "#7C8F6E", "logo": "", "impactRole": "Emerging industry · Business building", "impactMetricValue": "$150K ARR", "impactMetricLabel": "Built from zero" },
+    { "name": "ClearMeat", "color": "#7C8F6E", "logo": "/assets/images/uploads/logos/clearmeat.png", "impactRole": "Emerging industry · Business building", "impactMetricValue": "$150K ARR", "impactMetricLabel": "Built from zero" },
     { "name": "ABWCI", "color": "#5B7088", "logo": "/assets/images/uploads/logos/abwci.png", "impactRole": "Institution-building · Policy · Ecosystems", "impactMetricValue": "", "impactMetricLabel": "" }
   ],
 
