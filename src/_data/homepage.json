@@ -22,7 +22,7 @@
     { "name": "ICICI Bank", "color": "#F58220", "logo": "/assets/images/uploads/logos/icici-bank.svg", "impactRole": "Commercial discipline · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
     { "name": "DHL Express", "color": "#D40511", "logo": "/assets/images/uploads/logos/dhl-express.svg", "impactRole": "Customer understanding · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
     { "name": "ClearMeat", "color": "#7C8F6E", "logo": "", "impactRole": "Emerging industry · Business building", "impactMetricValue": "$150K ARR", "impactMetricLabel": "Built from zero" },
-    { "name": "ABWCI", "color": "#5B7088", "logo": "", "impactRole": "Institution-building · Policy · Ecosystems", "impactMetricValue": "", "impactMetricLabel": "" }
+    { "name": "ABWCI", "color": "#5B7088", "logo": "/assets/images/uploads/logos/abwci.png", "impactRole": "Institution-building · Policy · Ecosystems", "impactMetricValue": "", "impactMetricLabel": "" }
   ],
 
   "signatureStatement": "I am usually most useful when the answer isn't obvious yet.",

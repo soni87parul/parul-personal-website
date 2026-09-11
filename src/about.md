@@ -85,6 +85,7 @@ careerChapters:
   - company: "ABWCI & UNCTAD"
     logoName: "ABWCI"
     logoColor: "#5B7088"
+    logoAsset: "/assets/images/uploads/logos/abwci.png"
     label: "Working across institutions and systems"
     problem: "Rebuilding an institution's operating model, digital infrastructure and revenue mechanisms while it continued to run, for a network working across women's entrepreneurship and economic participation."
     learning: "Institution-building is transformation while the organisation is still running. You cannot switch the old system off and restart later."
