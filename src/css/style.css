@@ -1568,7 +1568,7 @@ a.accent-card:focus-visible .accent-card__question {
 
 .evidence-grid {
   display: grid;
-  grid-template-columns: 1fr 1.4fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
   align-items: stretch;
 }
@@ -2031,6 +2031,7 @@ button.topic-tile.is-active { border-color: var(--warm-white); box-shadow: 0 0 0
   .milestone { padding-left: 2rem; }
   .milestone::before { top: 0.2rem; left: -0.85rem; }
 }
+.milestone .company-logo { width: 84px; height: 26px; justify-content: flex-start; margin-bottom: 0.5rem; }
 .milestone__company { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; color: var(--milestone-accent, var(--accent-secondary)); display: block; margin-bottom: 0.4rem; }
 .milestone__title { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
 .milestone-toggle { cursor: pointer; list-style: none; }
@@ -2178,8 +2179,12 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
 /* Company logo chip — real <img> when an asset exists,
    otherwise a clearly labelled "logo needed" placeholder.
    Never fakes a logo with coloured text. */
-.company-logo { display: inline-flex; align-items: center; height: 28px; flex-shrink: 0; }
-.company-logo img { height: 100%; width: auto; object-fit: contain; }
+/* A fixed width+height "slot" per logo (not height-only) so a tall/narrow
+   mark (e.g. a stacked icon+wordmark lockup) doesn't render tiny next to a
+   wide flat wordmark of the same source height — object-fit: contain then
+   scales each logo to fill its own slot as fully as its shape allows. */
+.company-logo { display: inline-flex; align-items: center; justify-content: center; width: 112px; height: 38px; flex-shrink: 0; }
+.company-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 .company-logo--placeholder {
   display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0.15rem;
   height: auto; padding: 0.4rem 0.7rem;
@@ -2310,8 +2315,8 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
   background: transparent;
   transition: transform 320ms var(--ease-premium), background-color 320ms ease, border-color 320ms ease, opacity 320ms ease;
 }
-.impact-strip__logo-btn .company-logo { height: 24px; }
-.impact-strip__logo-btn .company-logo--placeholder { height: auto; }
+.impact-strip__logo-btn .company-logo { width: 84px; height: 26px; }
+.impact-strip__logo-btn .company-logo--placeholder { height: auto; width: auto; }
 .impact-strip.has-active .impact-strip__logo-btn { opacity: 0.55; }
 .impact-strip__logo-btn.is-active {
   transform: scale(1.08);

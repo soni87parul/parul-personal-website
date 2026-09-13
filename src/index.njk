@@ -88,27 +88,18 @@ layout: layouts/base.njk
 
     <div class="evidence-grid">
       {% if addverb %}
-      <a class="evidence-card evidence-card--dominant evidence-card--forest" href="{{ addverb.url }}">
-        <div class="evidence-card__visual">
-          <div class="diagram-flow" style="justify-content: center; padding: 1.5rem;">
-            <span class="diagram-flow__node" style="--diagram-accent: var(--terracotta);">Fragmented functions</span>
-            <span class="diagram-flow__arrow">→</span>
-            <span class="diagram-flow__node" style="--diagram-accent: var(--accent); --diagram-tint: rgba(53,81,63,0.08);">Connected operating backbone</span>
-          </div>
+      <a class="evidence-card evidence-card--compact evidence-card--forest" href="{{ addverb.url }}">
+        <span class="evidence-card__meta">{{ addverb.data.organisation }}{% if addverb.data.year_or_period %} · {{ addverb.data.year_or_period }}{% endif %}</span>
+        <h3>{{ addverb.data.title }}</h3>
+        {% set addverbImpact = addverb.data.impact | publicImpact %}
+        {% if addverbImpact.length %}
+        <div class="metric-block" style="margin-bottom: 1rem;">
+          <span class="metric-block__value" style="--metric-accent: var(--accent); font-size: 1.9rem;">{{ addverbImpact[0].value }}</span>
+          <span class="metric-block__label">{{ addverbImpact[0].label }}</span>
         </div>
-        <div class="evidence-card__content">
-          <span class="evidence-card__meta">{{ addverb.data.organisation }}{% if addverb.data.year_or_period %} · {{ addverb.data.year_or_period }}{% endif %}</span>
-          <h3>{{ addverb.data.title }}</h3>
-          <p>{{ addverb.data.summary }}</p>
-          {% set addverbImpact = addverb.data.impact | publicImpact %}
-          {% if addverbImpact.length %}
-          <div class="metric-block" style="margin-bottom: 1rem;">
-            <span class="metric-block__value" style="--metric-accent: var(--accent); font-size: 1.9rem;">{{ addverbImpact[0].value }}</span>
-            <span class="metric-block__label">{{ addverbImpact[0].label }}</span>
-          </div>
-          {% endif %}
-          <span class="accent-card__link">Explore the transformation →</span>
-        </div>
+        {% endif %}
+        <p>Connecting fragmented functions around a single operating backbone.</p>
+        <span class="accent-card__link">Explore the transformation →</span>
       </a>
       {% endif %}
 
