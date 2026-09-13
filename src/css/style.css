@@ -2340,6 +2340,7 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
 .impact-strip__panel-role { font-size: 0.95rem; color: var(--foreground); max-width: 40ch; }
 .impact-strip__panel-role strong { font-family: var(--font-display); font-weight: 400; display: block; font-size: 1.05rem; margin-bottom: 0.2rem; }
 .impact-strip__panel-metric { display: flex; align-items: baseline; gap: 0.5rem; }
+.impact-strip__panel-metric[hidden] { display: none; }
 .impact-strip__panel-metric-value { font-family: var(--font-display); font-size: 1.3rem; color: var(--panel-accent, var(--accent)); }
 .impact-strip__panel-metric-label { font-size: 0.82rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) {
