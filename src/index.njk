@@ -6,20 +6,24 @@ layout: layouts/base.njk
 {% import "partials/cta.njk" as cta %}
 {% import "partials/company-logo.njk" as companyLogo %}
 
-<section class="hero">
+<section class="hero hero--asymmetric">
   <div class="wrap hero__grid">
-    <div>
+    <div class="hero__copy">
       <span class="hero__label">{{ homepage.heroPositioningLabel }}</span>
       <h1 class="hero__headline">{{ homepage.heroHeadline }}</h1>
       <p class="hero__subtext">{{ homepage.heroSubtext }}</p>
       <div class="hero__ctas">
-        <a class="btn btn--primary" href="{{ homepage.heroPrimaryCtaLink }}">{{ homepage.heroPrimaryCtaLabel }}</a>
-        <a class="btn btn--secondary" href="{{ homepage.heroSecondaryCtaLink }}">{{ homepage.heroSecondaryCtaLabel }}</a>
+        <a class="btn btn--primary" href="{{ homepage.heroPrimaryCtaLink }}">{{ homepage.heroPrimaryCtaLabel }} →</a>
+        <a class="btn btn--secondary" href="{{ homepage.heroSecondaryCtaLink }}">{{ homepage.heroSecondaryCtaLabel }} →</a>
       </div>
     </div>
-    <div>
-      <div class="hero__image-wrap">
+    <div class="hero__media">
+      <div class="hero__image-wrap hero__image-wrap--framed">
+        {% if homepage.heroImage %}
+        <img src="{{ homepage.heroImage }}" alt="{{ homepage.heroImageAlt or 'Portrait of Parul Soni Manvati' }}">
+        {% else %}
         {{ media.placeholder("Executive portrait", "4/5", "Confident, approachable, credible for a CEO/board/investor audience.") }}
+        {% endif %}
       </div>
       {% if homepage.heroSupportingGlimpses.length %}
       <div class="hero__glimpses">
@@ -74,70 +78,68 @@ layout: layouts/base.njk
   </div>
 </section>
 
-<section class="experience-teaser tier-dominant">
+<section class="journey-home tier-dominant">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Evidence</span>
-      <h2>{{ homepage.experienceHeading }}</h2>
-      <p>{{ homepage.experienceSubheading }}</p>
+      <span class="section-label">Career Journey</span>
+      <h2>{{ homepage.journeyHeading }}</h2>
+      <p>{{ homepage.journeySubheading }}</p>
     </div>
 
-    {% set addverb = "addverb-enterprise-transformation" | experienceByRef(collections.experienceStories) %}
-    {% set amazon = "amazon-ai-ml-transformation" | experienceByRef(collections.experienceStories) %}
-    {% set clearmeat = "clearmeat-business-model" | experienceByRef(collections.experienceStories) %}
-
-    <div class="evidence-grid">
-      {% if addverb %}
-      <a class="evidence-card evidence-card--compact evidence-card--forest" href="{{ addverb.url }}">
-        <span class="evidence-card__meta">{{ addverb.data.organisation }}{% if addverb.data.year_or_period %} · {{ addverb.data.year_or_period }}{% endif %}</span>
-        <h3>{{ addverb.data.title }}</h3>
-        {% set addverbImpact = addverb.data.impact | publicImpact %}
-        {% if addverbImpact.length %}
-        <div class="metric-block" style="margin-bottom: 1rem;">
-          <span class="metric-block__value" style="--metric-accent: var(--accent); font-size: 1.9rem;">{{ addverbImpact[0].value }}</span>
-          <span class="metric-block__label">{{ addverbImpact[0].label }}</span>
+    {% set journeyAccents = ["slate", "terracotta", "gold", "forest", "rose", "sage", "slate"] %}
+    <div class="journey-scroll">
+      <div class="journey-track">
+        {% for chapter in homepage.careerJourney %}
+        <div class="milestone" style="--milestone-accent: var(--{{ journeyAccents[loop.index0 % 7] }});">
+          {% if chapter.logoName %}{{ companyLogo.logo({ name: chapter.logoName, color: chapter.logoColor, logo: chapter.logoAsset }) }}{% endif %}
+          <span class="milestone__company">{{ chapter.company }}</span>
+          <span class="milestone__title">{{ chapter.period }}</span>
+          <p class="milestone__statement">{{ chapter.statement }}</p>
+          {% if chapter.link %}<a class="milestone__link" href="{{ chapter.link }}">Explore the story →</a>{% endif %}
         </div>
-        {% endif %}
-        <p>Connecting fragmented functions around a single operating backbone.</p>
-        <span class="accent-card__link">Explore the transformation →</span>
-      </a>
-      {% endif %}
-
-      {% if amazon %}
-      <a class="evidence-card evidence-card--compact evidence-card--slate" href="{{ amazon.url }}">
-        <span class="evidence-card__meta">{{ amazon.data.organisation }}{% if amazon.data.year_or_period %} · {{ amazon.data.year_or_period }}{% endif %}</span>
-        <h3>{{ amazon.data.title }}</h3>
-        {% set amazonImpact = amazon.data.impact | publicImpact %}
-        {% if amazonImpact.length %}
-        <div class="metric-block" style="margin-bottom: 1rem;">
-          <span class="metric-block__value" style="--metric-accent: var(--slate); font-size: 1.9rem;">{{ amazonImpact[0].value }}</span>
-          <span class="metric-block__label">{{ amazonImpact[0].label }}</span>
-        </div>
-        {% endif %}
-        <p>Using AI to create capacity without simply adding people.</p>
-        <span class="accent-card__link">Explore the transformation →</span>
-      </a>
-      {% endif %}
-
-      {% if clearmeat %}
-      <a class="evidence-card evidence-card--compact evidence-card--sage" href="{{ clearmeat.url }}">
-        <span class="evidence-card__meta">{{ clearmeat.data.organisation }}</span>
-        <h3>B2C → B2B / B2G</h3>
-        {% set clearmeatImpact = clearmeat.data.impact | publicImpact %}
-        {% if clearmeatImpact.length %}
-        <div class="metric-block" style="margin-bottom: 1rem;">
-          <span class="metric-block__value" style="--metric-accent: var(--sage); font-size: 1.9rem;">{{ clearmeatImpact[0].value }}</span>
-          <span class="metric-block__label">{{ clearmeatImpact[0].label }}</span>
-        </div>
-        {% endif %}
-        <p>Reframing a cultivated-meat startup toward an ingredient-led model.</p>
-        <span class="accent-card__link">Explore the transformation →</span>
-      </a>
-      {% endif %}
+        {% endfor %}
+      </div>
     </div>
 
     <div class="section-footer">
-      <a class="btn btn--text" href="/experience/">{{ homepage.experienceViewAllLabel }}</a>
+      <a class="btn btn--text" href="/experience/">{{ homepage.journeyViewAllLabel }} →</a>
+    </div>
+  </div>
+</section>
+
+<section class="what-i-bring tier-secondary">
+  <div class="wrap">
+    <div class="section-heading" style="text-align: center; margin-left: auto; margin-right: auto;">
+      <h2 style="margin-left: auto; margin-right: auto;">{{ homepage.whatIBringHeading }}</h2>
+    </div>
+    <div class="proof-card-grid">
+      {% for card in homepage.whatIBringCards %}
+      <div class="proof-card" style="--proof-accent: var(--{{ card.accent }});">
+        <span class="proof-card__icon" aria-hidden="true">{{ card.icon }}</span>
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="selected-experience tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Selected Experience</span>
+      <h2>{{ homepage.selectedExperienceHeading }}</h2>
+      <p>{{ homepage.selectedExperienceIntro }}</p>
+    </div>
+    <div class="selected-experience__bars" data-reveal-bars>
+      {% for area in homepage.selectedExperienceAreas %}
+      <div class="selected-experience__row">
+        <span class="selected-experience__label">{{ area.label }}</span>
+        <div class="selected-experience__track">
+          <div class="selected-experience__fill selected-experience__fill--{{ area.weight }}"></div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -170,7 +172,7 @@ layout: layouts/base.njk
     </div>
 
     <div class="section-footer">
-      <a class="btn btn--text" href="/thinking/">View all articles →</a>
+      <a class="btn btn--text" href="/thinking/">{{ homepage.thinkingCtaLabel or "View all articles →" }}</a>
       {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
       <a class="btn btn--text" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer" style="margin-left: 1.5rem;">Continue the conversation on LinkedIn →</a>
       {% endif %}
@@ -178,6 +180,24 @@ layout: layouts/base.njk
   </div>
 </section>
 {% endif %}
+
+<section class="advisory-preview tier-secondary">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Advisory</span>
+      <h2>{{ homepage.advisoryPreviewHeading }}</h2>
+      <p>{{ homepage.advisoryPreviewText }}</p>
+    </div>
+    {% if homepage.advisoryPreviewItems.length %}
+    <div class="advisory-preview__chips">
+      {% for item in homepage.advisoryPreviewItems %}
+      <span class="pill">{{ item }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <a class="btn btn--text" href="/advisory/">{{ homepage.advisoryPreviewCtaLabel or "Explore Advisory →" }}</a>
+  </div>
+</section>
 
 <section class="speaking-teaser tier-dominant section--dark">
   <div class="wrap split">
@@ -204,7 +224,13 @@ layout: layouts/base.njk
 </section>
 
 <section class="final-cta tier-dominant">
+  <svg class="final-cta__contour" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <circle cx="100" cy="100" r="60"></circle>
+    <circle cx="100" cy="100" r="85"></circle>
+    <circle cx="100" cy="100" r="98"></circle>
+  </svg>
   <div class="wrap">
+    {% if homepage.finalCtaEyebrow %}<span class="final-cta__eyebrow">{{ homepage.finalCtaEyebrow }}</span>{% endif %}
     <h2>{{ homepage.finalCtaHeading }}</h2>
     <p>{{ homepage.finalCtaText }}</p>
     <div class="final-cta__ctas">

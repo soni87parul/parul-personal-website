@@ -1,0 +1,24 @@
+PROJECT: Parul Soni Manvati Personal Website
+
+LOCAL PROJECT
+D:\Personal\Personal website
+
+GITHUB
+Repository: soni87parul/parul-personal-website
+Production branch: main
+
+TECH STACK
+Eleventy
+Decap CMS
+Netlify
+GitHub
+
+SAFE VERSION
+Commit: 95d8d0f
+Tag: website-safe-before-redesign-2026-09-21
+
+IMPORTANT
+Never redesign directly on main.
+Create a branch for major changes.
+Test before merging into main.
+Never delete/reset/clean the repository without checking Git status first.

@@ -86,6 +86,30 @@ if (lineFlowEls.length && "IntersectionObserver" in window) {
   lineFlowEls.forEach((el) => initLineFlow(el));
 }
 
+// Selected Experience visual bars (homepage) — the bars fill in once when
+// the section scrolls into view. This is a pure visual-narrative reveal
+// (not tied to any numeric value), so prefers-reduced-motion simply skips
+// straight to the filled state instead of disabling the section.
+const revealBars = document.querySelector("[data-reveal-bars]");
+if (revealBars) {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) {
+    revealBars.classList.add("is-revealed");
+  } else if ("IntersectionObserver" in window) {
+    const barsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          revealBars.classList.add("is-revealed");
+          barsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    barsObserver.observe(revealBars);
+  } else {
+    revealBars.classList.add("is-revealed");
+  }
+}
+
 // Methodology path — click/Enter/Space reveals the discoverable example.
 // A real <button> already gets keyboard activation for free; this just
 // toggles the visual state and keeps only one stage open at a time.

@@ -1,9 +1,9 @@
 {
-  "heroPositioningLabel": "Transformation Leader · Strategic Operator",
-  "heroHeadline": "I help organisations figure out what's next.",
-  "heroSubtext": "I work with CEOs and leadership teams to understand complex problems, design the right response, build the systems and teams required, and scale what works.",
-  "heroImage": "/assets/images/hero-placeholder.svg",
-  "heroImageAlt": "Portrait of Parul Soni Manvati. [CONTENT NEEDED: replace with a real photograph]",
+  "heroPositioningLabel": "Operator · Builder · Advisor",
+  "heroHeadline": "From complex problems to real progress.",
+  "heroSubtext": "I work at the intersection of technology, operations, business building and emerging industries.",
+  "heroImage": "",
+  "heroImageAlt": "",
   "heroPrimaryCtaLabel": "Explore My Work",
   "heroPrimaryCtaLink": "/experience/",
   "heroSecondaryCtaLabel": "Start a Conversation",
@@ -15,13 +15,13 @@
 
   "credibilityHeading": "A career across technology, operations, transformation and emerging businesses.",
   "credibilityLogos": [
-    { "name": "Amazon", "color": "#FF9900", "logo": "/assets/images/uploads/logos/amazon.svg", "impactRole": "Global scale · AI · Operating models", "impactMetricValue": "130+ FTE", "impactMetricLabel": "Equivalent operational capacity created" },
-    { "name": "Snapdeal", "color": "#E4002B", "logo": "/assets/images/uploads/logos/snapdeal.svg", "impactRole": "Speed · Operations · 0→1 building", "impactMetricValue": "₹2.5 Cr", "impactMetricLabel": "Recovered" },
-    { "name": "Addverb", "color": "#35513F", "logo": "/assets/images/uploads/logos/addverb.png", "impactRole": "CEO Office · Enterprise transformation", "impactMetricValue": "₹90 Cr", "impactMetricLabel": "Savings opportunity addressed" },
+    { "name": "Amazon", "color": "#FF9900", "logo": "/assets/images/uploads/logos/amazon.svg", "impactRole": "Global scale · AI · Operating models", "impactMetricValue": "Significant capacity created", "impactMetricLabel": "Through AI-enabled process redesign" },
+    { "name": "Snapdeal", "color": "#E4002B", "logo": "/assets/images/uploads/logos/snapdeal.svg", "impactRole": "Speed · Operations · 0→1 building", "impactMetricValue": "Recovered material value", "impactMetricLabel": "Through stronger commercial controls" },
+    { "name": "Addverb", "color": "#35513F", "logo": "/assets/images/uploads/logos/addverb.png", "impactRole": "CEO Office · Enterprise transformation", "impactMetricValue": "Significant cost optimisation", "impactMetricLabel": "Identified across complex operations" },
     { "name": "Paytm", "color": "#00BAF2", "logo": "/assets/images/uploads/logos/paytm.svg", "impactRole": "Retail · Acquisitions · Commercial execution", "impactMetricValue": "", "impactMetricLabel": "" },
     { "name": "ICICI Bank", "color": "#F58220", "logo": "/assets/images/uploads/logos/icici-bank.svg", "impactRole": "Commercial discipline · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
     { "name": "DHL Express", "color": "#D40511", "logo": "/assets/images/uploads/logos/dhl-express.svg", "impactRole": "Customer understanding · Frontline execution", "impactMetricValue": "", "impactMetricLabel": "" },
-    { "name": "ClearMeat", "color": "#7C8F6E", "logo": "/assets/images/uploads/logos/clearmeat.png", "impactRole": "Emerging industry · Business building", "impactMetricValue": "$150K ARR", "impactMetricLabel": "Built from zero" },
+    { "name": "ClearMeat", "color": "#7C8F6E", "logo": "/assets/images/uploads/logos/clearmeat.png", "impactRole": "Emerging industry · Business building", "impactMetricValue": "Early commercial traction", "impactMetricLabel": "Enterprise partnerships built from zero" },
     { "name": "ABWCI", "color": "#5B7088", "logo": "/assets/images/uploads/logos/abwci.png", "impactRole": "Institution-building · Policy · Ecosystems", "impactMetricValue": "", "impactMetricLabel": "" }
   ],
 
@@ -62,21 +62,119 @@
     }
   ],
 
+  "journeyHeading": "Increasing complexity, one connecting thread.",
+  "journeySubheading": "Different industries, different business contexts, one consistent ability to solve difficult problems.",
+  "journeyViewAllLabel": "Explore the full career journey",
+  "careerJourney": [
+    {
+      "company": "DHL Express & ICICI Bank",
+      "logoName": "DHL Express",
+      "logoColor": "#D40511",
+      "logoAsset": "/assets/images/uploads/logos/dhl-express.svg",
+      "period": "Foundation",
+      "statement": "Learned the customer and commercial reality that every later transformation depends on.",
+      "link": ""
+    },
+    {
+      "company": "Snapdeal",
+      "logoName": "Snapdeal",
+      "logoColor": "#E4002B",
+      "logoAsset": "/assets/images/uploads/logos/snapdeal.svg",
+      "period": "2014",
+      "statement": "Built Same-Day and Next-Day delivery as a customer proposition, not just a logistics metric.",
+      "link": "/experience/snapdeal-same-day-next-day/"
+    },
+    {
+      "company": "Amazon",
+      "logoName": "Amazon",
+      "logoColor": "#FF9900",
+      "logoAsset": "/assets/images/uploads/logos/amazon.svg",
+      "period": "2018",
+      "statement": "Introduced machine-led decision-making into a live operation, redesigning the work alongside the technology.",
+      "link": "/experience/amazon-ai-ml-transformation/"
+    },
+    {
+      "company": "Addverb",
+      "logoName": "Addverb",
+      "logoColor": "#35513F",
+      "logoAsset": "/assets/images/uploads/logos/addverb.png",
+      "period": "CEO Office",
+      "statement": "Connected Design, Procurement, Manufacturing and After-Sales around a single operating backbone.",
+      "link": "/experience/addverb-enterprise-transformation/"
+    },
+    {
+      "company": "Paytm",
+      "logoName": "Paytm",
+      "logoColor": "#00BAF2",
+      "logoAsset": "/assets/images/uploads/logos/paytm.svg",
+      "period": "Digital Ecosystem",
+      "statement": "Commercial and operating work across acquisitions inside a large-scale digital platform.",
+      "link": ""
+    },
+    {
+      "company": "ClearMeat",
+      "logoName": "ClearMeat",
+      "logoColor": "#7C8F6E",
+      "logoAsset": "/assets/images/uploads/logos/clearmeat.png",
+      "period": "0→1",
+      "statement": "Reframed a cultivated-meat startup from a consumer ambition toward an ingredient-led B2B/B2G model.",
+      "link": "/experience/clearmeat-business-model/"
+    },
+    {
+      "company": "ABWCI & UNCTAD",
+      "logoName": "ABWCI",
+      "logoColor": "#5B7088",
+      "logoAsset": "/assets/images/uploads/logos/abwci.png",
+      "period": "Institutions & Policy",
+      "statement": "Rebuilt an institution's operating model and digital infrastructure while it continued to run.",
+      "link": "/experience/abwci-msme-service-engine/"
+    }
+  ],
+
+  "whatIBringHeading": "What I bring",
+  "whatIBringCards": [
+    { "title": "Operator", "description": "Hands-on experience in large-scale operations and transformation.", "icon": "⚙", "accent": "forest" },
+    { "title": "Builder", "description": "Built new categories, teams and business models from the ground up.", "icon": "▲", "accent": "terracotta" },
+    { "title": "Ecosystem Thinker", "description": "Work across industry, government and institutions to enable long-term change.", "icon": "◐", "accent": "slate" }
+  ],
+
+  "selectedExperienceHeading": "Where the work has concentrated",
+  "selectedExperienceIntro": "A view of the breadth of the work, not a scorecard.",
+  "selectedExperienceAreas": [
+    { "label": "Transformation", "weight": "extensive" },
+    { "label": "Business Building", "weight": "considerable" },
+    { "label": "Scale & Operations", "weight": "extensive" },
+    { "label": "Ecosystem Building", "weight": "developing" }
+  ],
+
   "experienceHeading": "Problems I've helped solve.",
   "experienceSubheading": "A career is more useful when you can see the problems behind the titles.",
   "experienceViewAllLabel": "Explore the full career journey →",
 
   "thinkingHeading": "Ideas & Articles",
   "thinkingSubheading": "Notes on transformation, AI and the systems around emerging industries.",
-  "thinkingCtaLabel": "Explore Thinking →",
+  "thinkingCtaLabel": "View all articles →",
+
+  "advisoryPreviewHeading": "When the problem is bigger than a meeting.",
+  "advisoryPreviewText": "Selected advisory and transformation work, focused on problems rather than a services catalogue.",
+  "advisoryPreviewItems": [
+    "Strategic Diagnostic",
+    "Transformation Programmes",
+    "CEO / Founder Advisory",
+    "Investor / Portfolio Support",
+    "0→1 & Scale-up",
+    "Policy & Ecosystems"
+  ],
+  "advisoryPreviewCtaLabel": "Explore Advisory →",
 
   "speakingHeading": "Conversations worth having.",
   "speakingText": "From the future of food to supply chains, AI and emerging industries, Parul speaks about how businesses and systems evolve.",
   "speakingCtaLabel": "Explore Speaking →",
 
-  "finalCtaHeading": "Have a difficult problem to think through?",
-  "finalCtaText": "I'm entering the next chapter of my career with a broader operating lens, shaped by building at scale, working through transformation, and stepping into emerging industries where the answers were not already written. I'm interested in consequential problems, ambitious organisations and opportunities where I can help figure out what comes next.",
-  "finalCtaPrimaryLabel": "Start a Conversation",
+  "finalCtaEyebrow": "Let's Talk",
+  "finalCtaHeading": "Start a Conversation.",
+  "finalCtaText": "New idea. Complex problem. Different perspective. I'd love to hear from you.",
+  "finalCtaPrimaryLabel": "Get in Touch",
   "finalCtaSecondaryLabel": "Connect on LinkedIn",
   "opportunityLine": "Leadership · Transformation · CEO Office · Board · Advisory · Investor / Portfolio · Policy & Ecosystems · Speaking"
 }

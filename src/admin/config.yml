@@ -44,8 +44,8 @@ collections:
               - { label: "Brand Colour (hex, e.g. #FF9900 — used on the placeholder border/tint until a real logo is uploaded)", name: "color", widget: "string" }
               - { label: "Logo Image (upload the real logo asset here when available)", name: "logo", widget: "image", required: false }
               - { label: "Impact Strip — Role (shown on hover/tap in the homepage impact strip, e.g. \"Global scale · AI · Operating models\")", name: "impactRole", widget: "string", required: false }
-              - { label: "Impact Strip — Metric Value (optional, e.g. \"130+ FTE\")", name: "impactMetricValue", widget: "string", required: false }
-              - { label: "Impact Strip — Metric Label (optional, e.g. \"Equivalent operational capacity created\")", name: "impactMetricLabel", widget: "string", required: false }
+              - { label: "Impact Strip — Outcome Phrase (a QUALITATIVE headline outcome, e.g. \"Significant cost optimisation\" — never a precise figure, currency amount, percentage or headcount)", name: "impactMetricValue", widget: "string", required: false, hint: "Confidentiality rule: no exact numbers, amounts or currency figures here, even if you know them internally. Describe the scale/outcome in words instead." }
+              - { label: "Impact Strip — Outcome Context (optional, e.g. \"Identified across complex operations\")", name: "impactMetricLabel", widget: "string", required: false }
 
           - { label: "Signature Statement (personal pull-quote, shown between Credibility and Method)", name: "signatureStatement", widget: "string" }
 
@@ -72,6 +72,7 @@ collections:
           - { label: "Speaking — Text", name: "speakingText", widget: "text" }
           - { label: "Speaking — CTA Label", name: "speakingCtaLabel", widget: "string" }
 
+          - { label: "Final CTA — Eyebrow (small label above the heading, e.g. \"Let's Talk\")", name: "finalCtaEyebrow", widget: "string", required: false }
           - { label: "Final CTA — Heading", name: "finalCtaHeading", widget: "string" }
           - { label: "Final CTA — Text", name: "finalCtaText", widget: "text" }
           - { label: "Final CTA — Primary Label", name: "finalCtaPrimaryLabel", widget: "string" }
@@ -86,6 +87,62 @@ collections:
           - { label: "Headline", name: "headline", widget: "string" }
           - { label: "Supporting Statement", name: "supportingStatement", widget: "string" }
           - { label: "Introduction Paragraphs (optional, one per line)", name: "explanationParagraphs", widget: "list", required: false }
+
+      - name: "homepageJourney"
+        label: "Homepage — Career Journey"
+        file: "src/_data/homepage.json"
+        fields:
+          - { label: "Section Heading", name: "journeyHeading", widget: "string" }
+          - { label: "Section Subheading", name: "journeySubheading", widget: "string" }
+          - { label: "\"View Full Journey\" Label", name: "journeyViewAllLabel", widget: "string" }
+          - label: "Career Journey (logo + period + one short, non-confidential sentence per chapter)"
+            name: "careerJourney"
+            widget: "list"
+            summary: "{{fields.company}}"
+            fields:
+              - { label: "Company", name: "company", widget: "string" }
+              - { label: "Logo Name (placeholder label if no logo image)", name: "logoName", widget: "string", required: false }
+              - { label: "Logo Colour (hex)", name: "logoColor", widget: "string", required: false }
+              - { label: "Logo Image", name: "logoAsset", widget: "image", required: false }
+              - { label: "Period / Stage (e.g. \"2018\", \"CEO Office\", \"0→1\")", name: "period", widget: "string" }
+              - { label: "Short Contextual Statement (qualitative — no figures, amounts or headcounts)", name: "statement", widget: "text", hint: "Confidentiality rule: describe what the work was and why it mattered, never a precise number." }
+              - { label: "Link to full Experience story (optional)", name: "link", widget: "string", required: false }
+
+          - { label: "\"What I Bring\" — Section Heading", name: "whatIBringHeading", widget: "string" }
+          - label: "\"What I Bring\" Cards"
+            name: "whatIBringCards"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon (a single character/glyph)", name: "icon", widget: "string" }
+              - label: "Accent Colour"
+                name: "accent"
+                widget: "select"
+                options: ["terracotta", "gold", "slate", "sage", "forest", "rose"]
+
+          - { label: "\"Selected Experience\" — Section Heading", name: "selectedExperienceHeading", widget: "string" }
+          - { label: "\"Selected Experience\" — Intro", name: "selectedExperienceIntro", widget: "string" }
+          - label: "Selected Experience — Visual Areas (an editorial visual device, not a quantitative score)"
+            name: "selectedExperienceAreas"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Area Label", name: "label", widget: "string" }
+              - label: "Relative Breadth (renders as a proportional visual band — never shown to visitors as a number or percentage)"
+                name: "weight"
+                widget: "select"
+                options: ["developing", "considerable", "extensive"]
+
+      - name: "homepageAdvisoryPreview"
+        label: "Homepage — Advisory Preview"
+        file: "src/_data/homepage.json"
+        fields:
+          - { label: "Heading", name: "advisoryPreviewHeading", widget: "string" }
+          - { label: "Supporting Text", name: "advisoryPreviewText", widget: "text" }
+          - { label: "Items (short list, not a services catalogue)", name: "advisoryPreviewItems", widget: "list" }
+          - { label: "CTA Label", name: "advisoryPreviewCtaLabel", widget: "string" }
 
   - name: "about"
     label: "About Page"

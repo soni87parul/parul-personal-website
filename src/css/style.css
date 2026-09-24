@@ -34,9 +34,14 @@
 
   /* Navigation-specific palette. Deliberately separate from --sage/--gold
      above (the Day 3 secondary palette, used for card tints/diagram nodes)
-     so restyling the header can never silently recolor those. */
-  --nav-sage: #66786F;
-  --nav-sage-dark: #445850;
+     so restyling the header can never silently recolor those.
+     Redesign V2: the header ribbon now uses the same deep forest green as
+     --accent, per the approved visual direction ("navigation sits on the
+     deep green ribbon"), kept as its own token so header-specific hover/
+     active states can still be tuned independently of the accent colour
+     used elsewhere on the page. */
+  --nav-sage: #35513F;
+  --nav-sage-dark: #24362A;
   --nav-gold: #C6A15B;
   --nav-soft-gold: #D8BC86;
   --cream: #F7F2EA;
@@ -319,9 +324,28 @@ section { padding: var(--space-base) 0; }
 .page-header--tight { padding-top: clamp(1.25rem, 3vw, 2.25rem); }
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.3fr 0.7fr;
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+}
+.hero__media { position: relative; }
+@media (min-width: 861px) {
+  .hero__media { margin-top: clamp(1.5rem, 4vw, 3rem); }
+}
+.hero__image-wrap--framed { position: relative; z-index: 1; }
+.hero__image-wrap--framed::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  bottom: 14px;
+  left: 14px;
+  border: 1.5px solid var(--accent-secondary);
+  border-radius: var(--radius);
+  z-index: -1;
+}
+@media (max-width: 860px) {
+  .hero__image-wrap--framed::before { display: none; }
 }
 .hero__label {
   display: block;
@@ -699,22 +723,52 @@ a.story-card:focus-visible, a.article-card:focus-visible {
    ============================================ */
 .final-cta {
   text-align: center;
-  background: var(--foreground);
+  background: var(--accent);
   color: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+.final-cta__eyebrow {
+  display: block;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nav-soft-gold);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  position: relative;
 }
 .final-cta h2 {
   color: var(--background);
   font-size: clamp(2rem, 5vw, 3rem);
   max-width: 20ch;
   margin: 0 auto 1.25rem;
+  position: relative;
 }
+.final-cta__contour {
+  position: absolute;
+  inset: -10% -10% auto auto;
+  width: 60%;
+  aspect-ratio: 1;
+  opacity: 0.14;
+  pointer-events: none;
+}
+.final-cta__contour circle { fill: none; stroke: var(--background); stroke-width: 0.5; }
+@media (prefers-reduced-motion: no-preference) {
+  .final-cta__contour { animation: final-cta-drift 40s linear infinite; }
+}
+@keyframes final-cta-drift { to { transform: rotate(360deg); } }
 .final-cta p {
-  color: #C9C4BC;
+  color: rgba(250, 247, 242, 0.82);
   max-width: 48ch;
   margin: 0 auto 2.25rem;
   font-size: 1.1rem;
+  position: relative;
 }
-.final-cta__ctas { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.final-cta__ctas { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+.final-cta .btn--primary { background: var(--background); color: var(--accent); }
+.final-cta .btn--primary:hover,
+.final-cta .btn--primary:focus-visible { background: var(--nav-soft-gold); color: var(--charcoal); }
 .final-cta .btn--secondary { border-color: var(--background); color: var(--background); }
 .final-cta .btn--secondary:hover { background: var(--background); color: var(--foreground); }
 
@@ -2434,7 +2488,11 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
   position: relative;
   width: min(360px, 80vw);
   aspect-ratio: 1;
-  margin: 2.5rem auto;
+  /* Orbiting topic labels sit up to ~55-60px beyond the disc's own edge
+     (210px translate + half the label's height, more with wrapped text) —
+     the vertical margin has to clear that or the top/bottom labels collide
+     with the "Speaking" eyebrow above and the caption below. */
+  margin: 6rem auto;
 }
 .circular-media__disc {
   position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
@@ -2474,3 +2532,64 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
   .quote-selector { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: thin; }
   .quote-selector button { flex-shrink: 0; }
 }
+
+/* ============================================
+   REDESIGN V2 — HOMEPAGE PHASE 1 ADDITIONS
+   New components introduced for the redesigned homepage:
+   homepage career journey (qualitative, no metrics), the
+   "What I Bring" trio (reuses .proof-card-grid), the Selected
+   Experience visual-breadth bars, and the Advisory preview.
+   ============================================ */
+
+/* Career journey on the homepage reuses .journey-scroll/.journey-track/
+   .milestone from the About/Experience pages, minus the expand/collapse
+   <details> — here each chapter shows a short statement and an optional
+   link directly, since the homepage version is already the "short teaser"
+   layer of progressive disclosure (the full story lives on /experience/). */
+.milestone__statement { font-size: 0.92rem; color: var(--muted); margin: 0 0 0.6rem; max-width: 32ch; }
+.milestone__link { font-size: 0.85rem; font-weight: 500; color: var(--milestone-accent, var(--accent)); }
+.milestone__link:hover { text-decoration: underline; }
+
+/* What I Bring — homepage variant of the About "proof card" trio. */
+.what-i-bring .section-heading h2 { max-width: 32ch; }
+
+/* Selected Experience — an editorial visual device communicating relative
+   breadth across capability areas. Deliberately NOT a percentage or a
+   quantitative score: widths map from an editorial "weight" enum
+   (developing / considerable / extensive) chosen by the content editor in
+   the CMS, never from a raw number, so no confidential figure can end up
+   driving a bar's length. */
+.selected-experience__bars { display: flex; flex-direction: column; gap: 1.4rem; max-width: 640px; }
+.selected-experience__row { display: grid; grid-template-columns: minmax(140px, 200px) 1fr; align-items: center; gap: 1.25rem; }
+.selected-experience__label { font-size: 0.95rem; color: var(--foreground); font-weight: 500; }
+.selected-experience__track {
+  position: relative;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--border);
+  overflow: hidden;
+}
+.selected-experience__fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 900ms var(--ease-premium);
+}
+.selected-experience__bars.is-revealed .selected-experience__fill { transform: scaleX(var(--fill-to, 1)); }
+.selected-experience__fill--developing { --fill-to: 0.4; background: var(--slate); }
+.selected-experience__fill--considerable { --fill-to: 0.68; background: var(--gold); }
+.selected-experience__fill--extensive { --fill-to: 0.92; background: var(--accent); }
+@media (prefers-reduced-motion: reduce) {
+  .selected-experience__fill { transition: none; transform: scaleX(var(--fill-to, 1)); }
+}
+@media (max-width: 640px) {
+  .selected-experience__row { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+/* Advisory preview — compact, editorial; intentionally not a services
+   catalogue (kept to a short heading, one line of text and a chip list). */
+.advisory-preview__chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0 2rem; }
+.advisory-preview__chips .pill { background: var(--surface); }
