@@ -33,6 +33,9 @@ function person() {
     url: `${baseUrl}/`,
     image: site.personImage ? absoluteUrl(site.personImage) : undefined,
     description: site.personDescription,
+    jobTitle: site.jobTitle,
+    worksFor: site.worksForName ? { "@type": "Organization", name: site.worksForName } : undefined,
+    alumniOf: site.alumniOfName ? { "@type": "CollegeOrUniversity", name: site.alumniOfName } : undefined,
     sameAs: (site.sameAs || []).filter((u) => /^https:\/\//.test(u)),
     knowsAbout: site.knowsAbout,
   });

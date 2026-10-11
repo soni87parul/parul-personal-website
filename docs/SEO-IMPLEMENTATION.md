@@ -50,7 +50,7 @@ Work done on the `redesign-v2` working copy, following the Parul Soni Manvati SE
 | `src/_includes/layouts/about.njk` | Renders the optional eyebrow. |
 | `src/_includes/layouts/article.njk`, `story.njk` | CMS-uploaded hero images get `decoding="async"`/`loading="eager"`. |
 
-## 3. Rendered metadata (production build with `https://parulsonimanvati.com`)
+## 3. Rendered metadata (example build using `https://parulsonimanvati.com`; the live site uses whatever Netlify primary domain is set)
 
 | URL | Title | Schema |
 |---|---|---|
@@ -80,12 +80,14 @@ Canonical on every page = `https://parulsonimanvati.com` + its own path. Descrip
 
 ## 5. Go-live and Search Console checklist (needs you)
 
-1. Confirm `https://parulsonimanvati.com` is the live primary domain in Netlify → Domain management. Either type it into CMS → Site Settings → Canonical Site Address, or leave it empty and Netlify's primary domain is used automatically.
-2. In Netlify → Domain management, make sure both `parulsonimanvati.com` and `www.parulsonimanvati.com` are added; Netlify then 301-redirects the non-primary one to the primary with no loop. Test both after deploy.
+**Domain decision (11 Oct 2026):** the planned main domain is `https://www.parulsonimanvati.com`; it has not been bought yet. Until it is, the site runs on its Netlify subdomain (`….netlify.app`) and every canonical, sitemap and share URL automatically uses that subdomain, so nothing breaks. Leave CMS → Site Settings → Canonical Site Address empty.
+
+1. Buy `parulsonimanvati.com` (buying the domain covers both the www and non-www versions).
+2. In Netlify → Domain management → Add a domain, add `www.parulsonimanvati.com` and set it as the primary domain. Netlify also adds `parulsonimanvati.com` and 301-redirects it to www with no loop, and the `.netlify.app` address should then forward to it as well. Trigger a new deploy so the site picks up the new primary domain. Test both addresses afterwards.
 3. Commit everything on `redesign-v2` (including the new photo files under `src/assets/images/photos` and `visuals`, which are not on GitHub yet), push, and check the Netlify branch preview. The preview will correctly show `noindex`.
 4. After merging to `main` and deploying: open `/robots.txt` and `/sitemap.xml` on the live site and check they show the full domain.
 5. Search Console: add a **Domain property** for `parulsonimanvati.com`, copy the TXT record Google gives you, add it in your DNS provider (Netlify DNS: Domains → DNS records → Add TXT), then click Verify (can take up to a day).
-6. Search Console → Sitemaps → submit `https://parulsonimanvati.com/sitemap.xml`.
+6. Search Console → Sitemaps → submit `https://www.parulsonimanvati.com/sitemap.xml`.
 7. URL Inspection → test and request indexing for `/`, `/about/`, `/speaking/`, `/advisory/`, `/experience/`, `/thinking/`.
 8. Paste `/` and `/about/` into https://validator.schema.org and https://search.google.com/test/rich-results.
 9. Update LinkedIn and speaker bios to use the same full name, tagline and link to the site.

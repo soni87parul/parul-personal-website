@@ -688,6 +688,9 @@ collections:
           - { label: "Canonical Site Address (e.g. https://parulsonimanvati.com — no trailing slash; leave empty to use Netlify's primary domain)", name: "baseUrl", widget: "string", required: false }
           - { label: "Search Profile — Portrait Image (an original portrait used in structured data)", name: "personImage", widget: "image", required: false }
           - { label: "Search Profile — Short Description (factual; used in structured data)", name: "personDescription", widget: "text", required: false }
+          - { label: "Search Profile — Current Job Title (leave empty if between roles)", name: "jobTitle", widget: "string", required: false }
+          - { label: "Search Profile — Current Organisation", name: "worksForName", widget: "string", required: false }
+          - { label: "Search Profile — Education (institution name)", name: "alumniOfName", widget: "string", required: false }
           - { label: "Search Profile — Verified Public Profiles (full https URLs you control, e.g. LinkedIn)", name: "sameAs", widget: "list", required: false }
           - { label: "Search Profile — Areas of Expertise", name: "knowsAbout", widget: "list", required: false }
           - { label: "Favicon", name: "favicon", widget: "image", required: false }
