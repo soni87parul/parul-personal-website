@@ -4,10 +4,16 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for page in collections.all %}
-{%- if page.url %}
+{%- for entry in collections.all %}
+{%- set entrySeo = pageSeo[entry.data.seoKey] if entry.data.seoKey and pageSeo[entry.data.seoKey] else {} %}
+{%- if entry.url and entry.outputPath and entry.outputPath.endsWith(".html") and not entry.data.noindex and not entrySeo.noindex and not entry.data.canonicalOverride %}
   <url>
-    <loc>{{ site.baseUrl or '' }}{{ page.url }}</loc>
+    <loc>{{ entry.url | absUrl | escape }}</loc>
+    {%- if entry.data.updated %}
+    <lastmod>{{ entry.data.updated | htmlDateString }}</lastmod>
+    {%- elif entry.data.layout == "layouts/article.njk" and entry.data.date %}
+    <lastmod>{{ entry.data.date | htmlDateString }}</lastmod>
+    {%- endif %}
   </url>
 {%- endif %}
 {%- endfor %}

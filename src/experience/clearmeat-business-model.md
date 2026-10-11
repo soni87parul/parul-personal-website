@@ -21,9 +21,9 @@ figure_out: "The company had demonstrated a proof of concept in cultivated meat.
 design: "I took the proposition to the founder and board: Don't think of ClearMeat only as a meat company. Think of it as a value-chain company. The ingredient technology had potential applications beyond cultivated meat, in food-tech, pharma and research. That changed who the customer could be. And therefore changed the business model."
 build: "We started with laboratories already receiving samples. Instead of continuing to distribute samples entirely free, we tested willingness to pay. A 500 ml paid sample became an initial commercial product. From there, the team developed routes into pharma laboratories, academic/R&D institutions, distributors and international food-tech companies."
 scale: "The commercial approach expanded across direct relationships, distributors, academic institutions and strategic partnerships."
-transform: "Within approximately 11 months, the business moved from essentially no recurring commercial revenue to approximately $150K ARR. The bigger transformation, however, was strategic. ClearMeat was no longer waiting for the consumer cultivated-meat market to arrive before it could build a business."
+transform: "Within approximately 11 months, the business moved from essentially no recurring commercial revenue to meaningful early commercial traction. The bigger transformation, however, was strategic. ClearMeat was no longer waiting for the consumer cultivated-meat market to arrive before it could build a business."
 impact:
-  - value: "$150K ARR"
+  - value: "Early commercial traction"
     label: "Built from zero"
     context: ""
     verification_required: false

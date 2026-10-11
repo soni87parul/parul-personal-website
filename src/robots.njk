@@ -1,0 +1,15 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- if seoEnv.isPreview -%}
+# Preview or branch deploy: keep it out of search results.
+User-agent: *
+Disallow: /
+{%- else -%}
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: {{ "/sitemap.xml" | absUrl }}
+{%- endif %}

@@ -1,10 +1,12 @@
 ---
 title: Parul Soni Manvati | Transformation Leader & Strategic Operator
 layout: layouts/base.njk
+seoKey: home
 ---
 {% import "partials/media-placeholder.njk" as media %}
 {% import "partials/cta.njk" as cta %}
 {% import "partials/company-logo.njk" as companyLogo %}
+{% import "partials/photo.njk" as ph %}
 
 <section class="hero hero--asymmetric">
   <div class="wrap hero__grid">
@@ -12,6 +14,7 @@ layout: layouts/base.njk
       <span class="hero__label">{{ homepage.heroPositioningLabel }}</span>
       <h1 class="hero__headline">{{ homepage.heroHeadline }}</h1>
       <p class="hero__subtext">{{ homepage.heroSubtext }}</p>
+      {% if homepage.heroSupportingParagraph %}<p class="hero__supporting">{{ homepage.heroSupportingParagraph }}</p>{% endif %}
       <div class="hero__ctas">
         <a class="btn btn--primary" href="{{ homepage.heroPrimaryCtaLink }}">{{ homepage.heroPrimaryCtaLabel }} →</a>
         <a class="btn btn--secondary" href="{{ homepage.heroSecondaryCtaLink }}">{{ homepage.heroSecondaryCtaLabel }} →</a>
@@ -20,9 +23,9 @@ layout: layouts/base.njk
     <div class="hero__media">
       <div class="hero__image-wrap hero__image-wrap--framed">
         {% if homepage.heroImage %}
-        <img src="{{ homepage.heroImage }}" alt="{{ homepage.heroImageAlt or 'Portrait of Parul Soni Manvati' }}">
+        <img src="{{ homepage.heroImage }}" alt="{{ homepage.heroImageAlt or 'Portrait of Parul Soni Manvati' }}" loading="eager" fetchpriority="high" decoding="async">
         {% else %}
-        {{ media.placeholder("Executive portrait", "4/5", "Confident, approachable, credible for a CEO/board/investor audience.") }}
+        {{ ph.photo(photos["portrait-golden"], { fill: true, eager: true, sizes: "(max-width: 860px) 340px, 520px" }) }}
         {% endif %}
       </div>
       {% if homepage.heroSupportingGlimpses.length %}
@@ -34,6 +37,40 @@ layout: layouts/base.njk
         {% endfor %}
       </div>
       {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if homepage.journeyPhotoCards.length %}
+<section class="journey-photos tier-secondary">
+  <div class="wrap">
+    <div class="journey-photos__grid">
+      {% for card in homepage.journeyPhotoCards %}
+      {% set cardPhoto = photos[card.photo] %}
+      <article class="photo-card">
+        <div class="photo-card__media">{{ ph.photo(cardPhoto, { sizes: "(max-width: 860px) 94vw, 560px" }) }}</div>
+        <div class="photo-card__body">
+          <span class="photo-card__label">{{ card.label }}</span>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.text }}</p>
+          {% if card.link %}<a class="photo-card__link" href="{{ card.link }}">{{ card.linkLabel or "Read the story →" }}</a>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="identity-strip-section tier-supporting">
+  <div class="wrap">
+    <div class="identity-strip" data-identity-strip>
+      {% for card in homepage.whatIBringCards %}
+      <div class="identity-strip__zone" tabindex="0" style="--identity-accent: var(--{{ card.accent }});">
+        <span class="identity-strip__title">{{ card.title }}</span>
+        <span class="identity-strip__desc">{{ card.description }}</span>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -78,68 +115,38 @@ layout: layouts/base.njk
   </div>
 </section>
 
-<section class="journey-home tier-dominant">
-  <div class="wrap">
-    <div class="section-heading">
-      <span class="section-label">Career Journey</span>
-      <h2>{{ homepage.journeyHeading }}</h2>
-      <p>{{ homepage.journeySubheading }}</p>
-    </div>
-
-    {% set journeyAccents = ["slate", "terracotta", "gold", "forest", "rose", "sage", "slate"] %}
-    <div class="journey-scroll">
-      <div class="journey-track">
-        {% for chapter in homepage.careerJourney %}
-        <div class="milestone" style="--milestone-accent: var(--{{ journeyAccents[loop.index0 % 7] }});">
-          {% if chapter.logoName %}{{ companyLogo.logo({ name: chapter.logoName, color: chapter.logoColor, logo: chapter.logoAsset }) }}{% endif %}
-          <span class="milestone__company">{{ chapter.company }}</span>
-          <span class="milestone__title">{{ chapter.period }}</span>
-          <p class="milestone__statement">{{ chapter.statement }}</p>
-          {% if chapter.link %}<a class="milestone__link" href="{{ chapter.link }}">Explore the story →</a>{% endif %}
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <a class="btn btn--text" href="/experience/">{{ homepage.journeyViewAllLabel }} →</a>
-    </div>
-  </div>
-</section>
-
-<section class="what-i-bring tier-secondary">
-  <div class="wrap">
-    <div class="section-heading" style="text-align: center; margin-left: auto; margin-right: auto;">
-      <h2 style="margin-left: auto; margin-right: auto;">{{ homepage.whatIBringHeading }}</h2>
-    </div>
-    <div class="proof-card-grid">
-      {% for card in homepage.whatIBringCards %}
-      <div class="proof-card" style="--proof-accent: var(--{{ card.accent }});">
-        <span class="proof-card__icon" aria-hidden="true">{{ card.icon }}</span>
-        <h3>{{ card.title }}</h3>
-        <p>{{ card.description }}</p>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
 <section class="selected-experience tier-secondary">
   <div class="wrap">
     <div class="section-heading">
-      <span class="section-label">Selected Experience</span>
+      <span class="section-label">Selected Work</span>
       <h2>{{ homepage.selectedExperienceHeading }}</h2>
       <p>{{ homepage.selectedExperienceIntro }}</p>
     </div>
-    <div class="selected-experience__bars" data-reveal-bars>
-      {% for area in homepage.selectedExperienceAreas %}
-      <div class="selected-experience__row">
-        <span class="selected-experience__label">{{ area.label }}</span>
-        <div class="selected-experience__track">
-          <div class="selected-experience__fill selected-experience__fill--{{ area.weight }}"></div>
+    {% set selectedExamples = collections.experienceStories | featuredStories(3) %}
+    <div class="selected-feature-grid">
+      {% for story in selectedExamples %}
+      <a class="story-card selected-feature{% if loop.first %} selected-feature--lead{% endif %}" style="--feature-accent: var(--{{ ['forest','slate','sage'][loop.index0] }});" href="{{ story.url }}">
+        <span class="card-category">{{ story.data.theme }} · {{ story.data.organisation }}</span>
+        <h3>{{ story.data.title }}</h3>
+        <p class="card-body">{{ story.data.card_summary or story.data.summary }}</p>
+        {% if loop.first %}
+        {% set leadImpact = story.data.impact | publicImpact %}
+        {% if leadImpact.length %}
+        <div class="card-metric">
+          <span class="card-metric-value">{{ leadImpact[0].value }}</span>
+          <span class="card-metric-label">{{ leadImpact[0].label }}</span>
         </div>
-      </div>
+        {% endif %}
+        {% if story.data.public_categories.length %}
+        <p class="card-capabilities">{% for label in story.data.public_categories | limit(4) %}{{ label }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+        {% endif %}
+        {% endif %}
+        <span class="accent-card__link">Explore the story →</span>
+      </a>
       {% endfor %}
+    </div>
+    <div class="section-footer">
+      <a class="btn btn--text" href="/experience/">Explore the full career journey →</a>
     </div>
   </div>
 </section>
@@ -152,10 +159,6 @@ layout: layouts/base.njk
       <span class="section-label">How I Work and Think</span>
       <h2>{{ homepage.thinkingHeading }}</h2>
       <p>{{ homepage.thinkingSubheading }}</p>
-    </div>
-
-    <div class="mini-strip mini-strip--compact" style="margin-bottom: 2.5rem;">
-      <span>Work</span><span>Observe</span><span>Figure Out</span><span>Codify</span><span>Share</span><span>Converse</span><span>Apply</span>
     </div>
 
     <div class="card-grid">
@@ -181,28 +184,10 @@ layout: layouts/base.njk
 </section>
 {% endif %}
 
-<section class="advisory-preview tier-secondary">
-  <div class="wrap">
-    <div class="section-heading">
-      <span class="section-label">Advisory</span>
-      <h2>{{ homepage.advisoryPreviewHeading }}</h2>
-      <p>{{ homepage.advisoryPreviewText }}</p>
-    </div>
-    {% if homepage.advisoryPreviewItems.length %}
-    <div class="advisory-preview__chips">
-      {% for item in homepage.advisoryPreviewItems %}
-      <span class="pill">{{ item }}</span>
-      {% endfor %}
-    </div>
-    {% endif %}
-    <a class="btn btn--text" href="/advisory/">{{ homepage.advisoryPreviewCtaLabel or "Explore Advisory →" }}</a>
-  </div>
-</section>
-
 <section class="speaking-teaser tier-dominant section--dark">
   <div class="wrap split">
     <div>
-      {{ media.placeholder("Parul speaking on stage", "16/9", null, true) }}
+      {{ ph.photo(photos["gulfood-speaker-card"], { sizes: "(max-width: 800px) 94vw, 440px" }) }}
     </div>
     <div>
       <span class="section-label">Voice</span>
@@ -235,8 +220,9 @@ layout: layouts/base.njk
     <p>{{ homepage.finalCtaText }}</p>
     <div class="final-cta__ctas">
       <a class="btn btn--primary" href="/contact/">{{ homepage.finalCtaPrimaryLabel }} →</a>
+      <a class="btn btn--secondary" href="/contact/?intent=speaking">{{ homepage.finalCtaSpeakingLabel }} →</a>
       {% if site.linkedin and site.linkedin != "[CONTENT NEEDED — LinkedIn profile URL]" %}
-      <a class="btn btn--secondary" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">{{ homepage.finalCtaSecondaryLabel }}</a>
+      <a class="btn btn--text" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">{{ homepage.finalCtaSecondaryLabel }} ↗</a>
       {% endif %}
     </div>
     {% if homepage.opportunityLine %}

@@ -1,0 +1,592 @@
+{
+  "portrait-golden": {
+    "file": "portrait-golden",
+    "width": 863,
+    "height": 1453,
+    "widths": [
+      480,
+      768,
+      863
+    ],
+    "fallback": 863,
+    "role": "hero",
+    "ratio": "4/5",
+    "posDesktop": "50% 22%",
+    "posTablet": "50% 22%",
+    "posMobile": "50% 18%",
+    "alt": "Portrait of Parul Soni Manvati, seated, in a gold saree.",
+    "context": "Primary portrait"
+  },
+  "snapdeal-stage": {
+    "file": "snapdeal-stage",
+    "width": 1280,
+    "height": 1268,
+    "widths": [
+      480,
+      768,
+      1200,
+      1280
+    ],
+    "fallback": 1200,
+    "role": "editorial",
+    "ratio": "4/3",
+    "posDesktop": "50% 6%",
+    "posMobile": "50% 4%",
+    "alt": "Parul Soni Manvati speaking on stage at a Snapdeal event.",
+    "label": "Early career",
+    "caption": "From curiosity to real-world impact.",
+    "context": "Snapdeal"
+  },
+  "nitie": {
+    "file": "nitie",
+    "width": 1280,
+    "height": 720,
+    "widths": [
+      480,
+      768,
+      1200,
+      1280
+    ],
+    "fallback": 1200,
+    "role": "editorial",
+    "ratio": "4/3",
+    "posDesktop": "55% 50%",
+    "posMobile": "55% 50%",
+    "alt": "Parul Soni Manvati at NITIE, beside the institute's emblem.",
+    "label": "Foundation",
+    "caption": "Rooted in learning, driven by purpose.",
+    "context": "NITIE"
+  },
+  "gulfood-foodpulse": {
+    "file": "gulfood-foodpulse",
+    "width": 1280,
+    "height": 720,
+    "widths": [
+      480,
+      768,
+      1200,
+      1280
+    ],
+    "fallback": 1200,
+    "role": "editorial",
+    "ratio": "3/2",
+    "posDesktop": "40% 50%",
+    "posMobile": "40% 50%",
+    "alt": "Parul Soni Manvati in conversation at the Gulfood Food Pulse studio.",
+    "context": "Gulfood Food Pulse"
+  },
+  "gulfood-stage": {
+    "file": "gulfood-stage",
+    "width": 1204,
+    "height": 1600,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "fallback": 1200,
+    "role": "context",
+    "ratio": "3/2",
+    "posDesktop": "50% 19%",
+    "posMobile": "50% 19%",
+    "alt": "Parul Soni Manvati seated on a conference panel, introduced as Chief Business Officer at Clearmeat.",
+    "context": "Conference panel"
+  },
+  "superwomen-award": {
+    "file": "superwomen-award",
+    "width": 1500,
+    "height": 1000,
+    "widths": [
+      480,
+      768,
+      1200,
+      1500
+    ],
+    "fallback": 1200,
+    "role": "speaking",
+    "ratio": "3/2",
+    "posDesktop": "54% 30%",
+    "posMobile": "54% 30%",
+    "alt": "Parul Soni Manvati receiving recognition at the Superwomen Supply Chain Conference.",
+    "label": "Recognition",
+    "caption": "Honoured among women driving impact in supply chains.",
+    "context": "Superwomen Supply Chain Conference"
+  },
+  "panel-alt-protein": {
+    "file": "panel-alt-protein",
+    "width": 1600,
+    "height": 900,
+    "widths": [
+      480,
+      768,
+      1200,
+      1600
+    ],
+    "fallback": 1200,
+    "role": "speaking",
+    "ratio": "16/9",
+    "posDesktop": "36% 50%",
+    "posMobile": "36% 50%",
+    "alt": "Parul Soni Manvati on a panel about starting a plant-based and alternative-protein startup in India.",
+    "label": "Industry Dialogues",
+    "caption": "In conversation with leaders across business and emerging industries.",
+    "context": "Panel: starting a plant-based startup in India"
+  },
+  "amity-award": {
+    "file": "amity-award",
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "fallback": 1200,
+    "role": "speaking",
+    "ratio": "3/4",
+    "posDesktop": "48% 10%",
+    "posMobile": "48% 10%",
+    "alt": "Parul Soni Manvati receiving an award at the Amity University conference on entrepreneurship, innovation and leadership.",
+    "label": "Academia × Industry",
+    "caption": "Conversations on entrepreneurship, innovation and emerging technologies.",
+    "context": "Amity University conference"
+  },
+  "startup-arena": {
+    "file": "startup-arena",
+    "width": 1352,
+    "height": 882,
+    "widths": [
+      480,
+      768,
+      1200,
+      1352
+    ],
+    "fallback": 1200,
+    "role": "speaking",
+    "ratio": "3/2",
+    "posDesktop": "30% 50%",
+    "posMobile": "30% 50%",
+    "alt": "Parul Soni Manvati with fellow participants in front of the Start-up Arena stage at Future Food-Tech.",
+    "label": "Global Ecosystem",
+    "caption": "Engaging with founders and innovators shaping the future of food.",
+    "context": "Future Food-Tech · Start-up Arena"
+  },
+  "superwomen-speaking": {
+    "file": "superwomen-speaking",
+    "width": 1000,
+    "height": 1500,
+    "widths": [
+      480,
+      768,
+      1000
+    ],
+    "fallback": 1000,
+    "role": "speaking",
+    "ratio": "4/5",
+    "posDesktop": "50% 14%",
+    "posMobile": "50% 14%",
+    "alt": "Parul Soni Manvati speaking at a conference panel, microphone in hand.",
+    "context": "Superwomen Supply Chain Conference"
+  },
+  "startup-india-award": {
+    "file": "startup-india-award",
+    "width": 1204,
+    "height": 1600,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "fallback": 1200,
+    "role": "editorial",
+    "ratio": "4/5",
+    "posDesktop": "50% 28%",
+    "posMobile": "50% 24%",
+    "alt": "Parul Soni Manvati at the ClearMeat stand at World Food India, holding a Startup India winner's certificate.",
+    "context": "World Food India · Startup India"
+  },
+  "gulfood-speaker-card": {
+    "file": "gulfood-speaker-card",
+    "width": 864,
+    "height": 744,
+    "widths": [
+      480,
+      768,
+      864
+    ],
+    "fallback": 864,
+    "role": "speaking-hero",
+    "ratio": "864/744",
+    "posDesktop": "50% 50%",
+    "posMobile": "50% 50%",
+    "alt": "Parul Soni Manvati presenting at Gulfood, Chief Business Officer at Clearmeat.",
+    "context": "Gulfood"
+  },
+  "panel-digital-event": {
+    "file": "panel-digital-event",
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      480,
+      768,
+      1200,
+      1280
+    ],
+    "fallback": 1200,
+    "role": "library",
+    "ratio": "4/3",
+    "posDesktop": "25% 50%",
+    "posMobile": "25% 50%",
+    "alt": "Parul Soni Manvati speaking on a four-person conference panel.",
+    "context": "Conference panel",
+    "library": true
+  },
+  "foodpharmer": {
+    "file": "foodpharmer",
+    "width": 631,
+    "height": 873,
+    "widths": [
+      480,
+      631
+    ],
+    "fallback": 631,
+    "role": "editorial",
+    "ratio": "4/3",
+    "posDesktop": "50% 9%",
+    "posMobile": "50% 9%",
+    "alt": "Parul Soni Manvati with FoodPharmer at an industry event.",
+    "context": "Food ecosystem"
+  },
+  "addverb-event": {
+    "file": "addverb-event",
+    "width": 1512,
+    "height": 884,
+    "widths": [
+      480,
+      768,
+      1200,
+      1512
+    ],
+    "fallback": 1200,
+    "role": "context",
+    "ratio": "4/3",
+    "posDesktop": "100% 50%",
+    "posMobile": "100% 50%",
+    "alt": "Parul Soni Manvati taking notes on her laptop at an Addverb Technologies event.",
+    "context": "Addverb"
+  },
+  "niftem-anwesh": {
+    "file": "niftem-anwesh",
+    "width": 646,
+    "height": 1009,
+    "widths": [
+      480,
+      646
+    ],
+    "fallback": 646,
+    "role": "context",
+    "ratio": "4/5",
+    "posDesktop": "50% 30%",
+    "posMobile": "50% 30%",
+    "alt": "Parul Soni Manvati beside the NIFTEM-K Anwesh 2026 conference sign.",
+    "context": "NIFTEM-K Anwesh 2026"
+  },
+  "amitabh-kant": {
+    "file": "amitabh-kant",
+    "width": 727,
+    "height": 895,
+    "widths": [
+      480,
+      727
+    ],
+    "fallback": 727,
+    "role": "context",
+    "ratio": "4/5",
+    "posDesktop": "50% 0%",
+    "posMobile": "50% 0%",
+    "alt": "Parul Soni Manvati with Amitabh Kant.",
+    "context": "Policy and institutions"
+  },
+  "ficci-summit": {
+    "file": "ficci-summit",
+    "width": 727,
+    "height": 408,
+    "widths": [
+      480,
+      727
+    ],
+    "fallback": 727,
+    "role": "context",
+    "ratio": "16/9",
+    "posDesktop": "50% 50%",
+    "posMobile": "50% 50%",
+    "alt": "Parul Soni Manvati at the FICCI Bharat R&D Summit 2024 in New Delhi.",
+    "context": "FICCI Bharat R&D Summit 2024"
+  },
+  "gulfood-manufacturing": {
+    "file": "gulfood-manufacturing",
+    "width": 899,
+    "height": 1200,
+    "widths": [
+      480,
+      768,
+      899
+    ],
+    "fallback": 899,
+    "role": "context",
+    "ratio": "3/4",
+    "posDesktop": "54% 30%",
+    "posMobile": "54% 30%",
+    "alt": "Parul Soni Manvati at the Gulfood Manufacturing exhibition hall.",
+    "context": "Gulfood Manufacturing"
+  },
+  "gulfood-inspire": {
+    "file": "gulfood-inspire",
+    "width": 696,
+    "height": 370,
+    "widths": [
+      480,
+      696
+    ],
+    "fallback": 696,
+    "role": "context",
+    "ratio": "16/9",
+    "posDesktop": "49% 50%",
+    "posMobile": "49% 50%",
+    "alt": "Parul Soni Manvati presenting on alternative proteins on the Gulfood Inspire stage.",
+    "context": "Gulfood Inspire"
+  },
+  "amazon-diwa": {
+    "file": "amazon-diwa",
+    "width": 1280,
+    "height": 853,
+    "widths": [
+      480,
+      768,
+      1200,
+      1280
+    ],
+    "fallback": 1200,
+    "role": "context",
+    "ratio": "3/2",
+    "posDesktop": "30% 50%",
+    "posMobile": "30% 50%",
+    "alt": "Parul Soni Manvati speaking at the Diversity and Inclusion for Women kickoff at Amazon.",
+    "context": "Amazon DIWA kickoff"
+  },
+  "google-dbc": {
+    "file": "google-dbc",
+    "width": 727,
+    "height": 909,
+    "widths": [
+      480,
+      727
+    ],
+    "fallback": 727,
+    "role": "context",
+    "ratio": "1/1",
+    "posDesktop": "28% 20%",
+    "posMobile": "28% 20%",
+    "alt": "Parul Soni Manvati at the Digital Bharat Economy Conclave 2023.",
+    "context": "Digital Bharat Economy Conclave 2023"
+  },
+  "clearmeat-booth": {
+    "file": "clearmeat-booth",
+    "width": 635,
+    "height": 1129,
+    "widths": [
+      480,
+      635
+    ],
+    "fallback": 635,
+    "role": "context",
+    "ratio": "4/5",
+    "posDesktop": "50% 30%",
+    "posMobile": "50% 45%",
+    "alt": "Parul Soni Manvati reading a brochure at the ClearMeat booth at an industry conference.",
+    "context": "ClearMeat"
+  },
+  "microscope": {
+    "file": "microscope",
+    "width": 727,
+    "height": 410,
+    "widths": [
+      480,
+      727
+    ],
+    "fallback": 727,
+    "role": "context",
+    "ratio": "16/9",
+    "posDesktop": "60% 50%",
+    "posMobile": "60% 50%",
+    "alt": "Parul Soni Manvati looking through a laboratory microscope.",
+    "context": "Cellular science"
+  },
+  "kunal-bahl": {
+    "file": "kunal-bahl",
+    "width": 727,
+    "height": 546,
+    "widths": [
+      480,
+      727
+    ],
+    "fallback": 727,
+    "role": "context",
+    "ratio": "4/3",
+    "posDesktop": "50% 40%",
+    "posMobile": "50% 40%",
+    "alt": "Parul Soni Manvati in a selfie with Kunal Bahl.",
+    "context": ""
+  },
+  "suresh-raina": {
+    "file": "suresh-raina",
+    "width": 635,
+    "height": 1252,
+    "widths": [
+      480,
+      635
+    ],
+    "fallback": 635,
+    "role": "context",
+    "ratio": "4/5",
+    "posDesktop": "50% 30%",
+    "posMobile": "50% 30%",
+    "alt": "Parul Soni Manvati with Suresh Raina at an evening event.",
+    "context": ""
+  },
+  "hemendra-mathur": {
+    "file": "hemendra-mathur",
+    "width": 635,
+    "height": 970,
+    "widths": [
+      480,
+      635
+    ],
+    "fallback": 635,
+    "role": "context",
+    "ratio": "4/5",
+    "posDesktop": "50% 8%",
+    "posMobile": "50% 8%",
+    "alt": "Parul Soni Manvati with Hemendra Mathur at the ClearMeat stand.",
+    "context": ""
+  },
+  "exec-desk": {
+    "file": "exec-desk",
+    "width": 764,
+    "height": 1330,
+    "widths": [
+      480,
+      764
+    ],
+    "fallback": 764,
+    "role": "context",
+    "ratio": "3/2",
+    "posDesktop": "50% 56%",
+    "posMobile": "50% 56%",
+    "alt": "Parul Soni Manvati working at a desk with a tablet and notebook, with a city skyline behind her.",
+    "context": "",
+    "shareable": false
+  },
+  "maneka-gandhi": {
+    "file": "maneka-gandhi",
+    "width": 785,
+    "height": 1223,
+    "widths": [
+      480,
+      768
+    ],
+    "fallback": 768,
+    "role": "context",
+    "ratio": "4/5",
+    "posDesktop": "50% 12%",
+    "posMobile": "50% 12%",
+    "alt": "Parul Soni Manvati with Maneka Gandhi.",
+    "context": ""
+  },
+  "animal-sanctuary": {
+    "file": "animal-sanctuary",
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "fallback": 1200,
+    "role": "context",
+    "ratio": "1/1",
+    "posDesktop": "35% 70%",
+    "posMobile": "35% 70%",
+    "alt": "Parul Soni Manvati sitting with rescued dogs in the winter sun.",
+    "context": ""
+  },
+  "animal-park": {
+    "file": "animal-park",
+    "width": 1600,
+    "height": 1204,
+    "widths": [
+      480,
+      768,
+      1200,
+      1600
+    ],
+    "fallback": 1200,
+    "role": "context",
+    "ratio": "4/3",
+    "posDesktop": "40% 50%",
+    "posMobile": "40% 50%",
+    "alt": "Parul Soni Manvati sitting on the grass with two dogs in a park.",
+    "context": ""
+  },
+  "travel-liberty": {
+    "file": "travel-liberty",
+    "width": 1200,
+    "height": 872,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "fallback": 1200,
+    "role": "context",
+    "ratio": "4/3",
+    "posDesktop": "55% 50%",
+    "posMobile": "55% 50%",
+    "alt": "Parul Soni Manvati smiling in front of the Statue of Liberty.",
+    "context": ""
+  },
+  "travel-konark": {
+    "file": "travel-konark",
+    "width": 729,
+    "height": 1600,
+    "widths": [
+      480,
+      729
+    ],
+    "fallback": 729,
+    "role": "context",
+    "ratio": "4/5",
+    "posDesktop": "50% 25%",
+    "posMobile": "50% 25%",
+    "alt": "Parul Soni Manvati standing between stone walls at the Konark Sun Temple.",
+    "context": ""
+  },
+  "travel-snoqualmie": {
+    "file": "travel-snoqualmie",
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      768,
+      1200,
+      1600
+    ],
+    "fallback": 1200,
+    "role": "context",
+    "ratio": "4/3",
+    "posDesktop": "30% 50%",
+    "posMobile": "30% 50%",
+    "alt": "Parul Soni Manvati beside Snoqualmie Falls.",
+    "context": ""
+  }
+}

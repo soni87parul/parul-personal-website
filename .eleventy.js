@@ -7,6 +7,8 @@ const {
   ARTICLE_PLACEHOLDER_FIELDS,
   RECOMMENDATION_PLACEHOLDER_FIELDS,
 } = require("./src/_utils/placeholder");
+const { absoluteUrl, validCanonicalOverride, jsonLd } = require("./src/_utils/seo");
+const { buildStructuredData } = require("./src/_utils/structured-data");
 
 const CAPABILITY_GROUP_ORDER = [
   "Strategy & Leadership",
@@ -90,7 +92,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
-  eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
   eleventyConfig.addWatchTarget("src/css");
@@ -155,6 +156,12 @@ module.exports = function (eleventyConfig) {
     return BROAD_FILTERS.filter((bf) => activeSlugs.has(bf.slug));
   });
 
+  // SEO filters (see src/_utils/seo.js and src/_includes/partials/seo-head.njk)
+  eleventyConfig.addFilter("absUrl", (path) => absoluteUrl(path));
+  eleventyConfig.addFilter("validCanonical", (override, inputPath) => validCanonicalOverride(override, inputPath));
+  eleventyConfig.addFilter("jsonLd", (data) => jsonLd(data));
+  eleventyConfig.addFilter("structuredData", (params) => buildStructuredData(params || {}));
+
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     if (!dateObj) return "";
@@ -171,6 +178,18 @@ module.exports = function (eleventyConfig) {
     const words = content.toString().trim().split(/\s+/).length;
     const minutes = Math.max(1, Math.round(words / 200));
     return `${minutes} min read`;
+  });
+
+  // Sum of photo aspect ratios for a row of photographs, so a justified strip can keep every tile at the same height.
+  eleventyConfig.addFilter("photoStripRatio", (items) => {
+    const photos = require("./src/_data/photos.json");
+    const sum = (items || []).reduce((s, i) => {
+      const p = photos[i.photo];
+      if (!p) return s;
+      const [a, b] = String(p.ratio).split("/").map(Number);
+      return s + a / (b || 1);
+    }, 0);
+    return sum.toFixed(3);
   });
 
   eleventyConfig.addFilter("limit", (arr, limit) => {
@@ -242,6 +261,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("experienceByRef", (slug, allStories) => {
     if (!slug || !Array.isArray(allStories)) return null;
     return allStories.find((s) => s.fileSlug === slug) || null;
+  });
+
+  // Homepage "Selected transformation examples": the top N stories marked
+  // Featured in the CMS, ordered by Display Order. Stays in sync with the
+  // Experience collection automatically, no homepage-side slug list to
+  // maintain when she changes what's featured.
+  eleventyConfig.addFilter("featuredStories", (stories, count) => {
+    if (!Array.isArray(stories)) return [];
+    return stories
+      .filter((s) => s.data.featured)
+      .sort((a, b) => (a.data.display_order ?? 999) - (b.data.display_order ?? 999))
+      .slice(0, count || 3);
   });
 
   return {

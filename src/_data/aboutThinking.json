@@ -1,0 +1,93 @@
+{
+  "label": "Beyond the résumé",
+  "title": "What shapes my thinking",
+  "intro": "I believe in understanding the whole ecosystem, and how each part works with the others.",
+  "chapters": [
+    {
+      "heading": "Building and leading",
+      "line": "Strategy only works when operations, people and customers move together.",
+      "photos": [
+        {
+          "photo": "google-dbc",
+          "caption": ""
+        },
+        {
+          "photo": "ficci-summit",
+          "caption": ""
+        },
+        {
+          "photo": "clearmeat-booth",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "heading": "Building networks",
+      "line": "I enjoy building networks across government and venture capital circles.",
+      "photos": [
+        {
+          "photo": "kunal-bahl",
+          "caption": "Kunal Bahl"
+        },
+        {
+          "photo": "suresh-raina",
+          "caption": "Suresh Raina"
+        },
+        {
+          "photo": "hemendra-mathur",
+          "caption": "Hemendra Mathur"
+        },
+        {
+          "photo": "foodpharmer",
+          "caption": "FoodPharmer"
+        }
+      ]
+    },
+    {
+      "heading": "Future of food and technology",
+      "line": "Learning about futuristic technology keeps me ahead of the curve.",
+      "photos": [
+        {
+          "photo": "microscope",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "heading": "Animal welfare",
+      "line": "Empathy for animals shapes how I think sustainable solutions should be built.",
+      "photos": [
+        {
+          "photo": "maneka-gandhi",
+          "caption": "With Maneka Gandhi"
+        },
+        {
+          "photo": "animal-sanctuary",
+          "caption": ""
+        },
+        {
+          "photo": "animal-park",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "heading": "Travel and history",
+      "line": "Travel keeps me updated on the geopolitics of the past and the present.",
+      "photos": [
+        {
+          "photo": "travel-liberty",
+          "caption": ""
+        },
+        {
+          "photo": "travel-konark",
+          "caption": ""
+        },
+        {
+          "photo": "travel-snoqualmie",
+          "caption": ""
+        }
+      ]
+    }
+  ]
+}

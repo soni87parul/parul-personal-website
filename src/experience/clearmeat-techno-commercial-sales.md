@@ -24,11 +24,11 @@ build: "We created the team and embedded proactive customer support at key momen
 scale: "The techno-commercial model extended account coverage across a growing set of laboratory, research and commercial customers."
 transform: ""
 impact:
-  - value: "58%"
-    label: "Increase in repeat sales"
+  - value: "Material increase"
+    label: "In repeat sales following the new model"
     context: "From existing source material — pending verification."
     verification_required: true
-  - value: "4"
+  - value: "Several"
     label: "Large accounts onboarded under the new model"
     context: "From existing source material — pending verification."
     verification_required: true

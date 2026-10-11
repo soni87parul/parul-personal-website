@@ -1,13 +1,34 @@
 {
   "name": "Parul Soni Manvati",
+  "alternateName": "Parul Soni",
   "positioning": "Transformation Leader & Strategic Operator",
-  "email": "[CONTENT NEEDED — public contact email]",
-  "linkedin": "[CONTENT NEEDED — LinkedIn profile URL]",
+  "email": "Soni.87.parul@gmail.com",
+  "linkedin": "https://linkedin.com/in/Parulsonimanvati",
   "bio": "Parul is a cross-functional business leader and transformation operator with experience across large MNCs, technology businesses, startups, family-led businesses and emerging technology ventures.",
   "siteTitle": "Parul Soni Manvati | Transformation Leader & Strategic Operator",
   "metaDescription": "Parul Soni Manvati works with CEOs and leadership teams to figure out what needs to change, design the transformation, build the systems and teams required, and scale what works.",
-  "ogImage": "/assets/images/og-default.jpg",
+  "ogImage": "/assets/images/photos/gulfood-foodpulse-1200.jpg",
+  "ogImageAlt": "Parul Soni Manvati in conversation at the Gulfood Food Pulse studio.",
   "favicon": "/assets/images/favicon.svg",
   "footerText": "Parul Soni Manvati | Transformation Leader & Strategic Operator",
-  "copyrightYear": "2026"
+  "copyrightYear": "2026",
+  "baseUrl": "",
+  "personImage": "/assets/images/photos/portrait-golden-863.jpg",
+  "personDescription": "Transformation leader and strategic operator with experience in strategy, operations, supply chains, technology-enabled transformation and emerging industries, including cultivated meat and alternative proteins.",
+  "sameAs": [
+    "https://linkedin.com/in/Parulsonimanvati"
+  ],
+  "knowsAbout": [
+    "Business transformation",
+    "Strategy and operations",
+    "CEO Office and Chief of Staff function",
+    "Operating model design",
+    "Supply chain management",
+    "E-commerce operations",
+    "AI adoption in business operations",
+    "Startup scaling",
+    "Cultivated meat",
+    "Alternative proteins",
+    "Women in leadership"
+  ]
 }

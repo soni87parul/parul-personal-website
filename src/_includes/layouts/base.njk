@@ -15,16 +15,7 @@
       }
     })();
   </script>
-  <title>{{ seoTitle or title or site.siteTitle }}</title>
-  <meta name="description" content="{{ seoDescription or site.metaDescription }}">
-  <link rel="canonical" href="{{ site.baseUrl or '' }}{{ page.url }}">
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ seoTitle or title or site.siteTitle }}">
-  <meta property="og:description" content="{{ seoDescription or site.metaDescription }}">
-  <meta property="og:image" content="{{ ogImage or site.ogImage }}">
-  <meta property="og:url" content="{{ site.baseUrl or '' }}{{ page.url }}">
-  <meta name="twitter:card" content="summary_large_image">
+{% include "partials/seo-head.njk" %}
 
   <link rel="icon" href="{{ site.favicon }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">

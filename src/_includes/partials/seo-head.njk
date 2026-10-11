@@ -1,0 +1,54 @@
+{#- Single source for every page's SEO tags. Included once from layouts/base.njk.
+    Precedence: page front matter (or CMS entry) → Page SEO settings (pageSeo.json via seoKey) → Site Settings defaults. -#}
+{%- set pageSeoEntry = pageSeo[seoKey] if seoKey and pageSeo[seoKey] else {} -%}
+{%- set metaTitle = seoTitle or pageSeoEntry.seoTitle or title or site.siteTitle -%}
+{%- set metaDescription = seoDescription or pageSeoEntry.seoDescription or excerpt or summary or site.metaDescription -%}
+{%- set canonicalUrl = (canonicalOverride | validCanonical(page.inputPath)) or (page.url | absUrl) -%}
+{%- set socialImagePath = socialImage or pageSeoEntry.socialImage or ogImage or coverImage or site.ogImage -%}
+{%- set socialImageAlt = socialImageAlt or (pageSeoEntry.socialImageAlt if pageSeoEntry.socialImage) or (site.ogImageAlt if socialImagePath == site.ogImage) or metaTitle -%}
+{%- set isArticle = layout == "layouts/article.njk" -%}
+{%- set shouldNoindex = noindex or pageSeoEntry.noindex or seoEnv.isPreview -%}
+  <title>{{ metaTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}">
+  <link rel="canonical" href="{{ canonicalUrl }}">
+  {%- if shouldNoindex %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+
+  <meta property="og:type" content="{{ 'article' if isArticle else 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="{{ metaTitle }}">
+  <meta property="og:description" content="{{ metaDescription }}">
+  <meta property="og:url" content="{{ canonicalUrl }}">
+  {%- if socialImagePath %}
+  <meta property="og:image" content="{{ socialImagePath | absUrl }}">
+  <meta property="og:image:alt" content="{{ socialImageAlt }}">
+  {%- endif %}
+  {%- if isArticle and date %}
+  <meta property="article:published_time" content="{{ date | htmlDateString }}">
+  {%- if updated %}
+  <meta property="article:modified_time" content="{{ updated | htmlDateString }}">
+  {%- endif %}
+  {%- endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ metaTitle }}">
+  <meta name="twitter:description" content="{{ metaDescription }}">
+  {%- if socialImagePath %}
+  <meta name="twitter:image" content="{{ socialImagePath | absUrl }}">
+  <meta name="twitter:image:alt" content="{{ socialImageAlt }}">
+  {%- endif %}
+  {%- set structured = {
+    kind: ("home" if page.url == "/" else ("about" if layout == "layouts/about.njk" else ("article" if isArticle else ("story" if layout == "layouts/story.njk" else "")))),
+    url: page.url,
+    canonical: canonicalUrl,
+    headline: title,
+    pageName: metaTitle,
+    description: metaDescription,
+    image: ((socialImage or ogImage or coverImage) | absUrl) if (isArticle and (socialImage or ogImage or coverImage)) else "",
+    datePublished: date if isArticle else "",
+    dateModified: updated if isArticle else ""
+  } | structuredData -%}
+  {%- if structured and not shouldNoindex %}
+  <script type="application/ld+json">{{ structured | jsonLd | safe }}</script>
+  {%- endif %}

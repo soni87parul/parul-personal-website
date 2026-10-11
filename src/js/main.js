@@ -110,6 +110,28 @@ if (revealBars) {
   }
 }
 
+// Generic scroll-reveal for the approved-visuals images (About's
+// Operator/Builder/Ecosystem Thinker cards, the Experience opening visual,
+// the Advisory ecosystem visual) — a small opacity/translateY fade-in,
+// once per element. prefers-reduced-motion skips straight to visible.
+const revealEls = document.querySelectorAll("[data-reveal]");
+if (revealEls.length) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("is-revealed"));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealEls.forEach((el) => revealObserver.observe(el));
+  }
+}
+
 // Methodology path — click/Enter/Space reveals the discoverable example.
 // A real <button> already gets keyboard activation for free; this just
 // toggles the visual state and keeps only one stage open at a time.
@@ -258,6 +280,44 @@ document.querySelectorAll("[data-impact-strip]").forEach((strip) => {
   showCompany(buttons[0]);
 });
 
+// Career strip (About) — a visual résumé. Hover (pointer devices), focus,
+// click/tap or arrow keys select a chapter; the contextual panel cross-fades.
+// Without JS every panel stays visible, so nothing depends on this script.
+document.querySelectorAll("[data-career-strip]").forEach((strip) => {
+  const tabs = [...strip.querySelectorAll('[role="tab"]')];
+  const panels = [...strip.querySelectorAll('[role="tabpanel"]')];
+  if (!tabs.length || tabs.length !== panels.length) return;
+  strip.classList.add("is-enhanced");
+  const canHover = window.matchMedia("(hover: hover)").matches;
+  function select(index, opts) {
+    tabs.forEach((t, i) => {
+      const on = i === index;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      panels[i].classList.toggle("is-active", on);
+    });
+    if (opts && opts.focus) {
+      tabs[index].focus();
+      tabs[index].scrollIntoView({ block: "nearest", inline: "nearest" });
+    }
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => select(i));
+    if (canHover) tab.addEventListener("mouseenter", () => select(i));
+    tab.addEventListener("focus", () => select(i));
+    tab.addEventListener("keydown", (e) => {
+      let next = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (i + 1) % tabs.length;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = tabs.length - 1;
+      if (next !== null) { e.preventDefault(); select(next, { focus: true }); }
+    });
+  });
+  select(0);
+});
+
 // Expanding Panels (Motion Pattern B) — click/tap toggles an "is-active"
 // state so touch devices get the same reveal that :hover/:focus give
 // mouse and keyboard users.
@@ -289,6 +349,16 @@ document.querySelectorAll("[data-circular-media]").forEach((widget) => {
   showTopic(topics[0]);
 });
 
+// Speaking circular media — an approved clip plays muted and looped. For
+// visitors who prefer reduced motion it is stopped and the poster shows.
+document.querySelectorAll(".circular-media__video").forEach((video) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.pause();
+    video.removeAttribute("autoplay");
+    video.load();
+  }
+});
+
 // Featured-quote selector (About recommendations) — click a name to swap
 // which recommendation is shown as the large featured quote.
 document.querySelectorAll("[data-quote-block]").forEach((block) => {
@@ -303,70 +373,116 @@ document.querySelectorAll("[data-quote-block]").forEach((block) => {
   });
 });
 
-// Contact form — light conditional fields based on opportunity type
-const opportunityTypeSelect = document.getElementById("opportunityType");
-if (opportunityTypeSelect) {
-  const conditionalGroups = document.querySelectorAll("[data-opportunity-group]");
+// Contact form — compact enquiry form posted to Netlify Forms.
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  const reasonSelect = document.getElementById("reason");
 
-  function applyOpportunityType(value) {
-    conditionalGroups.forEach((group) => {
-      group.hidden = !!value && group.getAttribute("data-opportunity-group") !== value;
-    });
-  }
-
-  opportunityTypeSelect.addEventListener("change", () => applyOpportunityType(opportunityTypeSelect.value));
-
-  // Advisory/Thinking cards and CTAs link here with ?intent=...&topic=... —
-  // preselect the closest matching opportunity type once on load, carry the
-  // topic through as context, and show a friendly summary line instead of
-  // the raw query string. Never re-applied after load, so a visitor who
-  // changes the dropdown themselves is never overwritten.
-  const INTENT_TO_OPPORTUNITY = { advisory: "ceo-advisory", policy: "government" };
-  const TOPIC_LABELS = {
-    "operating-model": "your operating model",
-    "diagnosis": "diagnosing what's really going on",
-    "cross-functional-execution": "execution breaking down between functions",
-    "business-model": "your business model",
-    "ai-operating-model": "AI and operating-model transformation",
-    "ecosystem": "policy and ecosystem building",
-    "strategic-diagnostic": "a strategic diagnostic",
-    "transformation-engagement": "a transformation engagement",
-    "portfolio-support": "portfolio company support",
-    "0-to-1-scaleup": "0→1 or scale-up support",
-    "ecosystem-project": "a policy or ecosystem project",
-    "erp-transformation": "an ERP or systems transformation",
-    "ceo-office": "the CEO Office and operating rhythm",
+  // Advisory/Speaking/Thinking links arrive with ?intent=...&topic=... —
+  // preselect the closest reason once on load and carry the topic through
+  // as a hidden field. Never re-applied, so a visitor's own choice wins.
+  const INTENT_TO_REASON = {
+    leadership: "leadership",
+    transformation: "transformation",
+    advisory: "transformation",
+    "ceo-advisory": "transformation",
+    fractional: "fractional",
+    speaking: "speaking",
+    investor: "collaboration",
+    board: "collaboration",
+    government: "collaboration",
+    policy: "collaboration",
+    collaboration: "collaboration",
+    networking: "networking",
+    other: "other",
   };
-  const INTENT_LABELS = {
-    "leadership": "a leadership or executive opportunity",
-    "transformation": "a transformation project",
-    "ceo-advisory": "CEO / founder advisory",
-    "investor": "investor or portfolio support",
-    "board": "a board opportunity",
-    "government": "a government or policy project",
-    "speaking": "a speaking engagement",
-    "collaboration": "a collaboration",
-  };
-
   const params = new URLSearchParams(window.location.search);
-  const intent = params.get("intent");
+  const mappedReason = INTENT_TO_REASON[params.get("intent")];
+  if (mappedReason && reasonSelect) reasonSelect.value = mappedReason;
   const topic = params.get("topic");
+  const referralTopicField = document.getElementById("referralTopic");
+  if (referralTopicField && topic) referralTopicField.value = topic.slice(0, 80);
 
-  if (intent) {
-    const mapped = INTENT_TO_OPPORTUNITY[intent] || intent;
-    const matchingOption = [...opportunityTypeSelect.options].find((o) => o.value === mapped);
-    if (matchingOption) opportunityTypeSelect.value = mapped;
+  // JavaScript takes over validation so errors appear inline, next to each
+  // field. Without JavaScript the browser's native validation still applies.
+  contactForm.setAttribute("novalidate", "");
 
-    const contextBanner = document.getElementById("contextBanner");
-    const label = TOPIC_LABELS[topic] || INTENT_LABELS[mapped];
-    if (contextBanner && label) {
-      contextBanner.textContent = "You're reaching out about: " + label;
-      contextBanner.hidden = false;
-    }
+  const errorPanel = document.getElementById("contactError");
+  const successPanel = document.getElementById("contactSuccess");
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const fields = [...contactForm.querySelectorAll("input[required], select[required], textarea[required], input[type='url']")];
+
+  function fieldValid(field) {
+    const value = field.type === "checkbox" ? field.checked : field.value.trim();
+    if (field.type === "checkbox") return value;
+    if (field.required && !value) return false;
+    if (!value) return true; // optional and blank
+    if (field.minLength > 0 && value.length < field.minLength) return false;
+    if (field.type === "email") return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+    if (field.type === "url") return /^https?:\/\/[^\s.]+\.[^\s]+$/i.test(value);
+    return true;
   }
 
-  const referralTopicField = document.getElementById("referralTopic");
-  if (referralTopicField && topic) referralTopicField.value = topic;
+  function showFieldState(field) {
+    const ok = fieldValid(field);
+    const errorEl = document.getElementById(field.id + "-error");
+    field.setAttribute("aria-invalid", ok ? "false" : "true");
+    if (errorEl) {
+      errorEl.textContent = ok ? "" : errorEl.getAttribute("data-message");
+      errorEl.hidden = ok;
+    }
+    return ok;
+  }
 
-  applyOpportunityType(opportunityTypeSelect.value);
+  fields.forEach((field) => {
+    const evt = field.type === "checkbox" || field.tagName === "SELECT" ? "change" : "blur";
+    field.addEventListener(evt, () => {
+      if (field.type === "checkbox" || field.tagName === "SELECT" || field.value.trim() || field.getAttribute("aria-invalid") === "true") {
+        showFieldState(field);
+      }
+    });
+    field.addEventListener("input", () => {
+      if (field.getAttribute("aria-invalid") === "true") showFieldState(field);
+    });
+  });
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    errorPanel.hidden = true;
+
+    const invalid = fields.filter((field) => !showFieldState(field));
+    if (invalid.length) {
+      invalid[0].focus();
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.setAttribute("aria-busy", "true");
+    const originalLabel = submitButton.textContent;
+    submitButton.textContent = "Sending…";
+
+    const body = new URLSearchParams(new FormData(contactForm)).toString();
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Submission not accepted");
+        // Only a 2xx from Netlify counts as received.
+        contactForm.hidden = true;
+        successPanel.hidden = false;
+        successPanel.focus();
+      })
+      .catch(() => {
+        // Keep everything the visitor typed and let them try again.
+        errorPanel.hidden = false;
+        errorPanel.focus();
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
+        submitButton.textContent = originalLabel;
+      });
+  });
 }

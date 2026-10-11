@@ -1,19 +1,34 @@
 ---
 title: Advisory
 layout: layouts/base.njk
-seoTitle: Advisory | Parul Soni Manvati
-seoDescription: When the problem is bigger than a meeting. I work through the trade-offs with leadership, design a response and help turn it into execution.
+seoKey: advisory
 ---
 {% import "partials/cta.njk" as cta %}
 
 <section class="page-header page-header--tight">
-  <div class="wrap">
-    <span class="eyebrow">{{ advisory.heroEyebrow }}</span>
-    <h1>{{ advisory.heroHeading }}</h1>
-    <p>{{ advisory.heroIntro }}</p>
-    <div class="hero__ctas" style="margin-top: 1.75rem;">
-      <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
-      {{ cta.linkedinLink() }}
+  <div class="wrap grid-12">
+    <div class="col-5">
+      <span class="eyebrow">{{ advisory.heroEyebrow }}</span>
+      <h1>{{ advisory.heroHeading }}</h1>
+      <p>{{ advisory.heroIntro }}</p>
+      <div class="hero__ctas" style="margin-top: 1.75rem;">
+        <a class="btn btn--primary" href="/contact/">Start a Conversation →</a>
+        {{ cta.linkedinLink() }}
+      </div>
+    </div>
+    <div class="col-7">
+      <figure class="advisory-visual" data-reveal>
+        <picture>
+          <source type="image/webp" srcset="/assets/images/visuals/advisory-ecosystem-1000.webp 1000w, /assets/images/visuals/advisory-ecosystem-1600.webp 1600w, /assets/images/visuals/advisory-ecosystem-2200.webp 2200w" sizes="(max-width: 860px) 94vw, 56vw">
+          <img
+            src="/assets/images/visuals/advisory-ecosystem-1600.jpg"
+            srcset="/assets/images/visuals/advisory-ecosystem-1000.jpg 1000w, /assets/images/visuals/advisory-ecosystem-1600.jpg 1600w, /assets/images/visuals/advisory-ecosystem-2200.jpg 2200w"
+            sizes="(max-width: 860px) 94vw, 56vw"
+            width="3348" height="1880"
+            alt="Illustration showing an interconnected business system extending beyond a meeting room."
+            loading="eager" decoding="async" fetchpriority="high">
+        </picture>
+      </figure>
     </div>
   </div>
 </section>
@@ -24,6 +39,7 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
   <div class="wrap">
     <div class="section-heading">
       <h2>{{ advisory.positioningHeading }}</h2>
+      {% if advisory.positioningIntro %}<p>{{ advisory.positioningIntro }}</p>{% endif %}
     </div>
     <div class="card-grid">
       {% for s in situations %}
@@ -70,6 +86,7 @@ seoDescription: When the problem is bigger than a meeting. I work through the tr
       <a class="opportunity-block opportunity-block--{{ o.accent }}" href="/contact/?intent={{ o.contactIntent }}">
         <span class="opportunity-block__label">{{ o.title }}</span>
         <p>{{ o.description }}</p>
+        <span class="opportunity-block__cue" aria-hidden="true">→</span>
       </a>
       {% endfor %}
     </div>

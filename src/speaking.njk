@@ -1,13 +1,13 @@
 ---
 title: Speaking
 layout: layouts/base.njk
-seoTitle: Speaking | Parul Soni Manvati
-seoDescription: "From the future of food and alternative proteins to supply chains, AI and emerging industries, Parul speaks about how businesses, technologies and systems evolve."
+seoKey: speaking
 ---
 {% import "partials/media-placeholder.njk" as media %}
+{% import "partials/photo.njk" as ph %}
 
-<section class="hero page-header--tight">
-  <div class="wrap hero__grid">
+<section class="hero page-header--tight speaking-hero">
+  <div class="wrap hero__grid hero__grid--speaking">
     <div>
       <span class="eyebrow">SPEAKING</span>
       <h1 class="hero__headline">Conversations worth having.</h1>
@@ -18,8 +18,12 @@ seoDescription: "From the future of food and alternative proteins to supply chai
       </div>
     </div>
     <div>
-      <div class="hero__image-wrap" style="aspect-ratio: 16/10;">
-        {{ media.placeholder("Parul speaking on stage", "16/10", "No real speaking photograph is in the project yet.") }}
+      <div class="hero__image-wrap speaking-hero__media">
+        {% if speakingPage.heroImage %}
+        <img src="{{ speakingPage.heroImage }}" alt="{{ speakingPage.heroImageAlt or '' }}" loading="eager" fetchpriority="high" decoding="async">
+        {% else %}
+        {{ ph.photo(photos["gulfood-foodpulse"], { fill: true, eager: true, sizes: "(max-width: 860px) 94vw, 560px" }) }}
+        {% endif %}
       </div>
     </div>
   </div>
@@ -32,22 +36,59 @@ seoDescription: "From the future of food and alternative proteins to supply chai
     <div class="section-heading">
       <span class="section-label">Topics</span>
       <h2>What I speak about</h2>
+      {% if speakingPage.topicsIntro %}<p>{{ speakingPage.topicsIntro }}</p>{% endif %}
     </div>
-    {% set topicIcons = ["◐", "⚙", "▲", "✦", "◎", "⌕"] %}
-    <div class="territory-grid">
-      {% for topic in safeTopics %}
-      <a class="territory-card" href="/contact/?intent=speaking&topic={{ topic.title | lower | replace(' ', '-') }}" style="--territory-accent: var(--{{ topic.accent }});">
-        <span class="territory-card__icon" aria-hidden="true">{{ topicIcons[loop.index0] }}</span>
-        <span class="territory-card__title">{{ topic.title }}{% if topic.hasImage %} <span style="font-size: 0.65rem; color: var(--muted); font-weight: 400;">(photo)</span>{% endif %}</span>
-        <span class="territory-card__desc">{{ topic.keywords }}</span>
-      </a>
-      {% endfor %}
+    <div class="topics-split">
+      <div class="topics-split__photo">
+        {{ ph.photo(photos["superwomen-speaking"], { sizes: "(max-width: 860px) 320px, 360px" }) }}
+      </div>
+      {% set topicIcons = ["◐", "⚙", "▲", "✦", "◎", "⌕"] %}
+      <div class="territory-grid">
+        {% for topic in safeTopics %}
+        <a class="territory-card" href="/contact/?intent=speaking&topic={{ topic.title | lower | replace(' ', '-') }}" style="--territory-accent: var(--{{ topic.accent }});">
+          <span class="territory-card__icon" aria-hidden="true">{{ topicIcons[loop.index0] }}</span>
+          <span class="territory-card__title">{{ topic.title }}{% if topic.hasImage %} <span style="font-size: 0.65rem; color: var(--muted); font-weight: 400;">(photo)</span>{% endif %}</span>
+          <span class="territory-card__desc">{{ topic.keywords }}</span>
+        </a>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
 {% endif %}
 
+{% if speakingMoments.items.length %}
+<section class="tier-secondary moments-section">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="section-label">Featured</span>
+      <h2>Featured Speaking</h2>
+    </div>
+    {% for row in speakingMoments.items | batch(4) %}
+    <div class="moment-strip" data-expand-row>
+      {% for moment in row %}
+      {% set momentPhoto = photos[moment.photo] %}
+      {% if momentPhoto %}
+      <figure class="moment" data-expand-item tabindex="0">
+        {{ ph.photo(momentPhoto, { fill: true, sizes: "(max-width: 860px) 80vw, 420px" }) }}
+        <figcaption class="moment__overlay">
+          <span class="moment__label">{{ moment.label }}</span>
+          <span class="moment__more">
+            <span class="moment__caption">{{ moment.caption }}</span>
+            <span class="moment__context">{{ moment.context }}</span>
+          </span>
+        </figcaption>
+      </figure>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 {% set featuredEvent = speakingEvents.items | selectattr("published") | selectattr("featured") | publiclySafe | first %}
+{% if featuredEvent %}
 <section class="tier-secondary teaser">
   <div class="wrap">
     <div class="section-heading">
@@ -56,7 +97,7 @@ seoDescription: "From the future of food and alternative proteins to supply chai
     </div>
     {% if featuredEvent %}
     <div class="split" style="align-items: center;">
-      <div>{{ media.placeholder(featuredEvent.title, "16/9") }}</div>
+      <div>{% if featuredEvent.image %}<img class="featured-event__image" src="{{ featuredEvent.image }}" alt="{{ featuredEvent.title }}" loading="lazy" decoding="async">{% else %}{{ media.placeholder(featuredEvent.title, "16/9") }}{% endif %}</div>
       <div>
         <h3>{{ featuredEvent.title }}</h3>
         {% if featuredEvent.topic %}<p style="color: var(--muted);">{{ featuredEvent.topic }}</p>{% endif %}
@@ -68,7 +109,10 @@ seoDescription: "From the future of food and alternative proteins to supply chai
     {% endif %}
   </div>
 </section>
+{% endif %}
 
+{% set publishedEvents = speakingEvents.items | selectattr("published") | publiclySafe %}
+{% if publishedEvents.length %}
 <section class="tier-secondary">
   <div class="wrap">
     <div class="section-heading">
@@ -76,12 +120,10 @@ seoDescription: "From the future of food and alternative proteins to supply chai
       <h2>Selected Speaking &amp; Appearances</h2>
       <p>Grounded in the industries, organisations and systems I've worked inside, not commentary from the sidelines.</p>
     </div>
-    {% set publishedEvents = speakingEvents.items | selectattr("published") | publiclySafe %}
-    {% if publishedEvents.length %}
     <div class="expand-appearance-row" data-expand-row>
       {% for event in publishedEvents %}
       <div class="expand-appearance" data-expand-item tabindex="0">
-        <div class="expand-appearance__media">{{ media.placeholder(event.title, "3/4") }}</div>
+        <div class="expand-appearance__media">{% if event.image %}<img src="{{ event.image }}" alt="{{ event.title }}" loading="lazy" decoding="async">{% else %}{{ media.placeholder(event.title, "3/4") }}{% endif %}</div>
         <div class="expand-appearance__overlay">
           <span class="expand-appearance__year">{{ event.year or "TBD" }}</span>
           <span class="expand-appearance__title">{{ event.title }}{% if event.organisation %} · {{ event.organisation }}{% endif %}</span>
@@ -94,17 +136,23 @@ seoDescription: "From the future of food and alternative proteins to supply chai
       </div>
       {% endfor %}
     </div>
-    {% else %}
-    <div class="empty-state">Selected speaking appearances will appear here as they're confirmed.</div>
-    {% endif %}
   </div>
 </section>
+{% endif %}
 
 <section class="tier-dominant section--dark">
   <div class="wrap circular-media-section" data-circular-media>
     <span class="section-label" style="display: block;">Speaking</span>
     <div class="circular-media">
-      <div class="circular-media__disc">{{ media.placeholder("Speaking clip", "1/1") }}</div>
+      <div class="circular-media__disc">
+        {% if speakingPage.circularVideo %}
+        <video class="circular-media__video" src="{{ speakingPage.circularVideo }}"{% if speakingPage.circularPoster %} poster="{{ speakingPage.circularPoster }}"{% endif %} muted autoplay loop playsinline preload="metadata" aria-label="Short clip of Parul speaking"></video>
+        {% elif speakingPage.circularPoster %}
+        <img src="{{ speakingPage.circularPoster }}" alt="Parul speaking" loading="lazy" decoding="async">
+        {% else %}
+        {{ media.placeholder("Speaking clip", "1/1", "Development placeholder. An approved video replaces this.") }}
+        {% endif %}
+      </div>
       <div class="circular-media__topics">
         {% for topic in safeTopics %}
         {% set angle = loop.index0 * (360 / safeTopics.length) %}
@@ -113,7 +161,6 @@ seoDescription: "From the future of food and alternative proteins to supply chai
       </div>
     </div>
     <p class="circular-media__caption" data-circular-caption></p>
-    <p style="font-size: 0.75rem; color: rgba(255,253,248,0.55); margin-top: 0.5rem;">No real speaking video is in the project yet. Placeholder shown until one is confirmed.</p>
   </div>
 </section>
 

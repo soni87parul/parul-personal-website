@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 ---
+{% import "partials/photo.njk" as ph %}
 <section class="page-header">
   <div class="wrap">
     <span class="eyebrow">{{ theme }}{% if organisation %} · {{ organisation }}{% endif %}{% if year_or_period %} · {{ year_or_period }}{% endif %}</span>
@@ -27,9 +28,14 @@ layout: layouts/base.njk
 
 <section>
   <div class="wrap">
-    {% if featured_image %}
+    {% if photo and photos[photo] %}
+    <figure class="story-photo">
+      <div class="story-photo__frame">{{ ph.photo(photos[photo], { ratio: photo_ratio or "16/9", sizes: "(max-width: 860px) 94vw, 1100px", eager: true }) }}</div>
+      {% if photos[photo].context %}<figcaption>{{ photos[photo].context }}{% if year_or_period %} · {{ year_or_period }}{% endif %}</figcaption>{% endif %}
+    </figure>
+    {% elif featured_image %}
     <div class="hero__image-wrap" style="aspect-ratio: 16/9; margin-bottom: 3rem;">
-      <img src="{{ featured_image }}" alt="{{ featured_image_alt or title }}">
+      <img src="{{ featured_image }}" alt="{{ featured_image_alt or title }}" loading="eager" decoding="async">
     </div>
     {% endif %}
 

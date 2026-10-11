@@ -1,0 +1,13 @@
+{# Reusable photograph component. Pass an entry from src/_data/photos.json.
+   Original pixels only: this only chooses a pre-generated, conventionally resized file
+   and a crop position (object-position). Options: sizes, eager, fill, ratio, alt, class, posD/posT/posM. #}
+{% macro photo(p, o) %}
+{%- set o = o or {} -%}
+{%- set posD = o.posD or p.posDesktop or "50% 50%" -%}
+{%- set posT = o.posT or p.posTablet or posD -%}
+{%- set posM = o.posM or p.posMobile or posT -%}
+<picture class="photo{% if o.fill %} photo--fill{% endif %}{% if o.class %} {{ o.class }}{% endif %}" style="{% if not o.fill %}--photo-ratio: {{ o.ratio or p.ratio }}; {% endif %}--pos-d: {{ posD }}; --pos-t: {{ posT }}; --pos-m: {{ posM }};">
+  <source type="image/webp" srcset="{% for w in p.widths %}/assets/images/photos/{{ p.file }}-{{ w }}.webp {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}" sizes="{{ o.sizes or '100vw' }}">
+  <img src="/assets/images/photos/{{ p.file }}-{{ p.fallback }}.jpg" width="{{ p.width }}" height="{{ p.height }}" alt="{{ o.alt if o.alt is not undefined else p.alt }}" {% if o.eager %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+</picture>
+{% endmacro %}

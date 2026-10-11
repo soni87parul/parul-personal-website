@@ -5,6 +5,8 @@ organisation: "Snapdeal"
 theme: "Same-Day / Next-Day Capability"
 summary: "Designing Same-Day and Next-Day delivery as a customer proposition rather than simply a logistics metric."
 year_or_period: "2014"
+photo: "snapdeal-stage"
+photo_ratio: "3/2"
 featured_image: ""
 featured_image_alt: ""
 public_categories: ["0→1 & Building", "Operations", "Business Scaling"]

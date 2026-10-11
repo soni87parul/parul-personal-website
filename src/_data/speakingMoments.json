@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "photo": "superwomen-award",
+      "label": "Recognition",
+      "caption": "Honoured among women driving impact in supply chains.",
+      "context": "Superwomen Supply Chain Conference"
+    },
+    {
+      "photo": "panel-alt-protein",
+      "label": "Industry Dialogues",
+      "caption": "In conversation with leaders across business and emerging industries.",
+      "context": "Panel: starting a plant-based startup in India"
+    },
+    {
+      "photo": "amity-award",
+      "label": "Academia × Industry",
+      "caption": "Conversations on entrepreneurship, innovation and emerging technologies.",
+      "context": "Amity University conference"
+    },
+    {
+      "photo": "startup-arena",
+      "label": "Global Ecosystem",
+      "caption": "Engaging with founders and innovators shaping the future of food.",
+      "context": "Future Food-Tech · Start-up Arena"
+    },
+    {
+      "photo": "gulfood-inspire",
+      "label": "Industry Stage",
+      "caption": "Presenting on alternative proteins and the future of food.",
+      "context": "Gulfood Inspire"
+    },
+    {
+      "photo": "gulfood-manufacturing",
+      "label": "Global Food Industry",
+      "caption": "Part of the wider conversation on how food is made.",
+      "context": "Gulfood Manufacturing"
+    },
+    {
+      "photo": "amazon-diwa",
+      "label": "Inside Organisations",
+      "caption": "Speaking on diversity and inclusion for women at Amazon.",
+      "context": "Amazon DIWA kickoff"
+    },
+    {
+      "photo": "panel-digital-event",
+      "label": "Panel Conversations",
+      "caption": "Sharing the stage with industry peers.",
+      "context": "Conference panel"
+    }
+  ]
+}

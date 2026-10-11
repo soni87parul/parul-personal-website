@@ -24,15 +24,15 @@ build: "I owned the product from concept through launch, coordinating the operat
 scale: "The portal created a more repeatable operating layer for distributor onboarding and vendor management."
 transform: ""
 impact:
-  - value: "80%"
-    label: "Reduction in vendor escalations/manual touchpoints"
+  - value: "Material reduction"
+    label: "In vendor escalations and manual touchpoints"
     context: "From existing source material — pending verification."
     verification_required: true
-  - value: "50%"
-    label: "Reduction in onboarding time"
+  - value: "Material reduction"
+    label: "In onboarding time"
     context: "From existing source material — pending verification."
     verification_required: true
-  - value: "3"
+  - value: "Several"
     label: "National-level distributor onboardings after launch"
     context: "From existing source material — pending verification."
     verification_required: true

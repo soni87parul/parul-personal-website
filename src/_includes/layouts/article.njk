@@ -16,7 +16,7 @@ layout: layouts/base.njk
   <div class="wrap">
     {% if coverImage %}
     <div class="hero__image-wrap" style="aspect-ratio: 16/9; margin-bottom: 3rem;">
-      <img src="{{ coverImage }}" alt="{{ coverImageAlt or title }}">
+      <img src="{{ coverImage }}" alt="{{ coverImageAlt or title }}" loading="eager" decoding="async">
     </div>
     {% endif %}
 
