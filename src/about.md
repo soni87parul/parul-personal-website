@@ -102,7 +102,7 @@ careerChapters:
     problem: "Rebuilding an institution's operating model, digital infrastructure and revenue mechanisms while it continued to run, for a network working across women's entrepreneurship and economic participation."
     learning: "Institution-building is transformation while the organisation is still running. You cannot switch the old system off and restart later."
     link: "/experience/abwci-msme-service-engine/"
-education: ""
+education: "National Institute of Industrial Engineering (NITIE), Mumbai"
 methodologyReference: "I approach every problem through a consistent method: Figure Out → Design → Build → Scale → Transform →"
 seoTitle: "About Parul Soni Manvati | Leadership & Career"
 seoDescription: "Parul Soni Manvati's leadership journey across e-commerce, supply chains, robotics, institutions and emerging industries, spanning strategy, operations and transformation."

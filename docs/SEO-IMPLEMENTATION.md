@@ -40,7 +40,7 @@ Work done on the `redesign-v2` working copy, following the Parul Soni Manvati SE
 | `src/_data/site.json` | Added `alternateName`, `baseUrl` (empty), `personImage`, `personDescription`, `sameAs`, `knowsAbout`, `ogImageAlt`; fixed default share image to an existing original photo (Gulfood Food Pulse). |
 | `src/admin/config.yml` | New CMS fields: Page SEO collection; Site Settings search-profile fields; Thinking: canonical override, noindex, last meaningful update; Experience: canonical override, noindex; About: eyebrow, share image; Homepage second paragraph; Advisory intro; Speaking topics intro. |
 | `src/index.njk`, `experience.njk`, `advisory.njk`, `speaking.njk`, `thinking.njk`, `contact.njk` | SEO now read from Page SEO (`seoKey`). |
-| `src/about.md` | New title/description; eyebrow "About Parul Soni Manvati" above the existing heading. |
+| `src/about.md` | New title/description; eyebrow "About Parul Soni Manvati" above the existing heading; Education field filled with NITIE, Mumbai so the Person schema's `alumniOf` matches visible content (degree name still to confirm). |
 | `src/contact/thank-you.njk` | `noindex`. |
 | `src/experience/experience.11tydata.js` | Stories share their own original photo; photos marked `"shareable": false` are skipped. |
 | `src/_data/photos.json` | `exec-desk` marked `"shareable": false` (the photo with the Gemini mark), so it is never used as a share image. |
