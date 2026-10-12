@@ -486,3 +486,39 @@ if (contactForm) {
       });
   });
 }
+
+// Speaking: loop a short YouTube clip (start/end seconds) inside the circular disc.
+const ytClips = document.querySelectorAll("[data-yt-clip]");
+if (ytClips.length) {
+  window.onYouTubeIframeAPIReady = () => {
+    ytClips.forEach((clip) => {
+      const start = Number(clip.dataset.ytStart) || 0;
+      const speed = Number(clip.dataset.ytSpeed) || 1;
+      clip.ytPlayer = new YT.Player(clip.querySelector("iframe"), {
+        events: {
+          onReady: (e) => {
+            e.target.mute();
+            e.target.unloadModule("captions");
+            e.target.setPlaybackRate(speed);
+            e.target.playVideo();
+            // Retry once the clip scrolls into view, in case the first autoplay was skipped.
+            new IntersectionObserver((entries) => {
+              if (entries.some((en) => en.isIntersecting) && e.target.getPlayerState() !== YT.PlayerState.PLAYING) e.target.playVideo();
+            }).observe(clip);
+          },
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.ENDED) {
+              e.target.seekTo(start, true);
+              e.target.playVideo();
+            } else if (e.data === YT.PlayerState.PLAYING && e.target.getPlaybackRate() !== speed) {
+              e.target.setPlaybackRate(speed);
+            }
+          },
+        },
+      });
+    });
+  };
+  const api = document.createElement("script");
+  api.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(api);
+}
