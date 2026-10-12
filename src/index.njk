@@ -25,7 +25,7 @@ seoKey: home
         {% if homepage.heroImage %}
         <img src="{{ homepage.heroImage }}" alt="{{ homepage.heroImageAlt or 'Portrait of Parul Soni Manvati' }}" loading="eager" fetchpriority="high" decoding="async">
         {% else %}
-        {{ ph.photo(photos["portrait-golden"], { fill: true, eager: true, sizes: "(max-width: 860px) 340px, 520px" }) }}
+        {{ ph.photo(photos["portrait-golden"], { fill: true, eager: true, sizes: "(max-width: 860px) 100vw, 62vw" }) }}
         {% endif %}
       </div>
       {% if homepage.heroSupportingGlimpses.length %}
