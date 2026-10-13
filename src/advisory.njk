@@ -6,7 +6,7 @@ seoKey: advisory
 {% import "partials/cta.njk" as cta %}
 
 <section class="page-header page-header--tight">
-  <div class="wrap grid-12">
+  <div class="wrap grid-12 advisory-hero">
     <div class="col-5">
       <span class="eyebrow">{{ advisory.heroEyebrow }}</span>
       <h1>{{ advisory.heroHeading }}</h1>
@@ -25,9 +25,21 @@ seoKey: advisory
             srcset="/assets/images/visuals/advisory-ecosystem-1000.jpg 1000w, /assets/images/visuals/advisory-ecosystem-1600.jpg 1600w, /assets/images/visuals/advisory-ecosystem-2200.jpg 2200w"
             sizes="(max-width: 860px) 94vw, 56vw"
             width="3348" height="1880"
-            alt="Illustration showing an interconnected business system extending beyond a meeting room."
+            alt="Illustration showing an interconnected business system extending beyond a meeting room: people, strategy, technology, regulation and policy, industry and partners, markets and customers, talent and organisation, capital and investment, supply chain and operations, and execution."
             loading="eager" decoding="async" fetchpriority="high">
         </picture>
+        <ul class="advisory-visual__labels" aria-hidden="true">
+          <li style="left: 48.2%; top: 7.6%;">People</li>
+          <li style="left: 68.8%; top: 11%;">Strategy</li>
+          <li class="is-right" style="right: 82%; top: 15.5%;">Technology</li>
+          <li class="is-right" style="right: 3%; top: 17.8%;">Regulation &amp;<br>Policy</li>
+          <li class="is-right" style="left: 0.8%; top: 30.3%;">Industry<br>&amp; Partners</li>
+          <li class="is-right" style="right: 2.2%; top: 35.8%;">Markets &amp;<br>Customers</li>
+          <li class="is-right" style="left: 0.8%; top: 50.9%;">Talent &amp;<br>Organisation</li>
+          <li style="left: 85.2%; top: 58.1%;">Capital &amp;<br>Investment</li>
+          <li style="left: 77.1%; top: 73.2%;">Supply Chain<br>&amp; Operations</li>
+          <li style="left: 40.7%; top: 81.5%;">Execution</li>
+        </ul>
       </figure>
     </div>
   </div>

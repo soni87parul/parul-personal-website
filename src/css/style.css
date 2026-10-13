@@ -2693,6 +2693,8 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
   overflow: hidden;
   aspect-ratio: 3348 / 1880;
   box-shadow: 0 1px 2px rgba(32, 29, 26, 0.06);
+  position: relative;
+  container-type: inline-size;
 }
 .advisory-visual img {
   width: 100%;
@@ -3223,3 +3225,27 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
     mask-composite: intersect;
   }
 }
+
+/* Advisory hero: give the ecosystem illustration more room on desktop */
+@media (min-width: 861px) {
+  .advisory-hero { align-items: center; }
+  .advisory-hero h1 { font-size: clamp(2rem, 4vw, 2.9rem); }
+  .advisory-hero > .col-5 { grid-column: span 4; }
+  .advisory-hero > .col-7 { grid-column: span 8; }
+}
+/* Crisp, bold labels laid over the illustration's own small baked-in labels */
+.advisory-visual__labels { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; }
+.advisory-visual__labels li {
+  position: absolute;
+  margin: 0;
+  padding: 0.25em 0.5em;
+  font-size: clamp(9px, 1.55cqw, 15px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--charcoal, #201d1a);
+  white-space: nowrap;
+  background: rgba(250, 246, 241, 0.94);
+  border-radius: 6px;
+  box-shadow: 0 0 6px 4px rgba(250, 246, 241, 0.94);
+}
+.advisory-visual__labels li.is-right { text-align: right; }
