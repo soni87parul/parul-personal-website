@@ -487,7 +487,7 @@ if (contactForm) {
   });
 }
 
-// Speaking: loop a short YouTube clip (start/end seconds) inside the circular disc.
+// Speaking: loop a short YouTube clip (start/end seconds, optional slow motion) in the hero.
 const ytClips = document.querySelectorAll("[data-yt-clip]");
 if (ytClips.length) {
   window.onYouTubeIframeAPIReady = () => {

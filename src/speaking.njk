@@ -19,7 +19,11 @@ seoKey: speaking
     </div>
     <div>
       <div class="hero__image-wrap speaking-hero__media">
-        {% if speakingPage.heroImage %}
+        {% if speakingPage.heroYouTubeId %}
+        <div class="yt-clip" data-yt-clip data-yt-start="{{ speakingPage.heroYouTubeStart }}" data-yt-end="{{ speakingPage.heroYouTubeEnd }}" data-yt-speed="{{ speakingPage.heroYouTubeSpeed }}">
+          <iframe src="https://www.youtube-nocookie.com/embed/{{ speakingPage.heroYouTubeId }}?start={{ speakingPage.heroYouTubeStart }}&end={{ speakingPage.heroYouTubeEnd }}&autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0&enablejsapi=1" title="Parul speaking at Gulfood" allow="autoplay; encrypted-media" tabindex="-1"></iframe>
+        </div>
+        {% elif speakingPage.heroImage %}
         <img src="{{ speakingPage.heroImage }}" alt="{{ speakingPage.heroImageAlt or '' }}" loading="eager" fetchpriority="high" decoding="async">
         {% else %}
         {{ ph.photo(photos["gulfood-foodpulse"], { fill: true, eager: true, sizes: "(max-width: 860px) 94vw, 560px" }) }}
@@ -147,14 +151,10 @@ seoKey: speaking
       <div class="circular-media__disc">
         {% if speakingPage.circularVideo %}
         <video class="circular-media__video" src="{{ speakingPage.circularVideo }}"{% if speakingPage.circularPoster %} poster="{{ speakingPage.circularPoster }}"{% endif %} muted autoplay loop playsinline preload="metadata" aria-label="Short clip of Parul speaking"></video>
-        {% elif speakingPage.circularYouTubeId %}
-        <div class="circular-media__yt" data-yt-clip data-yt-id="{{ speakingPage.circularYouTubeId }}" data-yt-start="{{ speakingPage.circularYouTubeStart }}" data-yt-end="{{ speakingPage.circularYouTubeEnd }}" data-yt-speed="{{ speakingPage.circularYouTubeSpeed }}">
-          <iframe src="https://www.youtube-nocookie.com/embed/{{ speakingPage.circularYouTubeId }}?start={{ speakingPage.circularYouTubeStart }}&end={{ speakingPage.circularYouTubeEnd }}&autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0&enablejsapi=1" title="Short clip of Parul speaking" allow="autoplay; encrypted-media" tabindex="-1"></iframe>
-        </div>
         {% elif speakingPage.circularPoster %}
         <img src="{{ speakingPage.circularPoster }}" alt="Parul speaking" loading="lazy" decoding="async">
         {% else %}
-        {{ media.placeholder("Speaking clip", "1/1", "Development placeholder. An approved video replaces this.") }}
+        {{ ph.photo(photos["gulfood-foodpulse"], { fill: true, sizes: "(max-width: 700px) 70vw, 360px" }) }}
         {% endif %}
       </div>
       <div class="circular-media__topics">
