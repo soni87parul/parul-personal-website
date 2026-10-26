@@ -1,0 +1,27 @@
+{
+  "heading": "Where I Add Value",
+  "intro": "I bring strategic thinking, operational experience and an understanding of people together to help organisations navigate complexity, build capability and execute change.",
+  "items": [
+    {
+      "title": "Leadership & Transformation",
+      "description": "I work across strategy, operations and organisational transformation, aligning leadership priorities with the people, processes and systems needed to deliver them.",
+      "identity": "The Operator",
+      "identityText": "Turning complex priorities into coordinated execution.",
+      "accent": "forest"
+    },
+    {
+      "title": "Business Building & Advisory",
+      "description": "I help founders, CEOs and organisations develop business models, strengthen operating capabilities and build the foundations for sustainable growth.",
+      "identity": "The Builder",
+      "identityText": "Designing and building what a business needs to grow.",
+      "accent": "terracotta"
+    },
+    {
+      "title": "Industry & Ecosystem Development",
+      "description": "I connect industry, technology, policy and institutions to help emerging sectors develop, particularly in alternative proteins and future-of-food innovation.",
+      "identity": "The Ecosystem Thinker",
+      "identityText": "Connecting stakeholders to create opportunities for collective progress.",
+      "accent": "slate"
+    }
+  ]
+}

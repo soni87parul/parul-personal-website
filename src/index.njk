@@ -41,37 +41,21 @@ seoKey: home
   </div>
 </section>
 
-{% if homepage.journeyPhotoCards.length %}
-<section class="journey-photos tier-secondary">
+<section class="value-section tier-secondary" aria-labelledby="where-i-add-value">
   <div class="wrap">
-    <div class="journey-photos__grid">
-      {% for card in homepage.journeyPhotoCards %}
-      {% set cardPhoto = photos[card.photo] %}
-      <article class="photo-card">
-        <div class="photo-card__media">{{ ph.photo(cardPhoto, { sizes: "(max-width: 860px) 94vw, 560px" }) }}</div>
-        <div class="photo-card__body">
-          <span class="photo-card__label">{{ card.label }}</span>
-          <h3>{{ card.title }}</h3>
-          <p>{{ card.text }}</p>
-          {% if card.link %}<a class="photo-card__link" href="{{ card.link }}">{{ card.linkLabel or "Read the story →" }}</a>{% endif %}
-        </div>
-      </article>
-      {% endfor %}
+    <div class="section-heading">
+      <h2 id="where-i-add-value">{{ whereIAddValue.heading }}</h2>
+      <p>{{ whereIAddValue.intro }}</p>
     </div>
-  </div>
-</section>
-{% endif %}
-
-<section class="identity-strip-section tier-supporting">
-  <div class="wrap">
-    <div class="identity-strip" data-identity-strip>
-      {% for card in homepage.whatIBringCards %}
-      <div class="identity-strip__zone" tabindex="0" style="--identity-accent: var(--{{ card.accent }});">
-        <span class="identity-strip__title">{{ card.title }}</span>
-        <span class="identity-strip__desc">{{ card.description }}</span>
-      </div>
+    <ul class="value-grid">
+      {% for item in whereIAddValue.items %}
+      <li class="value-card" style="--value-accent: var(--{{ item.accent }});">
+        <h3 class="value-card__title">{{ item.title }}</h3>
+        <p class="value-card__desc">{{ item.description }}</p>
+        <p class="value-card__identity"><span class="value-card__identity-label">{{ item.identity }}</span> {{ item.identityText }}</p>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
   </div>
 </section>
 
