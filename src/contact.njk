@@ -15,15 +15,12 @@ seoKey: contact
 
 <section class="contact-section">
   <div class="wrap contact-wrap">
-    {#- Netlify Forms: the form-name hidden field, data-netlify and the honeypot
-        must stay in the static HTML so Netlify registers the form at deploy.
-        Without JavaScript the browser posts normally and Netlify redirects to
-        /contact/thank-you/ only after accepting the submission. With
-        JavaScript, main.js posts the same fields and shows the success panel
-        only on a 2xx response. -#}
-    <form class="contact-form" id="contactForm" name="contact" method="POST" action="/contact/thank-you/"
-          data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="contact">
+    {#- Posted to /contact-submit.php on Hostinger, which emails the enquiry.
+        Without JavaScript the browser posts normally and the script redirects
+        to /contact/thank-you/ once the email is sent. With JavaScript,
+        main.js posts the same fields and shows the success panel only when
+        the script answers {"ok": true}. bot-field is a honeypot for spam. -#}
+    <form class="contact-form" id="contactForm" name="contact" method="POST" action="/contact-submit.php">
       <input type="hidden" name="topic" id="referralTopic" value="">
       <p class="contact-honeypot" aria-hidden="true">
         <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>

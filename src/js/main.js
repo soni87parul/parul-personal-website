@@ -373,7 +373,7 @@ document.querySelectorAll("[data-quote-block]").forEach((block) => {
   });
 });
 
-// Contact form — compact enquiry form posted to Netlify Forms.
+// Contact form — compact enquiry form posted to /contact-submit.php, which emails it.
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   const reasonSelect = document.getElementById("reason");
@@ -462,14 +462,19 @@ if (contactForm) {
     submitButton.textContent = "Sending…";
 
     const body = new URLSearchParams(new FormData(contactForm)).toString();
-    fetch("/", {
+    fetch(contactForm.getAttribute("action"), {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      },
       body,
     })
-      .then((response) => {
-        if (!response.ok) throw new Error("Submission not accepted");
-        // Only a 2xx from Netlify counts as received.
+      .then((response) => response.json().catch(() => ({})).then((result) => ({ response, result })))
+      .then(({ response, result }) => {
+        // Only an explicit {"ok": true} from the script counts as sent, so a
+        // server that ignores the post can never show a false "thank you".
+        if (!response.ok || result.ok !== true) throw new Error("Submission not accepted");
         contactForm.hidden = true;
         successPanel.hidden = false;
         successPanel.focus();

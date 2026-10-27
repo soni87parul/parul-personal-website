@@ -93,6 +93,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
+  eleventyConfig.addPassthroughCopy({ "src/.htaccess": ".htaccess" }); // Hostinger/Apache headers + caching
+  eleventyConfig.addPassthroughCopy("src/contact-submit.php"); // Hostinger: emails contact form enquiries
 
   eleventyConfig.addWatchTarget("src/css");
   eleventyConfig.addWatchTarget("src/js");

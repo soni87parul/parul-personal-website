@@ -3251,7 +3251,7 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
 .advisory-visual__labels li.is-right { text-align: right; }
 .speaking-hero__media .yt-clip { background: #201d1a url("/assets/images/photos/gulfood-foodpulse-768.webp") center / cover no-repeat; }
 
-/* Home: "Where I Add Value" — three equal boxes, each carrying its identity
+/* Home: "Where I Add Value" : three equal boxes, each carrying its identity
    (Operator / Builder / Ecosystem Thinker) as a secondary label. Same border,
    radius, surface and accent-rule conventions as the identity strip. */
 .value-grid {
@@ -3268,9 +3268,10 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
   margin: 0;
   padding: 1.6rem clamp(1.2rem, 2.2vw, 1.9rem) 1.7rem;
   background: var(--surface);
+  background: color-mix(in srgb, var(--value-accent, var(--accent)) 7%, var(--surface));
   border: 1px solid var(--border);
   border-top: 3px solid var(--value-accent, var(--accent));
-  border-radius: var(--radius);
+  border-radius: 8px;
 }
 .value-card__title {
   font-family: var(--font-display);
@@ -3302,6 +3303,16 @@ details[open] > .milestone-toggle .milestone__minus-glyph { display: inline; }
   color: var(--value-accent, var(--accent));
   margin-bottom: 0.3rem;
 }
-@media (max-width: 860px) {
-  .value-grid { grid-template-columns: 1fr; }
+.value-section .section-heading { margin-bottom: clamp(2rem, 4vw, 3rem); }
+@media (max-width: 1080px) {
+  .value-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .value-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .value-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .value-card { padding: 1.35rem 1.25rem 1.4rem; }
+  .value-card__title { font-size: 1.25rem; }
+  .value-card__desc { font-size: 0.95rem; line-height: 1.65; }
+  .value-card__identity { font-size: 0.88rem; }
+  .value-section .section-heading p { font-size: 1.05rem; line-height: 1.6; }
 }
