@@ -29,7 +29,7 @@ takeaway: "Operations becomes strategy when changing the operation changes what 
 related_recommendations: ["sanjay-agarwal", "parag-raheja"]
 related_articles: []
 related_experience: []
-seo_title: ""
+seo_title: "Same-day and next-day delivery at Snapdeal | Parul Soni Manvati"
 seo_description: ""
 og_image: ""
 ---

@@ -29,6 +29,6 @@ related_recommendations: ["krishna-kalluru", "nandan-s"]
 related_articles: []
 related_experience: []
 seo_title: ""
-seo_description: ""
+seo_description: "A culturally sensitive catalogue incident at Amazon showed the limits of keyword-based compliance, leading to image recognition, automation and seller education."
 og_image: ""
 ---

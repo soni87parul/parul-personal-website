@@ -15,7 +15,7 @@ from_the_field_context: "working on regulatory ecosystem-building for cultivated
 contact_intent: "policy"
 contact_topic: "ecosystem"
 takeaway: "When the market infrastructure does not yet exist, strategy expands from building a company to helping create the conditions in which the company can succeed."
-seoTitle: "Sometimes the constraint sits outside the business | Parul Soni Manvati"
+seoTitle: "When the constraint sits outside the business | Parul Soni Manvati"
 seoDescription: "Why emerging industries sometimes need company-building and system-building at the same time, drawn from regulatory ecosystem work in cultivated meat."
 ---
 Most business frameworks keep the founder's attention inside the company.

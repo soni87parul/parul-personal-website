@@ -15,7 +15,7 @@ from_the_field_context: "building Addverb's CEO Office operating rhythm"
 contact_intent: "advisory"
 contact_topic: "ceo-office"
 takeaway: "A CEO Office creates leverage when it reduces the amount of organisational integration the CEO has to perform personally."
-seoTitle: "A CEO should not be the organisation's integration layer | Parul Soni Manvati"
+seoTitle: "Why a CEO shouldn't be the integration layer | Parul Soni Manvati"
 seoDescription: "Why the strongest CEO Offices reduce dependency on themselves over time, building mechanisms, priorities, decision rights and review rhythms instead."
 ---
 There is a pattern I have seen in scaling organisations.

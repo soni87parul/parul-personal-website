@@ -28,7 +28,7 @@ takeaway: "Institution-building is transformation while the organisation is stil
 related_recommendations: []
 related_articles: []
 related_experience: []
-seo_title: ""
-seo_description: ""
+seo_title: "Rebuilding ABWCI's operating model | Parul Soni Manvati"
+seo_description: "ABWCI 2.0: rebuilding an institution's structure, digital infrastructure, member engagement and revenue while it keeps operating, toward a repeatable model."
 og_image: ""
 ---

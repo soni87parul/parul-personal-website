@@ -28,7 +28,7 @@ takeaway: "Supply crises are often portfolio problems disguised as procurement p
 related_recommendations: ["ritika-raje"]
 related_articles: []
 related_experience: []
-seo_title: ""
-seo_description: ""
+seo_title: "From chip shortage to supply strategy | Parul Soni Manvati"
+seo_description: "How a delayed robotics project traced back to semiconductor supply at Addverb, and became a five-year strategic supplier conversation instead of a one-off fix."
 og_image: ""
 ---

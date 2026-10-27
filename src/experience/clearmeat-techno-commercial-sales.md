@@ -36,7 +36,7 @@ takeaway: "For technical products, customer success cannot be separated cleanly 
 related_recommendations: []
 related_articles: []
 related_experience: []
-seo_title: ""
+seo_title: "Building a techno-commercial sales team | Parul Soni Manvati"
 seo_description: ""
 og_image: ""
 ---

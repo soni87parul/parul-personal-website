@@ -28,7 +28,7 @@ takeaway: "A strong CEO Office should not become another layer of management. It
 related_recommendations: ["ritika-raje"]
 related_articles: []
 related_experience: []
-seo_title: ""
-seo_description: ""
+seo_title: "Building a CEO office operating rhythm | Parul Soni Manvati"
+seo_description: "Turning a Global CEO's priorities into AOPs, leadership reviews, KPI mechanisms and cross-functional accountability at Addverb, a fast-scaling robotics company."
 og_image: ""
 ---

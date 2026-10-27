@@ -33,7 +33,7 @@ takeaway: "Large transformations rarely fail because an organisation lacks anoth
 related_recommendations: ["ritika-raje"]
 related_articles: []
 related_experience: []
-seo_title: ""
+seo_title: "Addverb enterprise and SAP transformation | Parul Soni Manvati"
 seo_description: ""
 og_image: ""
 ---

@@ -10,9 +10,10 @@
 {%- set shouldNoindex = noindex or pageSeoEntry.noindex or seoEnv.isPreview -%}
   <title>{{ metaTitle }}</title>
   <meta name="description" content="{{ metaDescription }}">
-  <link rel="canonical" href="{{ canonicalUrl }}">
   {%- if shouldNoindex %}
   <meta name="robots" content="noindex">
+  {%- else %}
+  <link rel="canonical" href="{{ canonicalUrl }}">
   {%- endif %}
 
   <meta property="og:type" content="{{ 'article' if isArticle else 'website' }}">
@@ -45,7 +46,7 @@
     headline: title,
     pageName: metaTitle,
     description: metaDescription,
-    image: ((socialImage or ogImage or coverImage) | absUrl) if (isArticle and (socialImage or ogImage or coverImage)) else "",
+    image: ((socialImage or ogImage or coverImage or site.ogImage) | absUrl) if isArticle else "",
     datePublished: date if isArticle else "",
     dateModified: updated if isArticle else ""
   } | structuredData -%}

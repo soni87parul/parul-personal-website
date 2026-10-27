@@ -28,7 +28,7 @@ takeaway: "Market access is not created by putting a catalogue online. The hard 
 related_recommendations: []
 related_articles: []
 related_experience: []
-seo_title: ""
-seo_description: ""
+seo_title: "Digital market access for women entrepreneurs | Parul Soni Manvati"
+seo_description: "Building digital market access for ABWCI's network of women entrepreneurs: marketplace architecture, data readiness, onboarding and proposed ONDC integration."
 og_image: ""
 ---

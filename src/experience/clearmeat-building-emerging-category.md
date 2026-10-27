@@ -27,7 +27,7 @@ takeaway: "Sometimes the constraint to building a business sits outside the busi
 related_recommendations: []
 related_articles: []
 related_experience: []
-seo_title: ""
+seo_title: "Building India's cultivated meat category | Parul Soni Manvati"
 seo_description: ""
 og_image: ""
 ---

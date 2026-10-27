@@ -32,7 +32,7 @@ takeaway: "A “loss” on a balance sheet is often only the symptom. The useful
 related_recommendations: ["sanjay-agarwal", "parag-raheja"]
 related_articles: []
 related_experience: []
-seo_title: ""
-seo_description: ""
+seo_title: "Finding Snapdeal's supply-chain black box | Parul Soni Manvati"
+seo_description: "A forensic look at unexplained supply-chain losses at Snapdeal exposed an inventory and reconciliation mismatch and led to a national recovery programme."
 og_image: ""
 ---

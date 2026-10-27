@@ -16,7 +16,7 @@ contact_intent: "transformation"
 contact_topic: "ai-operating-model"
 takeaway: "The useful AI question is not \"What can the model do?\" It is: \"How should people, machines, controls and accountability work together now?\""
 seoTitle: "AI doesn't eliminate the operating model | Parul Soni Manvati"
-seoDescription: "Why AI transformation is not a technology rollout: decision rights, human oversight and accountability all have to be redesigned alongside the model, from machine-learning work at Amazon."
+seoDescription: "AI transformation is not a technology rollout. Decision rights, human oversight and accountability must be redesigned too: lessons from ML work at Amazon."
 ---
 A lot of AI conversations still begin with the same question:
 

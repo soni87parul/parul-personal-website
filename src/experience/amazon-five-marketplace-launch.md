@@ -28,7 +28,7 @@ takeaway: "When time has already been lost, a sequential plan usually makes the 
 related_recommendations: ["krishna-kalluru", "nandan-s"]
 related_articles: []
 related_experience: []
-seo_title: ""
-seo_description: ""
+seo_title: "Launching five Amazon marketplaces | Parul Soni Manvati"
+seo_description: "Launching five Amazon marketplaces after two months were lost: hiring, training, backlog clearance and automation run in parallel to recover the timeline."
 og_image: ""
 ---

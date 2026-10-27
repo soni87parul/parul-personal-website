@@ -31,7 +31,7 @@ takeaway: "Sometimes scaling doesn't mean selling more of the product you starte
 related_recommendations: []
 related_articles: []
 related_experience: []
-seo_title: ""
+seo_title: "ClearMeat's B2C to B2B business model shift | Parul Soni Manvati"
 seo_description: ""
 og_image: ""
 ---

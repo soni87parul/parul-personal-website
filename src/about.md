@@ -105,5 +105,5 @@ careerChapters:
 education: "National Institute of Industrial Engineering (NITIE), Mumbai"
 methodologyReference: "I approach every problem through a consistent method: Figure Out → Design → Build → Scale → Transform →"
 seoTitle: "About Parul Soni Manvati | Leadership & Career"
-seoDescription: "Parul Soni Manvati's leadership journey across e-commerce, supply chains, robotics, institutions and emerging industries, spanning strategy, operations and transformation."
+seoDescription: "Parul Soni Manvati's leadership journey across e-commerce, supply chains, robotics, institutions and emerging industries, in strategy, operations and transformation."
 ---

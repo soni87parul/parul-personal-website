@@ -15,8 +15,8 @@ from_the_field_context: "leading the Addverb enterprise transformation"
 contact_intent: "transformation"
 contact_topic: "erp-transformation"
 takeaway: "Before asking which system the organisation needs, ask what the organisation should become capable of doing. Then design the process, ownership, information flow and technology around that answer."
-seoTitle: "Your ERP transformation may not actually be an ERP problem | Parul Soni Manvati"
-seoDescription: "Why digitising a broken process without first redesigning it just creates a faster, more expensive version of the same confusion, drawn from an enterprise transformation at Addverb."
+seoTitle: "Your ERP problem may not be an ERP problem | Parul Soni Manvati"
+seoDescription: "Digitising a broken process just makes a faster, costlier version of the same confusion. Lessons from an enterprise transformation at Addverb."
 ---
 Transformation programmes often begin with the visible object.
 

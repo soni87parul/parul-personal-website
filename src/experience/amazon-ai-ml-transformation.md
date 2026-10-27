@@ -31,7 +31,7 @@ takeaway: "AI transformation isn't about putting a model into an existing proces
 related_recommendations: ["krishna-kalluru", "nandan-s"]
 related_articles: []
 related_experience: []
-seo_title: ""
+seo_title: "Using AI to create capacity at Amazon | Parul Soni Manvati"
 seo_description: ""
 og_image: ""
 ---

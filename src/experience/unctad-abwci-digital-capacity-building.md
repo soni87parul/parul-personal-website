@@ -28,7 +28,7 @@ takeaway: "Training scales when it stops being only an event and becomes infrast
 related_recommendations: []
 related_articles: []
 related_experience: []
-seo_title: ""
-seo_description: ""
+seo_title: "Taking entrepreneur training digital | Parul Soni Manvati"
+seo_description: "With UNCTAD and ABWCI: a digital model combining learning, marketplace access and business support to scale capacity-building for women entrepreneurs."
 og_image: ""
 ---
